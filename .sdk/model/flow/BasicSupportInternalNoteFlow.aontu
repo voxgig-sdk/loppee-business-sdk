@@ -1,0 +1,22 @@
+# BasicSupportInternalNoteFlow
+
+main: kit: flow: BasicSupportInternalNoteFlow:
+{
+  entity: "support_internal_note",
+  kind: "basic",
+  name: "BasicSupportInternalNoteFlow",
+  step: [
+    {
+      i: {
+        ref: "support_internal_note_ref01"
+      }
+
+      m: {
+        conversation_id: "conversation01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSupportInternalNoteFlow"
+}

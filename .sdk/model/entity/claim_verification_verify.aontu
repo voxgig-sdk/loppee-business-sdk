@@ -1,0 +1,131 @@
+# Entity: claim_verification_verify
+
+main: kit: entity: claim_verification_verify: {
+
+  alias: field: {}
+
+  fields: {
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    challenge_id: {
+      fo: "uuid"
+      h: "Challenge Id"
+      n: "challenge_id"
+      r: false
+      sh: "Exact challenge UUID returned by the v3 SMS or owner-email send."
+      t: "`$STRING`"
+    }
+    channel: {
+      h: "Channel"
+      n: "channel"
+      r: false
+      t: "`$ANY`"
+    }
+    claim_id: {
+      h: "Claim Id"
+      n: "claim_id"
+      r: true
+      t: "`$STRING`"
+    }
+    code: {
+      h: "Code"
+      n: "code"
+      r: true
+      t: "`$STRING`"
+    }
+    method: {
+      h: "Method"
+      n: "method"
+      r: false
+      t: "`$ANY`"
+    }
+    publication: {
+      h: "Publication"
+      n: "publication"
+      r: false
+      t: "`$OBJECT`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    transfer_review_required: {
+      h: "Transfer Review Required"
+      n: "transfer_review_required"
+      r: false
+      t: "`$ANY`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: false
+      t: "`$ANY`"
+    }
+  }
+
+  name: "claim_verification_verify"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "challenge_id"
+            "channel"
+            "claim_id"
+            "code"
+          ]
+          co: {
+            id: "POST /v1/actions/claim-verification/verify"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/claim-verification/verify"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "claim-verification"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: {
+              challenge_id: "`reqdata.challenge_id`"
+              channel: "`reqdata.channel`"
+              claim_id: "`reqdata.claim_id`"
+              code: "`reqdata.code`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

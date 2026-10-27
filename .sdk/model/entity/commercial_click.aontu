@@ -1,0 +1,249 @@
+# Entity: commercial_click
+
+main: kit: entity: commercial_click: {
+
+  alias: field: {}
+
+  fields: {
+    action_type: {
+      h: "Action Type"
+      n: "action_type"
+      r: true
+      t: "`$ANY`"
+    }
+    ad_receipt: {
+      h: "Ad Receipt"
+      n: "ad_receipt"
+      r: false
+      sh: "Opaque server-signed receipt of a served Sponsored ad, sent back unchanged with a profile, website or call tap."
+      t: "`$STRING`"
+    }
+    billable: {
+      h: "Billable"
+      n: "billable"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    billing_event_id: {
+      h: "Billing Event Id"
+      n: "billing_event_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    billing_status: {
+      h: "Billing Status"
+      n: "billing_status"
+      r: true
+      t: "`$STRING`"
+    }
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: false
+      t: "`$STRING`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$STRING`"
+    }
+    city: {
+      h: "City"
+      n: "city"
+      r: false
+      t: "`$STRING`"
+    }
+    click_id: {
+      h: "Click Id"
+      n: "click_id"
+      r: true
+      t: "`$STRING`"
+    }
+    commercial_status: {
+      h: "Commercial Status"
+      n: "commercial_status"
+      r: false
+      t: "`$ANY`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    directory_listing_id: {
+      h: "Directory Listing Id"
+      n: "directory_listing_id"
+      r: false
+      sh: "Deprecated alias of listing_id."
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: false
+      t: "`$STRING`"
+    }
+    fallback_interaction_id: {
+      h: "Fallback Interaction Id"
+      n: "fallback_interaction_id"
+      r: false
+      t: "`$STRING`"
+    }
+    ledger_status: {
+      h: "Ledger Status"
+      n: "ledger_status"
+      r: true
+      t: "`$STRING`"
+    }
+    listing_id: {
+      h: "Listing Id"
+      n: "listing_id"
+      r: false
+      t: "`$STRING`"
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: false
+      t: "`$OBJECT`"
+    }
+    migration_required: {
+      h: "Migration Required"
+      n: "migration_required"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    page_path: {
+      h: "Page Path"
+      n: "page_path"
+      r: false
+      t: "`$STRING`"
+    }
+    referrer: {
+      h: "Referrer"
+      n: "referrer"
+      r: false
+      t: "`$STRING`"
+    }
+    source_type: {
+      h: "Source Type"
+      n: "source_type"
+      r: true
+      t: "`$ANY`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    storage: {
+      h: "Storage"
+      n: "storage"
+      r: true
+      t: "`$ANY`"
+    }
+    surface: {
+      h: "Surface"
+      n: "surface"
+      r: false
+      sh: "Where the Sponsored ad was shown (with ad_receipt)."
+      t: "`$ANY`"
+    }
+    target_url: {
+      h: "Target Url"
+      n: "target_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "commercial_click"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "action_type"
+            "ad_receipt"
+            "business_id"
+            "category"
+            "city"
+            "commercial_status"
+            "directory_listing_id"
+            "display_name"
+            "listing_id"
+            "metadata"
+            "page_path"
+            "referrer"
+            "source_type"
+            "state"
+            "surface"
+            "target_url"
+          ]
+          co: {
+            id: "POST /v1/actions/commercial-click"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/commercial-click"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "commercial-click"
+            }
+          ]
+          t: {
+            req: {
+              action_type: "`reqdata.action_type`"
+              ad_receipt: "`reqdata.ad_receipt`"
+              business_id: "`reqdata.business_id`"
+              category: "`reqdata.category`"
+              city: "`reqdata.city`"
+              commercial_status: "`reqdata.commercial_status`"
+              directory_listing_id: "`reqdata.directory_listing_id`"
+              display_name: "`reqdata.display_name`"
+              listing_id: "`reqdata.listing_id`"
+              metadata: "`reqdata.metadata`"
+              page_path: "`reqdata.page_path`"
+              referrer: "`reqdata.referrer`"
+              source_type: "`reqdata.source_type`"
+              state: "`reqdata.state`"
+              surface: "`reqdata.surface`"
+              target_url: "`reqdata.target_url`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

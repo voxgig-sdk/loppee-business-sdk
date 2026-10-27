@@ -1,0 +1,18 @@
+# BasicBusinessClaimFlow
+
+main: kit: flow: BasicBusinessClaimFlow:
+{
+  entity: "business_claim",
+  kind: "basic",
+  name: "BasicBusinessClaimFlow",
+  step: [
+    {
+      i: {
+        ref: "business_claim_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBusinessClaimFlow"
+}

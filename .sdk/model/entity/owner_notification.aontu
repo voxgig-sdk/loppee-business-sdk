@@ -1,0 +1,155 @@
+# Entity: owner_notification
+
+main: kit: entity: owner_notification: {
+
+  alias: field: {}
+
+  fields: {
+    businessId: {
+      h: "Business Id"
+      n: "businessId"
+      r: true
+      t: "`$STRING`"
+    }
+    createdAt: {
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      t: "`$STRING`"
+    }
+    dedupeKey: {
+      h: "Dedupe Key"
+      n: "dedupeKey"
+      r: true
+      t: "`$STRING`"
+    }
+    emailStatus: {
+      h: "Email Status"
+      n: "emailStatus"
+      r: true
+      t: "`$STRING`"
+    }
+    eventType: {
+      h: "Event Type"
+      n: "eventType"
+      r: true
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    readAt: {
+      h: "Read At"
+      n: "readAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    resourceId: {
+      h: "Resource Id"
+      n: "resourceId"
+      r: true
+      t: "`$STRING`"
+    }
+    resourceKind: {
+      h: "Resource Kind"
+      n: "resourceKind"
+      r: true
+      t: "`$ANY`"
+    }
+    resourceUrl: {
+      h: "Resource Url"
+      n: "resourceUrl"
+      r: true
+      t: "`$STRING`"
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      r: true
+      t: "`$STRING`"
+    }
+    webhookStatus: {
+      h: "Webhook Status"
+      n: "webhookStatus"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "owner_notification"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /v1/owner/notifications/{notification_id}/read"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "notification_id"
+                or: "notification_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/notifications/{notification_id}/read"
+          q: {
+            exist: [
+              "notification_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "notifications"
+            }
+            {
+              var: "notification_id"
+            }
+            {
+              lit: "read"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.notification`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

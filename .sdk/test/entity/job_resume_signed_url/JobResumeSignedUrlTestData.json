@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "job_resume_signed_url": {
+      "JOB_RESUME_SIGNED_URL00": {
+        "application_id": "APPLICATION01",
+        "content_type": "s47",
+        "expires_in_seconds": 72,
+        "resume_file_name": "s49",
+        "signed_url": "s4a",
+        "size_bytes": 75,
+        "status": "s4c",
+        "job_application_id": "JOB_APPLICATION01",
+        "id": "JOB_RESUME_SIGNED_URL00"
+      },
+      "JOB_RESUME_SIGNED_URL01": {
+        "application_id": "APPLICATION01",
+        "content_type": "s8d",
+        "expires_in_seconds": 142,
+        "resume_file_name": "s8f",
+        "signed_url": "s90",
+        "size_bytes": 145,
+        "status": "s92",
+        "job_application_id": "JOB_APPLICATION01",
+        "id": "JOB_RESUME_SIGNED_URL01"
+      },
+      "JOB_RESUME_SIGNED_URL02": {
+        "application_id": "APPLICATION01",
+        "content_type": "sd3",
+        "expires_in_seconds": 212,
+        "resume_file_name": "sd5",
+        "signed_url": "sd6",
+        "size_bytes": 215,
+        "status": "sd8",
+        "job_application_id": "JOB_APPLICATION01",
+        "id": "JOB_RESUME_SIGNED_URL02"
+      }
+    }
+  },
+  "new": {
+    "job_resume_signed_url": {
+      "job_resume_signed_url_ref01": {
+        "application_id": "APPLICATION01",
+        "content_type": "s119",
+        "expires_in_seconds": 282,
+        "resume_file_name": "s11b",
+        "signed_url": "s11c",
+        "size_bytes": 285,
+        "status": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/account/job-applications/{application_id}/resume-url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/owner/job-applications/{application_id}/resume-url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+# Entity: business_review
+
+main: kit: entity: business_review: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "business_review"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/businesses/{business_id}/reviews.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "biz_elite_ac_llc_jacksonville_fl"
+                k: "param"
+                n: "id"
+                or: "business_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "rating"
+                or: "rating"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/businesses/{business_id}/reviews.json"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              business_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "businesses"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "reviews.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

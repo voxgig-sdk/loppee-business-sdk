@@ -1,0 +1,3855 @@
+# Entity: business_owner
+
+main: kit: entity: business_owner: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    account_role: {
+      h: "Account Role"
+      n: "account_role"
+      r: true
+      t: "`$STRING`"
+    }
+    acknowledge_data_effects: {
+      h: "Acknowledge Data Effects"
+      n: "acknowledge_data_effects"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    actions: {
+      h: "Actions"
+      n: "actions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    allowed_actions: {
+      h: "Allowed Actions"
+      n: "allowed_actions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    amount_cents: {
+      h: "Amount Cents"
+      n: "amount_cents"
+      op: {
+        update: {
+          req: false
+          type: "`$NUMBER`"
+        }
+      }
+      r: true
+      sh: "Within the top-up limits (default $25 to $5,000)."
+      t: "`$NUMBER`"
+    }
+    applicant_location_requirements: {
+      h: "Applicant Location Requirements"
+      n: "applicant_location_requirements"
+      r: false
+      t: "`$STRING`"
+    }
+    apply_url: {
+      h: "Apply Url"
+      n: "apply_url"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    asset_id: {
+      h: "Asset Id"
+      n: "asset_id"
+      r: true
+      t: "`$STRING`"
+    }
+    assigneeId: {
+      h: "Assignee Id"
+      n: "assigneeId"
+      r: true
+      t: "`$STRING`"
+    }
+    assigneeLabel: {
+      h: "Assignee Label"
+      n: "assigneeLabel"
+      r: true
+      t: "`$STRING`"
+    }
+    assigneeType: {
+      h: "Assignee Type"
+      n: "assigneeType"
+      r: true
+      t: "`$STRING`"
+    }
+    attempt_id: {
+      h: "Attempt Id"
+      n: "attempt_id"
+      r: true
+      t: "`$STRING`"
+    }
+    benefits: {
+      h: "Benefits"
+      n: "benefits"
+      r: false
+      t: "`$STRING`"
+    }
+    body: {
+      h: "Body"
+      n: "body"
+      r: true
+      t: "`$STRING`"
+    }
+    businessId: {
+      h: "Business Id"
+      n: "businessId"
+      r: true
+      t: "`$STRING`"
+    }
+    businessName: {
+      h: "Business Name"
+      n: "businessName"
+      r: true
+      t: "`$STRING`"
+    }
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    campaign: {
+      h: "Campaign"
+      n: "campaign"
+      r: true
+      t: "`$OBJECT`"
+    }
+    campaign_id: {
+      h: "Campaign Id"
+      n: "campaign_id"
+      r: true
+      t: "`$STRING`"
+    }
+    carrier_name: {
+      h: "Carrier Name"
+      n: "carrier_name"
+      r: false
+      t: "`$STRING`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$STRING`"
+    }
+    category_alias: {
+      h: "Category Alias"
+      n: "category_alias"
+      r: false
+      t: "`$STRING`"
+    }
+    category_aliases: {
+      h: "Category Aliases"
+      n: "category_aliases"
+      r: true
+      t: "`$ARRAY`"
+    }
+    change: {
+      h: "Change"
+      n: "change"
+      r: true
+      t: "`$OBJECT`"
+    }
+    city: {
+      h: "City"
+      n: "city"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    client_message_id: {
+      h: "Client Message Id"
+      n: "client_message_id"
+      r: true
+      t: "`$STRING`"
+    }
+    code: {
+      h: "Code"
+      n: "code"
+      r: true
+      t: "`$STRING`"
+    }
+    compensation_text: {
+      h: "Compensation Text"
+      n: "compensation_text"
+      r: false
+      t: "`$STRING`"
+    }
+    confirm: {
+      h: "Confirm"
+      n: "confirm"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    confirmation: {
+      h: "Confirmation"
+      n: "confirmation"
+      r: true
+      t: "`$STRING`"
+    }
+    connection_kind: {
+      h: "Connection Kind"
+      n: "connection_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    consent_sha256: {
+      h: "Consent Sha256"
+      n: "consent_sha256"
+      r: true
+      sh: "SHA-256 of the acceptance text shown (from payment-authorizations)."
+      t: "`$STRING`"
+    }
+    contact_email: {
+      h: "Contact Email"
+      n: "contact_email"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    content_type: {
+      h: "Content Type"
+      n: "content_type"
+      r: true
+      t: "`$STRING`"
+    }
+    country: {
+      h: "Country"
+      n: "country"
+      r: false
+      t: "`$STRING`"
+    }
+    coupon_code: {
+      h: "Coupon Code"
+      n: "coupon_code"
+      r: false
+      t: "`$STRING`"
+    }
+    createdAt: {
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    credential_id: {
+      h: "Credential Id"
+      n: "credential_id"
+      r: true
+      t: "`$STRING`"
+    }
+    credential_identifier: {
+      h: "Credential Identifier"
+      n: "credential_identifier"
+      r: true
+      t: "`$STRING`"
+    }
+    data_base64: {
+      h: "Data Base64"
+      n: "data_base64"
+      r: true
+      t: "`$STRING`"
+    }
+    delivery_contract: {
+      h: "Delivery Contract"
+      n: "delivery_contract"
+      r: true
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    direct_apply: {
+      h: "Direct Apply"
+      n: "direct_apply"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    disabled_reason: {
+      h: "Disabled Reason"
+      n: "disabled_reason"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    discount_label: {
+      h: "Discount Label"
+      n: "discount_label"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: true
+      t: "`$STRING`"
+    }
+    employment_type: {
+      h: "Employment Type"
+      n: "employment_type"
+      r: false
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    endpoint: {
+      h: "Endpoint"
+      n: "endpoint"
+      r: true
+      t: "`$OBJECT`"
+    }
+    endpoint_id: {
+      h: "Endpoint Id"
+      n: "endpoint_id"
+      r: true
+      t: "`$STRING`"
+    }
+    endpoint_url: {
+      fo: "uri"
+      h: "Endpoint Url"
+      n: "endpoint_url"
+      r: true
+      t: "`$STRING`"
+    }
+    ends_at: {
+      h: "Ends At"
+      n: "ends_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    event_id: {
+      h: "Event Id"
+      n: "event_id"
+      r: true
+      t: "`$STRING`"
+    }
+    event_types: {
+      h: "Event Types"
+      n: "event_types"
+      r: true
+      t: "`$ARRAY`"
+    }
+    evidence_observed_at: {
+      h: "Evidence Observed At"
+      n: "evidence_observed_at"
+      r: false
+      t: "`$STRING`"
+    }
+    expected_updated_at: {
+      h: "Expected Updated At"
+      n: "expected_updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    experience_level: {
+      h: "Experience Level"
+      n: "experience_level"
+      r: false
+      t: "`$STRING`"
+    }
+    expires_at: {
+      h: "Expires At"
+      n: "expires_at"
+      r: false
+      t: "`$STRING`"
+    }
+    factor_id: {
+      h: "Factor Id"
+      n: "factor_id"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    failure_count: {
+      h: "Failure Count"
+      n: "failure_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    file_name: {
+      h: "File Name"
+      n: "file_name"
+      r: true
+      t: "`$STRING`"
+    }
+    file_sha256: {
+      h: "File Sha256"
+      n: "file_sha256"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    full_name: {
+      h: "Full Name"
+      n: "full_name"
+      r: false
+      t: "`$STRING`"
+    }
+    guideHandoffAnsweredAt: {
+      h: "Guide Handoff Answered At"
+      n: "guideHandoffAnsweredAt"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    guideHandoffAt: {
+      h: "Guide Handoff At"
+      n: "guideHandoffAt"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    guideHandoffDueAt: {
+      h: "Guide Handoff Due At"
+      n: "guideHandoffDueAt"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    hours: {
+      h: "Hours"
+      n: "hours"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    idempotency_key: {
+      h: "Idempotency Key"
+      n: "idempotency_key"
+      r: false
+      t: "`$STRING`"
+    }
+    installation_id: {
+      fo: "uuid"
+      h: "Installation Id"
+      n: "installation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    issuer: {
+      h: "Issuer"
+      n: "issuer"
+      r: true
+      t: "`$STRING`"
+    }
+    jurisdiction: {
+      h: "Jurisdiction"
+      n: "jurisdiction"
+      r: false
+      t: "`$STRING`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      t: "`$STRING`"
+    }
+    label: {
+      h: "Label"
+      n: "label"
+      r: false
+      t: "`$STRING`"
+    }
+    lastMessageAt: {
+      h: "Last Message At"
+      n: "lastMessageAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    lastMessageAuthorType: {
+      h: "Last Message Author Type"
+      n: "lastMessageAuthorType"
+      r: true
+      t: "`$STRING`"
+    }
+    lastMessagePreview: {
+      h: "Last Message Preview"
+      n: "lastMessagePreview"
+      r: true
+      t: "`$STRING`"
+    }
+    last_delivery_at: {
+      fo: "date-time"
+      h: "Last Delivery At"
+      n: "last_delivery_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    launch: {
+      h: "Launch"
+      n: "launch"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    license_number: {
+      h: "License Number"
+      n: "license_number"
+      r: true
+      t: "`$STRING`"
+    }
+    messages: {
+      h: "Messages"
+      n: "messages"
+      r: true
+      t: "`$ARRAY`"
+    }
+    messagesTruncated: {
+      h: "Messages Truncated"
+      n: "messagesTruncated"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    monthly_cap_cents: {
+      h: "Monthly Cap Cents"
+      n: "monthly_cap_cents"
+      r: false
+      t: "`$NUMBER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    note: {
+      h: "Note"
+      n: "note"
+      r: false
+      t: "`$STRING`"
+    }
+    one_time_display: {
+      h: "One Time Display"
+      n: "one_time_display"
+      r: true
+      t: "`$ANY`"
+    }
+    ownerEmail: {
+      h: "Owner Email"
+      n: "ownerEmail"
+      r: true
+      t: "`$STRING`"
+    }
+    ownerLastReadAt: {
+      h: "Owner Last Read At"
+      n: "ownerLastReadAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    ownerName: {
+      h: "Owner Name"
+      n: "ownerName"
+      r: true
+      t: "`$STRING`"
+    }
+    ownerUserId: {
+      h: "Owner User Id"
+      n: "ownerUserId"
+      r: true
+      t: "`$STRING`"
+    }
+    period: {
+      h: "Period"
+      n: "period"
+      r: false
+      t: "`$STRING`"
+    }
+    phone: {
+      h: "Phone"
+      n: "phone"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    platform: {
+      h: "Platform"
+      n: "platform"
+      r: true
+      t: "`$STRING`"
+    }
+    policy_number: {
+      h: "Policy Number"
+      n: "policy_number"
+      r: false
+      t: "`$STRING`"
+    }
+    postal_code: {
+      h: "Postal Code"
+      n: "postal_code"
+      r: false
+      t: "`$STRING`"
+    }
+    promo_code: {
+      h: "Promo Code"
+      n: "promo_code"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    push_token: {
+      h: "Push Token"
+      n: "push_token"
+      r: true
+      t: "`$STRING`"
+    }
+    radius_miles: {
+      h: "Radius Miles"
+      n: "radius_miles"
+      r: true
+      t: "`$NUMBER`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    reason_category: {
+      h: "Reason Category"
+      n: "reason_category"
+      r: false
+      t: "`$STRING`"
+    }
+    reason_detail: {
+      h: "Reason Detail"
+      n: "reason_detail"
+      r: false
+      t: "`$STRING`"
+    }
+    registered_at: {
+      fo: "date-time"
+      h: "Registered At"
+      n: "registered_at"
+      r: true
+      t: "`$STRING`"
+    }
+    request_id: {
+      h: "Request Id"
+      n: "request_id"
+      r: true
+      sh: "Client id of this confirmation (8-100 characters); reuse it only to retry the same confirmation."
+      t: "`$STRING`"
+    }
+    requested_at: {
+      fo: "date-time"
+      h: "Requested At"
+      n: "requested_at"
+      r: true
+      t: "`$STRING`"
+    }
+    salary_currency: {
+      h: "Salary Currency"
+      n: "salary_currency"
+      r: false
+      t: "`$STRING`"
+    }
+    salary_max: {
+      h: "Salary Max"
+      n: "salary_max"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    salary_min: {
+      h: "Salary Min"
+      n: "salary_min"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    salary_period: {
+      h: "Salary Period"
+      n: "salary_period"
+      r: false
+      t: "`$STRING`"
+    }
+    save_card: {
+      h: "Save Card"
+      n: "save_card"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    save_card_consent_sha256: {
+      h: "Save Card Consent Sha256"
+      n: "save_card_consent_sha256"
+      r: false
+      sh: "Only with save_card true: SHA-256 of the save-card consent text shown."
+      t: "`$STRING`"
+    }
+    schedule: {
+      h: "Schedule"
+      n: "schedule"
+      r: false
+      t: "`$STRING`"
+    }
+    service_areas: {
+      h: "Service Areas"
+      n: "service_areas"
+      r: false
+      t: "`$STRING`"
+    }
+    signing_secret: {
+      h: "Signing Secret"
+      n: "signing_secret"
+      r: true
+      t: "`$STRING`"
+    }
+    size_bytes: {
+      h: "Size Bytes"
+      n: "size_bytes"
+      r: true
+      t: "`$NUMBER`"
+    }
+    skills: {
+      h: "Skills"
+      n: "skills"
+      r: false
+      t: "`$ARRAY`"
+    }
+    source_url: {
+      h: "Source Url"
+      n: "source_url"
+      r: false
+      t: "`$STRING`"
+    }
+    starts_at: {
+      h: "Starts At"
+      n: "starts_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    state: {
+      h: "State"
+      n: "state"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    stated_expires_at: {
+      h: "Stated Expires At"
+      n: "stated_expires_at"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    street_address: {
+      h: "Street Address"
+      n: "street_address"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    subject: {
+      h: "Subject"
+      n: "subject"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    submitted_identifier: {
+      h: "Submitted Identifier"
+      n: "submitted_identifier"
+      r: false
+      t: "`$STRING`"
+    }
+    supportLastReadAt: {
+      h: "Support Last Read At"
+      n: "supportLastReadAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    terms: {
+      h: "Terms"
+      n: "terms"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    terms_version: {
+      h: "Terms Version"
+      n: "terms_version"
+      r: true
+      sh: "Must be the current Advertiser Terms version."
+      t: "`$STRING`"
+    }
+    threshold_cents: {
+      h: "Threshold Cents"
+      n: "threshold_cents"
+      r: false
+      t: "`$NUMBER`"
+    }
+    ticketNumber: {
+      h: "Ticket Number"
+      n: "ticketNumber"
+      r: true
+      t: "`$STRING`"
+    }
+    tier: {
+      h: "Tier"
+      n: "tier"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    total_job_openings: {
+      h: "Total Job Openings"
+      n: "total_job_openings"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    typing: {
+      h: "Typing"
+      n: "typing"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    updatedAt: {
+      h: "Updated At"
+      n: "updatedAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "Public HTTPS receiver operated by the connecting principal or its agent runtime."
+      t: "`$STRING`"
+    }
+    website: {
+      h: "Website"
+      n: "website"
+      r: true
+      t: "`$STRING`"
+    }
+    workplace_type: {
+      h: "Workplace Type"
+      n: "workplace_type"
+      r: false
+      t: "`$STRING`"
+    }
+    zip: {
+      h: "Zip"
+      n: "zip"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "business_owner"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/owner/agents/{agent_id}/disconnect"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/agents/{agent_id}/disconnect"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "disconnect"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "actions"
+          ]
+          co: {
+            id: "POST /v1/owner/agents/{agent_id}/permissions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/agents/{agent_id}/permissions"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "permissions"
+            }
+          ]
+          t: {
+            req: {
+              actions: "`reqdata.action`"
+            }
+            res: "`body.agent`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/owner/agents/{agent_id}/rotate-key"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/agents/{agent_id}/rotate-key"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "rotate-key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "url"
+          ]
+          co: {
+            id: "POST /v1/owner/agents/{agent_id}/webhook"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/agents/{agent_id}/webhook"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "webhook"
+            }
+          ]
+          t: {
+            req: {
+              url: "`reqdata.url`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/owner/agents/{agent_id}/webhook/disable"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/agents/{agent_id}/webhook/disable"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "webhook"
+            }
+            {
+              lit: "disable"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoint`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/owner/agents/{agent_id}/webhook/rotate-secret"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/agents/{agent_id}/webhook/rotate-secret"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "webhook"
+            }
+            {
+              lit: "rotate-secret"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/owner/agents/{agent_id}/webhook/test"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/agents/{agent_id}/webhook/test"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "webhook"
+            }
+            {
+              lit: "test"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/changes/{id}/confirm"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "change_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/ads/changes/{id}/confirm"
+          q: {
+            exist: [
+              "change_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "change_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "confirm"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/changes/{id}/reject"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "change_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/ads/changes/{id}/reject"
+          q: {
+            exist: [
+              "change_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "change_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "reject"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "confirm"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/changes/{id}/undo"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "change_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/ads/changes/{id}/undo"
+          q: {
+            exist: [
+              "change_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "change_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "undo"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/owner/conversations/{conversation_id}/read"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "conversation_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/conversations/{conversation_id}/read"
+          q: {
+            exist: [
+              "conversation_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              var: "conversation_id"
+            }
+            {
+              lit: "read"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "description"
+            "discount_label"
+            "ends_at"
+            "promo_code"
+            "starts_at"
+            "status"
+            "terms"
+            "title"
+          ]
+          co: {
+            id: "POST /v1/owner/deals/{deal_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "deal_id"
+                or: "deal_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/deals/{deal_id}"
+          q: {
+            exist: [
+              "deal_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "deals"
+            }
+            {
+              var: "deal_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/owner/deals/{deal_id}/delete"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "deal_id"
+                or: "deal_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/deals/{deal_id}/delete"
+          q: {
+            "$action": "delete"
+            exist: [
+              "deal_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "deals"
+            }
+            {
+              var: "deal_id"
+            }
+            {
+              lit: "delete"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "applicant_location_requirements"
+            "apply_url"
+            "benefits"
+            "category"
+            "category_alias"
+            "city"
+            "compensation_text"
+            "contact_email"
+            "country"
+            "description"
+            "direct_apply"
+            "employment_type"
+            "experience_level"
+            "postal_code"
+            "salary_currency"
+            "salary_max"
+            "salary_min"
+            "salary_period"
+            "schedule"
+            "skills"
+            "state"
+            "status"
+            "street_address"
+            "title"
+            "total_job_openings"
+            "workplace_type"
+          ]
+          co: {
+            id: "POST /v1/owner/jobs/{job_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "job_id"
+                or: "job_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/jobs/{job_id}"
+          q: {
+            exist: [
+              "job_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "job_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/owner/jobs/{job_id}/checkout"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "job_id"
+                or: "job_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/jobs/{job_id}/checkout"
+          q: {
+            "$action": "checkout"
+            exist: [
+              "job_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "job_id"
+            }
+            {
+              lit: "checkout"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/owner/jobs/{job_id}/delete"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "job_id"
+                or: "job_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/jobs/{job_id}/delete"
+          q: {
+            "$action": "delete"
+            exist: [
+              "job_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "job_id"
+            }
+            {
+              lit: "delete"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "city"
+            "label"
+            "service_areas"
+            "state"
+            "street_address"
+            "zip"
+          ]
+          co: {
+            id: "POST /v1/owner/locations/{location_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "location_id"
+                or: "location_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/locations/{location_id}"
+          q: {
+            exist: [
+              "location_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "locations"
+            }
+            {
+              var: "location_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/locations/{location_id}/delete"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "location_id"
+                or: "location_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/locations/{location_id}/delete"
+          q: {
+            "$action": "delete"
+            exist: [
+              "location_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "locations"
+            }
+            {
+              var: "location_id"
+            }
+            {
+              lit: "delete"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "body"
+            "client_message_id"
+          ]
+          co: {
+            id: "POST /v1/owner/messages/{interaction_id}/reply"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "message_id"
+                or: "interaction_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/messages/{interaction_id}/reply"
+          q: {
+            exist: [
+              "message_id"
+            ]
+          }
+          r: {
+            param: {
+              interaction_id: "message_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "messages"
+            }
+            {
+              var: "message_id"
+            }
+            {
+              lit: "reply"
+            }
+          ]
+          t: {
+            req: {
+              body: "`reqdata.body`"
+              client_message_id: "`reqdata.client_message_id`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "reason_category"
+            "reason_detail"
+          ]
+          co: {
+            id: "POST /v1/owner/reviews/{review_id}/report"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "review_id"
+                or: "review_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/reviews/{review_id}/report"
+          q: {
+            exist: [
+              "review_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "reviews"
+            }
+            {
+              var: "review_id"
+            }
+            {
+              lit: "report"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "body"
+          ]
+          co: {
+            id: "POST /v1/owner/reviews/{review_id}/respond"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "review_id"
+                or: "review_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/reviews/{review_id}/respond"
+          q: {
+            exist: [
+              "review_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "reviews"
+            }
+            {
+              var: "review_id"
+            }
+            {
+              lit: "respond"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/suggestions/{id}/apply"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "suggestion_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/ads/suggestions/{id}/apply"
+          q: {
+            exist: [
+              "suggestion_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "suggestion_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "suggestions"
+            }
+            {
+              var: "suggestion_id"
+            }
+            {
+              lit: "apply"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/suggestions/{id}/dismiss"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "suggestion_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/ads/suggestions/{id}/dismiss"
+          q: {
+            exist: [
+              "suggestion_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "suggestion_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "suggestions"
+            }
+            {
+              var: "suggestion_id"
+            }
+            {
+              lit: "dismiss"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/owner/support/{conversation_id}/read"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "support_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/support/{conversation_id}/read"
+          q: {
+            exist: [
+              "support_id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "support_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "support"
+            }
+            {
+              var: "support_id"
+            }
+            {
+              lit: "read"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "typing"
+          ]
+          co: {
+            id: "POST /v1/owner/support/{conversation_id}/typing"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "support_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/support/{conversation_id}/typing"
+          q: {
+            exist: [
+              "support_id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "support_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "support"
+            }
+            {
+              var: "support_id"
+            }
+            {
+              lit: "typing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/evidence/upload-intents/{intent_id}/finalize"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "upload_intent_id"
+                or: "intent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/evidence/upload-intents/{intent_id}/finalize"
+          q: {
+            exist: [
+              "upload_intent_id"
+            ]
+          }
+          r: {
+            param: {
+              intent_id: "upload_intent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "evidence"
+            }
+            {
+              lit: "upload-intents"
+            }
+            {
+              var: "upload_intent_id"
+            }
+            {
+              lit: "finalize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "full_name"
+            "phone"
+          ]
+          co: {
+            id: "POST /v1/owner/account"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/account"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "account"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/account"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/ads/account"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "account"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "messages"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/assistant/chat"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/ads/assistant/chat"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "assistant"
+            }
+            {
+              lit: "chat"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "messages"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/assistant/handoff"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/ads/assistant/handoff"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "assistant"
+            }
+            {
+              lit: "handoff"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "campaign"
+            "confirm"
+            "idempotency_key"
+            "launch"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/campaigns"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/ads/campaigns"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "campaigns"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "campaign_id"
+            "change"
+            "confirm"
+            "idempotency_key"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/changes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/ads/changes"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "changes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "amount_cents"
+            "business_id"
+            "reason"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/refund-requests"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/ads/refund-requests"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "refund-requests"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "consent_sha256"
+            "terms_version"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/terms/accept"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/ads/terms/accept"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "terms"
+            }
+            {
+              lit: "accept"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "amount_cents"
+            "business_id"
+            "consent_sha256"
+            "request_id"
+            "save_card"
+            "save_card_consent_sha256"
+          ]
+          co: {
+            id: "POST /v1/owner/ads/topup"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/ads/topup"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "topup"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "actions"
+            "business_id"
+            "name"
+          ]
+          co: {
+            id: "POST /v1/owner/agents"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/agents"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "agents"
+            }
+          ]
+          t: {
+            req: {
+              actions: "`reqdata.action`"
+              business_id: "`reqdata.business_id`"
+              name: "`reqdata.name`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "period"
+            "tier"
+          ]
+          co: {
+            id: "POST /v1/owner/billing/checkout"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/billing/checkout"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "checkout"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/billing/portal"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/billing/portal"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              lit: "portal"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "category_aliases"
+            "license_number"
+            "note"
+          ]
+          co: {
+            id: "POST /v1/owner/category-requests"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/category-requests"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "category-requests"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "code"
+            "period"
+            "tier"
+          ]
+          co: {
+            id: "POST /v1/owner/coupons/checkout"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/coupons/checkout"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "coupons"
+            }
+            {
+              lit: "checkout"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "code"
+            "period"
+            "tier"
+          ]
+          co: {
+            id: "POST /v1/owner/coupons/preview"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/coupons/preview"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "coupons"
+            }
+            {
+              lit: "preview"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "description"
+            "discount_label"
+            "ends_at"
+            "promo_code"
+            "starts_at"
+            "status"
+            "terms"
+            "title"
+          ]
+          co: {
+            id: "POST /v1/owner/deals"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/deals"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "deals"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "acknowledge_data_effects"
+            "confirmation"
+            "reason"
+          ]
+          co: {
+            id: "POST /v1/owner/deletion-requests"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/deletion-requests"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "deletion-requests"
+            }
+          ]
+          t: {
+            req: {
+              acknowledge_data_effects: "`reqdata.acknowledge_data_effect`"
+              confirmation: "`reqdata.confirmation`"
+              reason: "`reqdata.reason`"
+            }
+            res: "`body.request`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "period"
+            "radius_miles"
+          ]
+          co: {
+            id: "POST /v1/owner/diamond-radius"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/diamond-radius"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "diamond-radius"
+            }
+          ]
+          t: {
+            req: {
+              business_id: "`reqdata.business_id`"
+              period: "`reqdata.period`"
+              radius_miles: "`reqdata.radius_mile`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "carrier_name"
+            "content_type"
+            "data_base64"
+            "evidence_observed_at"
+            "factor_id"
+            "file_name"
+            "file_sha256"
+            "jurisdiction"
+            "kind"
+            "policy_number"
+            "size_bytes"
+            "stated_expires_at"
+            "submitted_identifier"
+          ]
+          co: {
+            id: "POST /v1/owner/evidence"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/evidence"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "evidence"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/evidence/authorize"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/evidence/authorize"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "evidence"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "content_type"
+            "credential_identifier"
+            "evidence_observed_at"
+            "expires_at"
+            "factor_id"
+            "file_name"
+            "file_sha256"
+            "issuer"
+            "jurisdiction"
+            "kind"
+            "size_bytes"
+            "source_url"
+          ]
+          co: {
+            id: "POST /v1/owner/evidence/upload-intents"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/evidence/upload-intents"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "evidence"
+            }
+            {
+              lit: "upload-intents"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "coupon_code"
+            "period"
+            "tier"
+          ]
+          co: {
+            id: "POST /v1/owner/exposure-tier"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/exposure-tier"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "exposure-tier"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "hours"
+          ]
+          co: {
+            id: "POST /v1/owner/hours"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/hours"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "hours"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "applicant_location_requirements"
+            "apply_url"
+            "benefits"
+            "business_id"
+            "category"
+            "category_alias"
+            "city"
+            "compensation_text"
+            "contact_email"
+            "country"
+            "description"
+            "direct_apply"
+            "employment_type"
+            "experience_level"
+            "postal_code"
+            "salary_currency"
+            "salary_max"
+            "salary_min"
+            "salary_period"
+            "schedule"
+            "skills"
+            "state"
+            "status"
+            "street_address"
+            "title"
+            "total_job_openings"
+            "workplace_type"
+          ]
+          co: {
+            id: "POST /v1/owner/jobs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/jobs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "jobs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "city"
+            "label"
+            "period"
+            "radius_miles"
+            "service_areas"
+            "state"
+            "street_address"
+            "zip"
+          ]
+          co: {
+            id: "POST /v1/owner/locations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/locations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "locations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "attempt_id"
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/missed-contacts/convert"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/missed-contacts/convert"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "missed-contacts"
+            }
+            {
+              lit: "convert"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "installation_id"
+            "platform"
+            "push_token"
+          ]
+          co: {
+            id: "POST /v1/owner/mobile-devices"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/mobile-devices"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "mobile-devices"
+            }
+          ]
+          t: {
+            req: {
+              installation_id: "`reqdata.installation_id`"
+              platform: "`reqdata.platform`"
+              push_token: "`reqdata.push_token`"
+            }
+            res: "`body.device`"
+          }
+        }
+        {
+          bf: [
+            "installation_id"
+          ]
+          co: {
+            id: "POST /v1/owner/mobile-devices/revoke"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/mobile-devices/revoke"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "mobile-devices"
+            }
+            {
+              lit: "revoke"
+            }
+          ]
+          t: {
+            req: {
+              installation_id: "`reqdata.installation_id`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "content_type"
+            "data_base64"
+            "file_name"
+            "kind"
+            "size_bytes"
+          ]
+          co: {
+            id: "POST /v1/owner/photos"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/photos"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "photos"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "asset_id"
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/owner/photos/remove"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/photos/remove"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "photos"
+            }
+            {
+              lit: "remove"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "display_name"
+            "expected_updated_at"
+            "phone"
+            "website"
+          ]
+          co: {
+            id: "POST /v1/owner/profile-details"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/profile-details"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "profile-details"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "body"
+            "business_id"
+            "subject"
+          ]
+          co: {
+            id: "POST /v1/owner/support/messages"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/support/messages"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "support"
+            }
+            {
+              lit: "messages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.conversation`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v1/owner/evidence/upload-intents/{intent_id}/object"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "upload_intent_id"
+                or: "intent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v1/owner/evidence/upload-intents/{intent_id}/object"
+          q: {
+            exist: [
+              "upload_intent_id"
+            ]
+          }
+          r: {
+            param: {
+              intent_id: "upload_intent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "evidence"
+            }
+            {
+              lit: "upload-intents"
+            }
+            {
+              var: "upload_intent_id"
+            }
+            {
+              lit: "object"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "amount_cents"
+            "business_id"
+            "consent_sha256"
+            "enabled"
+            "monthly_cap_cents"
+            "threshold_cents"
+          ]
+          co: {
+            id: "PUT /v1/owner/ads/auto-refill"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/v1/owner/ads/auto-refill"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "ads"
+            }
+            {
+              lit: "auto-refill"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.conversation")]
+    [path("$.main.kit.entity.message")]
+    [path("$.main.kit.entity.review")]
+  ]
+
+}

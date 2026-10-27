@@ -1,0 +1,104 @@
+# Entity: promote_verified_transaction
+
+main: kit: entity: promote_verified_transaction: {
+
+  alias: field: {}
+
+  fields: {
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: true
+      t: "`$STRING`"
+    }
+    evidence_id: {
+      h: "Evidence Id"
+      n: "evidence_id"
+      r: true
+      t: "`$STRING`"
+    }
+    interaction_id: {
+      h: "Interaction Id"
+      n: "interaction_id"
+      r: true
+      t: "`$STRING`"
+    }
+    ok: {
+      h: "Ok"
+      n: "ok"
+      r: true
+      t: "`$ANY`"
+    }
+    review_upgraded: {
+      h: "Review Upgraded"
+      n: "review_upgraded"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    trust_weight: {
+      h: "Trust Weight"
+      n: "trust_weight"
+      r: true
+      t: "`$ANY`"
+    }
+    verified: {
+      h: "Verified"
+      n: "verified"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "promote_verified_transaction"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "business_id"
+            "evidence_id"
+          ]
+          co: {
+            id: "POST /v1/actions/promote-verified-transaction"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/promote-verified-transaction"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "promote-verified-transaction"
+            }
+          ]
+          t: {
+            req: {
+              business_id: "`reqdata.business_id`"
+              evidence_id: "`reqdata.evidence_id`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

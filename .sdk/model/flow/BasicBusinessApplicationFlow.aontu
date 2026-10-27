@@ -1,0 +1,18 @@
+# BasicBusinessApplicationFlow
+
+main: kit: flow: BasicBusinessApplicationFlow:
+{
+  entity: "business_application",
+  kind: "basic",
+  name: "BasicBusinessApplicationFlow",
+  step: [
+    {
+      i: {
+        ref: "business_application_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBusinessApplicationFlow"
+}

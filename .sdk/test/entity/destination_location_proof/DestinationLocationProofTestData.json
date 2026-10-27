@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "destination_location_proof": {
+      "DESTINATION_LOCATION_PROOF00": {
+        "address": "s14",
+        "premise_proximity_confirmation_token": "s15",
+        "id": "DESTINATION_LOCATION_PROOF00"
+      },
+      "DESTINATION_LOCATION_PROOF01": {
+        "address": "s28",
+        "premise_proximity_confirmation_token": "s29",
+        "id": "DESTINATION_LOCATION_PROOF01"
+      },
+      "DESTINATION_LOCATION_PROOF02": {
+        "address": "s3c",
+        "premise_proximity_confirmation_token": "s3d",
+        "id": "DESTINATION_LOCATION_PROOF02"
+      }
+    }
+  },
+  "new": {
+    "destination_location_proof": {
+      "destination_location_proof_ref01": {
+        "address": "s50",
+        "premise_proximity_confirmation_token": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/account/destination-location-proofs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/destination-location-proofs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

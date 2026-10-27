@@ -1,0 +1,49 @@
+# Entity: geo_context
+
+main: kit: entity: geo_context: {
+
+  alias: field: {}
+
+  name: "geo_context"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/geo/context"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/geo/context"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "geo"
+            }
+            {
+              lit: "context"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

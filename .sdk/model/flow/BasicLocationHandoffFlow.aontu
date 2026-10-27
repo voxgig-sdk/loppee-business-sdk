@@ -1,0 +1,18 @@
+# BasicLocationHandoffFlow
+
+main: kit: flow: BasicLocationHandoffFlow:
+{
+  entity: "location_handoff",
+  kind: "basic",
+  name: "BasicLocationHandoffFlow",
+  step: [
+    {
+      i: {
+        ref: "location_handoff_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicLocationHandoffFlow"
+}

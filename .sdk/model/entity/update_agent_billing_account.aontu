@@ -1,0 +1,118 @@
+# Entity: update_agent_billing_account
+
+main: kit: entity: update_agent_billing_account: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    billing_account: {
+      h: "Billing Account"
+      n: "billing_account"
+      r: true
+      t: "`$OBJECT`"
+    }
+    billing_status: {
+      h: "Billing Status"
+      n: "billing_status"
+      r: false
+      t: "`$STRING`"
+    }
+    included_actions: {
+      h: "Included Actions"
+      n: "included_actions"
+      r: false
+      t: "`$NUMBER`"
+    }
+    monthly_fee_cents: {
+      h: "Monthly Fee Cents"
+      n: "monthly_fee_cents"
+      r: false
+      t: "`$NUMBER`"
+    }
+    overage_cents: {
+      h: "Overage Cents"
+      n: "overage_cents"
+      r: false
+      t: "`$NUMBER`"
+    }
+    plan: {
+      h: "Plan"
+      n: "plan"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    updated_by: {
+      h: "Updated By"
+      n: "updated_by"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "update_agent_billing_account"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "account_id"
+            "billing_status"
+            "included_actions"
+            "monthly_fee_cents"
+            "overage_cents"
+            "plan"
+          ]
+          co: {
+            id: "POST /v1/admin/agent-billing-accounts"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/admin/agent-billing-accounts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "agent-billing-accounts"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              billing_status: "`reqdata.billing_status`"
+              included_actions: "`reqdata.included_action`"
+              monthly_fee_cents: "`reqdata.monthly_fee_cent`"
+              overage_cents: "`reqdata.overage_cent`"
+              plan: "`reqdata.plan`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

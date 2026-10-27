@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "saved_location": {
+      "SAVED_LOCATION00": {
+        "available": true,
+        "coordinates_returned": "s5b",
+        "kind": "s5c",
+        "label": "s5d",
+        "location_proof_id": "LOCATION_PROOF01",
+        "reach_precision": "s5f",
+        "saved_location_ref": "s60",
+        "updated_at": "s61",
+        "zip": "s62",
+        "id": "SAVED_LOCATION00"
+      },
+      "SAVED_LOCATION01": {
+        "available": true,
+        "coordinates_returned": "sb5",
+        "kind": "sb6",
+        "label": "sb7",
+        "location_proof_id": "LOCATION_PROOF01",
+        "reach_precision": "sb9",
+        "saved_location_ref": "sba",
+        "updated_at": "sbb",
+        "zip": "sbc",
+        "id": "SAVED_LOCATION01"
+      },
+      "SAVED_LOCATION02": {
+        "available": true,
+        "coordinates_returned": "s10f",
+        "kind": "s110",
+        "label": "s111",
+        "location_proof_id": "LOCATION_PROOF01",
+        "reach_precision": "s113",
+        "saved_location_ref": "s114",
+        "updated_at": "s115",
+        "zip": "s116",
+        "id": "SAVED_LOCATION02"
+      }
+    }
+  },
+  "new": {
+    "saved_location": {
+      "saved_location_ref01": {
+        "available": true,
+        "coordinates_returned": "s169",
+        "kind": "s16a",
+        "label": "s16b",
+        "location_proof_id": "LOCATION_PROOF01",
+        "reach_precision": "s16d",
+        "saved_location_ref": "s16e",
+        "updated_at": "s16f",
+        "zip": "s170"
+      }
+    }
+  },
+  "requests": {
+    "DELETE /v1/account/location": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v1/account/location": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

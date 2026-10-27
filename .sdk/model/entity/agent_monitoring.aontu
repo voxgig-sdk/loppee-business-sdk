@@ -1,0 +1,131 @@
+# Entity: agent_monitoring
+
+main: kit: entity: agent_monitoring: {
+
+  alias: field: {}
+
+  fields: {
+    build_sha: {
+      h: "Build Sha"
+      n: "build_sha"
+      r: true
+      t: "`$STRING`"
+    }
+    contract_version: {
+      h: "Contract Version"
+      n: "contract_version"
+      r: true
+      t: "`$STRING`"
+    }
+    generated_at: {
+      fo: "date-time"
+      h: "Generated At"
+      n: "generated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    health_url: {
+      h: "Health Url"
+      n: "health_url"
+      r: true
+      t: "`$STRING`"
+    }
+    integration_package_url: {
+      h: "Integration Package Url"
+      n: "integration_package_url"
+      r: true
+      t: "`$STRING`"
+    }
+    mcp_url: {
+      h: "Mcp Url"
+      n: "mcp_url"
+      r: true
+      t: "`$STRING`"
+    }
+    metrics: {
+      h: "Metrics"
+      n: "metrics"
+      r: true
+      t: "`$OBJECT`"
+    }
+    openapi_url: {
+      h: "Openapi Url"
+      n: "openapi_url"
+      r: true
+      t: "`$STRING`"
+    }
+    rate_limits: {
+      h: "Rate Limits"
+      n: "rate_limits"
+      r: true
+      t: "`$OBJECT`"
+    }
+    registry_name: {
+      h: "Registry Name"
+      n: "registry_name"
+      r: true
+      t: "`$ANY`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$STRING`"
+    }
+    service: {
+      h: "Service"
+      n: "service"
+      r: true
+      t: "`$STRING`"
+    }
+    uptime_seconds: {
+      h: "Uptime Seconds"
+      n: "uptime_seconds"
+      r: true
+      t: "`$NUMBER`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "agent_monitoring"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/agent-monitoring.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/agent-monitoring.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent-monitoring.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

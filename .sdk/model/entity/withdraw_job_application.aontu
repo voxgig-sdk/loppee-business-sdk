@@ -1,0 +1,86 @@
+# Entity: withdraw_job_application
+
+main: kit: entity: withdraw_job_application: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    already_withdrawn: {
+      h: "Already Withdrawn"
+      n: "already_withdrawn"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    application: {
+      h: "Application"
+      n: "application"
+      r: true
+      t: "`$OBJECT`"
+    }
+    application_id: {
+      h: "Application Id"
+      n: "application_id"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  name: "withdraw_job_application"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "account_id"
+            "application_id"
+          ]
+          co: {
+            id: "POST /v1/actions/withdraw-job-application"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/withdraw-job-application"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "withdraw-job-application"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              application_id: "`reqdata.application_id`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

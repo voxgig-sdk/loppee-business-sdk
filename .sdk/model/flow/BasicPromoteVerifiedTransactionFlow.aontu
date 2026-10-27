@@ -1,0 +1,18 @@
+# BasicPromoteVerifiedTransactionFlow
+
+main: kit: flow: BasicPromoteVerifiedTransactionFlow:
+{
+  entity: "promote_verified_transaction",
+  kind: "basic",
+  name: "BasicPromoteVerifiedTransactionFlow",
+  step: [
+    {
+      i: {
+        ref: "promote_verified_transaction_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPromoteVerifiedTransactionFlow"
+}

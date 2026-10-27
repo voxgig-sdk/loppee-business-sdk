@@ -1,0 +1,26 @@
+# BasicBusinessDealFlow
+
+main: kit: flow: BasicBusinessDealFlow:
+{
+  entity: "business_deal",
+  kind: "basic",
+  name: "BasicBusinessDealFlow",
+  step: [
+    {
+      m: {
+        business_id: "business01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "business_deal_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBusinessDealFlow"
+}

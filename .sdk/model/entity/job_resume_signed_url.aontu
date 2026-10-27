@@ -1,0 +1,178 @@
+# Entity: job_resume_signed_url
+
+main: kit: entity: job_resume_signed_url: {
+
+  alias: field: {}
+
+  fields: {
+    application_id: {
+      h: "Application Id"
+      n: "application_id"
+      r: true
+      t: "`$STRING`"
+    }
+    content_type: {
+      h: "Content Type"
+      n: "content_type"
+      r: true
+      t: "`$STRING`"
+    }
+    expires_in_seconds: {
+      h: "Expires In Seconds"
+      n: "expires_in_seconds"
+      r: true
+      t: "`$NUMBER`"
+    }
+    resume_file_name: {
+      h: "Resume File Name"
+      n: "resume_file_name"
+      r: true
+      t: "`$STRING`"
+    }
+    signed_url: {
+      h: "Signed Url"
+      n: "signed_url"
+      r: true
+      t: "`$STRING`"
+    }
+    size_bytes: {
+      h: "Size Bytes"
+      n: "size_bytes"
+      r: true
+      t: "`$NUMBER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  name: "job_resume_signed_url"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /v1/account/job-applications/{application_id}/resume-url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "job_application_id"
+                or: "application_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/job-applications/{application_id}/resume-url"
+          q: {
+            exist: [
+              "job_application_id"
+            ]
+          }
+          r: {
+            param: {
+              application_id: "job_application_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "job-applications"
+            }
+            {
+              var: "job_application_id"
+            }
+            {
+              lit: "resume-url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /v1/owner/job-applications/{application_id}/resume-url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "job_application_id"
+                or: "application_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/job-applications/{application_id}/resume-url"
+          q: {
+            exist: [
+              "job_application_id"
+            ]
+          }
+          r: {
+            param: {
+              application_id: "job_application_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "job-applications"
+            }
+            {
+              var: "job_application_id"
+            }
+            {
+              lit: "resume-url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.job_application")]
+  ]
+
+}

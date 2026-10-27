@@ -1,0 +1,525 @@
+{
+  point: "warning"
+  note: "Points POST /v1/owner/agents/{agent_id}/disconnect, POST /v1/owner/agents/{agent_id}/permissions, POST /v1/owner/agents/{agent_id}/rotate-key, POST /v1/owner/agents/{agent_id}/webhook, POST /v1/owner/agents/{agent_id}/webhook/disable, POST /v1/owner/agents/{agent_id}/webhook/rotate-secret and POST /v1/owner/agents/{agent_id}/webhook/test on entity=business_owner op=create have the same selector (exist: agent_id), so only POST /v1/owner/agents/{agent_id}/disconnect is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "business_owner"
+  op: "create"
+  points: [
+    "POST /v1/owner/agents/{agent_id}/disconnect"
+    "POST /v1/owner/agents/{agent_id}/permissions"
+    "POST /v1/owner/agents/{agent_id}/rotate-key"
+    "POST /v1/owner/agents/{agent_id}/webhook"
+    "POST /v1/owner/agents/{agent_id}/webhook/disable"
+    "POST /v1/owner/agents/{agent_id}/webhook/rotate-secret"
+    "POST /v1/owner/agents/{agent_id}/webhook/test"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/owner/ads/changes/{id}/confirm, POST /v1/owner/ads/changes/{id}/reject and POST /v1/owner/ads/changes/{id}/undo on entity=business_owner op=create have the same selector (exist: change_id), so only POST /v1/owner/ads/changes/{id}/confirm is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "business_owner"
+  op: "create"
+  points: [
+    "POST /v1/owner/ads/changes/{id}/confirm"
+    "POST /v1/owner/ads/changes/{id}/reject"
+    "POST /v1/owner/ads/changes/{id}/undo"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/owner/reviews/{review_id}/report and POST /v1/owner/reviews/{review_id}/respond on entity=business_owner op=create have the same selector (exist: review_id), so only POST /v1/owner/reviews/{review_id}/report is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "business_owner"
+  op: "create"
+  points: [
+    "POST /v1/owner/reviews/{review_id}/report"
+    "POST /v1/owner/reviews/{review_id}/respond"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/owner/ads/suggestions/{id}/apply and POST /v1/owner/ads/suggestions/{id}/dismiss on entity=business_owner op=create have the same selector (exist: suggestion_id), so only POST /v1/owner/ads/suggestions/{id}/apply is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "business_owner"
+  op: "create"
+  points: [
+    "POST /v1/owner/ads/suggestions/{id}/apply"
+    "POST /v1/owner/ads/suggestions/{id}/dismiss"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/owner/support/{conversation_id}/read and POST /v1/owner/support/{conversation_id}/typing on entity=business_owner op=create have the same selector (exist: support_id), so only POST /v1/owner/support/{conversation_id}/read is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "business_owner"
+  op: "create"
+  points: [
+    "POST /v1/owner/support/{conversation_id}/read"
+    "POST /v1/owner/support/{conversation_id}/typing"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/owner/account, POST /v1/owner/ads/account, POST /v1/owner/ads/assistant/chat, POST /v1/owner/ads/assistant/handoff, POST /v1/owner/ads/campaigns, POST /v1/owner/ads/changes, POST /v1/owner/ads/refund-requests, POST /v1/owner/ads/terms/accept, POST /v1/owner/ads/topup, POST /v1/owner/agents, POST /v1/owner/billing/checkout, POST /v1/owner/billing/portal, POST /v1/owner/category-requests, POST /v1/owner/coupons/checkout, POST /v1/owner/coupons/preview, POST /v1/owner/deals, POST /v1/owner/deletion-requests, POST /v1/owner/diamond-radius, POST /v1/owner/evidence, POST /v1/owner/evidence/authorize, POST /v1/owner/evidence/upload-intents, POST /v1/owner/exposure-tier, POST /v1/owner/hours, POST /v1/owner/jobs, POST /v1/owner/locations, POST /v1/owner/missed-contacts/convert, POST /v1/owner/mobile-devices, POST /v1/owner/mobile-devices/revoke, POST /v1/owner/photos, POST /v1/owner/photos/remove, POST /v1/owner/profile-details and POST /v1/owner/support/messages on entity=business_owner op=create have the same selector (exist: none), so only POST /v1/owner/account is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "business_owner"
+  op: "create"
+  points: [
+    "POST /v1/owner/account"
+    "POST /v1/owner/ads/account"
+    "POST /v1/owner/ads/assistant/chat"
+    "POST /v1/owner/ads/assistant/handoff"
+    "POST /v1/owner/ads/campaigns"
+    "POST /v1/owner/ads/changes"
+    "POST /v1/owner/ads/refund-requests"
+    "POST /v1/owner/ads/terms/accept"
+    "POST /v1/owner/ads/topup"
+    "POST /v1/owner/agents"
+    "POST /v1/owner/billing/checkout"
+    "POST /v1/owner/billing/portal"
+    "POST /v1/owner/category-requests"
+    "POST /v1/owner/coupons/checkout"
+    "POST /v1/owner/coupons/preview"
+    "POST /v1/owner/deals"
+    "POST /v1/owner/deletion-requests"
+    "POST /v1/owner/diamond-radius"
+    "POST /v1/owner/evidence"
+    "POST /v1/owner/evidence/authorize"
+    "POST /v1/owner/evidence/upload-intents"
+    "POST /v1/owner/exposure-tier"
+    "POST /v1/owner/hours"
+    "POST /v1/owner/jobs"
+    "POST /v1/owner/locations"
+    "POST /v1/owner/missed-contacts/convert"
+    "POST /v1/owner/mobile-devices"
+    "POST /v1/owner/mobile-devices/revoke"
+    "POST /v1/owner/photos"
+    "POST /v1/owner/photos/remove"
+    "POST /v1/owner/profile-details"
+    "POST /v1/owner/support/messages"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/support/{conversation_id}/attachments and POST /v1/owner/support/{conversation_id}/attachments on entity=chat_attachment op=create have the same selector (exist: support_id), so only POST /v1/admin/support/{conversation_id}/attachments is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "chat_attachment"
+  op: "create"
+  points: [
+    "POST /v1/admin/support/{conversation_id}/attachments"
+    "POST /v1/owner/support/{conversation_id}/attachments"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/support/{conversation_id}/attachments/{attachment_id}/url and POST /v1/owner/support/{conversation_id}/attachments/{attachment_id}/url on entity=chat_attachment_url op=create have the same selector (exist: attachment_id,support_id), so only POST /v1/admin/support/{conversation_id}/attachments/{attachment_id}/url is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "chat_attachment_url"
+  op: "create"
+  points: [
+    "POST /v1/admin/support/{conversation_id}/attachments/{attachment_id}/url"
+    "POST /v1/owner/support/{conversation_id}/attachments/{attachment_id}/url"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/account/location-handoffs/{handoff_id}/complete-from-device and POST /v1/account/location-handoffs/{handoff_id}/decline-from-device on entity=customer_account op=create have the same selector (exist: location_handoff_id,x_loppee_client_platform,x_loppee_installation_id), so only POST /v1/account/location-handoffs/{handoff_id}/complete-from-device is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "customer_account"
+  op: "create"
+  points: [
+    "POST /v1/account/location-handoffs/{handoff_id}/complete-from-device"
+    "POST /v1/account/location-handoffs/{handoff_id}/decline-from-device"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/account/agent-location/app-attest/challenges and POST /v1/account/agent-location/app-attest/keys on entity=customer_account op=create have the same selector (exist: x_loppee_client_platform,x_loppee_installation_id), so only POST /v1/account/agent-location/app-attest/challenges is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "customer_account"
+  op: "create"
+  points: [
+    "POST /v1/account/agent-location/app-attest/challenges"
+    "POST /v1/account/agent-location/app-attest/keys"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/account/agents/{agent_id}/disconnect, POST /v1/account/agents/{agent_id}/rotate-key, POST /v1/account/agents/{agent_id}/webhook, POST /v1/account/agents/{agent_id}/webhook/disable and POST /v1/account/agents/{agent_id}/webhook/test on entity=customer_account op=create have the same selector (exist: agent_id), so only POST /v1/account/agents/{agent_id}/disconnect is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "customer_account"
+  op: "create"
+  points: [
+    "POST /v1/account/agents/{agent_id}/disconnect"
+    "POST /v1/account/agents/{agent_id}/rotate-key"
+    "POST /v1/account/agents/{agent_id}/webhook"
+    "POST /v1/account/agents/{agent_id}/webhook/disable"
+    "POST /v1/account/agents/{agent_id}/webhook/test"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/account/conversations/{conversation_id}/read and POST /v1/account/conversations/{conversation_id}/reply on entity=customer_account op=create have the same selector (exist: conversation_id), so only POST /v1/account/conversations/{conversation_id}/read is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "customer_account"
+  op: "create"
+  points: [
+    "POST /v1/account/conversations/{conversation_id}/read"
+    "POST /v1/account/conversations/{conversation_id}/reply"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/account/agent-location/pause, POST /v1/account/agents, POST /v1/account/assistant/chat, POST /v1/account/deletion-requests, POST /v1/account/mobile-devices, POST /v1/account/mobile-devices/message-alerts and POST /v1/account/mobile-devices/revoke on entity=customer_account op=create have the same selector (exist: none), so only POST /v1/account/agent-location/pause is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "customer_account"
+  op: "create"
+  points: [
+    "POST /v1/account/agent-location/pause"
+    "POST /v1/account/agents"
+    "POST /v1/account/assistant/chat"
+    "POST /v1/account/deletion-requests"
+    "POST /v1/account/mobile-devices"
+    "POST /v1/account/mobile-devices/message-alerts"
+    "POST /v1/account/mobile-devices/revoke"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/account/destination-address-suggestions and POST /v1/destination-address-suggestions on entity=destination_address_suggestion op=create have the same selector (exist: none), so only POST /v1/account/destination-address-suggestions is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "destination_address_suggestion"
+  op: "create"
+  points: [
+    "POST /v1/account/destination-address-suggestions"
+    "POST /v1/destination-address-suggestions"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/account/destination-location-proofs and POST /v1/destination-location-proofs on entity=destination_location_proof op=create have the same selector (exist: none), so only POST /v1/account/destination-location-proofs is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "destination_location_proof"
+  op: "create"
+  points: [
+    "POST /v1/account/destination-location-proofs"
+    "POST /v1/destination-location-proofs"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/actions/job-application and POST /v1/actions/list-my-job-applications on entity=job_application op=create have the same selector (exist: none), so only POST /v1/actions/job-application is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "job_application"
+  op: "create"
+  points: [
+    "POST /v1/actions/job-application"
+    "POST /v1/actions/list-my-job-applications"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/account/job-applications/{application_id}/resume-url and POST /v1/owner/job-applications/{application_id}/resume-url on entity=job_resume_signed_url op=create have the same selector (exist: job_application_id), so only POST /v1/account/job-applications/{application_id}/resume-url is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "job_resume_signed_url"
+  op: "create"
+  points: [
+    "POST /v1/account/job-applications/{application_id}/resume-url"
+    "POST /v1/owner/job-applications/{application_id}/resume-url"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/actions/business-message and POST /v1/actions/message-request on entity=message op=create have the same selector (exist: none), so only POST /v1/actions/business-message is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "message"
+  op: "create"
+  points: [
+    "POST /v1/actions/business-message"
+    "POST /v1/actions/message-request"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/actions/contact-attempt, POST /v1/assistant/chat, POST /v1/internal/jobs/resume-scan-results, POST /v1/internal/owner-evidence/scan-results, POST /v1/stripe/webhook and POST /v1/support/guide/help on entity=moderated_action op=create have the same selector (exist: none), so only POST /v1/actions/contact-attempt is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "moderated_action"
+  op: "create"
+  points: [
+    "POST /v1/actions/contact-attempt"
+    "POST /v1/assistant/chat"
+    "POST /v1/internal/jobs/resume-scan-results"
+    "POST /v1/internal/owner-evidence/scan-results"
+    "POST /v1/stripe/webhook"
+    "POST /v1/support/guide/help"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v1/assistant/native/status, GET /v1/assistant/status and GET /v1/support/guide on entity=moderated_action op=load have the same selector (exist: none), so only GET /v1/assistant/native/status is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "moderated_action"
+  op: "load"
+  points: [
+    "GET /v1/assistant/native/status"
+    "GET /v1/assistant/status"
+    "GET /v1/support/guide"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /openapi.json and GET /v1/openapi.json on entity=open_api_document op=list have the same selector (exist: none), so only GET /openapi.json is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "open_api_document"
+  op: "list"
+  points: [
+    "GET /openapi.json"
+    "GET /v1/openapi.json"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/ads/accounts/{account_id}/adjust and POST /v1/admin/ads/accounts/{account_id}/release-hold on entity=operation op=create have the same selector (exist: account_id), so only POST /v1/admin/ads/accounts/{account_id}/adjust is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/ads/accounts/{account_id}/adjust"
+    "POST /v1/admin/ads/accounts/{account_id}/release-hold"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/team/agents/{agent_id}/access, POST /v1/admin/team/agents/{agent_id}/disable, POST /v1/admin/team/agents/{agent_id}/rotate-key, POST /v1/admin/team/agents/{agent_id}/scope, POST /v1/admin/team/agents/{agent_id}/webhook, POST /v1/admin/team/agents/{agent_id}/webhook/disable, POST /v1/admin/team/agents/{agent_id}/webhook/rotate-secret and POST /v1/admin/team/agents/{agent_id}/webhook/test on entity=operation op=create have the same selector (exist: agent_id), so only POST /v1/admin/team/agents/{agent_id}/access is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/team/agents/{agent_id}/access"
+    "POST /v1/admin/team/agents/{agent_id}/disable"
+    "POST /v1/admin/team/agents/{agent_id}/rotate-key"
+    "POST /v1/admin/team/agents/{agent_id}/scope"
+    "POST /v1/admin/team/agents/{agent_id}/webhook"
+    "POST /v1/admin/team/agents/{agent_id}/webhook/disable"
+    "POST /v1/admin/team/agents/{agent_id}/webhook/rotate-secret"
+    "POST /v1/admin/team/agents/{agent_id}/webhook/test"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/content/blocks/{block_key}/discard-draft, POST /v1/admin/content/blocks/{block_key}/draft, POST /v1/admin/content/blocks/{block_key}/publish and POST /v1/admin/content/blocks/{block_key}/revert on entity=operation op=create have the same selector (exist: block_key), so only POST /v1/admin/content/blocks/{block_key}/discard-draft is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/content/blocks/{block_key}/discard-draft"
+    "POST /v1/admin/content/blocks/{block_key}/draft"
+    "POST /v1/admin/content/blocks/{block_key}/publish"
+    "POST /v1/admin/content/blocks/{block_key}/revert"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/ops/bulk-jobs/{job_id}/apply, POST /v1/admin/ops/bulk-jobs/{job_id}/enqueue and POST /v1/admin/ops/bulk-jobs/{job_id}/rollback on entity=operation op=create have the same selector (exist: bulk_job_id), so only POST /v1/admin/ops/bulk-jobs/{job_id}/apply is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/ops/bulk-jobs/{job_id}/apply"
+    "POST /v1/admin/ops/bulk-jobs/{job_id}/enqueue"
+    "POST /v1/admin/ops/bulk-jobs/{job_id}/rollback"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/businesses/{business_id}/billing-comp, POST /v1/admin/businesses/{business_id}/category, POST /v1/admin/businesses/{business_id}/exposure-tier, POST /v1/admin/businesses/{business_id}/facts, POST /v1/admin/businesses/{business_id}/hours and POST /v1/admin/businesses/{business_id}/lifecycle on entity=operation op=create have the same selector (exist: business_id), so only POST /v1/admin/businesses/{business_id}/billing-comp is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/businesses/{business_id}/billing-comp"
+    "POST /v1/admin/businesses/{business_id}/category"
+    "POST /v1/admin/businesses/{business_id}/exposure-tier"
+    "POST /v1/admin/businesses/{business_id}/facts"
+    "POST /v1/admin/businesses/{business_id}/hours"
+    "POST /v1/admin/businesses/{business_id}/lifecycle"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/ads/clicks/{click_id}/credit and POST /v1/admin/ads/clicks/{click_id}/invalid on entity=operation op=create have the same selector (exist: click_id), so only POST /v1/admin/ads/clicks/{click_id}/credit is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/ads/clicks/{click_id}/credit"
+    "POST /v1/admin/ads/clicks/{click_id}/invalid"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/content/media/{media_id}/delete and POST /v1/admin/media/{asset_id}/remove on entity=operation op=create have the same selector (exist: media_id), so only POST /v1/admin/content/media/{media_id}/delete is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/content/media/{media_id}/delete"
+    "POST /v1/admin/media/{asset_id}/remove"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/ads/refund-requests/{request_id}/approve and POST /v1/admin/ads/refund-requests/{request_id}/reject on entity=operation op=create have the same selector (exist: refund_request_id), so only POST /v1/admin/ads/refund-requests/{request_id}/approve is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/ads/refund-requests/{request_id}/approve"
+    "POST /v1/admin/ads/refund-requests/{request_id}/reject"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/support/{conversation_id}/ai-draft, POST /v1/admin/support/{conversation_id}/assign, POST /v1/admin/support/{conversation_id}/read, POST /v1/admin/support/{conversation_id}/reply, POST /v1/admin/support/{conversation_id}/status and POST /v1/admin/support/{conversation_id}/typing on entity=operation op=create have the same selector (exist: support_id), so only POST /v1/admin/support/{conversation_id}/ai-draft is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/support/{conversation_id}/ai-draft"
+    "POST /v1/admin/support/{conversation_id}/assign"
+    "POST /v1/admin/support/{conversation_id}/read"
+    "POST /v1/admin/support/{conversation_id}/reply"
+    "POST /v1/admin/support/{conversation_id}/status"
+    "POST /v1/admin/support/{conversation_id}/typing"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/admin/access-contexts, POST /v1/admin/ads/comped, POST /v1/admin/ads/invites, POST /v1/admin/ads/moderation, POST /v1/admin/ads/reconciliation/run, POST /v1/admin/ai-connections, POST /v1/admin/assistant-provider/active, POST /v1/admin/businesses, POST /v1/admin/content/media, POST /v1/admin/coupons, POST /v1/admin/florida-seo/reviews/inspect, POST /v1/admin/ops/category-mappings, POST /v1/admin/ops/category-remap/dry-run, POST /v1/admin/ops/category-remap/selection-dry-run, POST /v1/admin/ops/quality-scan/dry-run, POST /v1/admin/pricing-content/discard-draft, POST /v1/admin/pricing-content/draft, POST /v1/admin/pricing-content/publish, POST /v1/admin/reviews/reports/bulk-dismiss, POST /v1/admin/team/agents and POST /v1/admin/team/invites on entity=operation op=create have the same selector (exist: none), so only POST /v1/admin/access-contexts is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "create"
+  points: [
+    "POST /v1/admin/access-contexts"
+    "POST /v1/admin/ads/comped"
+    "POST /v1/admin/ads/invites"
+    "POST /v1/admin/ads/moderation"
+    "POST /v1/admin/ads/reconciliation/run"
+    "POST /v1/admin/ai-connections"
+    "POST /v1/admin/assistant-provider/active"
+    "POST /v1/admin/businesses"
+    "POST /v1/admin/content/media"
+    "POST /v1/admin/coupons"
+    "POST /v1/admin/florida-seo/reviews/inspect"
+    "POST /v1/admin/ops/category-mappings"
+    "POST /v1/admin/ops/category-remap/dry-run"
+    "POST /v1/admin/ops/category-remap/selection-dry-run"
+    "POST /v1/admin/ops/quality-scan/dry-run"
+    "POST /v1/admin/pricing-content/discard-draft"
+    "POST /v1/admin/pricing-content/draft"
+    "POST /v1/admin/pricing-content/publish"
+    "POST /v1/admin/reviews/reports/bulk-dismiss"
+    "POST /v1/admin/team/agents"
+    "POST /v1/admin/team/invites"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points PUT /v1/admin/ads/reserves and PUT /v1/admin/ads/settings/topup-limits on entity=operation op=update have the same selector (exist: none), so only PUT /v1/admin/ads/reserves is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "operation"
+  op: "update"
+  points: [
+    "PUT /v1/admin/ads/reserves"
+    "PUT /v1/admin/ads/settings/topup-limits"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v1/actions/public-review and POST /v1/actions/review on entity=review op=create have the same selector (exist: none), so only POST /v1/actions/public-review is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "review"
+  op: "create"
+  points: [
+    "POST /v1/actions/public-review"
+    "POST /v1/actions/review"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v1/businesses/{business_id}/archived-records.json and GET /v1/businesses/{business_id}/license-records.json on entity=trust_card op=list have the same selector (exist: business_id), so only GET /v1/businesses/{business_id}/archived-records.json is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "trust_card"
+  op: "list"
+  points: [
+    "GET /v1/businesses/{business_id}/archived-records.json"
+    "GET /v1/businesses/{business_id}/license-records.json"
+  ]
+
+}

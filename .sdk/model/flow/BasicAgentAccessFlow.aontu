@@ -1,0 +1,18 @@
+# BasicAgentAccessFlow
+
+main: kit: flow: BasicAgentAccessFlow:
+{
+  entity: "agent_access",
+  kind: "basic",
+  name: "BasicAgentAccessFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_access_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentAccessFlow"
+}

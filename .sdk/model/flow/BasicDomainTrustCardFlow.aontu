@@ -1,0 +1,32 @@
+# BasicDomainTrustCardFlow
+
+main: kit: flow: BasicDomainTrustCardFlow:
+{
+  entity: "domain_trust_card",
+  kind: "basic",
+  name: "BasicDomainTrustCardFlow",
+  step: [
+    {
+      i: {
+        ref: "domain_trust_card_ref01",
+        srcdatavar: "domain_trust_card_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "domain_trust_card01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-domain_trust_card_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDomainTrustCardFlow"
+}

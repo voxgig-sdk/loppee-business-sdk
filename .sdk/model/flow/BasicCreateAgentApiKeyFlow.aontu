@@ -1,0 +1,18 @@
+# BasicCreateAgentApiKeyFlow
+
+main: kit: flow: BasicCreateAgentApiKeyFlow:
+{
+  entity: "create_agent_api_key",
+  kind: "basic",
+  name: "BasicCreateAgentApiKeyFlow",
+  step: [
+    {
+      i: {
+        ref: "create_agent_api_key_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCreateAgentApiKeyFlow"
+}

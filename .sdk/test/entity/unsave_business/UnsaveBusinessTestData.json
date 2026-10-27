@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "unsave_business": {
+      "UNSAVE_BUSINESS00": {
+        "account_id": "ACCOUNT01",
+        "business_id": "BUSINESS01",
+        "removed": true,
+        "status": "s2b",
+        "id": "UNSAVE_BUSINESS00"
+      },
+      "UNSAVE_BUSINESS01": {
+        "account_id": "ACCOUNT01",
+        "business_id": "BUSINESS01",
+        "removed": true,
+        "status": "s53",
+        "id": "UNSAVE_BUSINESS01"
+      },
+      "UNSAVE_BUSINESS02": {
+        "account_id": "ACCOUNT01",
+        "business_id": "BUSINESS01",
+        "removed": true,
+        "status": "s7b",
+        "id": "UNSAVE_BUSINESS02"
+      }
+    }
+  },
+  "new": {
+    "unsave_business": {
+      "unsave_business_ref01": {
+        "account_id": "ACCOUNT01",
+        "business_id": "BUSINESS01",
+        "removed": true,
+        "status": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/unsave-business": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

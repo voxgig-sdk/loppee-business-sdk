@@ -1,0 +1,131 @@
+# Entity: pricing
+
+main: kit: entity: pricing: {
+
+  alias: field: {}
+
+  fields: {
+    billing: {
+      h: "Billing"
+      n: "billing"
+      r: true
+      t: "`$OBJECT`"
+    }
+    branch_add_ons: {
+      h: "Branch Add Ons"
+      n: "branch_add_ons"
+      r: true
+      t: "`$ARRAY`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      r: true
+      t: "`$ANY`"
+    }
+    generated_at: {
+      fo: "date-time"
+      h: "Generated At"
+      n: "generated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    neutrality: {
+      h: "Neutrality"
+      n: "neutrality"
+      r: true
+      t: "`$STRING`"
+    }
+    plans: {
+      h: "Plans"
+      n: "plans"
+      r: true
+      t: "`$ARRAY`"
+    }
+    promotions: {
+      h: "Promotions"
+      n: "promotions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    published_at: {
+      h: "Published At"
+      n: "published_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    radius_extension: {
+      h: "Radius Extension"
+      n: "radius_extension"
+      r: true
+      t: "`$OBJECT`"
+    }
+    revision_id: {
+      h: "Revision Id"
+      n: "revision_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: true
+      t: "`$ANY`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  name: "pricing"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/pricing"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/pricing"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "pricing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

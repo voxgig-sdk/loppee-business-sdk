@@ -1,0 +1,32 @@
+# BasicBusinessReviewFlow
+
+main: kit: flow: BasicBusinessReviewFlow:
+{
+  entity: "business_review",
+  kind: "basic",
+  name: "BasicBusinessReviewFlow",
+  step: [
+    {
+      i: {
+        ref: "business_review_ref01",
+        srcdatavar: "business_review_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "business_review01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-business_review_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBusinessReviewFlow"
+}

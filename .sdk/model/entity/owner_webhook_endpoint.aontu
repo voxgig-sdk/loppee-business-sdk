@@ -1,0 +1,142 @@
+# Entity: owner_webhook_endpoint
+
+main: kit: entity: owner_webhook_endpoint: {
+
+  alias: field: {}
+
+  fields: {
+    businessId: {
+      h: "Business Id"
+      n: "businessId"
+      r: true
+      t: "`$STRING`"
+    }
+    createdAt: {
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    eventTypeSubscriptions: {
+      h: "Event Type Subscriptions"
+      n: "eventTypeSubscriptions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    failureCount: {
+      h: "Failure Count"
+      n: "failureCount"
+      r: true
+      t: "`$NUMBER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    lastDeliveryAt: {
+      h: "Last Delivery At"
+      n: "lastDeliveryAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    updatedAt: {
+      h: "Updated At"
+      n: "updatedAt"
+      r: true
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "owner_webhook_endpoint"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /v1/owner/webhooks/{endpoint_id}/disable"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webhook_id"
+                or: "endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/webhooks/{endpoint_id}/disable"
+          q: {
+            exist: [
+              "webhook_id"
+            ]
+          }
+          r: {
+            param: {
+              endpoint_id: "webhook_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "webhooks"
+            }
+            {
+              var: "webhook_id"
+            }
+            {
+              lit: "disable"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoint`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,22 @@
+# BasicBusinessIndexFlow
+
+main: kit: flow: BasicBusinessIndexFlow:
+{
+  entity: "business_index",
+  kind: "basic",
+  name: "BasicBusinessIndexFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "business_index_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBusinessIndexFlow"
+}

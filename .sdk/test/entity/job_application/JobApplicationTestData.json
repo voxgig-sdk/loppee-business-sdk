@@ -1,0 +1,108 @@
+{
+  "existing": {
+    "job_application": {
+      "JOB_APPLICATION00": {
+        "account_id": "ACCOUNT01",
+        "already_withdrawn": false,
+        "application": {},
+        "applications": [],
+        "billing": {},
+        "business_id": "BUSINESS01",
+        "count": 166,
+        "cover_note": "sa7",
+        "free_to_apply": true,
+        "id": "JOB_APPLICATION00",
+        "job_id": "JOB01",
+        "limit": 171,
+        "offset": 172,
+        "resume": {},
+        "retention_note": "sae",
+        "status": "saf"
+      },
+      "JOB_APPLICATION01": {
+        "account_id": "ACCOUNT01",
+        "already_withdrawn": false,
+        "application": {},
+        "applications": [],
+        "billing": {},
+        "business_id": "BUSINESS01",
+        "count": 326,
+        "cover_note": "s147",
+        "free_to_apply": true,
+        "id": "JOB_APPLICATION01",
+        "job_id": "JOB01",
+        "limit": 331,
+        "offset": 332,
+        "resume": {},
+        "retention_note": "s14e",
+        "status": "s14f"
+      },
+      "JOB_APPLICATION02": {
+        "account_id": "ACCOUNT01",
+        "already_withdrawn": false,
+        "application": {},
+        "applications": [],
+        "billing": {},
+        "business_id": "BUSINESS01",
+        "count": 486,
+        "cover_note": "s1e7",
+        "free_to_apply": true,
+        "id": "JOB_APPLICATION02",
+        "job_id": "JOB01",
+        "limit": 491,
+        "offset": 492,
+        "resume": {},
+        "retention_note": "s1ee",
+        "status": "s1ef"
+      }
+    }
+  },
+  "new": {
+    "job_application": {
+      "job_application_ref01": {
+        "account_id": "ACCOUNT01",
+        "already_withdrawn": false,
+        "application": {},
+        "applications": [],
+        "billing": {},
+        "business_id": "BUSINESS01",
+        "count": 646,
+        "cover_note": "s287",
+        "free_to_apply": true,
+        "job_id": "JOB01",
+        "limit": 651,
+        "offset": 652,
+        "resume": {},
+        "retention_note": "s28e",
+        "status": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/jobs/{job_id}/apply": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/owner/job-applications/{application_id}/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/account/job-applications/{application_id}/withdraw": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/actions/job-application": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/actions/list-my-job-applications": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

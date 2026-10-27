@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "save_business": {
+      "SAVE_BUSINESS00": {
+        "account_id": "ACCOUNT01",
+        "business_id": "BUSINESS01",
+        "business_name": "s70",
+        "business_source": "s71",
+        "category": "s72",
+        "city": "s73",
+        "created_at": "s74",
+        "notes": "s75",
+        "saved_business_id": "SAVED_BUSINESS01",
+        "state": "s77",
+        "status": "s78",
+        "id": "SAVE_BUSINESS00"
+      },
+      "SAVE_BUSINESS01": {
+        "account_id": "ACCOUNT01",
+        "business_id": "BUSINESS01",
+        "business_name": "sde",
+        "business_source": "sdf",
+        "category": "se0",
+        "city": "se1",
+        "created_at": "se2",
+        "notes": "se3",
+        "saved_business_id": "SAVED_BUSINESS01",
+        "state": "se5",
+        "status": "se6",
+        "id": "SAVE_BUSINESS01"
+      },
+      "SAVE_BUSINESS02": {
+        "account_id": "ACCOUNT01",
+        "business_id": "BUSINESS01",
+        "business_name": "s14c",
+        "business_source": "s14d",
+        "category": "s14e",
+        "city": "s14f",
+        "created_at": "s150",
+        "notes": "s151",
+        "saved_business_id": "SAVED_BUSINESS01",
+        "state": "s153",
+        "status": "s154",
+        "id": "SAVE_BUSINESS02"
+      }
+    }
+  },
+  "new": {
+    "save_business": {
+      "save_business_ref01": {
+        "account_id": "ACCOUNT01",
+        "business_id": "BUSINESS01",
+        "business_name": "s1ba",
+        "business_source": "s1bb",
+        "category": "s1bc",
+        "city": "s1bd",
+        "created_at": "s1be",
+        "notes": "s1bf",
+        "saved_business_id": "SAVED_BUSINESS01",
+        "state": "s1c1",
+        "status": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/save-business": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+# BasicOwnerNotificationSettingFlow
+
+main: kit: flow: BasicOwnerNotificationSettingFlow:
+{
+  entity: "owner_notification_setting",
+  kind: "basic",
+  name: "BasicOwnerNotificationSettingFlow",
+  step: [
+    {
+      i: {
+        ref: "owner_notification_setting_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOwnerNotificationSettingFlow"
+}

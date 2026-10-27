@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "agent_policy": {
+      "AGENT_POLICY00": {
+        "external_agent_access": {},
+        "external_agent_webhooks": {},
+        "local_discovery_location_policy": {},
+        "location_handoff_flow": {},
+        "payment": {},
+        "publication": {},
+        "schema_version": "s60",
+        "trust_model_version": "s61",
+        "verification": {},
+        "id": "AGENT_POLICY00"
+      },
+      "AGENT_POLICY01": {
+        "external_agent_access": {},
+        "external_agent_webhooks": {},
+        "local_discovery_location_policy": {},
+        "location_handoff_flow": {},
+        "payment": {},
+        "publication": {},
+        "schema_version": "sba",
+        "trust_model_version": "sbb",
+        "verification": {},
+        "id": "AGENT_POLICY01"
+      },
+      "AGENT_POLICY02": {
+        "external_agent_access": {},
+        "external_agent_webhooks": {},
+        "local_discovery_location_policy": {},
+        "location_handoff_flow": {},
+        "payment": {},
+        "publication": {},
+        "schema_version": "s114",
+        "trust_model_version": "s115",
+        "verification": {},
+        "id": "AGENT_POLICY02"
+      }
+    }
+  },
+  "new": {
+    "agent_policy": {
+      "agent_policy_ref01": {
+        "external_agent_access": {},
+        "external_agent_webhooks": {},
+        "local_discovery_location_policy": {},
+        "location_handoff_flow": {},
+        "payment": {},
+        "publication": {},
+        "schema_version": "s16e",
+        "trust_model_version": "s16f",
+        "verification": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/agent-policy.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

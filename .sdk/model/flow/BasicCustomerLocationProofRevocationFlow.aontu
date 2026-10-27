@@ -1,0 +1,31 @@
+# BasicCustomerLocationProofRevocationFlow
+
+main: kit: flow: BasicCustomerLocationProofRevocationFlow:
+{
+  entity: "customer_location_proof_revocation",
+  kind: "basic",
+  name: "BasicCustomerLocationProofRevocationFlow",
+  step: [
+    {
+      i: {
+        ref: "customer_location_proof_revocation_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "customer_location_proof_revocation_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "customer_location_proof_revocation01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicCustomerLocationProofRevocationFlow"
+}

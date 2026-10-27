@@ -1,0 +1,31 @@
+# BasicAnonymousLocationProofRevocationFlow
+
+main: kit: flow: BasicAnonymousLocationProofRevocationFlow:
+{
+  entity: "anonymous_location_proof_revocation",
+  kind: "basic",
+  name: "BasicAnonymousLocationProofRevocationFlow",
+  step: [
+    {
+      i: {
+        ref: "anonymous_location_proof_revocation_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "anonymous_location_proof_revocation_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "anonymous_location_proof_revocation01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicAnonymousLocationProofRevocationFlow"
+}

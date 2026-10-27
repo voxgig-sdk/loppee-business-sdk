@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "customer": {
+      "CUSTOMER00": {
+        "auth_provider": "s82",
+        "avatar_url": "s83",
+        "city": "s84",
+        "created_at": "s85",
+        "email": "s86",
+        "full_name": "s87",
+        "id": "CUSTOMER00",
+        "phone": "s89",
+        "search_category": "s8a",
+        "service_need": "s8b",
+        "state": "s8c",
+        "status": "s8d",
+        "updated_at": "s8e"
+      },
+      "CUSTOMER01": {
+        "auth_provider": "s104",
+        "avatar_url": "s105",
+        "city": "s106",
+        "created_at": "s107",
+        "email": "s108",
+        "full_name": "s109",
+        "id": "CUSTOMER01",
+        "phone": "s10b",
+        "search_category": "s10c",
+        "service_need": "s10d",
+        "state": "s10e",
+        "status": "s10f",
+        "updated_at": "s110"
+      },
+      "CUSTOMER02": {
+        "auth_provider": "s186",
+        "avatar_url": "s187",
+        "city": "s188",
+        "created_at": "s189",
+        "email": "s18a",
+        "full_name": "s18b",
+        "id": "CUSTOMER02",
+        "phone": "s18d",
+        "search_category": "s18e",
+        "service_need": "s18f",
+        "state": "s190",
+        "status": "s191",
+        "updated_at": "s192"
+      }
+    }
+  },
+  "new": {
+    "customer": {
+      "customer_ref01": {
+        "auth_provider": "s208",
+        "avatar_url": "s209",
+        "city": "s20a",
+        "created_at": "s20b",
+        "email": "s20c",
+        "full_name": "s20d",
+        "phone": "s20f",
+        "search_category": "s210",
+        "service_need": "s211",
+        "state": "s212",
+        "status": "s213",
+        "updated_at": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/account/customer": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "conversation_report": {
+      "CONVERSATION_REPORT00": {
+        "detail": "s28",
+        "id": "CONVERSATION_REPORT00",
+        "reason": "s2a",
+        "status": "s2b",
+        "message_id": "MESSAGE01"
+      },
+      "CONVERSATION_REPORT01": {
+        "detail": "s50",
+        "id": "CONVERSATION_REPORT01",
+        "reason": "s52",
+        "status": "s53",
+        "message_id": "MESSAGE01"
+      },
+      "CONVERSATION_REPORT02": {
+        "detail": "s78",
+        "id": "CONVERSATION_REPORT02",
+        "reason": "s7a",
+        "status": "s7b",
+        "message_id": "MESSAGE01"
+      }
+    }
+  },
+  "new": {
+    "conversation_report": {
+      "conversation_report_ref01": {
+        "detail": "sa0",
+        "reason": "sa2",
+        "status": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/account/conversations/{conversation_id}/report": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/owner/messages/{interaction_id}/report": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

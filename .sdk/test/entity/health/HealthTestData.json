@@ -1,0 +1,88 @@
+{
+  "existing": {
+    "health": {
+      "HEALTH00": {
+        "agent_phone_location_bridge": {},
+        "build_sha": "s97",
+        "business_review_access": {},
+        "contract_version": "s99",
+        "external_agent_webhooks": {},
+        "external_agent_webhooks_enabled": false,
+        "ios_app_attest_anonymous_location": {},
+        "location_choices": {},
+        "location_handoff": {},
+        "mobile_push": "s9f",
+        "ok": "sa0",
+        "service": "sa1",
+        "sponsored_ordering": {},
+        "trust_model_version": "sa3",
+        "version": "sa4",
+        "id": "HEALTH00"
+      },
+      "HEALTH01": {
+        "agent_phone_location_bridge": {},
+        "build_sha": "s12d",
+        "business_review_access": {},
+        "contract_version": "s12f",
+        "external_agent_webhooks": {},
+        "external_agent_webhooks_enabled": false,
+        "ios_app_attest_anonymous_location": {},
+        "location_choices": {},
+        "location_handoff": {},
+        "mobile_push": "s135",
+        "ok": "s136",
+        "service": "s137",
+        "sponsored_ordering": {},
+        "trust_model_version": "s139",
+        "version": "s13a",
+        "id": "HEALTH01"
+      },
+      "HEALTH02": {
+        "agent_phone_location_bridge": {},
+        "build_sha": "s1c3",
+        "business_review_access": {},
+        "contract_version": "s1c5",
+        "external_agent_webhooks": {},
+        "external_agent_webhooks_enabled": false,
+        "ios_app_attest_anonymous_location": {},
+        "location_choices": {},
+        "location_handoff": {},
+        "mobile_push": "s1cb",
+        "ok": "s1cc",
+        "service": "s1cd",
+        "sponsored_ordering": {},
+        "trust_model_version": "s1cf",
+        "version": "s1d0",
+        "id": "HEALTH02"
+      }
+    }
+  },
+  "new": {
+    "health": {
+      "health_ref01": {
+        "agent_phone_location_bridge": {},
+        "build_sha": "s259",
+        "business_review_access": {},
+        "contract_version": "s25b",
+        "external_agent_webhooks": {},
+        "external_agent_webhooks_enabled": false,
+        "ios_app_attest_anonymous_location": {},
+        "location_choices": {},
+        "location_handoff": {},
+        "mobile_push": "s261",
+        "ok": "s262",
+        "service": "s263",
+        "sponsored_ordering": {},
+        "trust_model_version": "s265",
+        "version": "s266"
+      }
+    }
+  },
+  "requests": {
+    "GET /health": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

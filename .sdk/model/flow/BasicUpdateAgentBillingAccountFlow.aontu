@@ -1,0 +1,18 @@
+# BasicUpdateAgentBillingAccountFlow
+
+main: kit: flow: BasicUpdateAgentBillingAccountFlow:
+{
+  entity: "update_agent_billing_account",
+  kind: "basic",
+  name: "BasicUpdateAgentBillingAccountFlow",
+  step: [
+    {
+      i: {
+        ref: "update_agent_billing_account_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicUpdateAgentBillingAccountFlow"
+}

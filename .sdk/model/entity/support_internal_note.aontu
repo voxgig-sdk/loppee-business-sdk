@@ -1,0 +1,116 @@
+# Entity: support_internal_note
+
+main: kit: entity: support_internal_note: {
+
+  alias: field: {}
+
+  fields: {
+    authorLabel: {
+      h: "Author Label"
+      n: "authorLabel"
+      r: true
+      t: "`$STRING`"
+    }
+    body: {
+      h: "Body"
+      n: "body"
+      r: true
+      t: "`$STRING`"
+    }
+    createdAt: {
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "support_internal_note"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "body"
+          ]
+          co: {
+            id: "POST /v1/admin/support/{conversation_id}/internal-notes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/admin/support/{conversation_id}/internal-notes"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "support"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "internal-notes"
+            }
+          ]
+          t: {
+            req: {
+              body: "`reqdata.body`"
+            }
+            res: "`body.note`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

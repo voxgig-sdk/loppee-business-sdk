@@ -1,0 +1,49 @@
+# Entity: location_handoff
+
+main: kit: entity: location_handoff: {
+
+  alias: field: {}
+
+  name: "location_handoff"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/account/location-handoffs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/location-handoffs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "location-handoffs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -1,0 +1,22 @@
+# BasicOpenApiDocumentFlow
+
+main: kit: flow: BasicOpenApiDocumentFlow:
+{
+  entity: "open_api_document",
+  kind: "basic",
+  name: "BasicOpenApiDocumentFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "open_api_document_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOpenApiDocumentFlow"
+}

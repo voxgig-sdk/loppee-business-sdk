@@ -1,0 +1,2215 @@
+-- Typed models for the LoppeeBusiness SDK (LuaLS annotations).
+--
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
+-- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+-- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
+-- edit by hand.
+
+---@class AgentAccess
+---@field agent_name string
+---@field agent_type? string
+---@field callback_url? string
+---@field compliance_notes? string
+---@field created_at string
+---@field data_needs? string
+---@field developer_email string
+---@field operating_states? table
+---@field organization_name string
+---@field request_id string
+---@field request_status string
+---@field requested_actions? table
+---@field safety_contact? string
+---@field status any
+---@field target_categories? table
+---@field use_case? string
+---@field website? string
+
+---@class AgentAccessCreateData
+---@field agent_name string
+---@field agent_type? string
+---@field callback_url? string
+---@field compliance_notes? string
+---@field data_needs? string
+---@field developer_email string
+---@field operating_states? table
+---@field organization_name string
+---@field requested_actions? table
+---@field safety_contact? string
+---@field target_categories? table
+---@field use_case? string
+---@field website? string
+
+---@class AgentCapability
+---@field agent_phone_location_bridge? table
+---@field agent_rules table
+---@field discovery table
+---@field external_agent_access table
+---@field external_agent_webhooks table
+---@field local_discovery_location_policy table
+---@field location_choices? table
+---@field registry_name any
+---@field schema_version any
+---@field trust_model_version any
+
+---@class AgentCapabilityLoadMatch
+---@field agent_phone_location_bridge? table
+---@field agent_rules? table
+---@field discovery? table
+---@field external_agent_access? table
+---@field external_agent_webhooks? table
+---@field local_discovery_location_policy? table
+---@field location_choices? table
+---@field registry_name? any
+---@field schema_version? any
+---@field trust_model_version? any
+
+---@class AgentConnectionTest
+---@field key? string
+
+---@class AgentConnectionTestCreateData
+---@field key? string
+
+---@class AgentIntegration
+---@field auth_model table
+---@field commercial_influence table
+---@field developer_docs_url string
+---@field exposure_tiers table
+---@field external_agent_access table
+---@field generated_at string
+---@field http_api table
+---@field legal table
+---@field mcp table
+---@field mcp_client_example_url string
+---@field monitoring_url string
+---@field openapi_url string
+---@field openapi_v1_url string
+---@field operational_rules table
+---@field owner_agent_notifications table
+---@field package_url string
+---@field public_base_url string
+---@field rate_limits table
+---@field registry_name any
+---@field schema_version string
+---@field trust_card_contract table
+---@field trust_doctrine table
+
+---@class AgentIntegrationListMatch
+---@field auth_model? table
+---@field commercial_influence? table
+---@field developer_docs_url? string
+---@field exposure_tiers? table
+---@field external_agent_access? table
+---@field generated_at? string
+---@field http_api? table
+---@field legal? table
+---@field mcp? table
+---@field mcp_client_example_url? string
+---@field monitoring_url? string
+---@field openapi_url? string
+---@field openapi_v1_url? string
+---@field operational_rules? table
+---@field owner_agent_notifications? table
+---@field package_url? string
+---@field public_base_url? string
+---@field rate_limits? table
+---@field registry_name? any
+---@field schema_version? string
+---@field trust_card_contract? table
+---@field trust_doctrine? table
+
+---@class AgentMonitoring
+---@field build_sha string
+---@field contract_version string
+---@field generated_at string
+---@field health_url string
+---@field integration_package_url string
+---@field mcp_url string
+---@field metrics table
+---@field openapi_url string
+---@field rate_limits table
+---@field registry_name any
+---@field schema_version string
+---@field service string
+---@field uptime_seconds number
+---@field version string
+
+---@class AgentMonitoringLoadMatch
+---@field build_sha? string
+---@field contract_version? string
+---@field generated_at? string
+---@field health_url? string
+---@field integration_package_url? string
+---@field mcp_url? string
+---@field metrics? table
+---@field openapi_url? string
+---@field rate_limits? table
+---@field registry_name? any
+---@field schema_version? string
+---@field service? string
+---@field uptime_seconds? number
+---@field version? string
+
+---@class AgentOpenapi
+---@field components table
+---@field info table
+---@field openapi any
+---@field paths table
+---@field servers table
+---@field tags table
+
+---@class AgentOpenapiListMatch
+---@field components? table
+---@field info? table
+---@field openapi? any
+---@field paths? table
+---@field servers? table
+---@field tags? table
+
+---@class AgentPolicy
+---@field external_agent_access table
+---@field external_agent_webhooks table
+---@field local_discovery_location_policy table
+---@field location_handoff_flow? table
+---@field payment table
+---@field publication table
+---@field schema_version any
+---@field trust_model_version any
+---@field verification table
+
+---@class AgentPolicyLoadMatch
+---@field external_agent_access? table
+---@field external_agent_webhooks? table
+---@field local_discovery_location_policy? table
+---@field location_handoff_flow? table
+---@field payment? table
+---@field publication? table
+---@field schema_version? any
+---@field trust_model_version? any
+---@field verification? table
+
+---@class AnonymousLocationProofRevocation
+---@field accuracy_meters number
+---@field captured_at string
+---@field latitude number
+---@field longitude number
+
+---@class AnonymousLocationProofRevocationCreateData
+---@field accuracy_meters number
+---@field captured_at string
+---@field latitude number
+---@field longitude number
+
+---@class AnonymousLocationProofRevocationRemoveMatch
+---@field location_proof_id string
+
+---@class BusinessApplication
+---@field application table
+---@field application_id string
+---@field business_id string
+---@field claim_id string|nil
+---@field created_at string
+---@field existing_business boolean
+---@field files? table
+---@field listing_id? string
+---@field pipeline_status string
+---@field status any
+---@field trust_model_version any
+---@field uploaded_files number
+
+---@class BusinessApplicationCreateData
+---@field application table
+---@field business_id? string
+---@field claim_id? string|nil
+---@field files? table
+---@field listing_id? string
+
+---@class BusinessClaim
+---@field business_id string|nil
+---@field category? string
+---@field city? string
+---@field claim_id string
+---@field claim_status string
+---@field claimant_email? string
+---@field claimant_name? string
+---@field claimant_relationship? string
+---@field created_at string
+---@field directory_listing_id string|nil
+---@field display_name string
+---@field listing_id? string
+---@field notes? string
+---@field phone? string
+---@field source? string
+---@field source_type? string
+---@field source_url? string
+---@field state? string
+---@field status any
+---@field verification? table
+---@field website? string
+
+---@class BusinessClaimCreateData
+---@field business_id? string|nil
+---@field category? string
+---@field city? string
+---@field claimant_email? string
+---@field claimant_name? string
+---@field claimant_relationship? string
+---@field display_name string
+---@field listing_id? string
+---@field notes? string
+---@field phone? string
+---@field source? string
+---@field source_type? string
+---@field source_url? string
+---@field state? string
+---@field website? string
+
+---@class BusinessDeal
+---@field createdAt string
+---@field description string
+---@field discountLabel string
+---@field endsAt string|nil
+---@field id string
+---@field promoCode string|nil
+---@field startsAt string|nil
+---@field terms string|nil
+---@field title string
+
+---@class BusinessDealListMatch
+---@field id string
+
+---@class BusinessIndex
+---@field brand_assets? any
+---@field business_id string
+---@field category string
+---@field city string
+---@field display_name string
+---@field domain string|nil
+---@field insurance table
+---@field phone string|nil
+---@field public_profile_url string
+---@field review_reputation table
+---@field state string
+---@field street_address? string|nil
+---@field trust_card_url string
+---@field trust_model_version any
+---@field verification_class string
+---@field verification_disclosure string
+---@field website string|nil
+---@field zip? string|nil
+
+---@class BusinessIndexListMatch
+---@field cursor? string
+---@field limit? number
+
+---@class BusinessOwner
+---@field account_id string
+---@field account_role string
+---@field acknowledge_data_effects boolean
+---@field actions table
+---@field allowed_actions table
+---@field amount_cents number
+---@field applicant_location_requirements? string
+---@field apply_url? string|nil
+---@field asset_id string
+---@field assigneeId string
+---@field assigneeLabel string
+---@field assigneeType string
+---@field attempt_id string
+---@field benefits? string
+---@field body string
+---@field businessId string
+---@field businessName string
+---@field business_id string
+---@field campaign table
+---@field campaign_id string
+---@field carrier_name? string
+---@field category? string
+---@field category_alias? string
+---@field category_aliases table
+---@field change table
+---@field city? string
+---@field client_message_id string
+---@field code string
+---@field compensation_text? string
+---@field confirm? boolean
+---@field confirmation string
+---@field connection_kind string
+---@field consent_sha256 string
+---@field contact_email? string|nil
+---@field content_type string
+---@field country? string
+---@field coupon_code? string
+---@field createdAt string|nil
+---@field created_at string
+---@field credential_id string
+---@field credential_identifier string
+---@field data_base64 string
+---@field delivery_contract table
+---@field description? string|nil
+---@field direct_apply? boolean
+---@field disabled_reason string|nil
+---@field discount_label? string
+---@field display_name string
+---@field employment_type? string
+---@field enabled boolean
+---@field endpoint table
+---@field endpoint_id string
+---@field endpoint_url string
+---@field ends_at? string|nil
+---@field event_id string
+---@field event_types table
+---@field evidence_observed_at? string
+---@field expected_updated_at string
+---@field experience_level? string
+---@field expires_at? string
+---@field factor_id? string
+---@field failure_count number
+---@field file_name string
+---@field file_sha256? string
+---@field full_name? string
+---@field guideHandoffAnsweredAt? string|nil
+---@field guideHandoffAt? string|nil
+---@field guideHandoffDueAt? string|nil
+---@field hours? table|nil
+---@field id string
+---@field idempotency_key? string
+---@field installation_id string
+---@field issuer string
+---@field jurisdiction? string
+---@field kind string
+---@field label? string
+---@field lastMessageAt string|nil
+---@field lastMessageAuthorType string
+---@field lastMessagePreview string
+---@field last_delivery_at string|nil
+---@field launch? boolean
+---@field license_number string
+---@field messages table
+---@field messagesTruncated boolean
+---@field monthly_cap_cents? number
+---@field name string
+---@field note? string
+---@field one_time_display any
+---@field ownerEmail string
+---@field ownerLastReadAt string|nil
+---@field ownerName string
+---@field ownerUserId string
+---@field period? string
+---@field phone? string
+---@field platform string
+---@field policy_number? string
+---@field postal_code? string
+---@field promo_code? string|nil
+---@field push_token string
+---@field radius_miles number
+---@field reason? string
+---@field reason_category? string
+---@field reason_detail? string
+---@field registered_at string
+---@field request_id string
+---@field requested_at string
+---@field salary_currency? string
+---@field salary_max? number|nil
+---@field salary_min? number|nil
+---@field salary_period? string
+---@field save_card boolean
+---@field save_card_consent_sha256? string
+---@field schedule? string
+---@field service_areas? string
+---@field signing_secret string
+---@field size_bytes number
+---@field skills? table
+---@field source_url? string
+---@field starts_at? string|nil
+---@field state? string
+---@field stated_expires_at? string
+---@field status string
+---@field street_address? string
+---@field subject string
+---@field submitted_identifier? string
+---@field supportLastReadAt string|nil
+---@field terms? string|nil
+---@field terms_version string
+---@field threshold_cents? number
+---@field ticketNumber string
+---@field tier string
+---@field title? string
+---@field total_job_openings? number|nil
+---@field typing? boolean
+---@field updatedAt string|nil
+---@field updated_at string
+---@field url string
+---@field website string
+---@field workplace_type? string
+---@field zip? string
+
+---@class BusinessOwnerCreateData
+---@field deal_id string
+---@field account_id string
+---@field account_role string
+---@field acknowledge_data_effects boolean
+---@field actions table
+---@field allowed_actions table
+---@field amount_cents number
+---@field applicant_location_requirements? string
+---@field apply_url? string|nil
+---@field asset_id string
+---@field assigneeId string
+---@field assigneeLabel string
+---@field assigneeType string
+---@field attempt_id string
+---@field benefits? string
+---@field body string
+---@field businessId string
+---@field businessName string
+---@field business_id? string
+---@field campaign table
+---@field campaign_id string
+---@field carrier_name? string
+---@field category? string
+---@field category_alias? string
+---@field category_aliases table
+---@field change table
+---@field city string
+---@field client_message_id string
+---@field code string
+---@field compensation_text? string
+---@field confirm? boolean
+---@field confirmation string
+---@field connection_kind string
+---@field consent_sha256 string
+---@field contact_email? string|nil
+---@field content_type string
+---@field country? string
+---@field coupon_code? string
+---@field createdAt string|nil
+---@field created_at string
+---@field credential_id string
+---@field credential_identifier string
+---@field data_base64 string
+---@field delivery_contract table
+---@field description? string|nil
+---@field direct_apply? boolean
+---@field disabled_reason string|nil
+---@field discount_label string
+---@field display_name string
+---@field employment_type? string
+---@field enabled boolean
+---@field endpoint table
+---@field endpoint_id string
+---@field endpoint_url string
+---@field ends_at? string|nil
+---@field event_id string
+---@field event_types table
+---@field evidence_observed_at? string
+---@field expected_updated_at string
+---@field experience_level? string
+---@field expires_at? string
+---@field factor_id string
+---@field failure_count number
+---@field file_name string
+---@field file_sha256 string
+---@field full_name? string
+---@field guideHandoffAnsweredAt? string|nil
+---@field guideHandoffAt? string|nil
+---@field guideHandoffDueAt? string|nil
+---@field hours? table|nil
+---@field id string
+---@field idempotency_key? string
+---@field installation_id string
+---@field issuer string
+---@field jurisdiction? string
+---@field kind string
+---@field label? string
+---@field lastMessageAt string|nil
+---@field lastMessageAuthorType string
+---@field lastMessagePreview string
+---@field last_delivery_at string|nil
+---@field launch? boolean
+---@field license_number string
+---@field messages table
+---@field messagesTruncated boolean
+---@field monthly_cap_cents? number
+---@field name string
+---@field note? string
+---@field one_time_display any
+---@field ownerEmail string
+---@field ownerLastReadAt string|nil
+---@field ownerName string
+---@field ownerUserId string
+---@field period? string
+---@field phone string
+---@field platform string
+---@field policy_number? string
+---@field postal_code? string
+---@field promo_code? string|nil
+---@field push_token string
+---@field radius_miles number
+---@field reason string
+---@field reason_category? string
+---@field reason_detail? string
+---@field registered_at string
+---@field request_id string
+---@field requested_at string
+---@field salary_currency? string
+---@field salary_max? number|nil
+---@field salary_min? number|nil
+---@field salary_period? string
+---@field save_card boolean
+---@field save_card_consent_sha256? string
+---@field schedule? string
+---@field service_areas? string
+---@field signing_secret string
+---@field size_bytes number
+---@field skills? table
+---@field source_url? string
+---@field starts_at? string|nil
+---@field state string
+---@field stated_expires_at? string
+---@field status? string
+---@field street_address string
+---@field subject? string
+---@field submitted_identifier? string
+---@field supportLastReadAt string|nil
+---@field terms? string|nil
+---@field terms_version string
+---@field threshold_cents? number
+---@field ticketNumber string
+---@field tier string
+---@field title string
+---@field total_job_openings? number|nil
+---@field typing? boolean
+---@field updatedAt string|nil
+---@field updated_at string
+---@field url string
+---@field website string
+---@field workplace_type? string
+---@field zip? string
+
+---@class BusinessOwnerUpdateData
+---@field account_id? string
+---@field account_role? string
+---@field acknowledge_data_effects? boolean
+---@field actions? table
+---@field allowed_actions? table
+---@field amount_cents? number
+---@field applicant_location_requirements? string
+---@field apply_url? string|nil
+---@field asset_id? string
+---@field assigneeId? string
+---@field assigneeLabel? string
+---@field assigneeType? string
+---@field attempt_id? string
+---@field benefits? string
+---@field body? string
+---@field businessId? string
+---@field businessName? string
+---@field business_id? string
+---@field campaign? table
+---@field campaign_id? string
+---@field carrier_name? string
+---@field category? string
+---@field category_alias? string
+---@field category_aliases? table
+---@field change? table
+---@field city? string
+---@field client_message_id? string
+---@field code? string
+---@field compensation_text? string
+---@field confirm? boolean
+---@field confirmation? string
+---@field connection_kind? string
+---@field consent_sha256? string
+---@field contact_email? string|nil
+---@field content_type? string
+---@field country? string
+---@field coupon_code? string
+---@field createdAt? string|nil
+---@field created_at? string
+---@field credential_id? string
+---@field credential_identifier? string
+---@field data_base64? string
+---@field delivery_contract? table
+---@field description? string|nil
+---@field direct_apply? boolean
+---@field disabled_reason? string|nil
+---@field discount_label? string
+---@field display_name? string
+---@field employment_type? string
+---@field enabled? boolean
+---@field endpoint? table
+---@field endpoint_id? string
+---@field endpoint_url? string
+---@field ends_at? string|nil
+---@field event_id? string
+---@field event_types? table
+---@field evidence_observed_at? string
+---@field expected_updated_at? string
+---@field experience_level? string
+---@field expires_at? string
+---@field factor_id? string
+---@field failure_count? number
+---@field file_name? string
+---@field file_sha256? string
+---@field full_name? string
+---@field guideHandoffAnsweredAt? string|nil
+---@field guideHandoffAt? string|nil
+---@field guideHandoffDueAt? string|nil
+---@field hours? table|nil
+---@field id? string
+---@field idempotency_key? string
+---@field installation_id? string
+---@field issuer? string
+---@field jurisdiction? string
+---@field kind? string
+---@field label? string
+---@field lastMessageAt? string|nil
+---@field lastMessageAuthorType? string
+---@field lastMessagePreview? string
+---@field last_delivery_at? string|nil
+---@field launch? boolean
+---@field license_number? string
+---@field messages? table
+---@field messagesTruncated? boolean
+---@field monthly_cap_cents? number
+---@field name? string
+---@field note? string
+---@field one_time_display? any
+---@field ownerEmail? string
+---@field ownerLastReadAt? string|nil
+---@field ownerName? string
+---@field ownerUserId? string
+---@field period? string
+---@field phone? string
+---@field platform? string
+---@field policy_number? string
+---@field postal_code? string
+---@field promo_code? string|nil
+---@field push_token? string
+---@field radius_miles? number
+---@field reason? string
+---@field reason_category? string
+---@field reason_detail? string
+---@field registered_at? string
+---@field request_id? string
+---@field requested_at? string
+---@field salary_currency? string
+---@field salary_max? number|nil
+---@field salary_min? number|nil
+---@field salary_period? string
+---@field save_card? boolean
+---@field save_card_consent_sha256? string
+---@field schedule? string
+---@field service_areas? string
+---@field signing_secret? string
+---@field size_bytes? number
+---@field skills? table
+---@field source_url? string
+---@field starts_at? string|nil
+---@field state? string
+---@field stated_expires_at? string
+---@field status? string
+---@field street_address? string
+---@field subject? string
+---@field submitted_identifier? string
+---@field supportLastReadAt? string|nil
+---@field terms? string|nil
+---@field terms_version? string
+---@field threshold_cents? number
+---@field ticketNumber? string
+---@field tier? string
+---@field title? string
+---@field total_job_openings? number|nil
+---@field typing? boolean
+---@field updatedAt? string|nil
+---@field updated_at? string
+---@field url? string
+---@field website? string
+---@field workplace_type? string
+---@field zip? string
+
+---@class BusinessReview
+---@field id? string
+
+---@class BusinessReviewLoadMatch
+---@field id string
+---@field limit? number
+---@field page? number
+---@field rating? string
+
+---@class ChatAttachment
+---@field byteSize number
+---@field content_type any
+---@field data_base64 string
+---@field fileName string
+---@field file_name string
+---@field id string
+---@field mediaType string
+---@field size_bytes number
+
+---@class ChatAttachmentCreateData
+---@field conversation_id string
+---@field content_type any
+---@field data_base64 string
+---@field file_name string
+---@field size_bytes number
+
+---@class ChatAttachmentUrl
+---@field byte_size number
+---@field expires_in_seconds any
+---@field file_name string
+---@field id string
+---@field media_type string
+---@field signed_url string
+
+---@class ChatAttachmentUrlCreateData
+---@field attachment_id string
+---@field conversation_id? string
+---@field message_id? string
+---@field support_id? string
+
+---@class ClaimVerificationSend
+---@field challenge_id? string
+---@field channel any
+---@field claim_id string
+---@field destination_hint? string
+---@field expires_in_seconds? number
+---@field provider_status? any
+---@field recipient_delivery_confirmed? any
+---@field request_id? string
+---@field status any
+
+---@class ClaimVerificationSendCreateData
+---@field channel? any
+---@field claim_id string
+---@field request_id? string
+
+---@class ClaimVerificationVerify
+---@field business_id string|nil
+---@field challenge_id? string
+---@field channel? any
+---@field claim_id string
+---@field code string
+---@field method? any
+---@field publication? table
+---@field status any
+---@field transfer_review_required? any
+---@field trust_model_version? any
+
+---@class ClaimVerificationVerifyCreateData
+---@field challenge_id? string
+---@field channel? any
+---@field claim_id string
+---@field code string
+
+---@class CommercialClick
+---@field action_type any
+---@field ad_receipt? string
+---@field billable boolean
+---@field billing_event_id? string|nil
+---@field billing_status string
+---@field business_id? string
+---@field category? string
+---@field city? string
+---@field click_id string
+---@field commercial_status? any
+---@field created_at string
+---@field directory_listing_id? string
+---@field display_name? string
+---@field fallback_interaction_id? string
+---@field ledger_status string
+---@field listing_id? string
+---@field metadata? table
+---@field migration_required? boolean
+---@field page_path? string
+---@field referrer? string
+---@field source_type any
+---@field state? string
+---@field status any
+---@field storage any
+---@field surface? any
+---@field target_url? string
+
+---@class CommercialClickCreateData
+---@field action_type any
+---@field ad_receipt? string
+---@field business_id? string
+---@field category? string
+---@field city? string
+---@field commercial_status? any
+---@field directory_listing_id? string
+---@field display_name? string
+---@field listing_id? string
+---@field metadata? table
+---@field page_path? string
+---@field referrer? string
+---@field source_type any
+---@field state? string
+---@field surface? any
+---@field target_url? string
+
+---@class ContactRecorded
+---@field business_id string
+---@field contact_recorded any
+---@field interaction_id string
+---@field ok any
+---@field policy string
+---@field review_upgraded any
+---@field status any
+---@field trust_weight any
+---@field verified boolean
+
+---@class ContactRecordedCreateData
+---@field business_id string
+
+---@class Conversation
+---@field account_id string
+---@field conversation_id? string
+---@field conversations table
+---@field count number
+---@field cursor? string
+---@field limit? number
+---@field pagination table
+
+---@class ConversationCreateData
+---@field account_id string
+---@field conversation_id? string
+---@field cursor? string
+---@field limit? number
+
+---@class ConversationClose
+---@field closed_at string
+---@field conversation_id string
+---@field id? string
+---@field status any
+
+---@class ConversationCloseCreateData
+---@field id string
+
+---@class ConversationReport
+---@field detail? string
+---@field id? string
+---@field reason any
+---@field status any
+
+---@class ConversationReportCreateData
+---@field id string
+---@field detail? string
+---@field reason any
+
+---@class ConversationWorkflow
+---@field priority? any
+---@field status? any
+
+---@class ConversationWorkflowCreateData
+---@field message_id string
+---@field priority? any
+---@field status? any
+
+---@class CreateAgentApiKey
+---@field account_id string
+---@field allowed_actions? table
+---@field allowed_business_ids? table
+---@field created_by string
+---@field key table
+---@field label? string
+---@field monthly_quota? number
+---@field notes? string
+---@field one_time_display any
+---@field rate_limit_per_minute? number
+---@field raw_key string
+---@field status any
+
+---@class CreateAgentApiKeyCreateData
+---@field account_id string
+---@field allowed_actions? table
+---@field allowed_business_ids? table
+---@field label? string
+---@field monthly_quota? number
+---@field notes? string
+---@field rate_limit_per_minute? number
+
+---@class Customer
+---@field auth_provider? string
+---@field avatar_url string|nil
+---@field city string|nil
+---@field created_at string|nil
+---@field email string
+---@field full_name string
+---@field id string
+---@field phone string|nil
+---@field search_category? string
+---@field service_need? string
+---@field state string|nil
+---@field status any
+---@field updated_at string|nil
+
+---@class CustomerCreateData
+---@field auth_provider? string
+---@field avatar_url? string|nil
+---@field city? string|nil
+---@field full_name? string
+---@field phone? string|nil
+---@field search_category? string
+---@field service_need? string
+---@field state? string|nil
+
+---@class CustomerAccount
+---@field account_id string
+---@field account_role string
+---@field accuracy_meters number
+---@field acknowledge_data_effects boolean
+---@field actions table
+---@field agent_key_id string
+---@field agent_receives_coordinates boolean
+---@field all_paused boolean
+---@field app_attest_registered boolean
+---@field assertion string
+---@field attestation string
+---@field author_label string
+---@field author_type string
+---@field binding any
+---@field body string
+---@field business_id string|nil
+---@field capture_source any
+---@field captured_at string
+---@field challenge string
+---@field challenge_id string
+---@field client_message_id string
+---@field completed boolean
+---@field confirmation string
+---@field connection_id string
+---@field connection_kind string
+---@field continuation any
+---@field coordinates_returned boolean
+---@field created_at string
+---@field credential_id string
+---@field declined boolean
+---@field delivery_contract table
+---@field disabled_reason string|nil
+---@field disclosure string
+---@field enabled boolean
+---@field endpoint table
+---@field endpoint_id string
+---@field endpoint_url string
+---@field environment string
+---@field event_id string
+---@field event_types table
+---@field failure_count number
+---@field handoff_id string
+---@field has_more boolean
+---@field id string
+---@field idempotent_replay boolean
+---@field installation_id string
+---@field key_id string
+---@field last_delivery_at string|nil
+---@field latitude number
+---@field location? any
+---@field longitude number
+---@field message_alerts_enabled boolean
+---@field messages table
+---@field mode string
+---@field name? string
+---@field oauth_grant_id string|nil
+---@field one_time_display any
+---@field platform string
+---@field policy string
+---@field purpose string
+---@field push_token string
+---@field reason string
+---@field registered_at string
+---@field reply string
+---@field request_mode string
+---@field requested_at string
+---@field results table
+---@field schema_version string
+---@field selected_at string
+---@field signed_in boolean
+---@field signing_secret string
+---@field status any
+---@field updated_at string
+---@field url string
+---@field usable_until string
+---@field use_mode string
+
+---@class CustomerAccountCreateData
+---@field account_id string
+---@field account_role string
+---@field accuracy_meters number
+---@field acknowledge_data_effects boolean
+---@field actions table
+---@field agent_key_id string
+---@field agent_receives_coordinates boolean
+---@field all_paused boolean
+---@field app_attest_registered boolean
+---@field assertion string
+---@field attestation string
+---@field author_label string
+---@field author_type string
+---@field binding any
+---@field body string
+---@field business_id string|nil
+---@field capture_source any
+---@field captured_at string
+---@field challenge string
+---@field challenge_id string
+---@field client_message_id string
+---@field completed boolean
+---@field confirmation string
+---@field connection_id string
+---@field connection_kind string
+---@field continuation? any
+---@field coordinates_returned boolean
+---@field created_at string
+---@field credential_id string
+---@field declined boolean
+---@field delivery_contract table
+---@field disabled_reason string|nil
+---@field disclosure string
+---@field enabled boolean
+---@field endpoint table
+---@field endpoint_id string
+---@field endpoint_url string
+---@field environment string
+---@field event_id string
+---@field event_types table
+---@field failure_count number
+---@field handoff_id string
+---@field has_more boolean
+---@field id string
+---@field idempotent_replay boolean
+---@field installation_id string
+---@field key_id string
+---@field last_delivery_at string|nil
+---@field latitude number
+---@field location? any
+---@field longitude number
+---@field message_alerts_enabled boolean
+---@field messages table
+---@field mode string
+---@field name? string
+---@field oauth_grant_id string|nil
+---@field one_time_display any
+---@field platform string
+---@field policy string
+---@field purpose string
+---@field push_token string
+---@field reason? string
+---@field registered_at string
+---@field reply string
+---@field request_mode string
+---@field requested_at string
+---@field results table
+---@field schema_version string
+---@field selected_at string
+---@field signed_in boolean
+---@field signing_secret string
+---@field status any
+---@field updated_at string
+---@field url string
+---@field usable_until string
+---@field use_mode string
+---@field action? any
+---@field consent_copy_version? any
+---@field paused? any
+
+---@class CustomerLocationProofRevocation
+---@field accuracy_meters number
+---@field captured_at string
+---@field latitude number
+---@field longitude number
+
+---@class CustomerLocationProofRevocationCreateData
+---@field accuracy_meters number
+---@field captured_at string
+---@field latitude number
+---@field longitude number
+
+---@class CustomerLocationProofRevocationRemoveMatch
+---@field location_proof_id string
+
+---@class DestinationAddressSuggestion
+---@field input string
+---@field suggestions table
+
+---@class DestinationAddressSuggestionCreateData
+---@field input string
+
+---@class DestinationLocationProof
+---@field address string
+---@field premise_proximity_confirmation_token? string
+
+---@class DestinationLocationProofCreateData
+---@field address string
+---@field premise_proximity_confirmation_token? string
+
+---@class DomainTrustCard
+---@field business_id string
+---@field domain string
+---@field schema_version any
+---@field trust_card table
+---@field trust_card_url string
+---@field trust_model_version any
+---@field verification_class any
+---@field verification_disclosure string
+
+---@class DomainTrustCardLoadMatch
+---@field domain_key string
+
+---@class GeoContext
+
+---@class GeoContextLoadMatch
+
+---@class Health
+---@field agent_phone_location_bridge table
+---@field build_sha string
+---@field business_review_access table
+---@field contract_version string
+---@field external_agent_webhooks table
+---@field external_agent_webhooks_enabled boolean
+---@field ios_app_attest_anonymous_location table
+---@field location_choices table
+---@field location_handoff table
+---@field mobile_push any
+---@field ok any
+---@field service string
+---@field sponsored_ordering table
+---@field trust_model_version any
+---@field version string
+
+---@class HealthLoadMatch
+---@field agent_phone_location_bridge? table
+---@field build_sha? string
+---@field business_review_access? table
+---@field contract_version? string
+---@field external_agent_webhooks? table
+---@field external_agent_webhooks_enabled? boolean
+---@field ios_app_attest_anonymous_location? table
+---@field location_choices? table
+---@field location_handoff? table
+---@field mobile_push? any
+---@field ok? any
+---@field service? string
+---@field sponsored_ordering? table
+---@field trust_model_version? any
+---@field version? string
+
+---@class JobApplication
+---@field account_id string
+---@field already_withdrawn? boolean
+---@field application table
+---@field applications table
+---@field billing table
+---@field business_id? string
+---@field count number
+---@field cover_note? string
+---@field free_to_apply? boolean
+---@field id? string
+---@field job_id string
+---@field limit number
+---@field offset number
+---@field resume table
+---@field retention_note? string
+---@field status string
+
+---@class JobApplicationCreateData
+---@field account_id? string
+---@field cover_note? string
+---@field job_id string
+---@field limit? number
+---@field offset? number
+---@field resume table
+---@field status? string
+
+---@class JobResumeSignedUrl
+---@field application_id string
+---@field content_type string
+---@field expires_in_seconds number
+---@field resume_file_name string
+---@field signed_url string
+---@field size_bytes number
+---@field status any
+
+---@class JobResumeSignedUrlCreateData
+---@field job_application_id string
+
+---@class LocationHandoff
+
+---@class LocationHandoffCreateData
+
+---@class Message
+---@field account_id string
+---@field client_message_id string
+---@field conversation_id string
+---@field created_at string
+---@field delivery? any
+---@field idempotent_replay boolean
+---@field interaction_id string
+---@field message string
+---@field moderation_required? any
+---@field source_path? string
+---@field status any
+---@field subject? string
+---@field target_business_id string
+---@field target_business_name? string
+---@field target_business_source? string
+
+---@class MessageCreateData
+---@field account_id string
+---@field client_message_id string
+---@field message string
+---@field source_path? string
+---@field subject string
+---@field target_business_id string
+---@field target_business_name string
+---@field target_business_source string
+
+---@class ModeratedAction
+---@field actions table
+---@field body string
+---@field client_request_id? string
+---@field content_type string
+---@field continuation any
+---@field coordinates_returned boolean
+---@field disclosure string
+---@field enabled boolean
+---@field file_sha256 string
+---@field has_more boolean
+---@field human_confirmation? boolean
+---@field intent_id string
+---@field kind? string
+---@field knowledgeVersion string
+---@field limits table
+---@field links table
+---@field location table
+---@field message? string
+---@field messages table
+---@field mode string
+---@field name string
+---@field needsHuman boolean
+---@field policy table
+---@field question string
+---@field reply string
+---@field result string
+---@field results table
+---@field scan_authority_id string
+---@field scanner string
+---@field scanner_version string
+---@field schema_version string
+---@field searcher_latitude? number
+---@field searcher_longitude? number
+---@field signature? string
+---@field signed_in boolean
+---@field size_bytes number
+---@field subject? string
+---@field target_business_id string
+---@field topic string
+
+---@class ModeratedActionLoadMatch
+---@field actions? table
+---@field body? string
+---@field client_request_id? string
+---@field content_type? string
+---@field continuation? any
+---@field coordinates_returned? boolean
+---@field disclosure? string
+---@field enabled? boolean
+---@field file_sha256? string
+---@field has_more? boolean
+---@field human_confirmation? boolean
+---@field intent_id? string
+---@field kind? string
+---@field knowledgeVersion? string
+---@field limits? table
+---@field links? table
+---@field location? table
+---@field message? string
+---@field messages? table
+---@field mode? string
+---@field name? string
+---@field needsHuman? boolean
+---@field policy? table
+---@field question? string
+---@field reply? string
+---@field result? string
+---@field results? table
+---@field scan_authority_id? string
+---@field scanner? string
+---@field scanner_version? string
+---@field schema_version? string
+---@field searcher_latitude? number
+---@field searcher_longitude? number
+---@field signature? string
+---@field signed_in? boolean
+---@field size_bytes? number
+---@field subject? string
+---@field target_business_id? string
+---@field topic? string
+
+---@class ModeratedActionCreateData
+---@field client_request_id? string
+---@field content_type string
+---@field continuation? any
+---@field file_sha256 string
+---@field human_confirmation? boolean
+---@field intent_id string
+---@field kind? string
+---@field location? table
+---@field message? string
+---@field messages table
+---@field question string
+---@field result string
+---@field scan_authority_id string
+---@field scanner string
+---@field scanner_version string
+---@field searcher_latitude? number
+---@field searcher_longitude? number
+---@field signature? string
+---@field size_bytes number
+---@field subject? string
+---@field target_business_id string
+
+---@class OpenApiDocument
+---@field components table
+---@field info table
+---@field openapi any
+---@field paths table
+---@field servers table
+---@field tags table
+
+---@class OpenApiDocumentListMatch
+---@field components? table
+---@field info? table
+---@field openapi? any
+---@field paths? table
+---@field servers? table
+---@field tags? table
+
+---@class Operation
+---@field account_id string
+---@field action string
+---@field active? boolean
+---@field active_or_good_standing? boolean
+---@field ai_draft_id? string
+---@field allowed_actions table
+---@field alt? string
+---@field amount_cents number
+---@field amount_off_cents? number
+---@field api_key string
+---@field applies_to_period? string
+---@field applies_to_tier? string|nil
+---@field assigned_admin_user_id? string|nil
+---@field assigneeId string
+---@field assigneeLabel string
+---@field assigneeType string
+---@field assignee_id? string
+---@field assignee_label? string
+---@field assignee_type? string
+---@field assistant_enabled boolean
+---@field base_url? string
+---@field body string
+---@field businessId string
+---@field businessName string
+---@field business_id string|nil
+---@field business_ids table
+---@field campaign_id? string
+---@field campaign_ids? table
+---@field caption? string
+---@field case_status? string
+---@field catalog table
+---@field category? string
+---@field category_alias string
+---@field chunk_size? number
+---@field city? string
+---@field code string
+---@field confidence? number
+---@field config table
+---@field confirm boolean
+---@field confirm_admin? boolean
+---@field confirmation string
+---@field connection_id string
+---@field connection_kind string
+---@field content_type string
+---@field context_id string
+---@field context_type string
+---@field createdAt string|nil
+---@field created_at string
+---@field credential_expires_at? string
+---@field credential_id string
+---@field custom_wire? string
+---@field data_base64 string
+---@field decision string
+---@field dedupe_ack? boolean
+---@field delivery_contract table
+---@field disabled_reason string|nil
+---@field discount_type string
+---@field display_name string
+---@field disposition string
+---@field draft table
+---@field duration? string
+---@field duration_in_months? number|nil
+---@field email string
+---@field enabled boolean
+---@field endpoint table
+---@field endpoint_id string
+---@field endpoint_url string
+---@field ends_at string
+---@field environment_fallback any
+---@field event_id string
+---@field event_types table
+---@field expected_allowed_actions table
+---@field expected_key_id string
+---@field expected_updated_at string
+---@field expected_version number
+---@field expires_at? string
+---@field fact_id string
+---@field facts table
+---@field failure_count number
+---@field fields table
+---@field file_name string
+---@field guideHandoffAnsweredAt? string|nil
+---@field guideHandoffAt? string|nil
+---@field guideHandoffDueAt? string|nil
+---@field height? number
+---@field historic_association_checked boolean
+---@field hold string
+---@field holder_name_match? boolean
+---@field hours table
+---@field id string
+---@field idempotency_key? string
+---@field identifier_match? boolean
+---@field in_use table
+---@field instruction? string
+---@field invited boolean
+---@field key_check any
+---@field kind string
+---@field label string
+---@field lastMessageAt string|nil
+---@field lastMessageAuthorType string
+---@field lastMessagePreview string
+---@field last_delivery_at string|nil
+---@field last_error_code any
+---@field last_probe_at any
+---@field last_problem any
+---@field legal_name? string
+---@field limit? number
+---@field make_active boolean
+---@field max_cents number
+---@field max_redemptions? number|nil
+---@field messages table
+---@field messagesTruncated boolean
+---@field min_cents number
+---@field model string
+---@field model_id string
+---@field name string
+---@field note? string
+---@field notes? string
+---@field observed_at? string
+---@field one_time_display any
+---@field outcome string
+---@field ownerEmail string
+---@field ownerLastReadAt string|nil
+---@field ownerName string
+---@field ownerUserId string
+---@field owner_reason_code? string
+---@field per_customer_limit? number
+---@field percent_off? number
+---@field phone? string
+---@field policyVersion string
+---@field priority? string
+---@field provider string
+---@field providers table
+---@field purpose_code string
+---@field rank_bid_cents number
+---@field reason string
+---@field reason_category? string
+---@field reason_code? string
+---@field reason_detail? string
+---@field reference string
+---@field reject_reason? string
+---@field related_case_id? string
+---@field report_id number
+---@field report_ids table
+---@field reserve_cents number
+---@field resolution_note string
+---@field review_notes? string
+---@field revision number
+---@field role string
+---@field rows table
+---@field run table
+---@field schema_version string
+---@field scope string
+---@field search? string
+---@field settings table
+---@field signing_secret string
+---@field size_bytes number
+---@field sla_due_at? string|nil
+---@field source string
+---@field source_authority? string
+---@field source_category_slug string
+---@field source_scope_checked boolean
+---@field source_url? string
+---@field starts_at? string|nil
+---@field state? string
+---@field status string
+---@field storage string
+---@field street_address? string
+---@field subject string
+---@field supportLastReadAt string|nil
+---@field target_category string
+---@field taxonomy_category_aliases table
+---@field ticketNumber string
+---@field tier? string
+---@field typing? boolean
+---@field until? string
+---@field updatedAt string|nil
+---@field updated_at string
+---@field url string
+---@field valid_until? string
+---@field value string
+---@field verification_method string
+---@field verified_at any
+---@field verified_service_scope? table
+---@field version? string
+---@field website? string
+---@field width? number
+---@field window_hours? number
+---@field workload string
+---@field zip? string
+
+---@class OperationCreateData
+---@field coupon_id string
+---@field account_id string
+---@field action? string
+---@field active? boolean
+---@field active_or_good_standing? boolean
+---@field ai_draft_id? string
+---@field allowed_actions table
+---@field alt? string
+---@field amount_cents number
+---@field amount_off_cents? number
+---@field api_key string
+---@field applies_to_period? string
+---@field applies_to_tier? string|nil
+---@field assigned_admin_user_id? string|nil
+---@field assigneeId string
+---@field assigneeLabel string
+---@field assigneeType string
+---@field assignee_id? string
+---@field assignee_label? string
+---@field assignee_type? string
+---@field assistant_enabled boolean
+---@field base_url? string
+---@field body string
+---@field businessId string
+---@field businessName string
+---@field business_id? string|nil
+---@field business_ids table
+---@field campaign_id? string
+---@field campaign_ids? table
+---@field caption? string
+---@field case_status? string
+---@field catalog table
+---@field category? string
+---@field category_alias? string
+---@field chunk_size? number
+---@field city? string
+---@field code string
+---@field confidence? number
+---@field config table
+---@field confirm? boolean
+---@field confirm_admin? boolean
+---@field confirmation string
+---@field connection_id string
+---@field connection_kind string
+---@field content_type string
+---@field context_id string
+---@field context_type string
+---@field createdAt string|nil
+---@field created_at string
+---@field credential_expires_at? string
+---@field credential_id string
+---@field custom_wire? string
+---@field data_base64 string
+---@field decision string
+---@field dedupe_ack? boolean
+---@field delivery_contract table
+---@field disabled_reason string|nil
+---@field discount_type string
+---@field display_name string
+---@field disposition string
+---@field draft table
+---@field duration? string
+---@field duration_in_months? number|nil
+---@field email string
+---@field enabled boolean
+---@field endpoint table
+---@field endpoint_id string
+---@field endpoint_url string
+---@field ends_at string
+---@field environment_fallback any
+---@field event_id string
+---@field event_types table
+---@field expected_allowed_actions table
+---@field expected_key_id string
+---@field expected_updated_at string
+---@field expected_version number
+---@field expires_at? string
+---@field fact_id string
+---@field facts table
+---@field failure_count number
+---@field fields table
+---@field file_name string
+---@field guideHandoffAnsweredAt? string|nil
+---@field guideHandoffAt? string|nil
+---@field guideHandoffDueAt? string|nil
+---@field height? number
+---@field historic_association_checked boolean
+---@field hold string
+---@field holder_name_match? boolean
+---@field hours table
+---@field id string
+---@field idempotency_key? string
+---@field identifier_match? boolean
+---@field in_use table
+---@field instruction? string
+---@field invited boolean
+---@field key_check any
+---@field kind string
+---@field label string
+---@field lastMessageAt string|nil
+---@field lastMessageAuthorType string
+---@field lastMessagePreview string
+---@field last_delivery_at string|nil
+---@field last_error_code any
+---@field last_probe_at any
+---@field last_problem any
+---@field legal_name? string
+---@field limit? number
+---@field make_active boolean
+---@field max_cents number
+---@field max_redemptions? number|nil
+---@field messages table
+---@field messagesTruncated boolean
+---@field min_cents number
+---@field model string
+---@field model_id string
+---@field name string
+---@field note? string
+---@field notes? string
+---@field observed_at? string
+---@field one_time_display any
+---@field outcome string
+---@field ownerEmail string
+---@field ownerLastReadAt string|nil
+---@field ownerName string
+---@field ownerUserId string
+---@field owner_reason_code? string
+---@field per_customer_limit? number
+---@field percent_off? number
+---@field phone? string
+---@field policyVersion string
+---@field priority? string
+---@field provider string
+---@field providers table
+---@field purpose_code string
+---@field rank_bid_cents number
+---@field reason? string
+---@field reason_category? string
+---@field reason_code? string
+---@field reason_detail? string
+---@field reference string
+---@field reject_reason? string
+---@field related_case_id? string
+---@field report_id? number
+---@field report_ids table
+---@field reserve_cents number
+---@field resolution_note string
+---@field review_notes? string
+---@field revision number
+---@field role? string
+---@field rows table
+---@field run table
+---@field schema_version string
+---@field scope string
+---@field search? string
+---@field settings table
+---@field signing_secret string
+---@field size_bytes number
+---@field sla_due_at? string|nil
+---@field source? string
+---@field source_authority? string
+---@field source_category_slug? string
+---@field source_scope_checked boolean
+---@field source_url? string
+---@field starts_at? string|nil
+---@field state? string
+---@field status? string
+---@field storage string
+---@field street_address? string
+---@field subject string
+---@field supportLastReadAt string|nil
+---@field target_category? string
+---@field taxonomy_category_aliases table
+---@field ticketNumber string
+---@field tier string
+---@field typing? boolean
+---@field until? string
+---@field updatedAt string|nil
+---@field updated_at string
+---@field url string
+---@field valid_until? string
+---@field value string
+---@field verification_method string
+---@field verified_at any
+---@field verified_service_scope? table
+---@field version? string
+---@field website? string
+---@field width? number
+---@field window_hours? number
+---@field workload string
+---@field zip? string
+
+---@class OperationUpdateData
+---@field provider string
+---@field api_key? string
+---@field base_url? string
+---@field category_alias? string
+---@field connection_id? string
+---@field custom_wire? string
+---@field enabled? boolean
+---@field make_active? boolean
+---@field max_cents? number
+---@field min_cents? number
+---@field model? string
+---@field model_id? string
+---@field reason? string
+---@field reserve_cents? number
+
+---@class OperationPatchData
+---@field candidate_id string
+---@field assigned_admin_user_id? string|nil
+---@field case_status? string
+---@field confidence? number
+---@field expected_version? number
+---@field notes? string
+---@field priority? string
+---@field reason_code? string
+---@field review_notes? string
+---@field sla_due_at? string|nil
+---@field status? string
+---@field target_category? string
+
+---@class OperationRemoveMatch
+---@field access_context_id string
+
+---@class OwnerNotification
+---@field businessId string
+---@field createdAt string
+---@field dedupeKey string
+---@field emailStatus string
+---@field eventType any
+---@field id string
+---@field readAt string|nil
+---@field resourceId string
+---@field resourceKind any
+---@field resourceUrl string
+---@field summary string
+---@field webhookStatus string
+
+---@class OwnerNotificationCreateData
+---@field notification_id string
+
+---@class OwnerNotificationSetting
+---@field businessId string
+---@field business_id? string
+---@field createdAt string
+---@field emailEnabled boolean
+---@field email_enabled? boolean
+---@field eventTypeSubscriptions table
+---@field event_types? table
+---@field updatedAt string
+---@field webhookEnabled boolean
+---@field webhook_enabled? boolean
+
+---@class OwnerNotificationSettingCreateData
+---@field business_id? string
+---@field email_enabled? boolean
+---@field event_types? table
+---@field webhook_enabled? boolean
+
+---@class OwnerWebhookEndpoint
+---@field businessId string
+---@field createdAt string
+---@field enabled boolean
+---@field eventTypeSubscriptions table
+---@field failureCount number
+---@field id string
+---@field lastDeliveryAt string|nil
+---@field updatedAt string
+---@field url string
+
+---@class OwnerWebhookEndpointCreateData
+---@field webhook_id string
+
+---@class OwnerWebhookRegistration
+---@field business_id? string
+---@field endpoint table
+---@field event_types? table
+---@field one_time_display any
+---@field signing_secret string
+---@field status any
+---@field url string
+
+---@class OwnerWebhookRegistrationCreateData
+---@field business_id? string
+---@field event_types? table
+---@field url string
+
+---@class Pricing
+---@field billing table
+---@field branch_add_ons table
+---@field currency any
+---@field generated_at string
+---@field neutrality string
+---@field plans table
+---@field promotions table
+---@field published_at string|nil
+---@field radius_extension table
+---@field revision_id string|nil
+---@field source any
+---@field trust_model_version any
+
+---@class PricingListMatch
+---@field billing? table
+---@field branch_add_ons? table
+---@field currency? any
+---@field generated_at? string
+---@field neutrality? string
+---@field plans? table
+---@field promotions? table
+---@field published_at? string|nil
+---@field radius_extension? table
+---@field revision_id? string|nil
+---@field source? any
+---@field trust_model_version? any
+
+---@class PromoteVerifiedTransaction
+---@field business_id string
+---@field evidence_id string
+---@field interaction_id string
+---@field ok any
+---@field review_upgraded boolean
+---@field status any
+---@field trust_weight any
+---@field verified boolean
+
+---@class PromoteVerifiedTransactionCreateData
+---@field business_id string
+---@field evidence_id string
+
+---@class PublicContent
+---@field blocks table
+---@field generated_at string
+---@field source any
+---@field trust_model_version any
+
+---@class PublicContentLoadMatch
+---@field blocks? table
+---@field generated_at? string
+---@field source? any
+---@field trust_model_version? any
+
+---@class Recommend
+---@field candidate_window_truncated boolean
+---@field commercial_influence string
+---@field display_count? number
+---@field endpoint any
+---@field fallback_registry table
+---@field generated_at string
+---@field has_more boolean
+---@field listed table
+---@field location_context any
+---@field ordering any
+---@field policy string
+---@field presentation_guidance? string
+---@field query table
+---@field ranking_policy string
+---@field registry_count_basis string
+---@field registry_count_observed_at string|nil
+---@field registry_name any
+---@field results table
+---@field returned_count number
+---@field reviewed_registry table
+---@field schema_version any
+---@field search_intent table
+---@field suggestions? table
+---@field total_matches? number
+---@field total_matches_basis? number
+---@field total_registry_records number
+---@field trust_model_version any
+---@field verified table
+---@field visible_candidate_records? number
+
+---@class RecommendListMatch
+---@field allowed_action? string
+---@field category? string
+---@field city? string
+---@field limit? number
+---@field location_handoff_id? string
+---@field location_proof_id? string
+---@field location_selection? string
+---@field q? string
+---@field radius_mile? number
+---@field saved_location_ref? string
+---@field state? string
+---@field zip? string
+
+---@class Review
+---@field account_id string
+---@field attestation_accepted boolean
+---@field customer_confirmed? boolean
+---@field message string
+---@field rating number
+---@field service_date? any
+---@field subject string
+---@field target_business_id string
+
+---@class ReviewCreateData
+---@field account_id string
+---@field attestation_accepted boolean
+---@field customer_confirmed? boolean
+---@field message string
+---@field rating number
+---@field service_date? any
+---@field subject string
+---@field target_business_id string
+
+---@class Revoke
+---@field account_id string
+---@field key_id string
+---@field revoked_by string
+---@field status any
+
+---@class RevokeCreateData
+---@field agent_key_id string
+
+---@class SaveBusiness
+---@field account_id string
+---@field business_id string
+---@field business_name string
+---@field business_source string
+---@field category? string
+---@field city? string
+---@field created_at string
+---@field notes? string
+---@field saved_business_id string
+---@field state? string
+---@field status any
+
+---@class SaveBusinessCreateData
+---@field account_id string
+---@field business_id string
+---@field business_name string
+---@field business_source string
+---@field category? string
+---@field city? string
+---@field notes? string
+---@field state? string
+
+---@class SavedBusiness
+---@field account_id string
+---@field count number
+---@field limit? number
+---@field saved_businesses table
+
+---@class SavedBusinessCreateData
+---@field account_id string
+---@field limit? number
+
+---@class SavedLocation
+---@field available boolean
+---@field coordinates_returned any
+---@field kind any
+---@field label string|nil
+---@field location_proof_id? string
+---@field reach_precision any
+---@field saved_location_ref string|nil
+---@field updated_at string|nil
+---@field zip? string
+
+---@class SavedLocationUpdateData
+---@field label? string|nil
+---@field location_proof_id? string
+---@field zip? string
+
+---@class SavedLocationRemoveMatch
+---@field available? boolean
+---@field coordinates_returned? any
+---@field kind? any
+---@field label? string|nil
+---@field location_proof_id? string
+---@field reach_precision? any
+---@field saved_location_ref? string|nil
+---@field updated_at? string|nil
+---@field zip? string
+
+---@class Search
+---@field candidate_window_truncated boolean
+---@field commercial_influence string
+---@field display_count? number
+---@field generated_at string
+---@field has_more boolean
+---@field location_context any
+---@field next_cursor string|nil
+---@field page_limit number
+---@field policy string
+---@field presentation_guidance? string
+---@field query table
+---@field ranking_policy string
+---@field registry_count_basis string
+---@field registry_count_observed_at string|nil
+---@field registry_name any
+---@field results table
+---@field returned_count number
+---@field schema_version any
+---@field search_intent table
+---@field suggestions? table
+---@field total_matches? number
+---@field total_matches_basis? number
+---@field total_registry_records number
+---@field trust_model_version any
+---@field visible_candidate_records? number
+
+---@class SearchListMatch
+---@field category? string
+---@field city? string
+---@field consumer_reach? boolean
+---@field cursor? string
+---@field include_directory_listing? boolean
+---@field intent? string
+---@field limit? number
+---@field location_handoff_id? string
+---@field location_proof_id? string
+---@field location_selection? string
+---@field paid_only? boolean
+---@field q? string
+---@field radius_mile? number
+---@field saved_location_ref? string
+---@field search_intent? string
+---@field state? string
+---@field zip? string
+
+---@class Suggest
+---@field categories table
+---@field names table
+---@field query string
+---@field schema_version any
+
+---@class SuggestListMatch
+---@field q? string
+
+---@class SupportInternalNote
+---@field authorLabel string
+---@field body string
+---@field createdAt string|nil
+---@field id string
+
+---@class SupportInternalNoteCreateData
+---@field id string
+---@field body string
+
+---@class SupportWorkflow
+---@field category? any
+---@field id? string
+---@field priority? any
+---@field waiting_on? any
+
+---@class SupportWorkflowCreateData
+---@field id string
+---@field category? any
+---@field priority? any
+---@field waiting_on? any
+
+---@class TaxonomySuggestion
+---@field alias string
+---@field path_titles table
+---@field title string
+
+---@class TaxonomySuggestionListMatch
+---@field limit? number
+---@field q? string
+
+---@class TrustCard
+---@field agency string
+---@field collected_at string
+---@field disclosure string
+---@field fact_id string
+---@field matched_on string
+---@field reason? string
+---@field record_kind string
+---@field record_number string|nil
+---@field record_scope string
+---@field record_type string
+---@field recorded_expiry string|nil
+---@field result string
+---@field source_label string
+---@field source_url string
+---@field state string
+---@field status_on_record string
+
+---@class TrustCardLoadMatch
+---@field schema_name string
+
+---@class TrustCardListMatch
+---@field business_id string
+
+---@class TrustCardCreateData
+---@field business_id string
+---@field license_record_id string
+---@field reason? string
+
+---@class UnsaveBusiness
+---@field account_id string
+---@field business_id string
+---@field removed boolean
+---@field status any
+
+---@class UnsaveBusinessCreateData
+---@field account_id string
+---@field business_id string
+
+---@class UpdateAgentBillingAccount
+---@field account_id string
+---@field billing_account table
+---@field billing_status? string
+---@field included_actions? number
+---@field monthly_fee_cents? number
+---@field overage_cents? number
+---@field plan? string
+---@field status any
+---@field updated_by string
+
+---@class UpdateAgentBillingAccountCreateData
+---@field account_id string
+---@field billing_status? string
+---@field included_actions? number
+---@field monthly_fee_cents? number
+---@field overage_cents? number
+---@field plan? string
+
+---@class WithdrawJobApplication
+---@field account_id string
+---@field already_withdrawn boolean
+---@field application table
+---@field application_id string
+---@field status any
+
+---@class WithdrawJobApplicationCreateData
+---@field account_id string
+---@field application_id string
+
+local M = {}
+
+return M

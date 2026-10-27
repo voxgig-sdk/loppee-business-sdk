@@ -1,0 +1,28 @@
+# BasicPublicContentFlow
+
+main: kit: flow: BasicPublicContentFlow:
+{
+  entity: "public_content",
+  kind: "basic",
+  name: "BasicPublicContentFlow",
+  step: [
+    {
+      i: {
+        ref: "public_content_ref01",
+        srcdatavar: "public_content_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-public_content_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPublicContentFlow"
+}

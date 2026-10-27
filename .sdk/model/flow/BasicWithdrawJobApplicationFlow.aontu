@@ -1,0 +1,18 @@
+# BasicWithdrawJobApplicationFlow
+
+main: kit: flow: BasicWithdrawJobApplicationFlow:
+{
+  entity: "withdraw_job_application",
+  kind: "basic",
+  name: "BasicWithdrawJobApplicationFlow",
+  step: [
+    {
+      i: {
+        ref: "withdraw_job_application_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicWithdrawJobApplicationFlow"
+}

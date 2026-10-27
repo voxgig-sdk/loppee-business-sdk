@@ -1,0 +1,138 @@
+# Entity: health
+
+main: kit: entity: health: {
+
+  alias: field: {}
+
+  fields: {
+    agent_phone_location_bridge: {
+      h: "Agent Phone Location Bridge"
+      n: "agent_phone_location_bridge"
+      r: true
+      t: "`$OBJECT`"
+    }
+    build_sha: {
+      h: "Build Sha"
+      n: "build_sha"
+      r: true
+      t: "`$STRING`"
+    }
+    business_review_access: {
+      h: "Business Review Access"
+      n: "business_review_access"
+      r: true
+      t: "`$OBJECT`"
+    }
+    contract_version: {
+      h: "Contract Version"
+      n: "contract_version"
+      r: true
+      t: "`$STRING`"
+    }
+    external_agent_webhooks: {
+      h: "External Agent Webhooks"
+      n: "external_agent_webhooks"
+      r: true
+      t: "`$OBJECT`"
+    }
+    external_agent_webhooks_enabled: {
+      h: "External Agent Webhooks Enabled"
+      n: "external_agent_webhooks_enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    ios_app_attest_anonymous_location: {
+      h: "Ios App Attest Anonymous Location"
+      n: "ios_app_attest_anonymous_location"
+      r: true
+      t: "`$OBJECT`"
+    }
+    location_choices: {
+      h: "Location Choices"
+      n: "location_choices"
+      r: true
+      t: "`$OBJECT`"
+    }
+    location_handoff: {
+      h: "Location Handoff"
+      n: "location_handoff"
+      r: true
+      t: "`$OBJECT`"
+    }
+    mobile_push: {
+      h: "Mobile Push"
+      n: "mobile_push"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    ok: {
+      h: "Ok"
+      n: "ok"
+      r: true
+      t: "`$ANY`"
+    }
+    service: {
+      h: "Service"
+      n: "service"
+      r: true
+      t: "`$STRING`"
+    }
+    sponsored_ordering: {
+      h: "Sponsored Ordering"
+      n: "sponsored_ordering"
+      r: true
+      t: "`$OBJECT`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: true
+      t: "`$ANY`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "health"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /health"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/health"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "health"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,179 @@
+# Entity: agent_integration
+
+main: kit: entity: agent_integration: {
+
+  alias: field: {}
+
+  fields: {
+    auth_model: {
+      h: "Auth Model"
+      n: "auth_model"
+      r: true
+      t: "`$OBJECT`"
+    }
+    commercial_influence: {
+      h: "Commercial Influence"
+      n: "commercial_influence"
+      r: true
+      t: "`$OBJECT`"
+    }
+    developer_docs_url: {
+      h: "Developer Docs Url"
+      n: "developer_docs_url"
+      r: true
+      t: "`$STRING`"
+    }
+    exposure_tiers: {
+      h: "Exposure Tiers"
+      n: "exposure_tiers"
+      r: true
+      t: "`$OBJECT`"
+    }
+    external_agent_access: {
+      h: "External Agent Access"
+      n: "external_agent_access"
+      r: true
+      t: "`$OBJECT`"
+    }
+    generated_at: {
+      fo: "date-time"
+      h: "Generated At"
+      n: "generated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    http_api: {
+      h: "Http Api"
+      n: "http_api"
+      r: true
+      t: "`$OBJECT`"
+    }
+    legal: {
+      h: "Legal"
+      n: "legal"
+      r: true
+      t: "`$OBJECT`"
+    }
+    mcp: {
+      h: "Mcp"
+      n: "mcp"
+      r: true
+      t: "`$OBJECT`"
+    }
+    mcp_client_example_url: {
+      h: "Mcp Client Example Url"
+      n: "mcp_client_example_url"
+      r: true
+      t: "`$STRING`"
+    }
+    monitoring_url: {
+      h: "Monitoring Url"
+      n: "monitoring_url"
+      r: true
+      t: "`$STRING`"
+    }
+    openapi_url: {
+      h: "Openapi Url"
+      n: "openapi_url"
+      r: true
+      t: "`$STRING`"
+    }
+    openapi_v1_url: {
+      h: "Openapi V1 Url"
+      n: "openapi_v1_url"
+      r: true
+      t: "`$STRING`"
+    }
+    operational_rules: {
+      h: "Operational Rules"
+      n: "operational_rules"
+      r: true
+      t: "`$ARRAY`"
+    }
+    owner_agent_notifications: {
+      h: "Owner Agent Notifications"
+      n: "owner_agent_notifications"
+      r: true
+      t: "`$OBJECT`"
+    }
+    package_url: {
+      h: "Package Url"
+      n: "package_url"
+      r: true
+      t: "`$STRING`"
+    }
+    public_base_url: {
+      h: "Public Base Url"
+      n: "public_base_url"
+      r: true
+      t: "`$STRING`"
+    }
+    rate_limits: {
+      h: "Rate Limits"
+      n: "rate_limits"
+      r: true
+      t: "`$OBJECT`"
+    }
+    registry_name: {
+      h: "Registry Name"
+      n: "registry_name"
+      r: true
+      t: "`$ANY`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$STRING`"
+    }
+    trust_card_contract: {
+      h: "Trust Card Contract"
+      n: "trust_card_contract"
+      r: true
+      t: "`$OBJECT`"
+    }
+    trust_doctrine: {
+      h: "Trust Doctrine"
+      n: "trust_doctrine"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "agent_integration"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/agent-integration.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/agent-integration.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent-integration.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

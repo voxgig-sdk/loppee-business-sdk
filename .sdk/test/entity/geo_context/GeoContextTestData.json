@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "geo_context": {
+      "GEO_CONTEXT00": {
+        "id": "GEO_CONTEXT00"
+      },
+      "GEO_CONTEXT01": {
+        "id": "GEO_CONTEXT01"
+      },
+      "GEO_CONTEXT02": {
+        "id": "GEO_CONTEXT02"
+      }
+    }
+  },
+  "new": {
+    "geo_context": {
+      "geo_context_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /v1/geo/context": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

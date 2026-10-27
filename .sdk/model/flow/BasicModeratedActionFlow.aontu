@@ -1,0 +1,36 @@
+# BasicModeratedActionFlow
+
+main: kit: flow: BasicModeratedActionFlow:
+{
+  entity: "moderated_action",
+  kind: "basic",
+  name: "BasicModeratedActionFlow",
+  step: [
+    {
+      i: {
+        ref: "moderated_action_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "moderated_action_ref01",
+        srcdatavar: "moderated_action_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-moderated_action_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicModeratedActionFlow"
+}

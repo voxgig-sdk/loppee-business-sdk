@@ -1,0 +1,22 @@
+# BasicSupportWorkflowFlow
+
+main: kit: flow: BasicSupportWorkflowFlow:
+{
+  entity: "support_workflow",
+  kind: "basic",
+  name: "BasicSupportWorkflowFlow",
+  step: [
+    {
+      i: {
+        ref: "support_workflow_ref01"
+      }
+
+      m: {
+        conversation_id: "conversation01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSupportWorkflowFlow"
+}

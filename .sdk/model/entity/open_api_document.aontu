@@ -1,0 +1,104 @@
+# Entity: open_api_document
+
+main: kit: entity: open_api_document: {
+
+  alias: field: {}
+
+  fields: {
+    components: {
+      h: "Components"
+      n: "components"
+      r: true
+      t: "`$OBJECT`"
+    }
+    info: {
+      h: "Info"
+      n: "info"
+      r: true
+      t: "`$OBJECT`"
+    }
+    openapi: {
+      h: "Openapi"
+      n: "openapi"
+      r: true
+      t: "`$ANY`"
+    }
+    paths: {
+      h: "Paths"
+      n: "paths"
+      r: true
+      t: "`$OBJECT`"
+    }
+    servers: {
+      h: "Servers"
+      n: "servers"
+      r: true
+      t: "`$ARRAY`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "open_api_document"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /openapi.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/openapi.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "openapi.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/openapi.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/openapi.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "openapi.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

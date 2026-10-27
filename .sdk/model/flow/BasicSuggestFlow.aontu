@@ -1,0 +1,22 @@
+# BasicSuggestFlow
+
+main: kit: flow: BasicSuggestFlow:
+{
+  entity: "suggest",
+  kind: "basic",
+  name: "BasicSuggestFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "suggest_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSuggestFlow"
+}

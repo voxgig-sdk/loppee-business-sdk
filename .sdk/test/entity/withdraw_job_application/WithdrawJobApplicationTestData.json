@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "withdraw_job_application": {
+      "WITHDRAW_JOB_APPLICATION00": {
+        "account_id": "ACCOUNT01",
+        "already_withdrawn": false,
+        "application": {},
+        "application_id": "APPLICATION01",
+        "status": "s36",
+        "id": "WITHDRAW_JOB_APPLICATION00"
+      },
+      "WITHDRAW_JOB_APPLICATION01": {
+        "account_id": "ACCOUNT01",
+        "already_withdrawn": false,
+        "application": {},
+        "application_id": "APPLICATION01",
+        "status": "s68",
+        "id": "WITHDRAW_JOB_APPLICATION01"
+      },
+      "WITHDRAW_JOB_APPLICATION02": {
+        "account_id": "ACCOUNT01",
+        "already_withdrawn": false,
+        "application": {},
+        "application_id": "APPLICATION01",
+        "status": "s9a",
+        "id": "WITHDRAW_JOB_APPLICATION02"
+      }
+    }
+  },
+  "new": {
+    "withdraw_job_application": {
+      "withdraw_job_application_ref01": {
+        "account_id": "ACCOUNT01",
+        "already_withdrawn": false,
+        "application": {},
+        "application_id": "APPLICATION01",
+        "status": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/withdraw-job-application": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

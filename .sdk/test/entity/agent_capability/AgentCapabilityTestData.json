@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "agent_capability": {
+      "AGENT_CAPABILITY00": {
+        "agent_phone_location_bridge": {},
+        "agent_rules": {},
+        "discovery": {},
+        "external_agent_access": {},
+        "external_agent_webhooks": {},
+        "local_discovery_location_policy": {},
+        "location_choices": {},
+        "registry_name": "s6b",
+        "schema_version": "s6c",
+        "trust_model_version": "s6d",
+        "id": "AGENT_CAPABILITY00"
+      },
+      "AGENT_CAPABILITY01": {
+        "agent_phone_location_bridge": {},
+        "agent_rules": {},
+        "discovery": {},
+        "external_agent_access": {},
+        "external_agent_webhooks": {},
+        "local_discovery_location_policy": {},
+        "location_choices": {},
+        "registry_name": "scf",
+        "schema_version": "sd0",
+        "trust_model_version": "sd1",
+        "id": "AGENT_CAPABILITY01"
+      },
+      "AGENT_CAPABILITY02": {
+        "agent_phone_location_bridge": {},
+        "agent_rules": {},
+        "discovery": {},
+        "external_agent_access": {},
+        "external_agent_webhooks": {},
+        "local_discovery_location_policy": {},
+        "location_choices": {},
+        "registry_name": "s133",
+        "schema_version": "s134",
+        "trust_model_version": "s135",
+        "id": "AGENT_CAPABILITY02"
+      }
+    }
+  },
+  "new": {
+    "agent_capability": {
+      "agent_capability_ref01": {
+        "agent_phone_location_bridge": {},
+        "agent_rules": {},
+        "discovery": {},
+        "external_agent_access": {},
+        "external_agent_webhooks": {},
+        "local_discovery_location_policy": {},
+        "location_choices": {},
+        "registry_name": "s197",
+        "schema_version": "s198",
+        "trust_model_version": "s199"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/agent-capabilities.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

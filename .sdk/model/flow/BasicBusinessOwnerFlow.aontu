@@ -1,0 +1,37 @@
+# BasicBusinessOwnerFlow
+
+main: kit: flow: BasicBusinessOwnerFlow:
+{
+  entity: "business_owner",
+  kind: "basic",
+  name: "BasicBusinessOwnerFlow",
+  step: [
+    {
+      i: {
+        ref: "business_owner_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "business_owner_ref01",
+        srcdatavar: "business_owner_ref01_data",
+        suffix: "_up0",
+        textfield: "account_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-business_owner_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBusinessOwnerFlow"
+}

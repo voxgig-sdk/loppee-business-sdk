@@ -1,0 +1,85 @@
+# Entity: taxonomy_suggestion
+
+main: kit: entity: taxonomy_suggestion: {
+
+  alias: field: {}
+
+  fields: {
+    alias: {
+      h: "Alias"
+      n: "alias"
+      r: true
+      t: "`$STRING`"
+    }
+    path_titles: {
+      h: "Path Titles"
+      n: "path_titles"
+      r: true
+      t: "`$ARRAY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "taxonomy_suggestion"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/taxonomy/suggest"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/taxonomy/suggest"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "taxonomy"
+            }
+            {
+              lit: "suggest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.suggestions`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

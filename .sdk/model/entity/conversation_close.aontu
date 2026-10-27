@@ -1,0 +1,107 @@
+# Entity: conversation_close
+
+main: kit: entity: conversation_close: {
+
+  alias: field: {}
+
+  fields: {
+    closed_at: {
+      fo: "date-time"
+      h: "Closed At"
+      n: "closed_at"
+      r: true
+      t: "`$STRING`"
+    }
+    conversation_id: {
+      h: "Conversation Id"
+      n: "conversation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversation_close"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /v1/account/conversations/{conversation_id}/close"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/conversations/{conversation_id}/close"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "close"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

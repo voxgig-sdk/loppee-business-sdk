@@ -1,0 +1,221 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { LoppeeBusinessSDK, BaseFeature, config, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('AgentIntegrationEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when LOPPEE_BUSINESS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('LOPPEE_BUSINESS_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = LoppeeBusinessSDK.test()
+    const ent = testsdk.AgentIntegration()
+    assert(null != ent)
+  })
+
+
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('agent_integration hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of LoppeeBusinessSDK.test(offline).AgentIntegration().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of LoppeeBusinessSDK.test(offline).AgentIntegration()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = LoppeeBusinessSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.AgentIntegration().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of LoppeeBusinessSDK.test().AgentIntegration().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new LoppeeBusinessSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.AgentIntegration().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.AgentIntegration().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = LoppeeBusinessSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.AgentIntegration().list({"developer_docs_url":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.LOPPEE_BUSINESS_TEST_LIVE
+    for (const op of ['list']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'agent_integration.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"auth_model":{"a":true,"h":"Auth Model","n":"auth_model","r":true,"t":"`$OBJECT`","key$":"auth_model","index$":0},"commercial_influence":{"a":true,"h":"Commercial Influence","n":"commercial_influence","r":true,"t":"`$OBJECT`","key$":"commercial_influence","index$":1},"developer_docs_url":{"a":true,"h":"Developer Docs Url","n":"developer_docs_url","r":true,"t":"`$STRING`","key$":"developer_docs_url","index$":2},"exposure_tiers":{"a":true,"h":"Exposure Tiers","n":"exposure_tiers","r":true,"t":"`$OBJECT`","key$":"exposure_tiers","index$":3},"external_agent_access":{"a":true,"h":"External Agent Access","n":"external_agent_access","r":true,"t":"`$OBJECT`","key$":"external_agent_access","index$":4},"generated_at":{"a":true,"fo":"date-time","h":"Generated At","n":"generated_at","r":true,"t":"`$STRING`","key$":"generated_at","index$":5},"http_api":{"a":true,"h":"Http Api","n":"http_api","r":true,"t":"`$OBJECT`","key$":"http_api","index$":6},"legal":{"a":true,"h":"Legal","n":"legal","r":true,"t":"`$OBJECT`","key$":"legal","index$":7},"mcp":{"a":true,"h":"Mcp","n":"mcp","r":true,"t":"`$OBJECT`","key$":"mcp","index$":8},"mcp_client_example_url":{"a":true,"h":"Mcp Client Example Url","n":"mcp_client_example_url","r":true,"t":"`$STRING`","key$":"mcp_client_example_url","index$":9},"monitoring_url":{"a":true,"h":"Monitoring Url","n":"monitoring_url","r":true,"t":"`$STRING`","key$":"monitoring_url","index$":10},"openapi_url":{"a":true,"h":"Openapi Url","n":"openapi_url","r":true,"t":"`$STRING`","key$":"openapi_url","index$":11},"openapi_v1_url":{"a":true,"h":"Openapi V1 Url","n":"openapi_v1_url","r":true,"t":"`$STRING`","key$":"openapi_v1_url","index$":12},"operational_rules":{"a":true,"h":"Operational Rules","n":"operational_rules","r":true,"t":"`$ARRAY`","key$":"operational_rules","index$":13},"owner_agent_notifications":{"a":true,"h":"Owner Agent Notifications","n":"owner_agent_notifications","r":true,"t":"`$OBJECT`","key$":"owner_agent_notifications","index$":14},"package_url":{"a":true,"h":"Package Url","n":"package_url","r":true,"t":"`$STRING`","key$":"package_url","index$":15},"public_base_url":{"a":true,"h":"Public Base Url","n":"public_base_url","r":true,"t":"`$STRING`","key$":"public_base_url","index$":16},"rate_limits":{"a":true,"h":"Rate Limits","n":"rate_limits","r":true,"t":"`$OBJECT`","key$":"rate_limits","index$":17},"registry_name":{"a":true,"h":"Registry Name","n":"registry_name","r":true,"t":"`$ANY`","key$":"registry_name","index$":18},"schema_version":{"a":true,"h":"Schema Version","n":"schema_version","r":true,"t":"`$STRING`","key$":"schema_version","index$":19},"trust_card_contract":{"a":true,"h":"Trust Card Contract","n":"trust_card_contract","r":true,"t":"`$OBJECT`","key$":"trust_card_contract","index$":20},"trust_doctrine":{"a":true,"h":"Trust Doctrine","n":"trust_doctrine","r":true,"t":"`$OBJECT`","key$":"trust_doctrine","index$":21}},"name":"agent_integration","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /v1/agent-integration.json","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/v1/agent-integration.json","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v1"},{"lit":"agent-integration.json"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"agent_integration","name__orig":"agent_integration","Name":"AgentIntegration","name_":"agent_integration","name-":"agent-integration","NAME":"AGENT_INTEGRATION","index$":3}, {"active":true,"entity":"agent_integration","key$":"BasicAgentIntegrationFlow","kind":"basic","name":"BasicAgentIntegrationFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"agent_integration_ref01"}}],"index$":0}]}, 'AgentIntegration', {"GET /v1/agent-integration.json":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+    let agent_integration_ref01_data = Object.values(setup.data.existing.agent_integration)[0] as any
+
+    // LIST
+    const agent_integration_ref01_ent = client.AgentIntegration()
+    const agent_integration_ref01_match: any = {}
+
+    const agent_integration_ref01_list = (await agent_integration_ref01_ent.list(agent_integration_ref01_match)).map((e: any) => e.data())
+
+
+  })
+})
+
+
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/agent_integration/AgentIntegrationTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = LoppeeBusinessSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['agent_integration01','agent_integration02','agent_integration03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'LOPPEE_BUSINESS_TEST_AGENT_INTEGRATION_ENTID': idmap,
+    'LOPPEE_BUSINESS_TEST_LIVE': 'FALSE',
+    'LOPPEE_BUSINESS_TEST_EXPLAIN': 'FALSE',
+    'LOPPEE_BUSINESS_APIKEY': '',
+  })
+
+  idmap = env['LOPPEE_BUSINESS_TEST_AGENT_INTEGRATION_ENTID']
+
+  const live = 'TRUE' === env.LOPPEE_BUSINESS_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['LOPPEE_BUSINESS_TEST_AGENT_INTEGRATION_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new LoppeeBusinessSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.LOPPEE_BUSINESS_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.LOPPEE_BUSINESS_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

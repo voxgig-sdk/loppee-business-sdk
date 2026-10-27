@@ -1,0 +1,114 @@
+# Entity: support_workflow
+
+main: kit: entity: support_workflow: {
+
+  alias: field: {}
+
+  fields: {
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    priority: {
+      h: "Priority"
+      n: "priority"
+      r: false
+      t: "`$ANY`"
+    }
+    waiting_on: {
+      h: "Waiting On"
+      n: "waiting_on"
+      r: false
+      t: "`$ANY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "support_workflow"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "category"
+            "priority"
+            "waiting_on"
+          ]
+          co: {
+            id: "POST /v1/admin/support/{conversation_id}/workflow"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/admin/support/{conversation_id}/workflow"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "support"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "workflow"
+            }
+          ]
+          t: {
+            req: {
+              category: "`reqdata.category`"
+              priority: "`reqdata.priority`"
+              waiting_on: "`reqdata.waiting_on`"
+            }
+            res: "`body.conversation`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "business_review": {
+      "BUSINESS_REVIEW00": {
+        "id": "BUSINESS_REVIEW00"
+      },
+      "BUSINESS_REVIEW01": {
+        "id": "BUSINESS_REVIEW01"
+      },
+      "BUSINESS_REVIEW02": {
+        "id": "BUSINESS_REVIEW02"
+      }
+    }
+  },
+  "new": {
+    "business_review": {
+      "business_review_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /v1/businesses/{business_id}/reviews.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

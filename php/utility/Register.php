@@ -1,0 +1,72 @@
+<?php
+declare(strict_types=1);
+
+// LoppeeBusiness SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+LoppeeBusinessUtility::setRegistrar(function (LoppeeBusinessUtility $u): void {
+    $u->clean = [LoppeeBusinessClean::class, 'call'];
+    $u->clean_add = [LoppeeBusinessClean::class, 'add'];
+    $u->clean_explain = [LoppeeBusinessDone::class, 'clean_explain'];
+    $u->done = [LoppeeBusinessDone::class, 'call'];
+    $u->make_error = [LoppeeBusinessMakeError::class, 'call'];
+    $u->feature_add = [LoppeeBusinessFeatureAdd::class, 'call'];
+    $u->feature_hook = [LoppeeBusinessFeatureHook::class, 'call'];
+    $u->feature_init = [LoppeeBusinessFeatureInit::class, 'call'];
+    $u->fetcher = [LoppeeBusinessFetcher::class, 'call'];
+    $u->make_fetch_def = [LoppeeBusinessMakeFetchDef::class, 'call'];
+    $u->make_context = [LoppeeBusinessMakeContext::class, 'call'];
+    $u->make_options = [LoppeeBusinessMakeOptions::class, 'call'];
+    $u->make_request = [LoppeeBusinessMakeRequest::class, 'call'];
+    $u->make_response = [LoppeeBusinessMakeResponse::class, 'call'];
+    $u->make_result = [LoppeeBusinessMakeResult::class, 'call'];
+    $u->make_point = [LoppeeBusinessMakePoint::class, 'call'];
+    $u->make_spec = [LoppeeBusinessMakeSpec::class, 'call'];
+    $u->make_url = [LoppeeBusinessMakeUrl::class, 'call'];
+    $u->param = [LoppeeBusinessParam::class, 'call'];
+    $u->prepare_auth = [LoppeeBusinessPrepareAuth::class, 'call'];
+    $u->prepare_body = [LoppeeBusinessPrepareBody::class, 'call'];
+    $u->prepare_headers = [LoppeeBusinessPrepareHeaders::class, 'call'];
+    $u->prepare_method = [LoppeeBusinessPrepareMethod::class, 'call'];
+    $u->prepare_params = [LoppeeBusinessPrepareParams::class, 'call'];
+    $u->prepare_path = [LoppeeBusinessPreparePath::class, 'call'];
+    $u->prepare_query = [LoppeeBusinessPrepareQuery::class, 'call'];
+    $u->graphql_body = [LoppeeBusinessGraphql::class, 'body'];
+    $u->graphql_errors = [LoppeeBusinessGraphql::class, 'errors'];
+    $u->result_basic = [LoppeeBusinessResultBasic::class, 'call'];
+    $u->result_body = [LoppeeBusinessResultBody::class, 'call'];
+    $u->result_headers = [LoppeeBusinessResultHeaders::class, 'call'];
+    $u->transform_request = [LoppeeBusinessTransformRequest::class, 'call'];
+    $u->transform_response = [LoppeeBusinessTransformResponse::class, 'call'];
+});

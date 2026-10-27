@@ -1,0 +1,222 @@
+# Entity: customer
+
+main: kit: entity: customer: {
+
+  alias: field: {}
+
+  fields: {
+    auth_provider: {
+      h: "Auth Provider"
+      n: "auth_provider"
+      r: false
+      t: "`$STRING`"
+    }
+    avatar_url: {
+      fo: "uri"
+      h: "Avatar Url"
+      n: "avatar_url"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "Short-lived signed display URL for a private avatar object, or null."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    city: {
+      h: "City"
+      n: "city"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      r: true
+      t: "`$STRING`"
+    }
+    full_name: {
+      h: "Full Name"
+      n: "full_name"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    phone: {
+      h: "Phone"
+      n: "phone"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    search_category: {
+      h: "Search Category"
+      n: "search_category"
+      r: false
+      t: "`$STRING`"
+    }
+    service_need: {
+      h: "Service Need"
+      n: "service_need"
+      r: false
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "customer"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "auth_provider"
+            "avatar_url"
+            "city"
+            "full_name"
+            "phone"
+            "search_category"
+            "service_need"
+            "state"
+          ]
+          co: {
+            id: "POST /v1/account/customer"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/customer"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "customer"
+            }
+          ]
+          t: {
+            req: {
+              auth_provider: "`reqdata.auth_provider`"
+              avatar_url: "`reqdata.avatar_url`"
+              city: "`reqdata.city`"
+              full_name: "`reqdata.full_name`"
+              phone: "`reqdata.phone`"
+              search_category: "`reqdata.search_category`"
+              service_need: "`reqdata.service_need`"
+              state: "`reqdata.state`"
+            }
+            res: "`body.account`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

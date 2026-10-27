@@ -1,0 +1,402 @@
+# Entity: job_application
+
+main: kit: entity: job_application: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    already_withdrawn: {
+      h: "Already Withdrawn"
+      n: "already_withdrawn"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    application: {
+      h: "Application"
+      n: "application"
+      r: true
+      t: "`$OBJECT`"
+    }
+    applications: {
+      h: "Applications"
+      n: "applications"
+      r: true
+      t: "`$ARRAY`"
+    }
+    billing: {
+      h: "Billing"
+      n: "billing"
+      r: true
+      t: "`$OBJECT`"
+    }
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: false
+      t: "`$STRING`"
+    }
+    count: {
+      h: "Count"
+      n: "count"
+      r: true
+      t: "`$NUMBER`"
+    }
+    cover_note: {
+      h: "Cover Note"
+      n: "cover_note"
+      r: false
+      t: "`$STRING`"
+    }
+    free_to_apply: {
+      h: "Free To Apply"
+      n: "free_to_apply"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    job_id: {
+      h: "Job Id"
+      n: "job_id"
+      r: true
+      t: "`$STRING`"
+    }
+    limit: {
+      h: "Limit"
+      n: "limit"
+      op: {
+        create: {
+          req: false
+          type: "`$NUMBER`"
+        }
+      }
+      r: true
+      t: "`$NUMBER`"
+    }
+    offset: {
+      h: "Offset"
+      n: "offset"
+      op: {
+        create: {
+          req: false
+          type: "`$NUMBER`"
+        }
+      }
+      r: true
+      t: "`$NUMBER`"
+    }
+    resume: {
+      h: "Resume"
+      n: "resume"
+      r: true
+      t: "`$OBJECT`"
+    }
+    retention_note: {
+      h: "Retention Note"
+      n: "retention_note"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      op: {
+        create: {
+          req: false
+          type: "`$ANY`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "job_application"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "cover_note"
+            "resume"
+          ]
+          co: {
+            id: "POST /v1/jobs/{job_id}/apply"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "job_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/jobs/{job_id}/apply"
+          q: {
+            "$action": "apply"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              job_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "apply"
+            }
+          ]
+          t: {
+            req: {
+              cover_note: "`reqdata.cover_note`"
+              resume: "`reqdata.resume`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "status"
+          ]
+          co: {
+            id: "POST /v1/owner/job-applications/{application_id}/status"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "application_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/job-applications/{application_id}/status"
+          q: {
+            "$action": "status"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              application_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "job-applications"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: {
+              status: "`reqdata.status`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /v1/account/job-applications/{application_id}/withdraw"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "application_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/job-applications/{application_id}/withdraw"
+          q: {
+            "$action": "withdraw"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              application_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "job-applications"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "withdraw"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "account_id"
+            "cover_note"
+            "job_id"
+            "resume"
+          ]
+          co: {
+            id: "POST /v1/actions/job-application"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/job-application"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "job-application"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              cover_note: "`reqdata.cover_note`"
+              job_id: "`reqdata.job_id`"
+              resume: "`reqdata.resume`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "account_id"
+            "limit"
+            "offset"
+            "status"
+          ]
+          co: {
+            id: "POST /v1/actions/list-my-job-applications"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/list-my-job-applications"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "list-my-job-applications"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              limit: "`reqdata.limit`"
+              offset: "`reqdata.offset`"
+              status: "`reqdata.status`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

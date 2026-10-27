@@ -1,0 +1,121 @@
+{
+  "existing": {
+    "trust_card": {
+      "TRUST_CARD00": {
+        "agency": "sa0",
+        "collected_at": "sa1",
+        "disclosure": "sa2",
+        "fact_id": "FACT01",
+        "matched_on": "sa4",
+        "reason": "sa5",
+        "record_kind": "sa6",
+        "record_number": "sa7",
+        "record_scope": "sa8",
+        "record_type": "sa9",
+        "recorded_expiry": "saa",
+        "result": "sab",
+        "source_label": "sac",
+        "source_url": "sad",
+        "state": "sae",
+        "status_on_record": "saf",
+        "business_id": "BUSINESS01",
+        "license_record_id": "LICENSE_RECORD01",
+        "schema_name": "SCHEMA_NAME01",
+        "id": "TRUST_CARD00"
+      },
+      "TRUST_CARD01": {
+        "agency": "s140",
+        "collected_at": "s141",
+        "disclosure": "s142",
+        "fact_id": "FACT01",
+        "matched_on": "s144",
+        "reason": "s145",
+        "record_kind": "s146",
+        "record_number": "s147",
+        "record_scope": "s148",
+        "record_type": "s149",
+        "recorded_expiry": "s14a",
+        "result": "s14b",
+        "source_label": "s14c",
+        "source_url": "s14d",
+        "state": "s14e",
+        "status_on_record": "s14f",
+        "business_id": "BUSINESS01",
+        "license_record_id": "LICENSE_RECORD01",
+        "schema_name": "SCHEMA_NAME01",
+        "id": "TRUST_CARD01"
+      },
+      "TRUST_CARD02": {
+        "agency": "s1e0",
+        "collected_at": "s1e1",
+        "disclosure": "s1e2",
+        "fact_id": "FACT01",
+        "matched_on": "s1e4",
+        "reason": "s1e5",
+        "record_kind": "s1e6",
+        "record_number": "s1e7",
+        "record_scope": "s1e8",
+        "record_type": "s1e9",
+        "recorded_expiry": "s1ea",
+        "result": "s1eb",
+        "source_label": "s1ec",
+        "source_url": "s1ed",
+        "state": "s1ee",
+        "status_on_record": "s1ef",
+        "business_id": "BUSINESS01",
+        "license_record_id": "LICENSE_RECORD01",
+        "schema_name": "SCHEMA_NAME01",
+        "id": "TRUST_CARD02"
+      }
+    }
+  },
+  "new": {
+    "trust_card": {
+      "trust_card_ref01": {
+        "agency": "s280",
+        "collected_at": "s281",
+        "disclosure": "s282",
+        "fact_id": "FACT01",
+        "matched_on": "s284",
+        "reason": "s285",
+        "record_kind": "s286",
+        "record_number": "s287",
+        "record_scope": "s288",
+        "record_type": "s289",
+        "recorded_expiry": "s28a",
+        "result": "s28b",
+        "source_label": "s28c",
+        "source_url": "s28d",
+        "state": "s28e",
+        "status_on_record": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/businesses/{business_id}/license-records/{fact_id}/report": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/businesses/{business_id}/archived-records.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/businesses/{business_id}/license-records.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/businesses/{business_id}/trust-card.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/schemas/{schema_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

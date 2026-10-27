@@ -1,0 +1,29 @@
+# BasicSavedLocationFlow
+
+main: kit: flow: BasicSavedLocationFlow:
+{
+  entity: "saved_location",
+  kind: "basic",
+  name: "BasicSavedLocationFlow",
+  step: [
+    {
+      i: {
+        ref: "saved_location_ref01",
+        srcdatavar: "saved_location_ref01_data",
+        suffix: "_up0",
+        textfield: "location_proof_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-saved_location_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSavedLocationFlow"
+}

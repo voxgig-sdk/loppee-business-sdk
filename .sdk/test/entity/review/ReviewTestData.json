@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "review": {
+      "REVIEW00": {
+        "account_id": "ACCOUNT01",
+        "attestation_accepted": false,
+        "customer_confirmed": true,
+        "message": "s53",
+        "rating": 84,
+        "service_date": "s55",
+        "subject": "s56",
+        "target_business_id": "TARGET_BUSINESS01",
+        "id": "REVIEW00"
+      },
+      "REVIEW01": {
+        "account_id": "ACCOUNT01",
+        "attestation_accepted": false,
+        "customer_confirmed": true,
+        "message": "sa3",
+        "rating": 164,
+        "service_date": "sa5",
+        "subject": "sa6",
+        "target_business_id": "TARGET_BUSINESS01",
+        "id": "REVIEW01"
+      },
+      "REVIEW02": {
+        "account_id": "ACCOUNT01",
+        "attestation_accepted": false,
+        "customer_confirmed": true,
+        "message": "sf3",
+        "rating": 244,
+        "service_date": "sf5",
+        "subject": "sf6",
+        "target_business_id": "TARGET_BUSINESS01",
+        "id": "REVIEW02"
+      }
+    }
+  },
+  "new": {
+    "review": {
+      "review_ref01": {
+        "account_id": "ACCOUNT01",
+        "attestation_accepted": false,
+        "customer_confirmed": true,
+        "message": "s143",
+        "rating": 324,
+        "service_date": "s145",
+        "subject": "s146",
+        "target_business_id": "TARGET_BUSINESS01"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/public-review": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/actions/review": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

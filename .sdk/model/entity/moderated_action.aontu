@@ -1,0 +1,600 @@
+# Entity: moderated_action
+
+main: kit: entity: moderated_action: {
+
+  alias: field: {}
+
+  fields: {
+    actions: {
+      h: "Actions"
+      n: "actions"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 1
+      }
+    }
+    body: {
+      h: "Body"
+      n: "body"
+      r: true
+      t: "`$STRING`"
+    }
+    client_request_id: {
+      h: "Client Request Id"
+      n: "client_request_id"
+      r: false
+      t: "`$STRING`"
+    }
+    content_type: {
+      h: "Content Type"
+      n: "content_type"
+      r: true
+      t: "`$STRING`"
+    }
+    continuation: {
+      h: "Continuation"
+      n: "continuation"
+      op: {
+        create: {
+          req: false
+          type: "`$ANY`"
+        }
+      }
+      r: true
+      sh: "The continuation from the previous response, sent back unchanged to get the next results."
+      t: "`$ANY`"
+    }
+    coordinates_returned: {
+      h: "Coordinates Returned"
+      n: "coordinates_returned"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    disclosure: {
+      h: "Disclosure"
+      n: "disclosure"
+      r: true
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    file_sha256: {
+      h: "File Sha256"
+      n: "file_sha256"
+      r: true
+      t: "`$STRING`"
+    }
+    has_more: {
+      h: "Has More"
+      n: "has_more"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    human_confirmation: {
+      h: "Human Confirmation"
+      n: "human_confirmation"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    intent_id: {
+      h: "Intent Id"
+      n: "intent_id"
+      r: true
+      t: "`$STRING`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: false
+      t: "`$STRING`"
+    }
+    knowledgeVersion: {
+      h: "Knowledge Version"
+      n: "knowledgeVersion"
+      r: true
+      t: "`$STRING`"
+    }
+    limits: {
+      h: "Limits"
+      n: "limits"
+      r: true
+      t: "`$OBJECT`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: true
+      t: "`$ARRAY`"
+    }
+    location: {
+      h: "Location"
+      n: "location"
+      op: {
+        create: {
+          req: false
+          type: "`$ANY`"
+        }
+      }
+      r: true
+      sh: "An opaque location reference from the website's own location controls."
+      t: "`$OBJECT`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      t: "`$STRING`"
+    }
+    messages: {
+      h: "Messages"
+      n: "messages"
+      r: true
+      t: "`$ARRAY`"
+    }
+    mode: {
+      h: "Mode"
+      n: "mode"
+      r: true
+      sh: "fallback: a direct search answered because the language model was unavailable."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    needsHuman: {
+      h: "Needs Human"
+      n: "needsHuman"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    policy: {
+      h: "Policy"
+      n: "policy"
+      r: true
+      sh: "Human schedule and separate claim-review policy."
+      t: "`$OBJECT`"
+    }
+    question: {
+      h: "Question"
+      n: "question"
+      r: true
+      t: "`$STRING`"
+    }
+    reply: {
+      h: "Reply"
+      n: "reply"
+      r: true
+      t: "`$STRING`"
+    }
+    result: {
+      h: "Result"
+      n: "result"
+      r: true
+      t: "`$STRING`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: true
+      t: "`$ARRAY`"
+    }
+    scan_authority_id: {
+      fo: "uuid"
+      h: "Scan Authority Id"
+      n: "scan_authority_id"
+      r: true
+      t: "`$STRING`"
+    }
+    scanner: {
+      h: "Scanner"
+      n: "scanner"
+      r: true
+      t: "`$STRING`"
+    }
+    scanner_version: {
+      h: "Scanner Version"
+      n: "scanner_version"
+      r: true
+      t: "`$STRING`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$STRING`"
+    }
+    searcher_latitude: {
+      h: "Searcher Latitude"
+      n: "searcher_latitude"
+      r: false
+      t: "`$NUMBER`"
+    }
+    searcher_longitude: {
+      h: "Searcher Longitude"
+      n: "searcher_longitude"
+      r: false
+      t: "`$NUMBER`"
+    }
+    signature: {
+      h: "Signature"
+      n: "signature"
+      r: false
+      t: "`$STRING`"
+    }
+    signed_in: {
+      h: "Signed In"
+      n: "signed_in"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    size_bytes: {
+      h: "Size Bytes"
+      n: "size_bytes"
+      r: true
+      t: "`$NUMBER`"
+    }
+    subject: {
+      h: "Subject"
+      n: "subject"
+      r: false
+      t: "`$STRING`"
+    }
+    target_business_id: {
+      h: "Target Business Id"
+      n: "target_business_id"
+      r: true
+      t: "`$STRING`"
+    }
+    topic: {
+      h: "Topic"
+      n: "topic"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "moderated_action"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "client_request_id"
+            "human_confirmation"
+            "kind"
+            "message"
+            "searcher_latitude"
+            "searcher_longitude"
+            "subject"
+            "target_business_id"
+          ]
+          co: {
+            id: "POST /v1/actions/contact-attempt"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/contact-attempt"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "contact-attempt"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "continuation"
+            "location"
+            "messages"
+          ]
+          co: {
+            id: "POST /v1/assistant/chat"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/assistant/chat"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "assistant"
+            }
+            {
+              lit: "chat"
+            }
+          ]
+          t: {
+            req: {
+              continuation: "`reqdata.continuation`"
+              location: "`reqdata.location`"
+              messages: "`reqdata.message`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "content_type"
+            "file_sha256"
+            "intent_id"
+            "result"
+            "scan_authority_id"
+            "scanner"
+            "scanner_version"
+            "signature"
+            "size_bytes"
+          ]
+          co: {
+            id: "POST /v1/internal/jobs/resume-scan-results"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/internal/jobs/resume-scan-results"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "internal"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              lit: "resume-scan-results"
+            }
+          ]
+          t: {
+            req: {
+              content_type: "`reqdata.content_type`"
+              file_sha256: "`reqdata.file_sha256`"
+              intent_id: "`reqdata.intent_id`"
+              result: "`reqdata.result`"
+              scan_authority_id: "`reqdata.scan_authority_id`"
+              scanner: "`reqdata.scanner`"
+              scanner_version: "`reqdata.scanner_version`"
+              signature: "`reqdata.signature`"
+              size_bytes: "`reqdata.size_byte`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "file_sha256"
+            "intent_id"
+            "result"
+            "scanner"
+            "scanner_version"
+            "signature"
+          ]
+          co: {
+            id: "POST /v1/internal/owner-evidence/scan-results"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/internal/owner-evidence/scan-results"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "internal"
+            }
+            {
+              lit: "owner-evidence"
+            }
+            {
+              lit: "scan-results"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /v1/stripe/webhook"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/stripe/webhook"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "stripe"
+            }
+            {
+              lit: "webhook"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "question"
+          ]
+          co: {
+            id: "POST /v1/support/guide/help"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/support/guide/help"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "support"
+            }
+            {
+              lit: "guide"
+            }
+            {
+              lit: "help"
+            }
+          ]
+          t: {
+            req: {
+              question: "`reqdata.question`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/assistant/native/status"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/assistant/native/status"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "assistant"
+            }
+            {
+              lit: "native"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/assistant/status"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/assistant/status"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "assistant"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/support/guide"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/support/guide"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "support"
+            }
+            {
+              lit: "guide"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

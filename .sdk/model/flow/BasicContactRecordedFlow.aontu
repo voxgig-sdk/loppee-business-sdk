@@ -1,0 +1,18 @@
+# BasicContactRecordedFlow
+
+main: kit: flow: BasicContactRecordedFlow:
+{
+  entity: "contact_recorded",
+  kind: "basic",
+  name: "BasicContactRecordedFlow",
+  step: [
+    {
+      i: {
+        ref: "contact_recorded_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicContactRecordedFlow"
+}

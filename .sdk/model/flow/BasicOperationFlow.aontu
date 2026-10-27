@@ -1,0 +1,54 @@
+# BasicOperationFlow
+
+main: kit: flow: BasicOperationFlow:
+{
+  entity: "operation",
+  kind: "basic",
+  name: "BasicOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "operation_ref01"
+      }
+
+      m: {
+        support_id: "support01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "operation_ref01",
+        srcdatavar: "operation_ref01_data",
+        suffix: "_up0",
+        textfield: "account_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-operation_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "operation_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "operation01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicOperationFlow"
+}

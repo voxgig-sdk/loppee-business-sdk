@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "location_handoff": {
+      "LOCATION_HANDOFF00": {
+        "id": "LOCATION_HANDOFF00"
+      },
+      "LOCATION_HANDOFF01": {
+        "id": "LOCATION_HANDOFF01"
+      },
+      "LOCATION_HANDOFF02": {
+        "id": "LOCATION_HANDOFF02"
+      }
+    }
+  },
+  "new": {
+    "location_handoff": {
+      "location_handoff_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /v1/account/location-handoffs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+# Entity: unsave_business
+
+main: kit: entity: unsave_business: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: true
+      t: "`$STRING`"
+    }
+    removed: {
+      h: "Removed"
+      n: "removed"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  name: "unsave_business"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "account_id"
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/actions/unsave-business"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/unsave-business"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "unsave-business"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              business_id: "`reqdata.business_id`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

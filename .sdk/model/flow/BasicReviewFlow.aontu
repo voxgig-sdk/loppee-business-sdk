@@ -1,0 +1,18 @@
+# BasicReviewFlow
+
+main: kit: flow: BasicReviewFlow:
+{
+  entity: "review",
+  kind: "basic",
+  name: "BasicReviewFlow",
+  step: [
+    {
+      i: {
+        ref: "review_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicReviewFlow"
+}

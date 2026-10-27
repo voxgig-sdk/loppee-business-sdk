@@ -1,0 +1,108 @@
+# Entity: contact_recorded
+
+main: kit: entity: contact_recorded: {
+
+  alias: field: {}
+
+  fields: {
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: true
+      t: "`$STRING`"
+    }
+    contact_recorded: {
+      h: "Contact Recorded"
+      n: "contact_recorded"
+      r: true
+      t: "`$ANY`"
+    }
+    interaction_id: {
+      h: "Interaction Id"
+      n: "interaction_id"
+      r: true
+      t: "`$STRING`"
+    }
+    ok: {
+      h: "Ok"
+      n: "ok"
+      r: true
+      t: "`$ANY`"
+    }
+    policy: {
+      h: "Policy"
+      n: "policy"
+      r: true
+      t: "`$STRING`"
+    }
+    review_upgraded: {
+      h: "Review Upgraded"
+      n: "review_upgraded"
+      r: true
+      t: "`$ANY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    trust_weight: {
+      h: "Trust Weight"
+      n: "trust_weight"
+      r: true
+      t: "`$ANY`"
+    }
+    verified: {
+      h: "Verified"
+      n: "verified"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "contact_recorded"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "business_id"
+          ]
+          co: {
+            id: "POST /v1/actions/confirm-interaction"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/confirm-interaction"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "confirm-interaction"
+            }
+          ]
+          t: {
+            req: {
+              business_id: "`reqdata.business_id`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

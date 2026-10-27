@@ -1,0 +1,113 @@
+{
+  "existing": {
+    "agent_integration": {
+      "AGENT_INTEGRATION00": {
+        "auth_model": {},
+        "commercial_influence": {},
+        "developer_docs_url": "sde",
+        "exposure_tiers": {},
+        "external_agent_access": {},
+        "generated_at": "se1",
+        "http_api": {},
+        "legal": {},
+        "mcp": {},
+        "mcp_client_example_url": "se5",
+        "monitoring_url": "se6",
+        "openapi_url": "se7",
+        "openapi_v1_url": "se8",
+        "operational_rules": [],
+        "owner_agent_notifications": {},
+        "package_url": "seb",
+        "public_base_url": "sec",
+        "rate_limits": {},
+        "registry_name": "see",
+        "schema_version": "sef",
+        "trust_card_contract": {},
+        "trust_doctrine": {}
+      },
+      "AGENT_INTEGRATION01": {
+        "auth_model": {},
+        "commercial_influence": {},
+        "developer_docs_url": "s1ba",
+        "exposure_tiers": {},
+        "external_agent_access": {},
+        "generated_at": "s1bd",
+        "http_api": {},
+        "legal": {},
+        "mcp": {},
+        "mcp_client_example_url": "s1c1",
+        "monitoring_url": "s1c2",
+        "openapi_url": "s1c3",
+        "openapi_v1_url": "s1c4",
+        "operational_rules": [],
+        "owner_agent_notifications": {},
+        "package_url": "s1c7",
+        "public_base_url": "s1c8",
+        "rate_limits": {},
+        "registry_name": "s1ca",
+        "schema_version": "s1cb",
+        "trust_card_contract": {},
+        "trust_doctrine": {}
+      },
+      "AGENT_INTEGRATION02": {
+        "auth_model": {},
+        "commercial_influence": {},
+        "developer_docs_url": "s296",
+        "exposure_tiers": {},
+        "external_agent_access": {},
+        "generated_at": "s299",
+        "http_api": {},
+        "legal": {},
+        "mcp": {},
+        "mcp_client_example_url": "s29d",
+        "monitoring_url": "s29e",
+        "openapi_url": "s29f",
+        "openapi_v1_url": "s2a0",
+        "operational_rules": [],
+        "owner_agent_notifications": {},
+        "package_url": "s2a3",
+        "public_base_url": "s2a4",
+        "rate_limits": {},
+        "registry_name": "s2a6",
+        "schema_version": "s2a7",
+        "trust_card_contract": {},
+        "trust_doctrine": {}
+      }
+    }
+  },
+  "new": {
+    "agent_integration": {
+      "agent_integration_ref01": {
+        "auth_model": {},
+        "commercial_influence": {},
+        "developer_docs_url": "s372",
+        "exposure_tiers": {},
+        "external_agent_access": {},
+        "generated_at": "s375",
+        "http_api": {},
+        "legal": {},
+        "mcp": {},
+        "mcp_client_example_url": "s379",
+        "monitoring_url": "s37a",
+        "openapi_url": "s37b",
+        "openapi_v1_url": "s37c",
+        "operational_rules": [],
+        "owner_agent_notifications": {},
+        "package_url": "s37f",
+        "public_base_url": "s380",
+        "rate_limits": {},
+        "registry_name": "s382",
+        "schema_version": "s383",
+        "trust_card_contract": {},
+        "trust_doctrine": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/agent-integration.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

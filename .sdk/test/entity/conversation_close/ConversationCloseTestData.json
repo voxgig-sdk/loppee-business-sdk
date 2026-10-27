@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "conversation_close": {
+      "CONVERSATION_CLOSE00": {
+        "closed_at": "s28",
+        "conversation_id": "CONVERSATION01",
+        "id": "CONVERSATION_CLOSE00",
+        "status": "s2b"
+      },
+      "CONVERSATION_CLOSE01": {
+        "closed_at": "s50",
+        "conversation_id": "CONVERSATION01",
+        "id": "CONVERSATION_CLOSE01",
+        "status": "s53"
+      },
+      "CONVERSATION_CLOSE02": {
+        "closed_at": "s78",
+        "conversation_id": "CONVERSATION01",
+        "id": "CONVERSATION_CLOSE02",
+        "status": "s7b"
+      }
+    }
+  },
+  "new": {
+    "conversation_close": {
+      "conversation_close_ref01": {
+        "closed_at": "sa0",
+        "conversation_id": "CONVERSATION01",
+        "status": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/account/conversations/{conversation_id}/close": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

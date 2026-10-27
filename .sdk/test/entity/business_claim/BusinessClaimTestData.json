@@ -1,0 +1,112 @@
+{
+  "existing": {
+    "business_claim": {
+      "BUSINESS_CLAIM00": {
+        "business_id": "BUSINESS01",
+        "category": "sd3",
+        "city": "sd4",
+        "claim_id": "CLAIM01",
+        "claim_status": "sd6",
+        "claimant_email": "sd7",
+        "claimant_name": "sd8",
+        "claimant_relationship": "sd9",
+        "created_at": "sda",
+        "directory_listing_id": "DIRECTORY_LISTING01",
+        "display_name": "sdc",
+        "listing_id": "LISTING01",
+        "notes": "sde",
+        "phone": "sdf",
+        "source": "se0",
+        "source_type": "se1",
+        "source_url": "se2",
+        "state": "se3",
+        "status": "se4",
+        "verification": {},
+        "website": "se6",
+        "id": "BUSINESS_CLAIM00"
+      },
+      "BUSINESS_CLAIM01": {
+        "business_id": "BUSINESS01",
+        "category": "s1a5",
+        "city": "s1a6",
+        "claim_id": "CLAIM01",
+        "claim_status": "s1a8",
+        "claimant_email": "s1a9",
+        "claimant_name": "s1aa",
+        "claimant_relationship": "s1ab",
+        "created_at": "s1ac",
+        "directory_listing_id": "DIRECTORY_LISTING01",
+        "display_name": "s1ae",
+        "listing_id": "LISTING01",
+        "notes": "s1b0",
+        "phone": "s1b1",
+        "source": "s1b2",
+        "source_type": "s1b3",
+        "source_url": "s1b4",
+        "state": "s1b5",
+        "status": "s1b6",
+        "verification": {},
+        "website": "s1b8",
+        "id": "BUSINESS_CLAIM01"
+      },
+      "BUSINESS_CLAIM02": {
+        "business_id": "BUSINESS01",
+        "category": "s277",
+        "city": "s278",
+        "claim_id": "CLAIM01",
+        "claim_status": "s27a",
+        "claimant_email": "s27b",
+        "claimant_name": "s27c",
+        "claimant_relationship": "s27d",
+        "created_at": "s27e",
+        "directory_listing_id": "DIRECTORY_LISTING01",
+        "display_name": "s280",
+        "listing_id": "LISTING01",
+        "notes": "s282",
+        "phone": "s283",
+        "source": "s284",
+        "source_type": "s285",
+        "source_url": "s286",
+        "state": "s287",
+        "status": "s288",
+        "verification": {},
+        "website": "s28a",
+        "id": "BUSINESS_CLAIM02"
+      }
+    }
+  },
+  "new": {
+    "business_claim": {
+      "business_claim_ref01": {
+        "business_id": "BUSINESS01",
+        "category": "s349",
+        "city": "s34a",
+        "claim_id": "CLAIM01",
+        "claim_status": "s34c",
+        "claimant_email": "s34d",
+        "claimant_name": "s34e",
+        "claimant_relationship": "s34f",
+        "created_at": "s350",
+        "directory_listing_id": "DIRECTORY_LISTING01",
+        "display_name": "s352",
+        "listing_id": "LISTING01",
+        "notes": "s354",
+        "phone": "s355",
+        "source": "s356",
+        "source_type": "s357",
+        "source_url": "s358",
+        "state": "s359",
+        "status": "s35a",
+        "verification": {},
+        "website": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/business-claim": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

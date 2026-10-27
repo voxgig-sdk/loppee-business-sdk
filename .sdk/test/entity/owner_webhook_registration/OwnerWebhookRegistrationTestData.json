@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "owner_webhook_registration": {
+      "OWNER_WEBHOOK_REGISTRATION00": {
+        "business_id": "BUSINESS01",
+        "endpoint": {},
+        "event_types": [],
+        "one_time_display": "s49",
+        "signing_secret": "s4a",
+        "status": "s4b",
+        "url": "s4c",
+        "webhook_id": "WEBHOOK01",
+        "id": "OWNER_WEBHOOK_REGISTRATION00"
+      },
+      "OWNER_WEBHOOK_REGISTRATION01": {
+        "business_id": "BUSINESS01",
+        "endpoint": {},
+        "event_types": [],
+        "one_time_display": "s8f",
+        "signing_secret": "s90",
+        "status": "s91",
+        "url": "s92",
+        "webhook_id": "WEBHOOK01",
+        "id": "OWNER_WEBHOOK_REGISTRATION01"
+      },
+      "OWNER_WEBHOOK_REGISTRATION02": {
+        "business_id": "BUSINESS01",
+        "endpoint": {},
+        "event_types": [],
+        "one_time_display": "sd5",
+        "signing_secret": "sd6",
+        "status": "sd7",
+        "url": "sd8",
+        "webhook_id": "WEBHOOK01",
+        "id": "OWNER_WEBHOOK_REGISTRATION02"
+      }
+    }
+  },
+  "new": {
+    "owner_webhook_registration": {
+      "owner_webhook_registration_ref01": {
+        "business_id": "BUSINESS01",
+        "endpoint": {},
+        "event_types": [],
+        "one_time_display": "s11b",
+        "signing_secret": "s11c",
+        "status": "s11d",
+        "url": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/owner/webhooks/{endpoint_id}/rotate-secret": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/owner/webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

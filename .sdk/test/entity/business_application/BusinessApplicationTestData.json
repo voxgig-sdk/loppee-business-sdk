@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "business_application": {
+      "BUSINESS_APPLICATION00": {
+        "application": {},
+        "application_id": "APPLICATION01",
+        "business_id": "BUSINESS01",
+        "claim_id": "CLAIM01",
+        "created_at": "s7c",
+        "existing_business": false,
+        "files": [],
+        "listing_id": "LISTING01",
+        "pipeline_status": "s80",
+        "status": "s81",
+        "trust_model_version": "s82",
+        "uploaded_files": 131,
+        "id": "BUSINESS_APPLICATION00"
+      },
+      "BUSINESS_APPLICATION01": {
+        "application": {},
+        "application_id": "APPLICATION01",
+        "business_id": "BUSINESS01",
+        "claim_id": "CLAIM01",
+        "created_at": "sf4",
+        "existing_business": false,
+        "files": [],
+        "listing_id": "LISTING01",
+        "pipeline_status": "sf8",
+        "status": "sf9",
+        "trust_model_version": "sfa",
+        "uploaded_files": 251,
+        "id": "BUSINESS_APPLICATION01"
+      },
+      "BUSINESS_APPLICATION02": {
+        "application": {},
+        "application_id": "APPLICATION01",
+        "business_id": "BUSINESS01",
+        "claim_id": "CLAIM01",
+        "created_at": "s16c",
+        "existing_business": false,
+        "files": [],
+        "listing_id": "LISTING01",
+        "pipeline_status": "s170",
+        "status": "s171",
+        "trust_model_version": "s172",
+        "uploaded_files": 371,
+        "id": "BUSINESS_APPLICATION02"
+      }
+    }
+  },
+  "new": {
+    "business_application": {
+      "business_application_ref01": {
+        "application": {},
+        "application_id": "APPLICATION01",
+        "business_id": "BUSINESS01",
+        "claim_id": "CLAIM01",
+        "created_at": "s1e4",
+        "existing_business": false,
+        "files": [],
+        "listing_id": "LISTING01",
+        "pipeline_status": "s1e8",
+        "status": "s1e9",
+        "trust_model_version": "s1ea",
+        "uploaded_files": 491
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/business-application": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

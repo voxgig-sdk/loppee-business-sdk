@@ -1,0 +1,22 @@
+# BasicAgentOpenapiFlow
+
+main: kit: flow: BasicAgentOpenapiFlow:
+{
+  entity: "agent_openapi",
+  kind: "basic",
+  name: "BasicAgentOpenapiFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_openapi_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentOpenapiFlow"
+}

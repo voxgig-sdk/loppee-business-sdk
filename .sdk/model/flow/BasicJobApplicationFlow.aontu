@@ -1,0 +1,18 @@
+# BasicJobApplicationFlow
+
+main: kit: flow: BasicJobApplicationFlow:
+{
+  entity: "job_application",
+  kind: "basic",
+  name: "BasicJobApplicationFlow",
+  step: [
+    {
+      i: {
+        ref: "job_application_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicJobApplicationFlow"
+}

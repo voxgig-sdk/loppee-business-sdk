@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "claim_verification_send": {
+      "CLAIM_VERIFICATION_SEND00": {
+        "challenge_id": "CHALLENGE01",
+        "channel": "s5b",
+        "claim_id": "CLAIM01",
+        "destination_hint": "s5d",
+        "expires_in_seconds": 94,
+        "provider_status": "s5f",
+        "recipient_delivery_confirmed": "s60",
+        "request_id": "REQUEST01",
+        "status": "s62",
+        "id": "CLAIM_VERIFICATION_SEND00"
+      },
+      "CLAIM_VERIFICATION_SEND01": {
+        "challenge_id": "CHALLENGE01",
+        "channel": "sb5",
+        "claim_id": "CLAIM01",
+        "destination_hint": "sb7",
+        "expires_in_seconds": 184,
+        "provider_status": "sb9",
+        "recipient_delivery_confirmed": "sba",
+        "request_id": "REQUEST01",
+        "status": "sbc",
+        "id": "CLAIM_VERIFICATION_SEND01"
+      },
+      "CLAIM_VERIFICATION_SEND02": {
+        "challenge_id": "CHALLENGE01",
+        "channel": "s10f",
+        "claim_id": "CLAIM01",
+        "destination_hint": "s111",
+        "expires_in_seconds": 274,
+        "provider_status": "s113",
+        "recipient_delivery_confirmed": "s114",
+        "request_id": "REQUEST01",
+        "status": "s116",
+        "id": "CLAIM_VERIFICATION_SEND02"
+      }
+    }
+  },
+  "new": {
+    "claim_verification_send": {
+      "claim_verification_send_ref01": {
+        "challenge_id": "CHALLENGE01",
+        "channel": "s169",
+        "claim_id": "CLAIM01",
+        "destination_hint": "s16b",
+        "expires_in_seconds": 364,
+        "provider_status": "s16d",
+        "recipient_delivery_confirmed": "s16e",
+        "request_id": "REQUEST01",
+        "status": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/claim-verification/send": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

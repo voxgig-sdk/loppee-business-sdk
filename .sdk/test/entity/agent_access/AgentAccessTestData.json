@@ -1,0 +1,96 @@
+{
+  "existing": {
+    "agent_access": {
+      "AGENT_ACCESS00": {
+        "agent_name": "saa",
+        "agent_type": "sab",
+        "callback_url": "sac",
+        "compliance_notes": "sad",
+        "created_at": "sae",
+        "data_needs": "saf",
+        "developer_email": "sb0",
+        "operating_states": [],
+        "organization_name": "sb2",
+        "request_id": "REQUEST01",
+        "request_status": "sb4",
+        "requested_actions": [],
+        "safety_contact": "sb6",
+        "status": "sb7",
+        "target_categories": [],
+        "use_case": "sb9",
+        "website": "sba",
+        "id": "AGENT_ACCESS00"
+      },
+      "AGENT_ACCESS01": {
+        "agent_name": "s154",
+        "agent_type": "s155",
+        "callback_url": "s156",
+        "compliance_notes": "s157",
+        "created_at": "s158",
+        "data_needs": "s159",
+        "developer_email": "s15a",
+        "operating_states": [],
+        "organization_name": "s15c",
+        "request_id": "REQUEST01",
+        "request_status": "s15e",
+        "requested_actions": [],
+        "safety_contact": "s160",
+        "status": "s161",
+        "target_categories": [],
+        "use_case": "s163",
+        "website": "s164",
+        "id": "AGENT_ACCESS01"
+      },
+      "AGENT_ACCESS02": {
+        "agent_name": "s1fe",
+        "agent_type": "s1ff",
+        "callback_url": "s200",
+        "compliance_notes": "s201",
+        "created_at": "s202",
+        "data_needs": "s203",
+        "developer_email": "s204",
+        "operating_states": [],
+        "organization_name": "s206",
+        "request_id": "REQUEST01",
+        "request_status": "s208",
+        "requested_actions": [],
+        "safety_contact": "s20a",
+        "status": "s20b",
+        "target_categories": [],
+        "use_case": "s20d",
+        "website": "s20e",
+        "id": "AGENT_ACCESS02"
+      }
+    }
+  },
+  "new": {
+    "agent_access": {
+      "agent_access_ref01": {
+        "agent_name": "s2a8",
+        "agent_type": "s2a9",
+        "callback_url": "s2aa",
+        "compliance_notes": "s2ab",
+        "created_at": "s2ac",
+        "data_needs": "s2ad",
+        "developer_email": "s2ae",
+        "operating_states": [],
+        "organization_name": "s2b0",
+        "request_id": "REQUEST01",
+        "request_status": "s2b2",
+        "requested_actions": [],
+        "safety_contact": "s2b4",
+        "status": "s2b5",
+        "target_categories": [],
+        "use_case": "s2b7",
+        "website": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/agent-access-request": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

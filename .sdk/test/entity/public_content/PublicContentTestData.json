@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "public_content": {
+      "PUBLIC_CONTENT00": {
+        "blocks": {},
+        "generated_at": "s29",
+        "source": "s2a",
+        "trust_model_version": "s2b",
+        "id": "PUBLIC_CONTENT00"
+      },
+      "PUBLIC_CONTENT01": {
+        "blocks": {},
+        "generated_at": "s51",
+        "source": "s52",
+        "trust_model_version": "s53",
+        "id": "PUBLIC_CONTENT01"
+      },
+      "PUBLIC_CONTENT02": {
+        "blocks": {},
+        "generated_at": "s79",
+        "source": "s7a",
+        "trust_model_version": "s7b",
+        "id": "PUBLIC_CONTENT02"
+      }
+    }
+  },
+  "new": {
+    "public_content": {
+      "public_content_ref01": {
+        "blocks": {},
+        "generated_at": "sa1",
+        "source": "sa2",
+        "trust_model_version": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/content": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

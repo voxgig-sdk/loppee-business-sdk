@@ -1,0 +1,97 @@
+{
+  "existing": {
+    "business_index": {
+      "BUSINESS_INDEX00": {
+        "brand_assets": "sb4",
+        "business_id": "BUSINESS01",
+        "category": "sb6",
+        "city": "sb7",
+        "display_name": "sb8",
+        "domain": "sb9",
+        "insurance": {},
+        "phone": "sbb",
+        "public_profile_url": "sbc",
+        "review_reputation": {},
+        "state": "sbe",
+        "street_address": "sbf",
+        "trust_card_url": "sc0",
+        "trust_model_version": "sc1",
+        "verification_class": "sc2",
+        "verification_disclosure": "sc3",
+        "website": "sc4",
+        "zip": "sc5"
+      },
+      "BUSINESS_INDEX01": {
+        "brand_assets": "s168",
+        "business_id": "BUSINESS01",
+        "category": "s16a",
+        "city": "s16b",
+        "display_name": "s16c",
+        "domain": "s16d",
+        "insurance": {},
+        "phone": "s16f",
+        "public_profile_url": "s170",
+        "review_reputation": {},
+        "state": "s172",
+        "street_address": "s173",
+        "trust_card_url": "s174",
+        "trust_model_version": "s175",
+        "verification_class": "s176",
+        "verification_disclosure": "s177",
+        "website": "s178",
+        "zip": "s179"
+      },
+      "BUSINESS_INDEX02": {
+        "brand_assets": "s21c",
+        "business_id": "BUSINESS01",
+        "category": "s21e",
+        "city": "s21f",
+        "display_name": "s220",
+        "domain": "s221",
+        "insurance": {},
+        "phone": "s223",
+        "public_profile_url": "s224",
+        "review_reputation": {},
+        "state": "s226",
+        "street_address": "s227",
+        "trust_card_url": "s228",
+        "trust_model_version": "s229",
+        "verification_class": "s22a",
+        "verification_disclosure": "s22b",
+        "website": "s22c",
+        "zip": "s22d"
+      }
+    }
+  },
+  "new": {
+    "business_index": {
+      "business_index_ref01": {
+        "brand_assets": "s2d0",
+        "business_id": "BUSINESS01",
+        "category": "s2d2",
+        "city": "s2d3",
+        "display_name": "s2d4",
+        "domain": "s2d5",
+        "insurance": {},
+        "phone": "s2d7",
+        "public_profile_url": "s2d8",
+        "review_reputation": {},
+        "state": "s2da",
+        "street_address": "s2db",
+        "trust_card_url": "s2dc",
+        "trust_model_version": "s2dd",
+        "verification_class": "s2de",
+        "verification_disclosure": "s2df",
+        "website": "s2e0",
+        "zip": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/businesses/index.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

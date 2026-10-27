@@ -1,0 +1,61 @@
+# BasicTrustCardFlow
+
+main: kit: flow: BasicTrustCardFlow:
+{
+  entity: "trust_card",
+  kind: "basic",
+  name: "BasicTrustCardFlow",
+  step: [
+    {
+      i: {
+        ref: "trust_card_ref01"
+      }
+
+      m: {
+        business_id: "business01",
+        license_record_id: "license_record01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        business_id: "business01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "trust_card_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "trust_card_ref01",
+        srcdatavar: "trust_card_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "trust_card01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-trust_card_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTrustCardFlow"
+}

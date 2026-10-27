@@ -1,0 +1,22 @@
+# BasicTaxonomySuggestionFlow
+
+main: kit: flow: BasicTaxonomySuggestionFlow:
+{
+  entity: "taxonomy_suggestion",
+  kind: "basic",
+  name: "BasicTaxonomySuggestionFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "taxonomy_suggestion_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTaxonomySuggestionFlow"
+}

@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "domain_trust_card": {
+      "DOMAIN_TRUST_CARD00": {
+        "business_id": "BUSINESS01",
+        "domain": "s51",
+        "schema_version": "s52",
+        "trust_card": {},
+        "trust_card_url": "s54",
+        "trust_model_version": "s55",
+        "verification_class": "s56",
+        "verification_disclosure": "s57",
+        "domain_key": "DOMAIN_KEY01",
+        "id": "DOMAIN_TRUST_CARD00"
+      },
+      "DOMAIN_TRUST_CARD01": {
+        "business_id": "BUSINESS01",
+        "domain": "sa1",
+        "schema_version": "sa2",
+        "trust_card": {},
+        "trust_card_url": "sa4",
+        "trust_model_version": "sa5",
+        "verification_class": "sa6",
+        "verification_disclosure": "sa7",
+        "domain_key": "DOMAIN_KEY01",
+        "id": "DOMAIN_TRUST_CARD01"
+      },
+      "DOMAIN_TRUST_CARD02": {
+        "business_id": "BUSINESS01",
+        "domain": "sf1",
+        "schema_version": "sf2",
+        "trust_card": {},
+        "trust_card_url": "sf4",
+        "trust_model_version": "sf5",
+        "verification_class": "sf6",
+        "verification_disclosure": "sf7",
+        "domain_key": "DOMAIN_KEY01",
+        "id": "DOMAIN_TRUST_CARD02"
+      }
+    }
+  },
+  "new": {
+    "domain_trust_card": {
+      "domain_trust_card_ref01": {
+        "business_id": "BUSINESS01",
+        "domain": "s141",
+        "schema_version": "s142",
+        "trust_card": {},
+        "trust_card_url": "s144",
+        "trust_model_version": "s145",
+        "verification_class": "s146",
+        "verification_disclosure": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/domains/{domain_key}/trust-card.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

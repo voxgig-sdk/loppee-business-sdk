@@ -1,0 +1,18 @@
+# BasicClaimVerificationSendFlow
+
+main: kit: flow: BasicClaimVerificationSendFlow:
+{
+  entity: "claim_verification_send",
+  kind: "basic",
+  name: "BasicClaimVerificationSendFlow",
+  step: [
+    {
+      i: {
+        ref: "claim_verification_send_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicClaimVerificationSendFlow"
+}

@@ -1,0 +1,122 @@
+# Entity: domain_trust_card
+
+main: kit: entity: domain_trust_card: {
+
+  alias: field: {}
+
+  fields: {
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: true
+      t: "`$STRING`"
+    }
+    domain: {
+      h: "Domain"
+      n: "domain"
+      r: true
+      t: "`$STRING`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$ANY`"
+    }
+    trust_card: {
+      h: "Trust Card"
+      n: "trust_card"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 2
+        depth: 4
+      }
+    }
+    trust_card_url: {
+      h: "Trust Card Url"
+      n: "trust_card_url"
+      r: true
+      t: "`$STRING`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: true
+      t: "`$ANY`"
+    }
+    verification_class: {
+      h: "Verification Class"
+      n: "verification_class"
+      r: true
+      t: "`$ANY`"
+    }
+    verification_disclosure: {
+      h: "Verification Disclosure"
+      n: "verification_disclosure"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "domain_trust_card"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/domains/{domain_key}/trust-card.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "eliteacllc-com"
+                k: "param"
+                n: "domain_key"
+                or: "domain_key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/domains/{domain_key}/trust-card.json"
+          q: {
+            exist: [
+              "domain_key"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "domain_key"
+            }
+            {
+              lit: "trust-card.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "agent_connection_test": {
+      "AGENT_CONNECTION_TEST00": {
+        "key": "sa",
+        "id": "AGENT_CONNECTION_TEST00"
+      },
+      "AGENT_CONNECTION_TEST01": {
+        "key": "s14",
+        "id": "AGENT_CONNECTION_TEST01"
+      },
+      "AGENT_CONNECTION_TEST02": {
+        "key": "s1e",
+        "id": "AGENT_CONNECTION_TEST02"
+      }
+    }
+  },
+  "new": {
+    "agent_connection_test": {
+      "agent_connection_test_ref01": {
+        "key": "s28"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/agent-connection-test": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

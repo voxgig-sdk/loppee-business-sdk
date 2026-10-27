@@ -1,0 +1,98 @@
+# Entity: conversation_workflow
+
+main: kit: entity: conversation_workflow: {
+
+  alias: field: {}
+
+  fields: {
+    priority: {
+      h: "Priority"
+      n: "priority"
+      r: false
+      t: "`$ANY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$ANY`"
+    }
+  }
+
+  name: "conversation_workflow"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "priority"
+            "status"
+          ]
+          co: {
+            id: "POST /v1/owner/messages/{interaction_id}/workflow"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "message_id"
+                or: "interaction_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/messages/{interaction_id}/workflow"
+          q: {
+            exist: [
+              "message_id"
+            ]
+          }
+          r: {
+            param: {
+              interaction_id: "message_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "messages"
+            }
+            {
+              var: "message_id"
+            }
+            {
+              lit: "workflow"
+            }
+          ]
+          t: {
+            req: {
+              priority: "`reqdata.priority`"
+              status: "`reqdata.status`"
+            }
+            res: "`body.conversation`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.message")]
+  ]
+
+}

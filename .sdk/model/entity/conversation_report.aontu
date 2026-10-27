@@ -1,0 +1,177 @@
+# Entity: conversation_report
+
+main: kit: entity: conversation_report: {
+
+  alias: field: {}
+
+  fields: {
+    detail: {
+      h: "Detail"
+      n: "detail"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: true
+      t: "`$ANY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "conversation_report"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "detail"
+            "reason"
+          ]
+          co: {
+            id: "POST /v1/account/conversations/{conversation_id}/report"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/conversations/{conversation_id}/report"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "report"
+            }
+          ]
+          t: {
+            req: {
+              detail: "`reqdata.detail`"
+              reason: "`reqdata.reason`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "detail"
+            "reason"
+          ]
+          co: {
+            id: "POST /v1/owner/messages/{interaction_id}/report"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "message_id"
+                or: "interaction_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/messages/{interaction_id}/report"
+          q: {
+            exist: [
+              "message_id"
+            ]
+          }
+          r: {
+            param: {
+              interaction_id: "message_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "messages"
+            }
+            {
+              var: "message_id"
+            }
+            {
+              lit: "report"
+            }
+          ]
+          t: {
+            req: {
+              detail: "`reqdata.detail`"
+              reason: "`reqdata.reason`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.message")]
+  ]
+
+}

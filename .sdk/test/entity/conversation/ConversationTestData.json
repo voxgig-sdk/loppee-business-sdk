@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "conversation": {
+      "CONVERSATION00": {
+        "account_id": "ACCOUNT01",
+        "conversation_id": "CONVERSATION01",
+        "conversations": [],
+        "count": 73,
+        "cursor": "s4a",
+        "limit": 75,
+        "pagination": {},
+        "id": "CONVERSATION00"
+      },
+      "CONVERSATION01": {
+        "account_id": "ACCOUNT01",
+        "conversation_id": "CONVERSATION01",
+        "conversations": [],
+        "count": 143,
+        "cursor": "s90",
+        "limit": 145,
+        "pagination": {},
+        "id": "CONVERSATION01"
+      },
+      "CONVERSATION02": {
+        "account_id": "ACCOUNT01",
+        "conversation_id": "CONVERSATION01",
+        "conversations": [],
+        "count": 213,
+        "cursor": "sd6",
+        "limit": 215,
+        "pagination": {},
+        "id": "CONVERSATION02"
+      }
+    }
+  },
+  "new": {
+    "conversation": {
+      "conversation_ref01": {
+        "account_id": "ACCOUNT01",
+        "conversation_id": "CONVERSATION01",
+        "conversations": [],
+        "count": 283,
+        "cursor": "s11c",
+        "limit": 285,
+        "pagination": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/list-my-conversations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

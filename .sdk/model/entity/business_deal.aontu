@@ -1,0 +1,157 @@
+# Entity: business_deal
+
+main: kit: entity: business_deal: {
+
+  alias: field: {}
+
+  fields: {
+    createdAt: {
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      t: "`$STRING`"
+    }
+    discountLabel: {
+      h: "Discount Label"
+      n: "discountLabel"
+      r: true
+      t: "`$STRING`"
+    }
+    endsAt: {
+      h: "Ends At"
+      n: "endsAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    promoCode: {
+      h: "Promo Code"
+      n: "promoCode"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    startsAt: {
+      h: "Starts At"
+      n: "startsAt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    terms: {
+      h: "Terms"
+      n: "terms"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "business_deal"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/businesses/{business_id}/deals.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "biz_elite_ac_llc_jacksonville_fl"
+                k: "param"
+                n: "id"
+                or: "business_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/businesses/{business_id}/deals.json"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              business_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "businesses"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "deals.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deals`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

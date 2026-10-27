@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "anonymous_location_proof_revocation": {
+      "ANONYMOUS_LOCATION_PROOF_REVOCATION00": {
+        "accuracy_meters": 40,
+        "captured_at": "s29",
+        "latitude": 42,
+        "longitude": 43,
+        "location_proof_id": "LOCATION_PROOF01",
+        "id": "ANONYMOUS_LOCATION_PROOF_REVOCATION00"
+      },
+      "ANONYMOUS_LOCATION_PROOF_REVOCATION01": {
+        "accuracy_meters": 80,
+        "captured_at": "s51",
+        "latitude": 82,
+        "longitude": 83,
+        "location_proof_id": "LOCATION_PROOF01",
+        "id": "ANONYMOUS_LOCATION_PROOF_REVOCATION01"
+      },
+      "ANONYMOUS_LOCATION_PROOF_REVOCATION02": {
+        "accuracy_meters": 120,
+        "captured_at": "s79",
+        "latitude": 122,
+        "longitude": 123,
+        "location_proof_id": "LOCATION_PROOF01",
+        "id": "ANONYMOUS_LOCATION_PROOF_REVOCATION02"
+      }
+    }
+  },
+  "new": {
+    "anonymous_location_proof_revocation": {
+      "anonymous_location_proof_revocation_ref01": {
+        "accuracy_meters": 160,
+        "captured_at": "sa1",
+        "latitude": 162,
+        "longitude": 163
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/location-proofs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/location-proofs/{location_proof_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

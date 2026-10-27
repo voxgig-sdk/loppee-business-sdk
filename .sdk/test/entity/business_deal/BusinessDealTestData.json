@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "business_deal": {
+      "BUSINESS_DEAL00": {
+        "createdAt": "s5a",
+        "description": "s5b",
+        "discountLabel": "s5c",
+        "endsAt": "s5d",
+        "id": "BUSINESS_DEAL00",
+        "promoCode": "s5f",
+        "startsAt": "s60",
+        "terms": "s61",
+        "title": "s62"
+      },
+      "BUSINESS_DEAL01": {
+        "createdAt": "sb4",
+        "description": "sb5",
+        "discountLabel": "sb6",
+        "endsAt": "sb7",
+        "id": "BUSINESS_DEAL01",
+        "promoCode": "sb9",
+        "startsAt": "sba",
+        "terms": "sbb",
+        "title": "sbc"
+      },
+      "BUSINESS_DEAL02": {
+        "createdAt": "s10e",
+        "description": "s10f",
+        "discountLabel": "s110",
+        "endsAt": "s111",
+        "id": "BUSINESS_DEAL02",
+        "promoCode": "s113",
+        "startsAt": "s114",
+        "terms": "s115",
+        "title": "s116"
+      }
+    }
+  },
+  "new": {
+    "business_deal": {
+      "business_deal_ref01": {
+        "createdAt": "s168",
+        "description": "s169",
+        "discountLabel": "s16a",
+        "endsAt": "s16b",
+        "promoCode": "s16d",
+        "startsAt": "s16e",
+        "terms": "s16f",
+        "title": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/businesses/{business_id}/deals.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

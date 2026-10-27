@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "update_agent_billing_account": {
+      "UPDATE_AGENT_BILLING_ACCOUNT00": {
+        "account_id": "ACCOUNT01",
+        "billing_account": {},
+        "billing_status": "s5c",
+        "included_actions": 93,
+        "monthly_fee_cents": 94,
+        "overage_cents": 95,
+        "plan": "s60",
+        "status": "s61",
+        "updated_by": "s62",
+        "id": "UPDATE_AGENT_BILLING_ACCOUNT00"
+      },
+      "UPDATE_AGENT_BILLING_ACCOUNT01": {
+        "account_id": "ACCOUNT01",
+        "billing_account": {},
+        "billing_status": "sb6",
+        "included_actions": 183,
+        "monthly_fee_cents": 184,
+        "overage_cents": 185,
+        "plan": "sba",
+        "status": "sbb",
+        "updated_by": "sbc",
+        "id": "UPDATE_AGENT_BILLING_ACCOUNT01"
+      },
+      "UPDATE_AGENT_BILLING_ACCOUNT02": {
+        "account_id": "ACCOUNT01",
+        "billing_account": {},
+        "billing_status": "s110",
+        "included_actions": 273,
+        "monthly_fee_cents": 274,
+        "overage_cents": 275,
+        "plan": "s114",
+        "status": "s115",
+        "updated_by": "s116",
+        "id": "UPDATE_AGENT_BILLING_ACCOUNT02"
+      }
+    }
+  },
+  "new": {
+    "update_agent_billing_account": {
+      "update_agent_billing_account_ref01": {
+        "account_id": "ACCOUNT01",
+        "billing_account": {},
+        "billing_status": "s16a",
+        "included_actions": 363,
+        "monthly_fee_cents": 364,
+        "overage_cents": 365,
+        "plan": "s16e",
+        "status": "s16f",
+        "updated_by": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/admin/agent-billing-accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

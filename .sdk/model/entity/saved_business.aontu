@@ -1,0 +1,80 @@
+# Entity: saved_business
+
+main: kit: entity: saved_business: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    count: {
+      h: "Count"
+      n: "count"
+      r: true
+      t: "`$NUMBER`"
+    }
+    limit: {
+      h: "Limit"
+      n: "limit"
+      r: false
+      t: "`$NUMBER`"
+    }
+    saved_businesses: {
+      h: "Saved Businesses"
+      n: "saved_businesses"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "saved_business"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "account_id"
+            "limit"
+          ]
+          co: {
+            id: "POST /v1/actions/list-saved-businesses"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/list-saved-businesses"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "list-saved-businesses"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              limit: "`reqdata.limit`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

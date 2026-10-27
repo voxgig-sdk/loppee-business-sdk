@@ -1,0 +1,1587 @@
+# Entity: customer_account
+
+main: kit: entity: customer_account: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    account_role: {
+      h: "Account Role"
+      n: "account_role"
+      r: true
+      t: "`$STRING`"
+    }
+    accuracy_meters: {
+      h: "Accuracy Meters"
+      n: "accuracy_meters"
+      r: true
+      t: "`$NUMBER`"
+    }
+    acknowledge_data_effects: {
+      h: "Acknowledge Data Effects"
+      n: "acknowledge_data_effects"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    actions: {
+      h: "Actions"
+      n: "actions"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 4
+        count: 1
+        depth: 1
+      }
+    }
+    agent_key_id: {
+      fo: "uuid"
+      h: "Agent Key Id"
+      n: "agent_key_id"
+      r: true
+      t: "`$STRING`"
+    }
+    agent_receives_coordinates: {
+      h: "Agent Receives Coordinates"
+      n: "agent_receives_coordinates"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    all_paused: {
+      h: "All Paused"
+      n: "all_paused"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    app_attest_registered: {
+      h: "App Attest Registered"
+      n: "app_attest_registered"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    assertion: {
+      h: "Assertion"
+      n: "assertion"
+      r: true
+      t: "`$STRING`"
+    }
+    attestation: {
+      h: "Attestation"
+      n: "attestation"
+      r: true
+      t: "`$STRING`"
+    }
+    author_label: {
+      h: "Author Label"
+      n: "author_label"
+      r: true
+      t: "`$STRING`"
+    }
+    author_type: {
+      h: "Author Type"
+      n: "author_type"
+      r: true
+      t: "`$STRING`"
+    }
+    binding: {
+      h: "Binding"
+      n: "binding"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 3
+        count: 1
+        depth: 0
+      }
+    }
+    body: {
+      h: "Body"
+      n: "body"
+      r: true
+      t: "`$STRING`"
+    }
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    capture_source: {
+      h: "Capture Source"
+      n: "capture_source"
+      r: true
+      t: "`$ANY`"
+    }
+    captured_at: {
+      fo: "date-time"
+      h: "Captured At"
+      n: "captured_at"
+      r: true
+      t: "`$STRING`"
+    }
+    challenge: {
+      h: "Challenge"
+      n: "challenge"
+      r: true
+      t: "`$STRING`"
+    }
+    challenge_id: {
+      fo: "uuid"
+      h: "Challenge Id"
+      n: "challenge_id"
+      r: true
+      t: "`$STRING`"
+    }
+    client_message_id: {
+      h: "Client Message Id"
+      n: "client_message_id"
+      r: true
+      t: "`$STRING`"
+    }
+    completed: {
+      h: "Completed"
+      n: "completed"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    confirmation: {
+      h: "Confirmation"
+      n: "confirmation"
+      r: true
+      t: "`$STRING`"
+    }
+    connection_id: {
+      fo: "uuid"
+      h: "Connection Id"
+      n: "connection_id"
+      r: true
+      t: "`$STRING`"
+    }
+    connection_kind: {
+      h: "Connection Kind"
+      n: "connection_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    continuation: {
+      h: "Continuation"
+      n: "continuation"
+      op: {
+        create: {
+          req: false
+          type: "`$ANY`"
+        }
+      }
+      r: true
+      sh: "The continuation from the previous response, sent back unchanged to get the next results."
+      t: "`$ANY`"
+    }
+    coordinates_returned: {
+      h: "Coordinates Returned"
+      n: "coordinates_returned"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    credential_id: {
+      h: "Credential Id"
+      n: "credential_id"
+      r: true
+      t: "`$STRING`"
+    }
+    declined: {
+      h: "Declined"
+      n: "declined"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    delivery_contract: {
+      h: "Delivery Contract"
+      n: "delivery_contract"
+      r: true
+      t: "`$OBJECT`"
+    }
+    disabled_reason: {
+      h: "Disabled Reason"
+      n: "disabled_reason"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    disclosure: {
+      h: "Disclosure"
+      n: "disclosure"
+      r: true
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    endpoint: {
+      h: "Endpoint"
+      n: "endpoint"
+      r: true
+      t: "`$OBJECT`"
+    }
+    endpoint_id: {
+      h: "Endpoint Id"
+      n: "endpoint_id"
+      r: true
+      t: "`$STRING`"
+    }
+    endpoint_url: {
+      fo: "uri"
+      h: "Endpoint Url"
+      n: "endpoint_url"
+      r: true
+      t: "`$STRING`"
+    }
+    environment: {
+      h: "Environment"
+      n: "environment"
+      r: true
+      t: "`$STRING`"
+    }
+    event_id: {
+      h: "Event Id"
+      n: "event_id"
+      r: true
+      t: "`$STRING`"
+    }
+    event_types: {
+      h: "Event Types"
+      n: "event_types"
+      r: true
+      t: "`$ARRAY`"
+    }
+    failure_count: {
+      h: "Failure Count"
+      n: "failure_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    handoff_id: {
+      fo: "uuid"
+      h: "Handoff Id"
+      n: "handoff_id"
+      r: true
+      t: "`$STRING`"
+    }
+    has_more: {
+      h: "Has More"
+      n: "has_more"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    idempotent_replay: {
+      h: "Idempotent Replay"
+      n: "idempotent_replay"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    installation_id: {
+      fo: "uuid"
+      h: "Installation Id"
+      n: "installation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    key_id: {
+      h: "Key Id"
+      n: "key_id"
+      r: true
+      t: "`$STRING`"
+    }
+    last_delivery_at: {
+      fo: "date-time"
+      h: "Last Delivery At"
+      n: "last_delivery_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    latitude: {
+      h: "Latitude"
+      n: "latitude"
+      r: true
+      t: "`$NUMBER`"
+    }
+    location: {
+      h: "Location"
+      n: "location"
+      r: false
+      sh: "An opaque location reference from the website's own location controls."
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    longitude: {
+      h: "Longitude"
+      n: "longitude"
+      r: true
+      t: "`$NUMBER`"
+    }
+    message_alerts_enabled: {
+      h: "Message Alerts Enabled"
+      n: "message_alerts_enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    messages: {
+      h: "Messages"
+      n: "messages"
+      r: true
+      t: "`$ARRAY`"
+    }
+    mode: {
+      h: "Mode"
+      n: "mode"
+      r: true
+      sh: "fallback: a direct search answered because the language model was unavailable."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    oauth_grant_id: {
+      fo: "uuid"
+      h: "Oauth Grant Id"
+      n: "oauth_grant_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    one_time_display: {
+      h: "One Time Display"
+      n: "one_time_display"
+      r: true
+      t: "`$ANY`"
+    }
+    platform: {
+      h: "Platform"
+      n: "platform"
+      r: true
+      t: "`$STRING`"
+    }
+    policy: {
+      h: "Policy"
+      n: "policy"
+      r: true
+      t: "`$STRING`"
+    }
+    purpose: {
+      h: "Purpose"
+      n: "purpose"
+      r: true
+      t: "`$STRING`"
+    }
+    push_token: {
+      h: "Push Token"
+      n: "push_token"
+      r: true
+      t: "`$STRING`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    registered_at: {
+      fo: "date-time"
+      h: "Registered At"
+      n: "registered_at"
+      r: true
+      t: "`$STRING`"
+    }
+    reply: {
+      h: "Reply"
+      n: "reply"
+      r: true
+      t: "`$STRING`"
+    }
+    request_mode: {
+      h: "Request Mode"
+      n: "request_mode"
+      r: true
+      t: "`$STRING`"
+    }
+    requested_at: {
+      fo: "date-time"
+      h: "Requested At"
+      n: "requested_at"
+      r: true
+      t: "`$STRING`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: true
+      t: "`$ARRAY`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$STRING`"
+    }
+    selected_at: {
+      fo: "date-time"
+      h: "Selected At"
+      n: "selected_at"
+      r: true
+      t: "`$STRING`"
+    }
+    signed_in: {
+      h: "Signed In"
+      n: "signed_in"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    signing_secret: {
+      h: "Signing Secret"
+      n: "signing_secret"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "Public HTTPS receiver operated by the connecting principal or its agent runtime."
+      t: "`$STRING`"
+    }
+    usable_until: {
+      fo: "date-time"
+      h: "Usable Until"
+      n: "usable_until"
+      r: true
+      t: "`$STRING`"
+    }
+    use_mode: {
+      h: "Use Mode"
+      n: "use_mode"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "customer_account"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "accuracy_meters"
+            "agent_key_id"
+            "assertion"
+            "capture_source"
+            "captured_at"
+            "challenge"
+            "challenge_id"
+            "connection_id"
+            "installation_id"
+            "key_id"
+            "latitude"
+            "longitude"
+            "oauth_grant_id"
+            "use_mode"
+          ]
+          co: {
+            id: "POST /v1/account/location-handoffs/{handoff_id}/complete-from-device"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                k: "header"
+                n: "x_loppee_client_platform"
+                or: "X-Loppee-Client-Platform"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_loppee_installation_id"
+                or: "X-Loppee-Installation-Id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "location_handoff_id"
+                or: "handoff_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/location-handoffs/{handoff_id}/complete-from-device"
+          q: {
+            exist: [
+              "location_handoff_id"
+              "x_loppee_client_platform"
+              "x_loppee_installation_id"
+            ]
+          }
+          r: {
+            param: {
+              handoff_id: "location_handoff_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "location-handoffs"
+            }
+            {
+              var: "location_handoff_id"
+            }
+            {
+              lit: "complete-from-device"
+            }
+          ]
+          t: {
+            req: {
+              accuracy_meters: "`reqdata.accuracy_meter`"
+              agent_key_id: "`reqdata.agent_key_id`"
+              assertion: "`reqdata.assertion`"
+              capture_source: "`reqdata.capture_source`"
+              captured_at: "`reqdata.captured_at`"
+              challenge: "`reqdata.challenge`"
+              challenge_id: "`reqdata.challenge_id`"
+              connection_id: "`reqdata.connection_id`"
+              installation_id: "`reqdata.installation_id`"
+              key_id: "`reqdata.key_id`"
+              latitude: "`reqdata.latitude`"
+              longitude: "`reqdata.longitude`"
+              oauth_grant_id: "`reqdata.oauth_grant_id`"
+              use_mode: "`reqdata.use_mode`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "agent_key_id"
+            "assertion"
+            "challenge"
+            "challenge_id"
+            "connection_id"
+            "installation_id"
+            "key_id"
+            "oauth_grant_id"
+            "request_mode"
+          ]
+          co: {
+            id: "POST /v1/account/location-handoffs/{handoff_id}/decline-from-device"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                k: "header"
+                n: "x_loppee_client_platform"
+                or: "X-Loppee-Client-Platform"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_loppee_installation_id"
+                or: "X-Loppee-Installation-Id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "location_handoff_id"
+                or: "handoff_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/location-handoffs/{handoff_id}/decline-from-device"
+          q: {
+            exist: [
+              "location_handoff_id"
+              "x_loppee_client_platform"
+              "x_loppee_installation_id"
+            ]
+          }
+          r: {
+            param: {
+              handoff_id: "location_handoff_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "location-handoffs"
+            }
+            {
+              var: "location_handoff_id"
+            }
+            {
+              lit: "decline-from-device"
+            }
+          ]
+          t: {
+            req: {
+              agent_key_id: "`reqdata.agent_key_id`"
+              assertion: "`reqdata.assertion`"
+              challenge: "`reqdata.challenge`"
+              challenge_id: "`reqdata.challenge_id`"
+              connection_id: "`reqdata.connection_id`"
+              installation_id: "`reqdata.installation_id`"
+              key_id: "`reqdata.key_id`"
+              oauth_grant_id: "`reqdata.oauth_grant_id`"
+              request_mode: "`reqdata.request_mode`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "action"
+            "connection_id"
+            "consent_copy_version"
+            "handoff_id"
+            "installation_id"
+            "key_id"
+            "policy"
+            "purpose"
+            "use_mode"
+          ]
+          co: {
+            id: "POST /v1/account/agent-location/app-attest/challenges"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                k: "header"
+                n: "x_loppee_client_platform"
+                or: "X-Loppee-Client-Platform"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_loppee_installation_id"
+                or: "X-Loppee-Installation-Id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/agent-location/app-attest/challenges"
+          q: {
+            exist: [
+              "x_loppee_client_platform"
+              "x_loppee_installation_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agent-location"
+            }
+            {
+              lit: "app-attest"
+            }
+            {
+              lit: "challenges"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "attestation"
+            "challenge"
+            "challenge_id"
+            "installation_id"
+            "key_id"
+          ]
+          co: {
+            id: "POST /v1/account/agent-location/app-attest/keys"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                k: "header"
+                n: "x_loppee_client_platform"
+                or: "X-Loppee-Client-Platform"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_loppee_installation_id"
+                or: "X-Loppee-Installation-Id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/agent-location/app-attest/keys"
+          q: {
+            exist: [
+              "x_loppee_client_platform"
+              "x_loppee_installation_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agent-location"
+            }
+            {
+              lit: "app-attest"
+            }
+            {
+              lit: "keys"
+            }
+          ]
+          t: {
+            req: {
+              attestation: "`reqdata.attestation`"
+              challenge: "`reqdata.challenge`"
+              challenge_id: "`reqdata.challenge_id`"
+              installation_id: "`reqdata.installation_id`"
+              key_id: "`reqdata.key_id`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/account/agents/{agent_id}/disconnect"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/agents/{agent_id}/disconnect"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "disconnect"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/account/agents/{agent_id}/rotate-key"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/agents/{agent_id}/rotate-key"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "rotate-key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "url"
+          ]
+          co: {
+            id: "POST /v1/account/agents/{agent_id}/webhook"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/agents/{agent_id}/webhook"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "webhook"
+            }
+          ]
+          t: {
+            req: {
+              url: "`reqdata.url`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/account/agents/{agent_id}/webhook/disable"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/agents/{agent_id}/webhook/disable"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "webhook"
+            }
+            {
+              lit: "disable"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoint`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/account/agents/{agent_id}/webhook/test"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/agents/{agent_id}/webhook/test"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "webhook"
+            }
+            {
+              lit: "test"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "agent_key_id"
+            "assertion"
+            "challenge"
+            "challenge_id"
+            "consent_copy_version"
+            "installation_id"
+            "key_id"
+            "oauth_grant_id"
+            "policy"
+          ]
+          co: {
+            id: "POST /v1/account/agent-location/connections/{connection_id}/policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "connection_id"
+                or: "connection_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/agent-location/connections/{connection_id}/policy"
+          q: {
+            exist: [
+              "connection_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agent-location"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              var: "connection_id"
+            }
+            {
+              lit: "policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/account/conversations/{conversation_id}/read"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "conversation_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/conversations/{conversation_id}/read"
+          q: {
+            exist: [
+              "conversation_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              var: "conversation_id"
+            }
+            {
+              lit: "read"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "body"
+            "client_message_id"
+          ]
+          co: {
+            id: "POST /v1/account/conversations/{conversation_id}/reply"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "conversation_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/conversations/{conversation_id}/reply"
+          q: {
+            exist: [
+              "conversation_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              var: "conversation_id"
+            }
+            {
+              lit: "reply"
+            }
+          ]
+          t: {
+            req: {
+              body: "`reqdata.body`"
+              client_message_id: "`reqdata.client_message_id`"
+            }
+            res: "`body.reply`"
+          }
+        }
+        {
+          bf: [
+            "assertion"
+            "challenge"
+            "challenge_id"
+            "consent_copy_version"
+            "installation_id"
+            "key_id"
+            "paused"
+          ]
+          co: {
+            id: "POST /v1/account/agent-location/pause"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/agent-location/pause"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agent-location"
+            }
+            {
+              lit: "pause"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "name"
+          ]
+          co: {
+            id: "POST /v1/account/agents"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/agents"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "agents"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "continuation"
+            "location"
+            "messages"
+          ]
+          co: {
+            id: "POST /v1/account/assistant/chat"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/assistant/chat"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "assistant"
+            }
+            {
+              lit: "chat"
+            }
+          ]
+          t: {
+            req: {
+              continuation: "`reqdata.continuation`"
+              location: "`reqdata.location`"
+              messages: "`reqdata.message`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "acknowledge_data_effects"
+            "confirmation"
+            "reason"
+          ]
+          co: {
+            id: "POST /v1/account/deletion-requests"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/deletion-requests"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "deletion-requests"
+            }
+          ]
+          t: {
+            req: {
+              acknowledge_data_effects: "`reqdata.acknowledge_data_effect`"
+              confirmation: "`reqdata.confirmation`"
+              reason: "`reqdata.reason`"
+            }
+            res: "`body.request`"
+          }
+        }
+        {
+          bf: [
+            "installation_id"
+            "platform"
+            "push_token"
+          ]
+          co: {
+            id: "POST /v1/account/mobile-devices"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/mobile-devices"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "mobile-devices"
+            }
+          ]
+          t: {
+            req: {
+              installation_id: "`reqdata.installation_id`"
+              platform: "`reqdata.platform`"
+              push_token: "`reqdata.push_token`"
+            }
+            res: "`body.device`"
+          }
+        }
+        {
+          bf: [
+            "enabled"
+            "installation_id"
+          ]
+          co: {
+            id: "POST /v1/account/mobile-devices/message-alerts"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/mobile-devices/message-alerts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "mobile-devices"
+            }
+            {
+              lit: "message-alerts"
+            }
+          ]
+          t: {
+            req: {
+              enabled: "`reqdata.enabled`"
+              installation_id: "`reqdata.installation_id`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "installation_id"
+          ]
+          co: {
+            id: "POST /v1/account/mobile-devices/revoke"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/mobile-devices/revoke"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "mobile-devices"
+            }
+            {
+              lit: "revoke"
+            }
+          ]
+          t: {
+            req: {
+              installation_id: "`reqdata.installation_id`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.conversation")]
+    [path("$.main.kit.entity.location_handoff")]
+  ]
+
+}

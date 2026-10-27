@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "owner_notification_setting": {
+      "OWNER_NOTIFICATION_SETTING00": {
+        "businessId": "s64",
+        "business_id": "BUSINESS01",
+        "createdAt": "s66",
+        "emailEnabled": false,
+        "email_enabled": true,
+        "eventTypeSubscriptions": [],
+        "event_types": [],
+        "updatedAt": "s6b",
+        "webhookEnabled": true,
+        "webhook_enabled": false,
+        "id": "OWNER_NOTIFICATION_SETTING00"
+      },
+      "OWNER_NOTIFICATION_SETTING01": {
+        "businessId": "sc8",
+        "business_id": "BUSINESS01",
+        "createdAt": "sca",
+        "emailEnabled": false,
+        "email_enabled": true,
+        "eventTypeSubscriptions": [],
+        "event_types": [],
+        "updatedAt": "scf",
+        "webhookEnabled": true,
+        "webhook_enabled": false,
+        "id": "OWNER_NOTIFICATION_SETTING01"
+      },
+      "OWNER_NOTIFICATION_SETTING02": {
+        "businessId": "s12c",
+        "business_id": "BUSINESS01",
+        "createdAt": "s12e",
+        "emailEnabled": false,
+        "email_enabled": true,
+        "eventTypeSubscriptions": [],
+        "event_types": [],
+        "updatedAt": "s133",
+        "webhookEnabled": true,
+        "webhook_enabled": false,
+        "id": "OWNER_NOTIFICATION_SETTING02"
+      }
+    }
+  },
+  "new": {
+    "owner_notification_setting": {
+      "owner_notification_setting_ref01": {
+        "businessId": "s190",
+        "business_id": "BUSINESS01",
+        "createdAt": "s192",
+        "emailEnabled": false,
+        "email_enabled": true,
+        "eventTypeSubscriptions": [],
+        "event_types": [],
+        "updatedAt": "s197",
+        "webhookEnabled": true,
+        "webhook_enabled": false
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/owner/notification-settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

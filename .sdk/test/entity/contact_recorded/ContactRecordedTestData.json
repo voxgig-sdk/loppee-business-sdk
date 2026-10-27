@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "contact_recorded": {
+      "CONTACT_RECORDED00": {
+        "business_id": "BUSINESS01",
+        "contact_recorded": "s5b",
+        "interaction_id": "INTERACTION01",
+        "ok": "s5d",
+        "policy": "s5e",
+        "review_upgraded": "s5f",
+        "status": "s60",
+        "trust_weight": "s61",
+        "verified": true,
+        "id": "CONTACT_RECORDED00"
+      },
+      "CONTACT_RECORDED01": {
+        "business_id": "BUSINESS01",
+        "contact_recorded": "sb5",
+        "interaction_id": "INTERACTION01",
+        "ok": "sb7",
+        "policy": "sb8",
+        "review_upgraded": "sb9",
+        "status": "sba",
+        "trust_weight": "sbb",
+        "verified": true,
+        "id": "CONTACT_RECORDED01"
+      },
+      "CONTACT_RECORDED02": {
+        "business_id": "BUSINESS01",
+        "contact_recorded": "s10f",
+        "interaction_id": "INTERACTION01",
+        "ok": "s111",
+        "policy": "s112",
+        "review_upgraded": "s113",
+        "status": "s114",
+        "trust_weight": "s115",
+        "verified": true,
+        "id": "CONTACT_RECORDED02"
+      }
+    }
+  },
+  "new": {
+    "contact_recorded": {
+      "contact_recorded_ref01": {
+        "business_id": "BUSINESS01",
+        "contact_recorded": "s169",
+        "interaction_id": "INTERACTION01",
+        "ok": "s16b",
+        "policy": "s16c",
+        "review_upgraded": "s16d",
+        "status": "s16e",
+        "trust_weight": "s16f",
+        "verified": true
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/confirm-interaction": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

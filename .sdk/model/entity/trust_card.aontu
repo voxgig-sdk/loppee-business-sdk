@@ -1,0 +1,400 @@
+# Entity: trust_card
+
+main: kit: entity: trust_card: {
+
+  alias: field: {}
+
+  fields: {
+    agency: {
+      h: "Agency"
+      n: "agency"
+      r: true
+      t: "`$STRING`"
+    }
+    collected_at: {
+      fo: "date-time"
+      h: "Collected At"
+      n: "collected_at"
+      r: true
+      t: "`$STRING`"
+    }
+    disclosure: {
+      h: "Disclosure"
+      n: "disclosure"
+      r: true
+      t: "`$STRING`"
+    }
+    fact_id: {
+      h: "Fact Id"
+      n: "fact_id"
+      r: true
+      t: "`$STRING`"
+    }
+    matched_on: {
+      h: "Matched On"
+      n: "matched_on"
+      r: true
+      t: "`$STRING`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: false
+      t: "`$STRING`"
+    }
+    record_kind: {
+      h: "Record Kind"
+      n: "record_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    record_number: {
+      h: "Record Number"
+      n: "record_number"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    record_scope: {
+      h: "Record Scope"
+      n: "record_scope"
+      r: true
+      t: "`$STRING`"
+    }
+    record_type: {
+      h: "Record Type"
+      n: "record_type"
+      r: true
+      t: "`$STRING`"
+    }
+    recorded_expiry: {
+      fo: "date"
+      h: "Recorded Expiry"
+      n: "recorded_expiry"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    result: {
+      h: "Result"
+      n: "result"
+      r: true
+      t: "`$STRING`"
+    }
+    source_label: {
+      h: "Source Label"
+      n: "source_label"
+      r: true
+      t: "`$STRING`"
+    }
+    source_url: {
+      fo: "uri"
+      h: "Source Url"
+      n: "source_url"
+      r: true
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      t: "`$STRING`"
+    }
+    status_on_record: {
+      h: "Status On Record"
+      n: "status_on_record"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "trust_card"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "reason"
+          ]
+          co: {
+            id: "POST /v1/businesses/{business_id}/license-records/{fact_id}/report"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "business_id"
+                or: "business_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "license_record_id"
+                or: "fact_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/businesses/{business_id}/license-records/{fact_id}/report"
+          q: {
+            exist: [
+              "business_id"
+              "license_record_id"
+            ]
+          }
+          r: {
+            param: {
+              fact_id: "license_record_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "businesses"
+            }
+            {
+              var: "business_id"
+            }
+            {
+              lit: "license-records"
+            }
+            {
+              var: "license_record_id"
+            }
+            {
+              lit: "report"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/businesses/{business_id}/archived-records.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "biz_elite_ac_llc_jacksonville_fl"
+                k: "param"
+                n: "business_id"
+                or: "business_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/businesses/{business_id}/archived-records.json"
+          q: {
+            exist: [
+              "business_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "businesses"
+            }
+            {
+              var: "business_id"
+            }
+            {
+              lit: "archived-records.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.facts`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/businesses/{business_id}/license-records.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "biz_elite_ac_llc_jacksonville_fl"
+                k: "param"
+                n: "business_id"
+                or: "business_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/businesses/{business_id}/license-records.json"
+          q: {
+            exist: [
+              "business_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "businesses"
+            }
+            {
+              var: "business_id"
+            }
+            {
+              lit: "license-records.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.records`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/businesses/{business_id}/trust-card.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "biz_elite_ac_llc_jacksonville_fl"
+                k: "param"
+                n: "business_id"
+                or: "business_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/businesses/{business_id}/trust-card.json"
+          q: {
+            exist: [
+              "business_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "businesses"
+            }
+            {
+              var: "business_id"
+            }
+            {
+              lit: "trust-card.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/schemas/{schema_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "trust-card.schema.json"
+                k: "param"
+                n: "schema_name"
+                or: "schema_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/schemas/{schema_name}"
+          q: {
+            exist: [
+              "schema_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "schemas"
+            }
+            {
+              var: "schema_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,127 @@
+# Entity: claim_verification_send
+
+main: kit: entity: claim_verification_send: {
+
+  alias: field: {}
+
+  fields: {
+    challenge_id: {
+      fo: "uuid"
+      h: "Challenge Id"
+      n: "challenge_id"
+      r: false
+      sh: "Opaque v3 SMS or owner-email challenge UUID."
+      t: "`$STRING`"
+    }
+    channel: {
+      h: "Channel"
+      n: "channel"
+      op: {
+        create: {
+          req: false
+          type: "`$ANY`"
+        }
+      }
+      r: true
+      t: "`$ANY`"
+    }
+    claim_id: {
+      h: "Claim Id"
+      n: "claim_id"
+      r: true
+      t: "`$STRING`"
+    }
+    destination_hint: {
+      h: "Destination Hint"
+      n: "destination_hint"
+      r: false
+      t: "`$STRING`"
+    }
+    expires_in_seconds: {
+      h: "Expires In Seconds"
+      n: "expires_in_seconds"
+      r: false
+      t: "`$NUMBER`"
+    }
+    provider_status: {
+      h: "Provider Status"
+      n: "provider_status"
+      r: false
+      sh: "V3 provider request state."
+      t: "`$ANY`"
+    }
+    recipient_delivery_confirmed: {
+      h: "Recipient Delivery Confirmed"
+      n: "recipient_delivery_confirmed"
+      r: false
+      sh: "V3 currently has no final-delivery provider event for this receipt."
+      t: "`$ANY`"
+    }
+    request_id: {
+      fo: "uuid"
+      h: "Request Id"
+      n: "request_id"
+      r: false
+      sh: "Caller-generated idempotency UUID."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  name: "claim_verification_send"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "channel"
+            "claim_id"
+            "request_id"
+          ]
+          co: {
+            id: "POST /v1/actions/claim-verification/send"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/claim-verification/send"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "claim-verification"
+            }
+            {
+              lit: "send"
+            }
+          ]
+          t: {
+            req: {
+              channel: "`reqdata.channel`"
+              claim_id: "`reqdata.claim_id`"
+              request_id: "`reqdata.request_id`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

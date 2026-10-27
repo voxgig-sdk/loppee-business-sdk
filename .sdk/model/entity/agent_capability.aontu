@@ -1,0 +1,106 @@
+# Entity: agent_capability
+
+main: kit: entity: agent_capability: {
+
+  alias: field: {}
+
+  fields: {
+    agent_phone_location_bridge: {
+      h: "Agent Phone Location Bridge"
+      n: "agent_phone_location_bridge"
+      r: false
+      t: "`$OBJECT`"
+    }
+    agent_rules: {
+      h: "Agent Rules"
+      n: "agent_rules"
+      r: true
+      t: "`$OBJECT`"
+    }
+    discovery: {
+      h: "Discovery"
+      n: "discovery"
+      r: true
+      t: "`$OBJECT`"
+    }
+    external_agent_access: {
+      h: "External Agent Access"
+      n: "external_agent_access"
+      r: true
+      t: "`$OBJECT`"
+    }
+    external_agent_webhooks: {
+      h: "External Agent Webhooks"
+      n: "external_agent_webhooks"
+      r: true
+      t: "`$OBJECT`"
+    }
+    local_discovery_location_policy: {
+      h: "Local Discovery Location Policy"
+      n: "local_discovery_location_policy"
+      r: true
+      t: "`$OBJECT`"
+    }
+    location_choices: {
+      h: "Location Choices"
+      n: "location_choices"
+      r: false
+      t: "`$OBJECT`"
+    }
+    registry_name: {
+      h: "Registry Name"
+      n: "registry_name"
+      r: true
+      t: "`$ANY`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$ANY`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  name: "agent_capability"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/agent-capabilities.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/agent-capabilities.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent-capabilities.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

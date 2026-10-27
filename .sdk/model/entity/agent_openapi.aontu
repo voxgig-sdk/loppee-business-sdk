@@ -1,0 +1,82 @@
+# Entity: agent_openapi
+
+main: kit: entity: agent_openapi: {
+
+  alias: field: {}
+
+  fields: {
+    components: {
+      h: "Components"
+      n: "components"
+      r: true
+      t: "`$OBJECT`"
+    }
+    info: {
+      h: "Info"
+      n: "info"
+      r: true
+      t: "`$OBJECT`"
+    }
+    openapi: {
+      h: "Openapi"
+      n: "openapi"
+      r: true
+      t: "`$ANY`"
+    }
+    paths: {
+      h: "Paths"
+      n: "paths"
+      r: true
+      t: "`$OBJECT`"
+    }
+    servers: {
+      h: "Servers"
+      n: "servers"
+      r: true
+      t: "`$ARRAY`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "agent_openapi"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/agent-openapi.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/agent-openapi.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent-openapi.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

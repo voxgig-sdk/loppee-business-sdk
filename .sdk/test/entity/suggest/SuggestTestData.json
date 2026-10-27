@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "suggest": {
+      "SUGGEST00": {
+        "categories": [],
+        "names": [],
+        "query": "s2a",
+        "schema_version": "s2b"
+      },
+      "SUGGEST01": {
+        "categories": [],
+        "names": [],
+        "query": "s52",
+        "schema_version": "s53"
+      },
+      "SUGGEST02": {
+        "categories": [],
+        "names": [],
+        "query": "s7a",
+        "schema_version": "s7b"
+      }
+    }
+  },
+  "new": {
+    "suggest": {
+      "suggest_ref01": {
+        "categories": [],
+        "names": [],
+        "query": "sa2",
+        "schema_version": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/suggest": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

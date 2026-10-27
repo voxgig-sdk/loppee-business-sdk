@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "promote_verified_transaction": {
+      "PROMOTE_VERIFIED_TRANSACTION00": {
+        "business_id": "BUSINESS01",
+        "evidence_id": "EVIDENCE01",
+        "interaction_id": "INTERACTION01",
+        "ok": "s53",
+        "review_upgraded": true,
+        "status": "s55",
+        "trust_weight": "s56",
+        "verified": false,
+        "id": "PROMOTE_VERIFIED_TRANSACTION00"
+      },
+      "PROMOTE_VERIFIED_TRANSACTION01": {
+        "business_id": "BUSINESS01",
+        "evidence_id": "EVIDENCE01",
+        "interaction_id": "INTERACTION01",
+        "ok": "sa3",
+        "review_upgraded": true,
+        "status": "sa5",
+        "trust_weight": "sa6",
+        "verified": false,
+        "id": "PROMOTE_VERIFIED_TRANSACTION01"
+      },
+      "PROMOTE_VERIFIED_TRANSACTION02": {
+        "business_id": "BUSINESS01",
+        "evidence_id": "EVIDENCE01",
+        "interaction_id": "INTERACTION01",
+        "ok": "sf3",
+        "review_upgraded": true,
+        "status": "sf5",
+        "trust_weight": "sf6",
+        "verified": false,
+        "id": "PROMOTE_VERIFIED_TRANSACTION02"
+      }
+    }
+  },
+  "new": {
+    "promote_verified_transaction": {
+      "promote_verified_transaction_ref01": {
+        "business_id": "BUSINESS01",
+        "evidence_id": "EVIDENCE01",
+        "interaction_id": "INTERACTION01",
+        "ok": "s143",
+        "review_upgraded": true,
+        "status": "s145",
+        "trust_weight": "s146",
+        "verified": false
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/promote-verified-transaction": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

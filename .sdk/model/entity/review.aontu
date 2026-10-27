@@ -1,0 +1,169 @@
+# Entity: review
+
+main: kit: entity: review: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    attestation_accepted: {
+      h: "Attestation Accepted"
+      n: "attestation_accepted"
+      r: true
+      sh: "Set true only after the customer confirms this describes their own experience and explicitly approves publishing the displayed business, star rating, title, and full review."
+      t: "`$BOOLEAN`"
+    }
+    customer_confirmed: {
+      h: "Customer Confirmed"
+      n: "customer_confirmed"
+      r: false
+      sh: "Set true to confirm you were a customer of this business."
+      t: "`$BOOLEAN`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: true
+      t: "`$STRING`"
+    }
+    rating: {
+      h: "Rating"
+      n: "rating"
+      r: true
+      t: "`$INTEGER`"
+    }
+    service_date: {
+      h: "Service Date"
+      n: "service_date"
+      r: false
+      sh: "Optional real, non-future service date in YYYY-MM-DD format; empty means not provided."
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    subject: {
+      h: "Subject"
+      n: "subject"
+      r: true
+      t: "`$STRING`"
+    }
+    target_business_id: {
+      h: "Target Business Id"
+      n: "target_business_id"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "review"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "attestation_accepted"
+            "customer_confirmed"
+            "message"
+            "rating"
+            "service_date"
+            "subject"
+            "target_business_id"
+          ]
+          co: {
+            id: "POST /v1/actions/public-review"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/public-review"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "public-review"
+            }
+          ]
+          t: {
+            req: {
+              attestation_accepted: "`reqdata.attestation_accepted`"
+              customer_confirmed: "`reqdata.customer_confirmed`"
+              message: "`reqdata.message`"
+              rating: "`reqdata.rating`"
+              service_date: "`reqdata.service_date`"
+              subject: "`reqdata.subject`"
+              target_business_id: "`reqdata.target_business_id`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "account_id"
+            "attestation_accepted"
+            "customer_confirmed"
+            "message"
+            "rating"
+            "service_date"
+            "subject"
+            "target_business_id"
+          ]
+          co: {
+            id: "POST /v1/actions/review"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/review"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "review"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              attestation_accepted: "`reqdata.attestation_accepted`"
+              customer_confirmed: "`reqdata.customer_confirmed`"
+              message: "`reqdata.message`"
+              rating: "`reqdata.rating`"
+              service_date: "`reqdata.service_date`"
+              subject: "`reqdata.subject`"
+              target_business_id: "`reqdata.target_business_id`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

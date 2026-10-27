@@ -1,0 +1,228 @@
+# Entity: business_claim
+
+main: kit: entity: business_claim: {
+
+  alias: field: {}
+
+  fields: {
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$STRING`"
+    }
+    city: {
+      h: "City"
+      n: "city"
+      r: false
+      t: "`$STRING`"
+    }
+    claim_id: {
+      h: "Claim Id"
+      n: "claim_id"
+      r: true
+      t: "`$STRING`"
+    }
+    claim_status: {
+      h: "Claim Status"
+      n: "claim_status"
+      r: true
+      t: "`$STRING`"
+    }
+    claimant_email: {
+      h: "Claimant Email"
+      n: "claimant_email"
+      r: false
+      sh: "Legacy field; authenticated owner identity wins."
+      t: "`$STRING`"
+    }
+    claimant_name: {
+      h: "Claimant Name"
+      n: "claimant_name"
+      r: false
+      sh: "Legacy field; authenticated owner identity wins."
+      t: "`$STRING`"
+    }
+    claimant_relationship: {
+      h: "Claimant Relationship"
+      n: "claimant_relationship"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    directory_listing_id: {
+      h: "Directory Listing Id"
+      n: "directory_listing_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: true
+      t: "`$STRING`"
+    }
+    listing_id: {
+      h: "Listing Id"
+      n: "listing_id"
+      r: false
+      t: "`$STRING`"
+    }
+    notes: {
+      h: "Notes"
+      n: "notes"
+      r: false
+      t: "`$STRING`"
+    }
+    phone: {
+      h: "Phone"
+      n: "phone"
+      r: false
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      t: "`$STRING`"
+    }
+    source_type: {
+      h: "Source Type"
+      n: "source_type"
+      r: false
+      t: "`$STRING`"
+    }
+    source_url: {
+      h: "Source Url"
+      n: "source_url"
+      r: false
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    verification: {
+      h: "Verification"
+      n: "verification"
+      r: false
+      t: "`$OBJECT`"
+    }
+    website: {
+      h: "Website"
+      n: "website"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "business_claim"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "business_id"
+            "category"
+            "city"
+            "claimant_email"
+            "claimant_name"
+            "claimant_relationship"
+            "display_name"
+            "listing_id"
+            "notes"
+            "phone"
+            "source"
+            "source_type"
+            "source_url"
+            "state"
+            "website"
+          ]
+          co: {
+            id: "POST /v1/actions/business-claim"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/business-claim"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "business-claim"
+            }
+          ]
+          t: {
+            req: {
+              business_id: "`reqdata.business_id`"
+              category: "`reqdata.category`"
+              city: "`reqdata.city`"
+              claimant_email: "`reqdata.claimant_email`"
+              claimant_name: "`reqdata.claimant_name`"
+              claimant_relationship: "`reqdata.claimant_relationship`"
+              display_name: "`reqdata.display_name`"
+              listing_id: "`reqdata.listing_id`"
+              notes: "`reqdata.note`"
+              phone: "`reqdata.phone`"
+              source: "`reqdata.source`"
+              source_type: "`reqdata.source_type`"
+              source_url: "`reqdata.source_url`"
+              state: "`reqdata.state`"
+              website: "`reqdata.website`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "revoke": {
+      "REVOKE00": {
+        "account_id": "ACCOUNT01",
+        "key_id": "KEY01",
+        "revoked_by": "s2a",
+        "status": "s2b",
+        "agent_key_id": "AGENT_KEY01",
+        "id": "REVOKE00"
+      },
+      "REVOKE01": {
+        "account_id": "ACCOUNT01",
+        "key_id": "KEY01",
+        "revoked_by": "s52",
+        "status": "s53",
+        "agent_key_id": "AGENT_KEY01",
+        "id": "REVOKE01"
+      },
+      "REVOKE02": {
+        "account_id": "ACCOUNT01",
+        "key_id": "KEY01",
+        "revoked_by": "s7a",
+        "status": "s7b",
+        "agent_key_id": "AGENT_KEY01",
+        "id": "REVOKE02"
+      }
+    }
+  },
+  "new": {
+    "revoke": {
+      "revoke_ref01": {
+        "account_id": "ACCOUNT01",
+        "key_id": "KEY01",
+        "revoked_by": "sa2",
+        "status": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/admin/agent-keys/{key_id}/revoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

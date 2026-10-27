@@ -1,0 +1,22 @@
+# BasicConversationWorkflowFlow
+
+main: kit: flow: BasicConversationWorkflowFlow:
+{
+  entity: "conversation_workflow",
+  kind: "basic",
+  name: "BasicConversationWorkflowFlow",
+  step: [
+    {
+      i: {
+        ref: "conversation_workflow_ref01"
+      }
+
+      m: {
+        message_id: "message01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicConversationWorkflowFlow"
+}

@@ -1,0 +1,18 @@
+# BasicDestinationLocationProofFlow
+
+main: kit: flow: BasicDestinationLocationProofFlow:
+{
+  entity: "destination_location_proof",
+  kind: "basic",
+  name: "BasicDestinationLocationProofFlow",
+  step: [
+    {
+      i: {
+        ref: "destination_location_proof_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDestinationLocationProofFlow"
+}

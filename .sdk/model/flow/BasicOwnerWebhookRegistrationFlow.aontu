@@ -1,0 +1,18 @@
+# BasicOwnerWebhookRegistrationFlow
+
+main: kit: flow: BasicOwnerWebhookRegistrationFlow:
+{
+  entity: "owner_webhook_registration",
+  kind: "basic",
+  name: "BasicOwnerWebhookRegistrationFlow",
+  step: [
+    {
+      i: {
+        ref: "owner_webhook_registration_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOwnerWebhookRegistrationFlow"
+}

@@ -1,0 +1,23 @@
+# BasicChatAttachmentUrlFlow
+
+main: kit: flow: BasicChatAttachmentUrlFlow:
+{
+  entity: "chat_attachment_url",
+  kind: "basic",
+  name: "BasicChatAttachmentUrlFlow",
+  step: [
+    {
+      i: {
+        ref: "chat_attachment_url_ref01"
+      }
+
+      m: {
+        attachment_id: "attachment01",
+        support_id: "support01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicChatAttachmentUrlFlow"
+}

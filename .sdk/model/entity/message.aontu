@@ -1,0 +1,218 @@
+# Entity: message
+
+main: kit: entity: message: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    client_message_id: {
+      h: "Client Message Id"
+      n: "client_message_id"
+      r: true
+      sh: "Caller-stable retry key."
+      t: "`$STRING`"
+    }
+    conversation_id: {
+      h: "Conversation Id"
+      n: "conversation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    delivery: {
+      h: "Delivery"
+      n: "delivery"
+      r: false
+      t: "`$ANY`"
+    }
+    idempotent_replay: {
+      h: "Idempotent Replay"
+      n: "idempotent_replay"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    interaction_id: {
+      h: "Interaction Id"
+      n: "interaction_id"
+      r: true
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: true
+      t: "`$STRING`"
+    }
+    moderation_required: {
+      h: "Moderation Required"
+      n: "moderation_required"
+      r: false
+      t: "`$ANY`"
+    }
+    source_path: {
+      h: "Source Path"
+      n: "source_path"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    subject: {
+      h: "Subject"
+      n: "subject"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    target_business_id: {
+      h: "Target Business Id"
+      n: "target_business_id"
+      r: true
+      t: "`$STRING`"
+    }
+    target_business_name: {
+      h: "Target Business Name"
+      n: "target_business_name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    target_business_source: {
+      h: "Target Business Source"
+      n: "target_business_source"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "message"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "message"
+            "source_path"
+            "subject"
+            "target_business_id"
+            "target_business_name"
+            "target_business_source"
+          ]
+          co: {
+            id: "POST /v1/actions/business-message"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/business-message"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "business-message"
+            }
+          ]
+          t: {
+            req: {
+              message: "`reqdata.message`"
+              source_path: "`reqdata.source_path`"
+              subject: "`reqdata.subject`"
+              target_business_id: "`reqdata.target_business_id`"
+              target_business_name: "`reqdata.target_business_name`"
+              target_business_source: "`reqdata.target_business_source`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "account_id"
+            "client_message_id"
+            "message"
+            "subject"
+            "target_business_id"
+            "target_business_name"
+            "target_business_source"
+          ]
+          co: {
+            id: "POST /v1/actions/message-request"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/message-request"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "message-request"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              client_message_id: "`reqdata.client_message_id`"
+              message: "`reqdata.message`"
+              subject: "`reqdata.subject`"
+              target_business_id: "`reqdata.target_business_id`"
+              target_business_name: "`reqdata.target_business_name`"
+              target_business_source: "`reqdata.target_business_source`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

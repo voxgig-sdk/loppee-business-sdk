@@ -1,0 +1,425 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  fields: {
+    candidate_window_truncated: {
+      h: "Candidate Window Truncated"
+      n: "candidate_window_truncated"
+      r: true
+      sh: "True when Loppee's bounded candidate assembly reached its safety cap."
+      t: "`$BOOLEAN`"
+    }
+    commercial_influence: {
+      h: "Commercial Influence"
+      n: "commercial_influence"
+      r: true
+      sh: "Must be none whenever current-location or saved_exact authority is absent, including universal exact/genuine-prefix name lookup."
+      t: "`$STRING`"
+    }
+    display_count: {
+      h: "Display Count"
+      n: "display_count"
+      r: false
+      sh: "Agent-key responses: the number of businesses in this response."
+      t: "`$INTEGER`"
+    }
+    generated_at: {
+      fo: "date-time"
+      h: "Generated At"
+      n: "generated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    has_more: {
+      h: "Has More"
+      n: "has_more"
+      r: true
+      sh: "True only when next_cursor can continue through the current bounded, deterministic candidate window."
+      t: "`$BOOLEAN`"
+    }
+    location_context: {
+      h: "Location Context"
+      n: "location_context"
+      r: true
+      sh: "Local category discovery and recommendations require a current precise location proof or handoff, a user-confirmed validated destination authority, or a saved_exact Home location."
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    next_cursor: {
+      h: "Next Cursor"
+      n: "next_cursor"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    page_limit: {
+      h: "Page Limit"
+      n: "page_limit"
+      r: true
+      t: "`$INTEGER`"
+    }
+    policy: {
+      h: "Policy"
+      n: "policy"
+      r: true
+      t: "`$STRING`"
+    }
+    presentation_guidance: {
+      h: "Presentation Guidance"
+      n: "presentation_guidance"
+      r: false
+      sh: "Agent-key responses: how to present these results to the customer."
+      t: "`$STRING`"
+    }
+    query: {
+      h: "Query"
+      n: "query"
+      r: true
+      t: "`$OBJECT`"
+    }
+    ranking_policy: {
+      h: "Ranking Policy"
+      n: "ranking_policy"
+      r: true
+      t: "`$STRING`"
+    }
+    registry_count_basis: {
+      h: "Registry Count Basis"
+      n: "registry_count_basis"
+      r: true
+      t: "`$STRING`"
+    }
+    registry_count_observed_at: {
+      h: "Registry Count Observed At"
+      n: "registry_count_observed_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    registry_name: {
+      h: "Registry Name"
+      n: "registry_name"
+      r: true
+      t: "`$ANY`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 10
+        count: 8
+        depth: 7
+      }
+    }
+    returned_count: {
+      h: "Returned Count"
+      n: "returned_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$ANY`"
+    }
+    search_intent: {
+      h: "Search Intent"
+      n: "search_intent"
+      r: true
+      t: "`$OBJECT`"
+    }
+    suggestions: {
+      h: "Suggestions"
+      n: "suggestions"
+      r: false
+      t: "`$OBJECT`"
+    }
+    total_matches: {
+      h: "Total Matches"
+      n: "total_matches"
+      r: false
+      sh: "Web and app responses."
+      t: "`$INTEGER`"
+    }
+    total_matches_basis: {
+      h: "Total Matches Basis"
+      n: "total_matches_basis"
+      r: false
+      t: "`$INTEGER`"
+    }
+    total_registry_records: {
+      h: "Total Registry Records"
+      n: "total_registry_records"
+      r: true
+      t: "`$INTEGER`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: true
+      t: "`$ANY`"
+    }
+    visible_candidate_records: {
+      h: "Visible Candidate Records"
+      n: "visible_candidate_records"
+      r: false
+      sh: "Web and app responses."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "search"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/business-claim/candidates"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "city"
+                or: "city"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: "Elite AC LLC"
+                k: "query"
+                n: "q"
+                or: "q"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "zip"
+                or: "zip"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/business-claim/candidates"
+          q: {
+            exist: [
+              "q"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "business-claim"
+            }
+            {
+              lit: "candidates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v1/search"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "city"
+                or: "city"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "consumer_reach"
+                or: "consumer_reach"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "include_directory_listing"
+                or: "include_directory_listings"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "intent"
+                or: "intent"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "location_handoff_id"
+                or: "location_handoff_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "location_proof_id"
+                or: "location_proof_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "location_selection"
+                or: "location_selection"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "paid_only"
+                or: "paid_only"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "radius_mile"
+                or: "radius_miles"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "saved_location_ref"
+                or: "saved_location_ref"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "search_intent"
+                or: "search_intent"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "zip"
+                or: "zip"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/search"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

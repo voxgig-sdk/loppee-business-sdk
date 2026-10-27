@@ -1,0 +1,152 @@
+# Entity: business_application
+
+main: kit: entity: business_application: {
+
+  alias: field: {}
+
+  fields: {
+    application: {
+      h: "Application"
+      n: "application"
+      r: true
+      t: "`$OBJECT`"
+    }
+    application_id: {
+      h: "Application Id"
+      n: "application_id"
+      r: true
+      t: "`$STRING`"
+    }
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    claim_id: {
+      h: "Claim Id"
+      n: "claim_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    existing_business: {
+      h: "Existing Business"
+      n: "existing_business"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    files: {
+      h: "Files"
+      n: "files"
+      r: false
+      t: "`$ARRAY`"
+    }
+    listing_id: {
+      h: "Listing Id"
+      n: "listing_id"
+      r: false
+      t: "`$STRING`"
+    }
+    pipeline_status: {
+      h: "Pipeline Status"
+      n: "pipeline_status"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: true
+      t: "`$ANY`"
+    }
+    uploaded_files: {
+      h: "Uploaded Files"
+      n: "uploaded_files"
+      r: true
+      t: "`$NUMBER`"
+    }
+  }
+
+  name: "business_application"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "application"
+            "business_id"
+            "claim_id"
+            "files"
+            "listing_id"
+          ]
+          co: {
+            id: "POST /v1/actions/business-application"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/business-application"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "business-application"
+            }
+          ]
+          t: {
+            req: {
+              application: "`reqdata.application`"
+              business_id: "`reqdata.business_id`"
+              claim_id: "`reqdata.claim_id`"
+              files: "`reqdata.file`"
+              listing_id: "`reqdata.listing_id`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,22 @@
+# BasicConversationReportFlow
+
+main: kit: flow: BasicConversationReportFlow:
+{
+  entity: "conversation_report",
+  kind: "basic",
+  name: "BasicConversationReportFlow",
+  step: [
+    {
+      i: {
+        ref: "conversation_report_ref01"
+      }
+
+      m: {
+        message_id: "message01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicConversationReportFlow"
+}

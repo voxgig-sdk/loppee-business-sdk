@@ -1,0 +1,18 @@
+# BasicCustomerFlow
+
+main: kit: flow: BasicCustomerFlow:
+{
+  entity: "customer",
+  kind: "basic",
+  name: "BasicCustomerFlow",
+  step: [
+    {
+      i: {
+        ref: "customer_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCustomerFlow"
+}

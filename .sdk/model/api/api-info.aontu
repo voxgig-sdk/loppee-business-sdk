@@ -1,0 +1,93 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "Customers and administrators supply and operate their external agents. Loppee provides scoped API/MCP access and keys only; it does not provide, host, or operate an agent or AI service. Under v3, this access is available at no charge for now. Loppee v3 exposes explicit Verified and Listed business classes. Category recommendations may also contain a reviewed_registry section within the three-mile Free reach and an exclusive fallback_registry section containing at most one unclaimed record; owner-submitted and claimed-but-unpublished Registry records are never fallback results. Exact/genuine-prefix name recommendations preserve direct-entity relevance and may contain identity-reviewed Registry rows without radius entitlement or unrated fallback. Registry businesses retain their explicit claim_status and disclosure and are not currently published as Verified or Listed. Identity-verified reviewer ratings influence quality only within the applicable class or Registry pool. Local category discovery and recommendations require a current precise location proof or handoff, a user-confirmed validated destination authority, or a saved_exact Home location. City/state, ZIP, and saved_coarse locations are neutral area context for business-name disambiguation only: they return no local category or recommendation results, cannot activate Sponsored placement, and record no impressions. A connected assistant's current location comes only from the registered Loppee iPhone; provider IP, caller-supplied coordinates, host metadata, and computer/browser location are rejected as current-location authority. Exact and genuine-prefix business-name lookup remains universal; without precise location it is commercially neutral. Account, owner and admin GET operations that need an ID were removed because they require a Loppee session token or agent key (401/403 without one). 83 GET operations that require a key or session were removed on 2026-10-23."
+      security: {
+        alternatives: [
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "SupabaseCustomerBearer"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "AgentBearer"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "SupabaseOwnerBearer"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "SupabaseAdminBearer"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "X-Loppee-Job-Resume-Scan-Callback-Token"
+              prefix: ""
+              scheme: "JobResumeScanCallback"
+              type: "apiKey"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "X-Loppee-Scan-Callback-Token"
+              prefix: ""
+              scheme: "OwnerEvidenceScanCallback"
+              type: "apiKey"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Stripe-Signature"
+              prefix: ""
+              scheme: "StripeSignature"
+              type: "apiKey"
+            }
+          ]
+        ]
+        in: "header"
+        name: "X-LOPPEE-API-Key"
+        prefix: ""
+        scheme: "AgentApiKey"
+        type: "apiKey"
+      }
+      servers: [
+        {
+          description: "Production"
+          url: "https://loppee.com"
+        }
+      ]
+      summary: "Business registry and scoped workflow access for customer- and administrator-operated external agents."
+      title: "Loppee Business Registry API for External Agents"
+      version: "3.0"
+      website: "https://loppee.com"
+    }
+  }
+}
+

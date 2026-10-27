@@ -1,0 +1,102 @@
+# Entity: destination_location_proof
+
+main: kit: entity: destination_location_proof: {
+
+  alias: field: {}
+
+  fields: {
+    address: {
+      h: "Address"
+      n: "address"
+      r: true
+      sh: "A real US service address."
+      t: "`$STRING`"
+    }
+    premise_proximity_confirmation_token: {
+      h: "Premise Proximity Confirmation Token"
+      n: "premise_proximity_confirmation_token"
+      r: false
+      sh: "Opaque one-time token from the immediately preceding premise-proximity challenge for the same address and authority."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "destination_location_proof"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "address"
+            "premise_proximity_confirmation_token"
+          ]
+          co: {
+            id: "POST /v1/account/destination-location-proofs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/destination-location-proofs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "destination-location-proofs"
+            }
+          ]
+          t: {
+            req: {
+              address: "`reqdata.address`"
+              premise_proximity_confirmation_token: "`reqdata.premise_proximity_confirmation_token`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "address"
+            "premise_proximity_confirmation_token"
+          ]
+          co: {
+            id: "POST /v1/destination-location-proofs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/destination-location-proofs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "destination-location-proofs"
+            }
+          ]
+          t: {
+            req: {
+              address: "`reqdata.address`"
+              premise_proximity_confirmation_token: "`reqdata.premise_proximity_confirmation_token`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

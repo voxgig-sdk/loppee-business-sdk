@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "taxonomy_suggestion": {
+      "TAXONOMY_SUGGESTION00": {
+        "alias": "s1e",
+        "path_titles": [],
+        "title": "s20"
+      },
+      "TAXONOMY_SUGGESTION01": {
+        "alias": "s3c",
+        "path_titles": [],
+        "title": "s3e"
+      },
+      "TAXONOMY_SUGGESTION02": {
+        "alias": "s5a",
+        "path_titles": [],
+        "title": "s5c"
+      }
+    }
+  },
+  "new": {
+    "taxonomy_suggestion": {
+      "taxonomy_suggestion_ref01": {
+        "alias": "s78",
+        "path_titles": [],
+        "title": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/taxonomy/suggest": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

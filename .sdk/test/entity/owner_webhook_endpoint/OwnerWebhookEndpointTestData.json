@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "owner_webhook_endpoint": {
+      "OWNER_WEBHOOK_ENDPOINT00": {
+        "businessId": "s5a",
+        "createdAt": "s5b",
+        "enabled": true,
+        "eventTypeSubscriptions": [],
+        "failureCount": 94,
+        "id": "OWNER_WEBHOOK_ENDPOINT00",
+        "lastDeliveryAt": "s60",
+        "updatedAt": "s61",
+        "url": "s62",
+        "webhook_id": "WEBHOOK01"
+      },
+      "OWNER_WEBHOOK_ENDPOINT01": {
+        "businessId": "sb4",
+        "createdAt": "sb5",
+        "enabled": true,
+        "eventTypeSubscriptions": [],
+        "failureCount": 184,
+        "id": "OWNER_WEBHOOK_ENDPOINT01",
+        "lastDeliveryAt": "sba",
+        "updatedAt": "sbb",
+        "url": "sbc",
+        "webhook_id": "WEBHOOK01"
+      },
+      "OWNER_WEBHOOK_ENDPOINT02": {
+        "businessId": "s10e",
+        "createdAt": "s10f",
+        "enabled": true,
+        "eventTypeSubscriptions": [],
+        "failureCount": 274,
+        "id": "OWNER_WEBHOOK_ENDPOINT02",
+        "lastDeliveryAt": "s114",
+        "updatedAt": "s115",
+        "url": "s116",
+        "webhook_id": "WEBHOOK01"
+      }
+    }
+  },
+  "new": {
+    "owner_webhook_endpoint": {
+      "owner_webhook_endpoint_ref01": {
+        "businessId": "s168",
+        "createdAt": "s169",
+        "enabled": true,
+        "eventTypeSubscriptions": [],
+        "failureCount": 364,
+        "lastDeliveryAt": "s16e",
+        "updatedAt": "s16f",
+        "url": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/owner/webhooks/{endpoint_id}/disable": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

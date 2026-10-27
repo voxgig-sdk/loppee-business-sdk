@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "destination_address_suggestion": {
+      "DESTINATION_ADDRESS_SUGGESTION00": {
+        "input": "s14",
+        "suggestions": [],
+        "id": "DESTINATION_ADDRESS_SUGGESTION00"
+      },
+      "DESTINATION_ADDRESS_SUGGESTION01": {
+        "input": "s28",
+        "suggestions": [],
+        "id": "DESTINATION_ADDRESS_SUGGESTION01"
+      },
+      "DESTINATION_ADDRESS_SUGGESTION02": {
+        "input": "s3c",
+        "suggestions": [],
+        "id": "DESTINATION_ADDRESS_SUGGESTION02"
+      }
+    }
+  },
+  "new": {
+    "destination_address_suggestion": {
+      "destination_address_suggestion_ref01": {
+        "input": "s50",
+        "suggestions": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/account/destination-address-suggestions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/destination-address-suggestions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

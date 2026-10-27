@@ -1,0 +1,337 @@
+# Entity: chat_attachment
+
+main: kit: entity: chat_attachment: {
+
+  alias: field: {}
+
+  fields: {
+    byteSize: {
+      h: "Byte Size"
+      n: "byteSize"
+      r: true
+      t: "`$INTEGER`"
+    }
+    content_type: {
+      h: "Content Type"
+      n: "content_type"
+      r: true
+      t: "`$ANY`"
+    }
+    data_base64: {
+      h: "Data Base64"
+      n: "data_base64"
+      r: true
+      t: "`$STRING`"
+    }
+    fileName: {
+      h: "File Name"
+      n: "fileName"
+      r: true
+      t: "`$STRING`"
+    }
+    file_name: {
+      h: "File Name"
+      n: "file_name"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    mediaType: {
+      h: "Media Type"
+      n: "mediaType"
+      r: true
+      t: "`$STRING`"
+    }
+    size_bytes: {
+      h: "Size Bytes"
+      n: "size_bytes"
+      r: true
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "chat_attachment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "content_type"
+            "data_base64"
+            "file_name"
+            "size_bytes"
+          ]
+          co: {
+            id: "POST /v1/account/conversations/{conversation_id}/attachments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "conversation_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/conversations/{conversation_id}/attachments"
+          q: {
+            exist: [
+              "conversation_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              var: "conversation_id"
+            }
+            {
+              lit: "attachments"
+            }
+          ]
+          t: {
+            req: {
+              content_type: "`reqdata.content_type`"
+              data_base64: "`reqdata.data_base64`"
+              file_name: "`reqdata.file_name`"
+              size_bytes: "`reqdata.size_byte`"
+            }
+            res: "`body.attachment`"
+          }
+        }
+        {
+          bf: [
+            "content_type"
+            "data_base64"
+            "file_name"
+            "size_bytes"
+          ]
+          co: {
+            id: "POST /v1/owner/messages/{interaction_id}/attachments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "message_id"
+                or: "interaction_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/messages/{interaction_id}/attachments"
+          q: {
+            exist: [
+              "message_id"
+            ]
+          }
+          r: {
+            param: {
+              interaction_id: "message_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "messages"
+            }
+            {
+              var: "message_id"
+            }
+            {
+              lit: "attachments"
+            }
+          ]
+          t: {
+            req: {
+              content_type: "`reqdata.content_type`"
+              data_base64: "`reqdata.data_base64`"
+              file_name: "`reqdata.file_name`"
+              size_bytes: "`reqdata.size_byte`"
+            }
+            res: "`body.attachment`"
+          }
+        }
+        {
+          bf: [
+            "content_type"
+            "data_base64"
+            "file_name"
+            "size_bytes"
+          ]
+          co: {
+            id: "POST /v1/admin/support/{conversation_id}/attachments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "support_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/admin/support/{conversation_id}/attachments"
+          q: {
+            exist: [
+              "support_id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "support_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "support"
+            }
+            {
+              var: "support_id"
+            }
+            {
+              lit: "attachments"
+            }
+          ]
+          t: {
+            req: {
+              content_type: "`reqdata.content_type`"
+              data_base64: "`reqdata.data_base64`"
+              file_name: "`reqdata.file_name`"
+              size_bytes: "`reqdata.size_byte`"
+            }
+            res: "`body.attachment`"
+          }
+        }
+        {
+          bf: [
+            "content_type"
+            "data_base64"
+            "file_name"
+            "size_bytes"
+          ]
+          co: {
+            id: "POST /v1/owner/support/{conversation_id}/attachments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "support_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/support/{conversation_id}/attachments"
+          q: {
+            exist: [
+              "support_id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "support_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "support"
+            }
+            {
+              var: "support_id"
+            }
+            {
+              lit: "attachments"
+            }
+          ]
+          t: {
+            req: {
+              content_type: "`reqdata.content_type`"
+              data_base64: "`reqdata.data_base64`"
+              file_name: "`reqdata.file_name`"
+              size_bytes: "`reqdata.size_byte`"
+            }
+            res: "`body.attachment`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.conversation")]
+    [path("$.main.kit.entity.message")]
+  ]
+
+}

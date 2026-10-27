@@ -1,0 +1,84 @@
+{
+  "existing": {
+    "agent_monitoring": {
+      "AGENT_MONITORING00": {
+        "build_sha": "s8c",
+        "contract_version": "s8d",
+        "generated_at": "s8e",
+        "health_url": "s8f",
+        "integration_package_url": "s90",
+        "mcp_url": "s91",
+        "metrics": {},
+        "openapi_url": "s93",
+        "rate_limits": {},
+        "registry_name": "s95",
+        "schema_version": "s96",
+        "service": "s97",
+        "uptime_seconds": 152,
+        "version": "s99",
+        "id": "AGENT_MONITORING00"
+      },
+      "AGENT_MONITORING01": {
+        "build_sha": "s118",
+        "contract_version": "s119",
+        "generated_at": "s11a",
+        "health_url": "s11b",
+        "integration_package_url": "s11c",
+        "mcp_url": "s11d",
+        "metrics": {},
+        "openapi_url": "s11f",
+        "rate_limits": {},
+        "registry_name": "s121",
+        "schema_version": "s122",
+        "service": "s123",
+        "uptime_seconds": 292,
+        "version": "s125",
+        "id": "AGENT_MONITORING01"
+      },
+      "AGENT_MONITORING02": {
+        "build_sha": "s1a4",
+        "contract_version": "s1a5",
+        "generated_at": "s1a6",
+        "health_url": "s1a7",
+        "integration_package_url": "s1a8",
+        "mcp_url": "s1a9",
+        "metrics": {},
+        "openapi_url": "s1ab",
+        "rate_limits": {},
+        "registry_name": "s1ad",
+        "schema_version": "s1ae",
+        "service": "s1af",
+        "uptime_seconds": 432,
+        "version": "s1b1",
+        "id": "AGENT_MONITORING02"
+      }
+    }
+  },
+  "new": {
+    "agent_monitoring": {
+      "agent_monitoring_ref01": {
+        "build_sha": "s230",
+        "contract_version": "s231",
+        "generated_at": "s232",
+        "health_url": "s233",
+        "integration_package_url": "s234",
+        "mcp_url": "s235",
+        "metrics": {},
+        "openapi_url": "s237",
+        "rate_limits": {},
+        "registry_name": "s239",
+        "schema_version": "s23a",
+        "service": "s23b",
+        "uptime_seconds": 572,
+        "version": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/agent-monitoring.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

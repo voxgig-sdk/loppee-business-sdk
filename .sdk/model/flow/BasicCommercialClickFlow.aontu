@@ -1,0 +1,18 @@
+# BasicCommercialClickFlow
+
+main: kit: flow: BasicCommercialClickFlow:
+{
+  entity: "commercial_click",
+  kind: "basic",
+  name: "BasicCommercialClickFlow",
+  step: [
+    {
+      i: {
+        ref: "commercial_click_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCommercialClickFlow"
+}

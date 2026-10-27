@@ -1,0 +1,341 @@
+# Entity: chat_attachment_url
+
+main: kit: entity: chat_attachment_url: {
+
+  alias: field: {}
+
+  fields: {
+    byte_size: {
+      h: "Byte Size"
+      n: "byte_size"
+      r: true
+      t: "`$INTEGER`"
+    }
+    expires_in_seconds: {
+      h: "Expires In Seconds"
+      n: "expires_in_seconds"
+      r: true
+      t: "`$ANY`"
+    }
+    file_name: {
+      h: "File Name"
+      n: "file_name"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    media_type: {
+      h: "Media Type"
+      n: "media_type"
+      r: true
+      t: "`$STRING`"
+    }
+    signed_url: {
+      h: "Signed Url"
+      n: "signed_url"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "chat_attachment_url"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /v1/account/conversations/{conversation_id}/attachments/{attachment_id}/url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "attachment_id"
+                or: "attachment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "conversation_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/conversations/{conversation_id}/attachments/{attachment_id}/url"
+          q: {
+            exist: [
+              "attachment_id"
+              "conversation_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "conversations"
+            }
+            {
+              var: "conversation_id"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "attachment_id"
+            }
+            {
+              lit: "url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.attachment`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /v1/owner/messages/{interaction_id}/attachments/{attachment_id}/url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "attachment_id"
+                or: "attachment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "message_id"
+                or: "interaction_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/messages/{interaction_id}/attachments/{attachment_id}/url"
+          q: {
+            exist: [
+              "attachment_id"
+              "message_id"
+            ]
+          }
+          r: {
+            param: {
+              interaction_id: "message_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "messages"
+            }
+            {
+              var: "message_id"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "attachment_id"
+            }
+            {
+              lit: "url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.attachment`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /v1/admin/support/{conversation_id}/attachments/{attachment_id}/url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "attachment_id"
+                or: "attachment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "support_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/admin/support/{conversation_id}/attachments/{attachment_id}/url"
+          q: {
+            exist: [
+              "attachment_id"
+              "support_id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "support_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "support"
+            }
+            {
+              var: "support_id"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "attachment_id"
+            }
+            {
+              lit: "url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.attachment`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /v1/owner/support/{conversation_id}/attachments/{attachment_id}/url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "attachment_id"
+                or: "attachment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "support_id"
+                or: "conversation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/support/{conversation_id}/attachments/{attachment_id}/url"
+          q: {
+            exist: [
+              "attachment_id"
+              "support_id"
+            ]
+          }
+          r: {
+            param: {
+              conversation_id: "support_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "support"
+            }
+            {
+              var: "support_id"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "attachment_id"
+            }
+            {
+              lit: "url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.attachment`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.conversation")]
+    [path("$.main.kit.entity.message")]
+  ]
+
+}

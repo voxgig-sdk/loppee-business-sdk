@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "message": {
+      "MESSAGE00": {
+        "account_id": "ACCOUNT01",
+        "client_message_id": "CLIENT_MESSAGE01",
+        "conversation_id": "CONVERSATION01",
+        "created_at": "s99",
+        "delivery": "s9a",
+        "idempotent_replay": false,
+        "interaction_id": "INTERACTION01",
+        "message": "s9d",
+        "moderation_required": "s9e",
+        "source_path": "s9f",
+        "status": "sa0",
+        "subject": "sa1",
+        "target_business_id": "TARGET_BUSINESS01",
+        "target_business_name": "sa3",
+        "target_business_source": "sa4",
+        "id": "MESSAGE00"
+      },
+      "MESSAGE01": {
+        "account_id": "ACCOUNT01",
+        "client_message_id": "CLIENT_MESSAGE01",
+        "conversation_id": "CONVERSATION01",
+        "created_at": "s12f",
+        "delivery": "s130",
+        "idempotent_replay": false,
+        "interaction_id": "INTERACTION01",
+        "message": "s133",
+        "moderation_required": "s134",
+        "source_path": "s135",
+        "status": "s136",
+        "subject": "s137",
+        "target_business_id": "TARGET_BUSINESS01",
+        "target_business_name": "s139",
+        "target_business_source": "s13a",
+        "id": "MESSAGE01"
+      },
+      "MESSAGE02": {
+        "account_id": "ACCOUNT01",
+        "client_message_id": "CLIENT_MESSAGE01",
+        "conversation_id": "CONVERSATION01",
+        "created_at": "s1c5",
+        "delivery": "s1c6",
+        "idempotent_replay": false,
+        "interaction_id": "INTERACTION01",
+        "message": "s1c9",
+        "moderation_required": "s1ca",
+        "source_path": "s1cb",
+        "status": "s1cc",
+        "subject": "s1cd",
+        "target_business_id": "TARGET_BUSINESS01",
+        "target_business_name": "s1cf",
+        "target_business_source": "s1d0",
+        "id": "MESSAGE02"
+      }
+    }
+  },
+  "new": {
+    "message": {
+      "message_ref01": {
+        "account_id": "ACCOUNT01",
+        "client_message_id": "CLIENT_MESSAGE01",
+        "conversation_id": "CONVERSATION01",
+        "created_at": "s25b",
+        "delivery": "s25c",
+        "idempotent_replay": false,
+        "interaction_id": "INTERACTION01",
+        "message": "s25f",
+        "moderation_required": "s260",
+        "source_path": "s261",
+        "status": "s262",
+        "subject": "s263",
+        "target_business_id": "TARGET_BUSINESS01",
+        "target_business_name": "s265",
+        "target_business_source": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/business-message": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/actions/message-request": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

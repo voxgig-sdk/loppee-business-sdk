@@ -1,0 +1,134 @@
+# Entity: save_business
+
+main: kit: entity: save_business: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: true
+      t: "`$STRING`"
+    }
+    business_name: {
+      h: "Business Name"
+      n: "business_name"
+      r: true
+      t: "`$STRING`"
+    }
+    business_source: {
+      h: "Business Source"
+      n: "business_source"
+      r: true
+      t: "`$STRING`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$STRING`"
+    }
+    city: {
+      h: "City"
+      n: "city"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    notes: {
+      h: "Notes"
+      n: "notes"
+      r: false
+      t: "`$STRING`"
+    }
+    saved_business_id: {
+      h: "Saved Business Id"
+      n: "saved_business_id"
+      r: true
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  name: "save_business"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "account_id"
+            "business_id"
+            "business_name"
+            "business_source"
+            "category"
+            "city"
+            "notes"
+            "state"
+          ]
+          co: {
+            id: "POST /v1/actions/save-business"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/save-business"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "save-business"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              business_id: "`reqdata.business_id`"
+              business_name: "`reqdata.business_name`"
+              business_source: "`reqdata.business_source`"
+              category: "`reqdata.category`"
+              city: "`reqdata.city`"
+              notes: "`reqdata.note`"
+              state: "`reqdata.state`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

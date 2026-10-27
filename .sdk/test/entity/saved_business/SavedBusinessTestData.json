@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "saved_business": {
+      "SAVED_BUSINESS00": {
+        "account_id": "ACCOUNT01",
+        "count": 41,
+        "limit": 42,
+        "saved_businesses": [],
+        "id": "SAVED_BUSINESS00"
+      },
+      "SAVED_BUSINESS01": {
+        "account_id": "ACCOUNT01",
+        "count": 81,
+        "limit": 82,
+        "saved_businesses": [],
+        "id": "SAVED_BUSINESS01"
+      },
+      "SAVED_BUSINESS02": {
+        "account_id": "ACCOUNT01",
+        "count": 121,
+        "limit": 122,
+        "saved_businesses": [],
+        "id": "SAVED_BUSINESS02"
+      }
+    }
+  },
+  "new": {
+    "saved_business": {
+      "saved_business_ref01": {
+        "account_id": "ACCOUNT01",
+        "count": 161,
+        "limit": 162,
+        "saved_businesses": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/actions/list-saved-businesses": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

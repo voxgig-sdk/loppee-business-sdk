@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "owner_notification": {
+      "OWNER_NOTIFICATION00": {
+        "businessId": "s78",
+        "createdAt": "s79",
+        "dedupeKey": "s7a",
+        "emailStatus": "s7b",
+        "eventType": "s7c",
+        "id": "OWNER_NOTIFICATION00",
+        "readAt": "s7e",
+        "resourceId": "s7f",
+        "resourceKind": "s80",
+        "resourceUrl": "s81",
+        "summary": "s82",
+        "webhookStatus": "s83",
+        "notification_id": "NOTIFICATION01"
+      },
+      "OWNER_NOTIFICATION01": {
+        "businessId": "sf0",
+        "createdAt": "sf1",
+        "dedupeKey": "sf2",
+        "emailStatus": "sf3",
+        "eventType": "sf4",
+        "id": "OWNER_NOTIFICATION01",
+        "readAt": "sf6",
+        "resourceId": "sf7",
+        "resourceKind": "sf8",
+        "resourceUrl": "sf9",
+        "summary": "sfa",
+        "webhookStatus": "sfb",
+        "notification_id": "NOTIFICATION01"
+      },
+      "OWNER_NOTIFICATION02": {
+        "businessId": "s168",
+        "createdAt": "s169",
+        "dedupeKey": "s16a",
+        "emailStatus": "s16b",
+        "eventType": "s16c",
+        "id": "OWNER_NOTIFICATION02",
+        "readAt": "s16e",
+        "resourceId": "s16f",
+        "resourceKind": "s170",
+        "resourceUrl": "s171",
+        "summary": "s172",
+        "webhookStatus": "s173",
+        "notification_id": "NOTIFICATION01"
+      }
+    }
+  },
+  "new": {
+    "owner_notification": {
+      "owner_notification_ref01": {
+        "businessId": "s1e0",
+        "createdAt": "s1e1",
+        "dedupeKey": "s1e2",
+        "emailStatus": "s1e3",
+        "eventType": "s1e4",
+        "readAt": "s1e6",
+        "resourceId": "s1e7",
+        "resourceKind": "s1e8",
+        "resourceUrl": "s1e9",
+        "summary": "s1ea",
+        "webhookStatus": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/owner/notifications/{notification_id}/read": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

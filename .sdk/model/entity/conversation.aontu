@@ -1,0 +1,104 @@
+# Entity: conversation
+
+main: kit: entity: conversation: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      t: "`$STRING`"
+    }
+    conversation_id: {
+      h: "Conversation Id"
+      n: "conversation_id"
+      r: false
+      sh: "Exact conversation referenced by a webhook; returns zero or one scoped thread."
+      t: "`$STRING`"
+    }
+    conversations: {
+      h: "Conversations"
+      n: "conversations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    count: {
+      h: "Count"
+      n: "count"
+      r: true
+      t: "`$NUMBER`"
+    }
+    cursor: {
+      h: "Cursor"
+      n: "cursor"
+      r: false
+      sh: "Opaque pagination cursor returned by the previous page."
+      t: "`$STRING`"
+    }
+    limit: {
+      h: "Limit"
+      n: "limit"
+      r: false
+      t: "`$NUMBER`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "conversation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "account_id"
+            "conversation_id"
+            "cursor"
+            "limit"
+          ]
+          co: {
+            id: "POST /v1/actions/list-my-conversations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/actions/list-my-conversations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "list-my-conversations"
+            }
+          ]
+          t: {
+            req: {
+              account_id: "`reqdata.account_id`"
+              conversation_id: "`reqdata.conversation_id`"
+              cursor: "`reqdata.cursor`"
+              limit: "`reqdata.limit`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,120 @@
+# Entity: owner_notification_setting
+
+main: kit: entity: owner_notification_setting: {
+
+  alias: field: {}
+
+  fields: {
+    businessId: {
+      h: "Business Id"
+      n: "businessId"
+      r: true
+      t: "`$STRING`"
+    }
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: false
+      t: "`$STRING`"
+    }
+    createdAt: {
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      t: "`$STRING`"
+    }
+    emailEnabled: {
+      h: "Email Enabled"
+      n: "emailEnabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    email_enabled: {
+      h: "Email Enabled"
+      n: "email_enabled"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    eventTypeSubscriptions: {
+      h: "Event Type Subscriptions"
+      n: "eventTypeSubscriptions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    event_types: {
+      h: "Event Types"
+      n: "event_types"
+      r: false
+      t: "`$ARRAY`"
+    }
+    updatedAt: {
+      h: "Updated At"
+      n: "updatedAt"
+      r: true
+      t: "`$STRING`"
+    }
+    webhookEnabled: {
+      h: "Webhook Enabled"
+      n: "webhookEnabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    webhook_enabled: {
+      h: "Webhook Enabled"
+      n: "webhook_enabled"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "owner_notification_setting"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "business_id"
+            "email_enabled"
+            "event_types"
+            "webhook_enabled"
+          ]
+          co: {
+            id: "POST /v1/owner/notification-settings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/notification-settings"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "notification-settings"
+            }
+          ]
+          t: {
+            req: {
+              business_id: "`reqdata.business_id`"
+              email_enabled: "`reqdata.email_enabled`"
+              event_types: "`reqdata.event_type`"
+              webhook_enabled: "`reqdata.webhook_enabled`"
+            }
+            res: "`body.settings`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,130 @@
+{
+  "existing": {
+    "search": {
+      "SEARCH00": {
+        "candidate_window_truncated": true,
+        "commercial_influence": "sfb",
+        "display_count": 252,
+        "generated_at": "sfd",
+        "has_more": true,
+        "location_context": "sff",
+        "next_cursor": "s100",
+        "page_limit": 257,
+        "policy": "s102",
+        "presentation_guidance": "s103",
+        "query": {},
+        "ranking_policy": "s105",
+        "registry_count_basis": "s106",
+        "registry_count_observed_at": "s107",
+        "registry_name": "s108",
+        "results": [],
+        "returned_count": 266,
+        "schema_version": "s10b",
+        "search_intent": {},
+        "suggestions": {},
+        "total_matches": 270,
+        "total_matches_basis": 271,
+        "total_registry_records": 272,
+        "trust_model_version": "s111",
+        "visible_candidate_records": 274
+      },
+      "SEARCH01": {
+        "candidate_window_truncated": true,
+        "commercial_influence": "s1f5",
+        "display_count": 502,
+        "generated_at": "s1f7",
+        "has_more": true,
+        "location_context": "s1f9",
+        "next_cursor": "s1fa",
+        "page_limit": 507,
+        "policy": "s1fc",
+        "presentation_guidance": "s1fd",
+        "query": {},
+        "ranking_policy": "s1ff",
+        "registry_count_basis": "s200",
+        "registry_count_observed_at": "s201",
+        "registry_name": "s202",
+        "results": [],
+        "returned_count": 516,
+        "schema_version": "s205",
+        "search_intent": {},
+        "suggestions": {},
+        "total_matches": 520,
+        "total_matches_basis": 521,
+        "total_registry_records": 522,
+        "trust_model_version": "s20b",
+        "visible_candidate_records": 524
+      },
+      "SEARCH02": {
+        "candidate_window_truncated": true,
+        "commercial_influence": "s2ef",
+        "display_count": 752,
+        "generated_at": "s2f1",
+        "has_more": true,
+        "location_context": "s2f3",
+        "next_cursor": "s2f4",
+        "page_limit": 757,
+        "policy": "s2f6",
+        "presentation_guidance": "s2f7",
+        "query": {},
+        "ranking_policy": "s2f9",
+        "registry_count_basis": "s2fa",
+        "registry_count_observed_at": "s2fb",
+        "registry_name": "s2fc",
+        "results": [],
+        "returned_count": 766,
+        "schema_version": "s2ff",
+        "search_intent": {},
+        "suggestions": {},
+        "total_matches": 770,
+        "total_matches_basis": 771,
+        "total_registry_records": 772,
+        "trust_model_version": "s305",
+        "visible_candidate_records": 774
+      }
+    }
+  },
+  "new": {
+    "search": {
+      "search_ref01": {
+        "candidate_window_truncated": true,
+        "commercial_influence": "s3e9",
+        "display_count": 1002,
+        "generated_at": "s3eb",
+        "has_more": true,
+        "location_context": "s3ed",
+        "next_cursor": "s3ee",
+        "page_limit": 1007,
+        "policy": "s3f0",
+        "presentation_guidance": "s3f1",
+        "query": {},
+        "ranking_policy": "s3f3",
+        "registry_count_basis": "s3f4",
+        "registry_count_observed_at": "s3f5",
+        "registry_name": "s3f6",
+        "results": [],
+        "returned_count": 1016,
+        "schema_version": "s3f9",
+        "search_intent": {},
+        "suggestions": {},
+        "total_matches": 1020,
+        "total_matches_basis": 1021,
+        "total_registry_records": 1022,
+        "trust_model_version": "s3ff",
+        "visible_candidate_records": 1024
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/business-claim/candidates": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/search": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

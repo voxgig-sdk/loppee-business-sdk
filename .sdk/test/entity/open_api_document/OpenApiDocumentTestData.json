@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "open_api_document": {
+      "OPEN_API_DOCUMENT00": {
+        "components": {},
+        "info": {},
+        "openapi": "s3e",
+        "paths": {},
+        "servers": [],
+        "tags": []
+      },
+      "OPEN_API_DOCUMENT01": {
+        "components": {},
+        "info": {},
+        "openapi": "s7a",
+        "paths": {},
+        "servers": [],
+        "tags": []
+      },
+      "OPEN_API_DOCUMENT02": {
+        "components": {},
+        "info": {},
+        "openapi": "sb6",
+        "paths": {},
+        "servers": [],
+        "tags": []
+      }
+    }
+  },
+  "new": {
+    "open_api_document": {
+      "open_api_document_ref01": {
+        "components": {},
+        "info": {},
+        "openapi": "sf2",
+        "paths": {},
+        "servers": [],
+        "tags": []
+      }
+    }
+  },
+  "requests": {
+    "GET /openapi.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/openapi.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

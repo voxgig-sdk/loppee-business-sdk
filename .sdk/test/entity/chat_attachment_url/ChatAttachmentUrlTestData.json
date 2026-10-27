@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "chat_attachment_url": {
+      "CHAT_ATTACHMENT_URL00": {
+        "byte_size": 60,
+        "expires_in_seconds": "s3d",
+        "file_name": "s3e",
+        "id": "CHAT_ATTACHMENT_URL00",
+        "media_type": "s40",
+        "signed_url": "s41",
+        "attachment_id": "ATTACHMENT01",
+        "conversation_id": "CONVERSATION01",
+        "message_id": "MESSAGE01",
+        "support_id": "SUPPORT01"
+      },
+      "CHAT_ATTACHMENT_URL01": {
+        "byte_size": 120,
+        "expires_in_seconds": "s79",
+        "file_name": "s7a",
+        "id": "CHAT_ATTACHMENT_URL01",
+        "media_type": "s7c",
+        "signed_url": "s7d",
+        "attachment_id": "ATTACHMENT01",
+        "conversation_id": "CONVERSATION01",
+        "message_id": "MESSAGE01",
+        "support_id": "SUPPORT01"
+      },
+      "CHAT_ATTACHMENT_URL02": {
+        "byte_size": 180,
+        "expires_in_seconds": "sb5",
+        "file_name": "sb6",
+        "id": "CHAT_ATTACHMENT_URL02",
+        "media_type": "sb8",
+        "signed_url": "sb9",
+        "attachment_id": "ATTACHMENT01",
+        "conversation_id": "CONVERSATION01",
+        "message_id": "MESSAGE01",
+        "support_id": "SUPPORT01"
+      }
+    }
+  },
+  "new": {
+    "chat_attachment_url": {
+      "chat_attachment_url_ref01": {
+        "byte_size": 240,
+        "expires_in_seconds": "sf1",
+        "file_name": "sf2",
+        "media_type": "sf4",
+        "signed_url": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/account/conversations/{conversation_id}/attachments/{attachment_id}/url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/owner/messages/{interaction_id}/attachments/{attachment_id}/url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/admin/support/{conversation_id}/attachments/{attachment_id}/url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/owner/support/{conversation_id}/attachments/{attachment_id}/url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

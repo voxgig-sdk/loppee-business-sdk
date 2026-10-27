@@ -1,0 +1,81 @@
+# Entity: suggest
+
+main: kit: entity: suggest: {
+
+  alias: field: {}
+
+  fields: {
+    categories: {
+      h: "Categories"
+      n: "categories"
+      r: true
+      t: "`$ARRAY`"
+    }
+    names: {
+      h: "Names"
+      n: "names"
+      r: true
+      t: "`$ARRAY`"
+    }
+    query: {
+      h: "Query"
+      n: "query"
+      r: true
+      t: "`$STRING`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  name: "suggest"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/suggest"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/suggest"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "suggest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,22 @@
+# BasicOwnerWebhookEndpointFlow
+
+main: kit: flow: BasicOwnerWebhookEndpointFlow:
+{
+  entity: "owner_webhook_endpoint",
+  kind: "basic",
+  name: "BasicOwnerWebhookEndpointFlow",
+  step: [
+    {
+      i: {
+        ref: "owner_webhook_endpoint_ref01"
+      }
+
+      m: {
+        webhook_id: "webhook01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOwnerWebhookEndpointFlow"
+}

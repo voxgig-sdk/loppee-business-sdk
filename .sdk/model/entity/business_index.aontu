@@ -1,0 +1,212 @@
+# Entity: business_index
+
+main: kit: entity: business_index: {
+
+  alias: field: {}
+
+  fields: {
+    brand_assets: {
+      h: "Brand Assets"
+      n: "brand_assets"
+      r: false
+      t: "`$ANY`"
+    }
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: true
+      t: "`$STRING`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: true
+      t: "`$STRING`"
+    }
+    city: {
+      h: "City"
+      n: "city"
+      r: true
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: true
+      t: "`$STRING`"
+    }
+    domain: {
+      h: "Domain"
+      n: "domain"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    insurance: {
+      h: "Insurance"
+      n: "insurance"
+      r: true
+      t: "`$OBJECT`"
+    }
+    phone: {
+      h: "Phone"
+      n: "phone"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    public_profile_url: {
+      h: "Public Profile Url"
+      n: "public_profile_url"
+      r: true
+      t: "`$STRING`"
+    }
+    review_reputation: {
+      h: "Review Reputation"
+      n: "review_reputation"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      t: "`$STRING`"
+    }
+    street_address: {
+      h: "Street Address"
+      n: "street_address"
+      r: false
+      sh: "Owner-published street address where authorized."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    trust_card_url: {
+      h: "Trust Card Url"
+      n: "trust_card_url"
+      r: true
+      t: "`$STRING`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: true
+      t: "`$ANY`"
+    }
+    verification_class: {
+      h: "Verification Class"
+      n: "verification_class"
+      r: true
+      t: "`$STRING`"
+    }
+    verification_disclosure: {
+      h: "Verification Disclosure"
+      n: "verification_disclosure"
+      r: true
+      t: "`$STRING`"
+    }
+    website: {
+      h: "Website"
+      n: "website"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    zip: {
+      h: "Zip"
+      n: "zip"
+      r: false
+      sh: "Owner-published postal code where authorized."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  name: "business_index"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/businesses/index.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/businesses/index.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "businesses"
+            }
+            {
+              lit: "index.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.businesses`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

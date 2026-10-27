@@ -1,0 +1,100 @@
+# Entity: agent_policy
+
+main: kit: entity: agent_policy: {
+
+  alias: field: {}
+
+  fields: {
+    external_agent_access: {
+      h: "External Agent Access"
+      n: "external_agent_access"
+      r: true
+      t: "`$OBJECT`"
+    }
+    external_agent_webhooks: {
+      h: "External Agent Webhooks"
+      n: "external_agent_webhooks"
+      r: true
+      t: "`$OBJECT`"
+    }
+    local_discovery_location_policy: {
+      h: "Local Discovery Location Policy"
+      n: "local_discovery_location_policy"
+      r: true
+      t: "`$OBJECT`"
+    }
+    location_handoff_flow: {
+      h: "Location Handoff Flow"
+      n: "location_handoff_flow"
+      r: false
+      t: "`$OBJECT`"
+    }
+    payment: {
+      h: "Payment"
+      n: "payment"
+      r: true
+      t: "`$OBJECT`"
+    }
+    publication: {
+      h: "Publication"
+      n: "publication"
+      r: true
+      t: "`$OBJECT`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$ANY`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: true
+      t: "`$ANY`"
+    }
+    verification: {
+      h: "Verification"
+      n: "verification"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "agent_policy"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/agent-policy.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/agent-policy.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent-policy.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

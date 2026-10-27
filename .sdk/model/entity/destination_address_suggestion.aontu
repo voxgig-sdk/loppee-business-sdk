@@ -1,0 +1,97 @@
+# Entity: destination_address_suggestion
+
+main: kit: entity: destination_address_suggestion: {
+
+  alias: field: {}
+
+  fields: {
+    input: {
+      h: "Input"
+      n: "input"
+      r: true
+      sh: "Normalized partial US service-address text."
+      t: "`$STRING`"
+    }
+    suggestions: {
+      h: "Suggestions"
+      n: "suggestions"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "destination_address_suggestion"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "input"
+          ]
+          co: {
+            id: "POST /v1/account/destination-address-suggestions"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/destination-address-suggestions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "destination-address-suggestions"
+            }
+          ]
+          t: {
+            req: {
+              input: "`reqdata.input`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "input"
+          ]
+          co: {
+            id: "POST /v1/destination-address-suggestions"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/destination-address-suggestions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "destination-address-suggestions"
+            }
+          ]
+          t: {
+            req: {
+              input: "`reqdata.input`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

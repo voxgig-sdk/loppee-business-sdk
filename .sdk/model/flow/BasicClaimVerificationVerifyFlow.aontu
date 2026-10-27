@@ -1,0 +1,18 @@
+# BasicClaimVerificationVerifyFlow
+
+main: kit: flow: BasicClaimVerificationVerifyFlow:
+{
+  entity: "claim_verification_verify",
+  kind: "basic",
+  name: "BasicClaimVerificationVerifyFlow",
+  step: [
+    {
+      i: {
+        ref: "claim_verification_verify_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicClaimVerificationVerifyFlow"
+}

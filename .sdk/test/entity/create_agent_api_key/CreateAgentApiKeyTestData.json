@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "create_agent_api_key": {
+      "CREATE_AGENT_API_KEY00": {
+        "account_id": "ACCOUNT01",
+        "allowed_actions": [],
+        "allowed_business_ids": [],
+        "created_by": "s7b",
+        "key": {},
+        "label": "s7d",
+        "monthly_quota": 126,
+        "notes": "s7f",
+        "one_time_display": "s80",
+        "rate_limit_per_minute": 129,
+        "raw_key": "s82",
+        "status": "s83",
+        "id": "CREATE_AGENT_API_KEY00"
+      },
+      "CREATE_AGENT_API_KEY01": {
+        "account_id": "ACCOUNT01",
+        "allowed_actions": [],
+        "allowed_business_ids": [],
+        "created_by": "sf3",
+        "key": {},
+        "label": "sf5",
+        "monthly_quota": 246,
+        "notes": "sf7",
+        "one_time_display": "sf8",
+        "rate_limit_per_minute": 249,
+        "raw_key": "sfa",
+        "status": "sfb",
+        "id": "CREATE_AGENT_API_KEY01"
+      },
+      "CREATE_AGENT_API_KEY02": {
+        "account_id": "ACCOUNT01",
+        "allowed_actions": [],
+        "allowed_business_ids": [],
+        "created_by": "s16b",
+        "key": {},
+        "label": "s16d",
+        "monthly_quota": 366,
+        "notes": "s16f",
+        "one_time_display": "s170",
+        "rate_limit_per_minute": 369,
+        "raw_key": "s172",
+        "status": "s173",
+        "id": "CREATE_AGENT_API_KEY02"
+      }
+    }
+  },
+  "new": {
+    "create_agent_api_key": {
+      "create_agent_api_key_ref01": {
+        "account_id": "ACCOUNT01",
+        "allowed_actions": [],
+        "allowed_business_ids": [],
+        "created_by": "s1e3",
+        "key": {},
+        "label": "s1e5",
+        "monthly_quota": 486,
+        "notes": "s1e7",
+        "one_time_display": "s1e8",
+        "rate_limit_per_minute": 489,
+        "raw_key": "s1ea",
+        "status": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/admin/agent-keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

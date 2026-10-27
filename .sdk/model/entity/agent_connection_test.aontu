@@ -1,0 +1,72 @@
+# Entity: agent_connection_test
+
+main: kit: entity: agent_connection_test: {
+
+  alias: field: {}
+
+  fields: {
+    key: {
+      h: "Key"
+      n: "key"
+      r: false
+      sh: "Optional UI fallback."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "agent_connection_test"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "key"
+          ]
+          co: {
+            id: "POST /v1/actions/agent-connection-test"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                k: "header"
+                n: "x_loppee_api_key"
+                or: "X-LOPPEE-API-Key"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/actions/agent-connection-test"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "agent-connection-test"
+            }
+          ]
+          t: {
+            req: {
+              key: "`reqdata.key`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

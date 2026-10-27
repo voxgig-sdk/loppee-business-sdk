@@ -1,0 +1,137 @@
+# Entity: customer_location_proof_revocation
+
+main: kit: entity: customer_location_proof_revocation: {
+
+  alias: field: {}
+
+  fields: {
+    accuracy_meters: {
+      h: "Accuracy Meters"
+      n: "accuracy_meters"
+      r: true
+      t: "`$NUMBER`"
+    }
+    captured_at: {
+      fo: "date-time"
+      h: "Captured At"
+      n: "captured_at"
+      r: true
+      t: "`$STRING`"
+    }
+    latitude: {
+      h: "Latitude"
+      n: "latitude"
+      r: true
+      t: "`$NUMBER`"
+    }
+    longitude: {
+      h: "Longitude"
+      n: "longitude"
+      r: true
+      t: "`$NUMBER`"
+    }
+  }
+
+  name: "customer_location_proof_revocation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "accuracy_meters"
+            "captured_at"
+            "latitude"
+            "longitude"
+          ]
+          co: {
+            id: "POST /v1/account/location-proofs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/account/location-proofs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "location-proofs"
+            }
+          ]
+          t: {
+            req: {
+              accuracy_meters: "`reqdata.accuracy_meter`"
+              captured_at: "`reqdata.captured_at`"
+              latitude: "`reqdata.latitude`"
+              longitude: "`reqdata.longitude`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v1/account/location-proofs/{location_proof_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "location_proof_id"
+                or: "location_proof_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v1/account/location-proofs/{location_proof_id}"
+          q: {
+            exist: [
+              "location_proof_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "location-proofs"
+            }
+            {
+              var: "location_proof_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

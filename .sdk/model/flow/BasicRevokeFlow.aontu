@@ -1,0 +1,22 @@
+# BasicRevokeFlow
+
+main: kit: flow: BasicRevokeFlow:
+{
+  entity: "revoke",
+  kind: "basic",
+  name: "BasicRevokeFlow",
+  step: [
+    {
+      i: {
+        ref: "revoke_ref01"
+      }
+
+      m: {
+        agent_key_id: "agent_key01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicRevokeFlow"
+}

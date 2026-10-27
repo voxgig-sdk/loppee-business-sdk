@@ -1,0 +1,71 @@
+# Entity: public_content
+
+main: kit: entity: public_content: {
+
+  alias: field: {}
+
+  fields: {
+    blocks: {
+      h: "Blocks"
+      n: "blocks"
+      r: true
+      t: "`$OBJECT`"
+    }
+    generated_at: {
+      fo: "date-time"
+      h: "Generated At"
+      n: "generated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: true
+      t: "`$ANY`"
+    }
+    trust_model_version: {
+      h: "Trust Model Version"
+      n: "trust_model_version"
+      r: true
+      t: "`$ANY`"
+    }
+  }
+
+  name: "public_content"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/content"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v1/content"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "content"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

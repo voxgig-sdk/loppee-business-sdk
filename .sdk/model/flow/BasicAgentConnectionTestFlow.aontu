@@ -1,0 +1,18 @@
+# BasicAgentConnectionTestFlow
+
+main: kit: flow: BasicAgentConnectionTestFlow:
+{
+  entity: "agent_connection_test",
+  kind: "basic",
+  name: "BasicAgentConnectionTestFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_connection_test_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentConnectionTestFlow"
+}

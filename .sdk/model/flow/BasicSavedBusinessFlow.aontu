@@ -1,0 +1,18 @@
+# BasicSavedBusinessFlow
+
+main: kit: flow: BasicSavedBusinessFlow:
+{
+  entity: "saved_business",
+  kind: "basic",
+  name: "BasicSavedBusinessFlow",
+  step: [
+    {
+      i: {
+        ref: "saved_business_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSavedBusinessFlow"
+}

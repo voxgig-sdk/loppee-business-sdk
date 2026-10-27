@@ -1,0 +1,156 @@
+# Entity: owner_webhook_registration
+
+main: kit: entity: owner_webhook_registration: {
+
+  alias: field: {}
+
+  fields: {
+    business_id: {
+      h: "Business Id"
+      n: "business_id"
+      r: false
+      t: "`$STRING`"
+    }
+    endpoint: {
+      h: "Endpoint"
+      n: "endpoint"
+      r: true
+      t: "`$OBJECT`"
+    }
+    event_types: {
+      h: "Event Types"
+      n: "event_types"
+      r: false
+      t: "`$ARRAY`"
+    }
+    one_time_display: {
+      h: "One Time Display"
+      n: "one_time_display"
+      r: true
+      t: "`$ANY`"
+    }
+    signing_secret: {
+      h: "Signing Secret"
+      n: "signing_secret"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$ANY`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "owner_webhook_registration"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /v1/owner/webhooks/{endpoint_id}/rotate-secret"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webhook_id"
+                or: "endpoint_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/owner/webhooks/{endpoint_id}/rotate-secret"
+          q: {
+            exist: [
+              "webhook_id"
+            ]
+          }
+          r: {
+            param: {
+              endpoint_id: "webhook_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "webhooks"
+            }
+            {
+              var: "webhook_id"
+            }
+            {
+              lit: "rotate-secret"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "business_id"
+            "event_types"
+            "url"
+          ]
+          co: {
+            id: "POST /v1/owner/webhooks"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/owner/webhooks"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "owner"
+            }
+            {
+              lit: "webhooks"
+            }
+          ]
+          t: {
+            req: {
+              business_id: "`reqdata.business_id`"
+              event_types: "`reqdata.event_type`"
+              url: "`reqdata.url`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

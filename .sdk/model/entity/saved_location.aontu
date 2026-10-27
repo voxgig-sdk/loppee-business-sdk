@@ -1,0 +1,173 @@
+# Entity: saved_location
+
+main: kit: entity: saved_location: {
+
+  alias: field: {}
+
+  fields: {
+    available: {
+      h: "Available"
+      n: "available"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    coordinates_returned: {
+      h: "Coordinates Returned"
+      n: "coordinates_returned"
+      r: true
+      t: "`$ANY`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      sh: "Only saved_exact is precise local-discovery authority."
+      t: "`$ANY`"
+    }
+    label: {
+      h: "Label"
+      n: "label"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    location_proof_id: {
+      fo: "uuid"
+      h: "Location Proof Id"
+      n: "location_proof_id"
+      r: false
+      t: "`$STRING`"
+    }
+    reach_precision: {
+      h: "Reach Precision"
+      n: "reach_precision"
+      r: true
+      sh: "Exact can authorize local category/recommendation reach; coarse cannot activate local results, Sponsored placement, or impressions."
+      t: "`$ANY`"
+    }
+    saved_location_ref: {
+      h: "Saved Location Ref"
+      n: "saved_location_ref"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    zip: {
+      h: "Zip"
+      n: "zip"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "saved_location"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v1/account/location"
+            source: "openapi3"
+            version: 2
+          }
+          m: "DELETE"
+          o: "/v1/account/location"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "location"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "label"
+            "location_proof_id"
+            "zip"
+          ]
+          co: {
+            id: "PUT /v1/account/location"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/v1/account/location"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "location"
+            }
+          ]
+          t: {
+            req: {
+              label: "`reqdata.label`"
+              location_proof_id: "`reqdata.location_proof_id`"
+              zip: "`reqdata.zip`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "conversation_workflow": {
+      "CONVERSATION_WORKFLOW00": {
+        "priority": "s14",
+        "status": "s15",
+        "message_id": "MESSAGE01",
+        "id": "CONVERSATION_WORKFLOW00"
+      },
+      "CONVERSATION_WORKFLOW01": {
+        "priority": "s28",
+        "status": "s29",
+        "message_id": "MESSAGE01",
+        "id": "CONVERSATION_WORKFLOW01"
+      },
+      "CONVERSATION_WORKFLOW02": {
+        "priority": "s3c",
+        "status": "s3d",
+        "message_id": "MESSAGE01",
+        "id": "CONVERSATION_WORKFLOW02"
+      }
+    }
+  },
+  "new": {
+    "conversation_workflow": {
+      "conversation_workflow_ref01": {
+        "priority": "s50",
+        "status": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/owner/messages/{interaction_id}/workflow": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

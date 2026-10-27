@@ -1,0 +1,22 @@
+# BasicJobResumeSignedUrlFlow
+
+main: kit: flow: BasicJobResumeSignedUrlFlow:
+{
+  entity: "job_resume_signed_url",
+  kind: "basic",
+  name: "BasicJobResumeSignedUrlFlow",
+  step: [
+    {
+      i: {
+        ref: "job_resume_signed_url_ref01"
+      }
+
+      m: {
+        job_application_id: "job_application01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicJobResumeSignedUrlFlow"
+}
