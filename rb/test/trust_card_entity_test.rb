@@ -44,9 +44,9 @@ class TrustCardEntityTest < Minitest::Test
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"trust_card.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/businesses/{business_id}/license-records/{fact_id}/report\"}"
     if setup[:live]
-      ["business01"].each do |_live_key|
+      { "business01" => "biz_elite_ac_llc_jacksonville_fl" }.each do |_live_key, _live_ex|
         if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via LOPPEE_BUSINESS_TEST_TRUST_CARD_ENTID")
+          setup[:idmap][_live_key] = _live_ex
         end
       end
     end
@@ -60,6 +60,7 @@ class TrustCardEntityTest < Minitest::Test
       trust_card_ref01_data = Helpers.to_map(trust_card_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # LIST
     trust_card_ref01_ent = client.TrustCard(nil)
     trust_card_ref01_match = {
@@ -69,6 +70,7 @@ class TrustCardEntityTest < Minitest::Test
     trust_card_ref01_list_result = trust_card_ref01_ent.list(trust_card_ref01_match, nil)
     assert trust_card_ref01_list_result.is_a?(Array)
 
+    Runner.live_pace if setup[:live]
     # LOAD
     trust_card_ref01_match_dt0 = {}
     if setup[:live]
@@ -89,6 +91,7 @@ class TrustCardEntityTest < Minitest::Test
     end
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     trust_card_ref01_ent = client.TrustCard(nil)
     trust_card_ref01_data = Helpers.to_map(Vs.getprop(
@@ -100,6 +103,7 @@ class TrustCardEntityTest < Minitest::Test
     trust_card_ref01_data = Helpers.to_map(trust_card_ref01_data_result.respond_to?(:data_get) ? trust_card_ref01_data_result.data_get : trust_card_ref01_data_result)
     assert !trust_card_ref01_data.nil?
 
+    Runner.live_pace if setup[:live]
     # LIST
     trust_card_ref01_match = {
       "business_id" => setup[:idmap]["business01"],
@@ -108,6 +112,7 @@ class TrustCardEntityTest < Minitest::Test
     trust_card_ref01_list_result = trust_card_ref01_ent.list(trust_card_ref01_match, nil)
     assert trust_card_ref01_list_result.is_a?(Array)
 
+    Runner.live_pace if setup[:live]
     # LOAD
     trust_card_ref01_match_dt0 = {}
     if setup[:live]

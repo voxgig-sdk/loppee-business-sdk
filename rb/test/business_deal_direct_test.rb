@@ -28,20 +28,21 @@ class BusinessDealDirectTest < Minitest::Test
       return
     end
     if setup[:live]
-      ["business_deal01"].each do |_live_key|
+      ["business01"].each do |_live_key|
         if setup[:idmap][_live_key].nil?
           Runner.live_miss(LIVE_STRICT, "Live test blocked: needs #{_live_key} via LOPPEE_BUSINESS_TEST_BUSINESS_DEAL_ENTID")
         end
       end
     end
+    Runner.live_pace if setup[:live]
     client = setup[:client]
 
     params = {}
     query = {}
-    params["id"] = setup[:live] ? setup[:idmap]["business_deal01"] : "direct01"
+    params["business_id"] = setup[:live] ? setup[:idmap]["business01"] : "direct01"
 
     result = client.direct({
-      "path" => "v1/businesses/{id}/deals.json",
+      "path" => "v1/businesses/{business_id}/deals.json",
       "method" => "GET",
       "params" => params,
       "query" => query,
@@ -89,7 +90,7 @@ def business_deal_direct_setup(mockres)
     client = LoppeeBusinessSDK.new(merged_opts)
     idmap = env["LOPPEE_BUSINESS_TEST_BUSINESS_DEAL_ENTID"]
     # A path parameter's example stands in for an id *_ENTID does not give.
-    idmap = { "business_deal01" => "biz_elite_ac_llc_jacksonville_fl" }
+    idmap = { "business01" => "biz_elite_ac_llc_jacksonville_fl" }
       .merge(idmap.is_a?(Hash) ? idmap : {})
     return {
       client: client,

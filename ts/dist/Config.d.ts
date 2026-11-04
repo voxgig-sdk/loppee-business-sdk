@@ -377,12 +377,17 @@ declare class Config {
             };
         };
         agent_openapi: {
-            fields: {
+            fields: ({
+                name: string;
+                title: string;
+                type: string;
+                req?: undefined;
+            } | {
                 name: string;
                 title: string;
                 type: string;
                 req: boolean;
-            }[];
+            })[];
             name: string;
             op: {
                 list: {
@@ -737,11 +742,7 @@ declare class Config {
                             lit?: undefined;
                         })[];
                         parts: string[];
-                        rename: {
-                            param: {
-                                business_id: string;
-                            };
-                        };
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;
@@ -1633,15 +1634,7 @@ declare class Config {
             };
         };
         business_review: {
-            fields: {
-                name: string;
-                title: string;
-                type: string;
-            }[];
-            id: {
-                field: string;
-                name: string;
-            };
+            fields: never[];
             name: string;
             op: {
                 load: {
@@ -1659,11 +1652,7 @@ declare class Config {
                             lit?: undefined;
                         })[];
                         parts: string[];
-                        rename: {
-                            param: {
-                                business_id: string;
-                            };
-                        };
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;
@@ -2311,17 +2300,7 @@ declare class Config {
                 type: string;
                 req: boolean;
                 format?: undefined;
-            } | {
-                name: string;
-                title: string;
-                type: string;
-                req?: undefined;
-                format?: undefined;
             })[];
-            id: {
-                field: string;
-                name: string;
-            };
             name: string;
             op: {
                 create: {
@@ -2339,11 +2318,7 @@ declare class Config {
                             lit?: undefined;
                         })[];
                         parts: string[];
-                        rename: {
-                            param: {
-                                conversation_id: string;
-                            };
-                        };
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;
@@ -2368,7 +2343,7 @@ declare class Config {
                 };
             };
             relations: {
-                ancestors: never[];
+                ancestors: string[][];
             };
         };
         conversation_report: {
@@ -2383,10 +2358,6 @@ declare class Config {
                 type: string;
                 req: boolean;
             })[];
-            id: {
-                field: string;
-                name: string;
-            };
             name: string;
             op: {
                 create: {
@@ -2405,10 +2376,7 @@ declare class Config {
                         })[];
                         parts: string[];
                         rename: {
-                            param: {
-                                conversation_id: string;
-                                interaction_id?: undefined;
-                            };
+                            param?: undefined;
                         };
                         transform: {
                             req: {
@@ -2448,7 +2416,6 @@ declare class Config {
                         rename: {
                             param: {
                                 interaction_id: string;
-                                conversation_id?: undefined;
                             };
                         };
                         transform: {
@@ -2708,17 +2675,17 @@ declare class Config {
             } | {
                 name: string;
                 title: string;
-                type: string;
+                type: (string | string[])[];
                 req: boolean;
-                format: string;
+                format?: undefined;
                 op?: undefined;
                 short?: undefined;
             } | {
                 name: string;
                 title: string;
-                type: (string | string[])[];
+                type: string;
                 req: boolean;
-                format?: undefined;
+                format: string;
                 op?: undefined;
                 short?: undefined;
             } | {
@@ -2799,159 +2766,11 @@ declare class Config {
                         kind: string;
                         method: string;
                         orig: string;
-                        segments: ({
-                            lit: string;
-                            var?: undefined;
-                        } | {
-                            var: string;
-                            lit?: undefined;
-                        })[];
-                        parts: string[];
-                        rename: {
-                            param: {
-                                handoff_id: string;
-                            };
-                        };
-                        transform: {
-                            req: {
-                                accuracy_meters: string;
-                                agent_key_id: string;
-                                assertion: string;
-                                capture_source: string;
-                                captured_at: string;
-                                challenge: string;
-                                challenge_id: string;
-                                connection_id: string;
-                                installation_id: string;
-                                key_id: string;
-                                latitude: string;
-                                longitude: string;
-                                oauth_grant_id: string;
-                                use_mode: string;
-                                request_mode?: undefined;
-                                attestation?: undefined;
-                                url?: undefined;
-                                body?: undefined;
-                                client_message_id?: undefined;
-                                continuation?: undefined;
-                                location?: undefined;
-                                messages?: undefined;
-                                acknowledge_data_effects?: undefined;
-                                confirmation?: undefined;
-                                reason?: undefined;
-                                platform?: undefined;
-                                push_token?: undefined;
-                                enabled?: undefined;
-                            };
-                            res: string;
-                        };
-                        args: {
-                            header: {
-                                name: string;
-                                orig: string;
-                                type: string;
-                                kind: string;
-                                reqd: boolean;
-                            }[];
-                            params: {
-                                name: string;
-                                orig: string;
-                                type: string;
-                                kind: string;
-                                reqd: boolean;
-                            }[];
-                        };
-                        select: {
-                            exist: string[];
-                        };
-                        response: {
-                            kind: string;
-                            media: string;
-                        };
-                    } | {
-                        kind: string;
-                        method: string;
-                        orig: string;
-                        segments: ({
-                            lit: string;
-                            var?: undefined;
-                        } | {
-                            var: string;
-                            lit?: undefined;
-                        })[];
-                        parts: string[];
-                        rename: {
-                            param: {
-                                handoff_id: string;
-                            };
-                        };
-                        transform: {
-                            req: {
-                                agent_key_id: string;
-                                assertion: string;
-                                challenge: string;
-                                challenge_id: string;
-                                connection_id: string;
-                                installation_id: string;
-                                key_id: string;
-                                oauth_grant_id: string;
-                                request_mode: string;
-                                accuracy_meters?: undefined;
-                                capture_source?: undefined;
-                                captured_at?: undefined;
-                                latitude?: undefined;
-                                longitude?: undefined;
-                                use_mode?: undefined;
-                                attestation?: undefined;
-                                url?: undefined;
-                                body?: undefined;
-                                client_message_id?: undefined;
-                                continuation?: undefined;
-                                location?: undefined;
-                                messages?: undefined;
-                                acknowledge_data_effects?: undefined;
-                                confirmation?: undefined;
-                                reason?: undefined;
-                                platform?: undefined;
-                                push_token?: undefined;
-                                enabled?: undefined;
-                            };
-                            res: string;
-                        };
-                        args: {
-                            header: {
-                                name: string;
-                                orig: string;
-                                type: string;
-                                kind: string;
-                                reqd: boolean;
-                            }[];
-                            params: {
-                                name: string;
-                                orig: string;
-                                type: string;
-                                kind: string;
-                                reqd: boolean;
-                            }[];
-                        };
-                        select: {
-                            exist: string[];
-                        };
-                        response: {
-                            kind: string;
-                            media: string;
-                        };
-                    } | {
-                        kind: string;
-                        method: string;
-                        orig: string;
                         segments: {
                             lit: string;
                         }[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;
@@ -2981,9 +2800,7 @@ declare class Config {
                             lit: string;
                         }[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: {
                                 attestation: string;
@@ -2991,17 +2808,6 @@ declare class Config {
                                 challenge_id: string;
                                 installation_id: string;
                                 key_id: string;
-                                accuracy_meters?: undefined;
-                                agent_key_id?: undefined;
-                                assertion?: undefined;
-                                capture_source?: undefined;
-                                captured_at?: undefined;
-                                connection_id?: undefined;
-                                latitude?: undefined;
-                                longitude?: undefined;
-                                oauth_grant_id?: undefined;
-                                use_mode?: undefined;
-                                request_mode?: undefined;
                                 url?: undefined;
                                 body?: undefined;
                                 client_message_id?: undefined;
@@ -3046,9 +2852,7 @@ declare class Config {
                             lit?: undefined;
                         })[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;
@@ -3082,28 +2886,15 @@ declare class Config {
                             lit?: undefined;
                         })[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: {
                                 url: string;
-                                accuracy_meters?: undefined;
-                                agent_key_id?: undefined;
-                                assertion?: undefined;
-                                capture_source?: undefined;
-                                captured_at?: undefined;
+                                attestation?: undefined;
                                 challenge?: undefined;
                                 challenge_id?: undefined;
-                                connection_id?: undefined;
                                 installation_id?: undefined;
                                 key_id?: undefined;
-                                latitude?: undefined;
-                                longitude?: undefined;
-                                oauth_grant_id?: undefined;
-                                use_mode?: undefined;
-                                request_mode?: undefined;
-                                attestation?: undefined;
                                 body?: undefined;
                                 client_message_id?: undefined;
                                 continuation?: undefined;
@@ -3147,29 +2938,16 @@ declare class Config {
                             lit?: undefined;
                         })[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: {
                                 body: string;
                                 client_message_id: string;
-                                accuracy_meters?: undefined;
-                                agent_key_id?: undefined;
-                                assertion?: undefined;
-                                capture_source?: undefined;
-                                captured_at?: undefined;
+                                attestation?: undefined;
                                 challenge?: undefined;
                                 challenge_id?: undefined;
-                                connection_id?: undefined;
                                 installation_id?: undefined;
                                 key_id?: undefined;
-                                latitude?: undefined;
-                                longitude?: undefined;
-                                oauth_grant_id?: undefined;
-                                use_mode?: undefined;
-                                request_mode?: undefined;
-                                attestation?: undefined;
                                 url?: undefined;
                                 continuation?: undefined;
                                 location?: undefined;
@@ -3208,9 +2986,7 @@ declare class Config {
                             lit: string;
                         }[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;
@@ -3234,30 +3010,17 @@ declare class Config {
                             lit: string;
                         }[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: {
                                 continuation: string;
                                 location: string;
                                 messages: string;
-                                accuracy_meters?: undefined;
-                                agent_key_id?: undefined;
-                                assertion?: undefined;
-                                capture_source?: undefined;
-                                captured_at?: undefined;
+                                attestation?: undefined;
                                 challenge?: undefined;
                                 challenge_id?: undefined;
-                                connection_id?: undefined;
                                 installation_id?: undefined;
                                 key_id?: undefined;
-                                latitude?: undefined;
-                                longitude?: undefined;
-                                oauth_grant_id?: undefined;
-                                use_mode?: undefined;
-                                request_mode?: undefined;
-                                attestation?: undefined;
                                 url?: undefined;
                                 body?: undefined;
                                 client_message_id?: undefined;
@@ -3289,30 +3052,17 @@ declare class Config {
                             lit: string;
                         }[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: {
                                 acknowledge_data_effects: string;
                                 confirmation: string;
                                 reason: string;
-                                accuracy_meters?: undefined;
-                                agent_key_id?: undefined;
-                                assertion?: undefined;
-                                capture_source?: undefined;
-                                captured_at?: undefined;
+                                attestation?: undefined;
                                 challenge?: undefined;
                                 challenge_id?: undefined;
-                                connection_id?: undefined;
                                 installation_id?: undefined;
                                 key_id?: undefined;
-                                latitude?: undefined;
-                                longitude?: undefined;
-                                oauth_grant_id?: undefined;
-                                use_mode?: undefined;
-                                request_mode?: undefined;
-                                attestation?: undefined;
                                 url?: undefined;
                                 body?: undefined;
                                 client_message_id?: undefined;
@@ -3344,29 +3094,16 @@ declare class Config {
                             lit: string;
                         }[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: {
                                 installation_id: string;
                                 platform: string;
                                 push_token: string;
-                                accuracy_meters?: undefined;
-                                agent_key_id?: undefined;
-                                assertion?: undefined;
-                                capture_source?: undefined;
-                                captured_at?: undefined;
+                                attestation?: undefined;
                                 challenge?: undefined;
                                 challenge_id?: undefined;
-                                connection_id?: undefined;
                                 key_id?: undefined;
-                                latitude?: undefined;
-                                longitude?: undefined;
-                                oauth_grant_id?: undefined;
-                                use_mode?: undefined;
-                                request_mode?: undefined;
-                                attestation?: undefined;
                                 url?: undefined;
                                 body?: undefined;
                                 client_message_id?: undefined;
@@ -3399,28 +3136,15 @@ declare class Config {
                             lit: string;
                         }[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: {
                                 enabled: string;
                                 installation_id: string;
-                                accuracy_meters?: undefined;
-                                agent_key_id?: undefined;
-                                assertion?: undefined;
-                                capture_source?: undefined;
-                                captured_at?: undefined;
+                                attestation?: undefined;
                                 challenge?: undefined;
                                 challenge_id?: undefined;
-                                connection_id?: undefined;
                                 key_id?: undefined;
-                                latitude?: undefined;
-                                longitude?: undefined;
-                                oauth_grant_id?: undefined;
-                                use_mode?: undefined;
-                                request_mode?: undefined;
-                                attestation?: undefined;
                                 url?: undefined;
                                 body?: undefined;
                                 client_message_id?: undefined;
@@ -3454,27 +3178,14 @@ declare class Config {
                             lit: string;
                         }[];
                         parts: string[];
-                        rename: {
-                            param?: undefined;
-                        };
+                        rename: {};
                         transform: {
                             req: {
                                 installation_id: string;
-                                accuracy_meters?: undefined;
-                                agent_key_id?: undefined;
-                                assertion?: undefined;
-                                capture_source?: undefined;
-                                captured_at?: undefined;
+                                attestation?: undefined;
                                 challenge?: undefined;
                                 challenge_id?: undefined;
-                                connection_id?: undefined;
                                 key_id?: undefined;
-                                latitude?: undefined;
-                                longitude?: undefined;
-                                oauth_grant_id?: undefined;
-                                use_mode?: undefined;
-                                request_mode?: undefined;
-                                attestation?: undefined;
                                 url?: undefined;
                                 body?: undefined;
                                 client_message_id?: undefined;
@@ -4113,13 +3824,143 @@ declare class Config {
             };
         };
         location_handoff: {
-            fields: never[];
+            fields: {
+                name: string;
+                title: string;
+                type: string;
+            }[];
+            id: {
+                field: string;
+                name: string;
+            };
             name: string;
             op: {
                 create: {
                     input: string;
                     name: string;
-                    points: {
+                    points: ({
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        parts: string[];
+                        rename: {
+                            param: {
+                                handoff_id: string;
+                            };
+                        };
+                        transform: {
+                            req: {
+                                accuracy_meters: string;
+                                agent_key_id: string;
+                                assertion: string;
+                                capture_source: string;
+                                captured_at: string;
+                                challenge: string;
+                                challenge_id: string;
+                                connection_id: string;
+                                installation_id: string;
+                                key_id: string;
+                                latitude: string;
+                                longitude: string;
+                                oauth_grant_id: string;
+                                use_mode: string;
+                                request_mode?: undefined;
+                            };
+                            res: string;
+                        };
+                        args: {
+                            header: {
+                                name: string;
+                                orig: string;
+                                type: string;
+                                kind: string;
+                                reqd: boolean;
+                            }[];
+                            params: {
+                                name: string;
+                                orig: string;
+                                type: string;
+                                kind: string;
+                                reqd: boolean;
+                            }[];
+                        };
+                        select: {
+                            $action: string;
+                            exist: string[];
+                        };
+                        response: {
+                            kind: string;
+                            media: string;
+                        };
+                    } | {
+                        kind: string;
+                        method: string;
+                        orig: string;
+                        segments: ({
+                            lit: string;
+                            var?: undefined;
+                        } | {
+                            var: string;
+                            lit?: undefined;
+                        })[];
+                        parts: string[];
+                        rename: {
+                            param: {
+                                handoff_id: string;
+                            };
+                        };
+                        transform: {
+                            req: {
+                                agent_key_id: string;
+                                assertion: string;
+                                challenge: string;
+                                challenge_id: string;
+                                connection_id: string;
+                                installation_id: string;
+                                key_id: string;
+                                oauth_grant_id: string;
+                                request_mode: string;
+                                accuracy_meters?: undefined;
+                                capture_source?: undefined;
+                                captured_at?: undefined;
+                                latitude?: undefined;
+                                longitude?: undefined;
+                                use_mode?: undefined;
+                            };
+                            res: string;
+                        };
+                        args: {
+                            header: {
+                                name: string;
+                                orig: string;
+                                type: string;
+                                kind: string;
+                                reqd: boolean;
+                            }[];
+                            params: {
+                                name: string;
+                                orig: string;
+                                type: string;
+                                kind: string;
+                                reqd: boolean;
+                            }[];
+                        };
+                        select: {
+                            $action: string;
+                            exist: string[];
+                        };
+                        response: {
+                            kind: string;
+                            media: string;
+                        };
+                    } | {
                         kind: string;
                         method: string;
                         orig: string;
@@ -4127,18 +3968,26 @@ declare class Config {
                             lit: string;
                         }[];
                         parts: string[];
-                        rename: {};
+                        rename: {
+                            param?: undefined;
+                        };
                         transform: {
                             req: string;
                             res: string;
                         };
-                        args: {};
-                        select: {};
+                        args: {
+                            header?: undefined;
+                            params?: undefined;
+                        };
+                        select: {
+                            $action?: undefined;
+                            exist?: undefined;
+                        };
                         response: {
                             kind: string;
                             media: string;
                         };
-                    }[];
+                    })[];
                 };
             };
             relations: {
@@ -4449,12 +4298,17 @@ declare class Config {
             };
         };
         open_api_document: {
-            fields: {
+            fields: ({
+                name: string;
+                title: string;
+                type: string;
+                req?: undefined;
+            } | {
                 name: string;
                 title: string;
                 type: string;
                 req: boolean;
-            }[];
+            })[];
             name: string;
             op: {
                 list: {
@@ -6719,25 +6573,12 @@ declare class Config {
             };
         };
         pricing: {
-            fields: ({
+            fields: {
                 name: string;
                 title: string;
                 type: string;
                 req: boolean;
-                format?: undefined;
-            } | {
-                name: string;
-                title: string;
-                type: string;
-                req: boolean;
-                format: string;
-            } | {
-                name: string;
-                title: string;
-                type: (string | string[])[];
-                req: boolean;
-                format?: undefined;
-            })[];
+            }[];
             name: string;
             op: {
                 list: {
@@ -7569,10 +7410,6 @@ declare class Config {
                 title: string;
                 type: string;
             }[];
-            id: {
-                field: string;
-                name: string;
-            };
             name: string;
             op: {
                 create: {

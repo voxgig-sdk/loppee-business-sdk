@@ -60,6 +60,9 @@ class AnonymousLocationProofRevocationEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $anonymous_location_proof_revocation_ref01_ent = $client->AnonymousLocationProofRevocation(null);
         $anonymous_location_proof_revocation_ref01_data = Helpers::to_map(Vs::getprop(

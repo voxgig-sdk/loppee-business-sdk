@@ -57,6 +57,8 @@ class TestContactRecordedEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         contact_recorded_ref01_ent = client.ContactRecorded(None)
         contact_recorded_ref01_data = helpers.to_map(vs.getprop(

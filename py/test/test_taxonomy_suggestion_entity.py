@@ -143,6 +143,8 @@ class TestTaxonomySuggestionEntity:
         if len(taxonomy_suggestion_ref01_data_raw) > 0:
             taxonomy_suggestion_ref01_data = helpers.to_map(taxonomy_suggestion_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         taxonomy_suggestion_ref01_ent = client.TaxonomySuggestion(None)
         taxonomy_suggestion_ref01_match = {}

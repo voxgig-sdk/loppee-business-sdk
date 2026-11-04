@@ -143,6 +143,8 @@ class TestSuggestEntity:
         if len(suggest_ref01_data_raw) > 0:
             suggest_ref01_data = helpers.to_map(suggest_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         suggest_ref01_ent = client.Suggest(None)
         suggest_ref01_match = {}

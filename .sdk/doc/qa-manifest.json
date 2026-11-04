@@ -122,7 +122,6 @@
       "Edit owner business display details response",
       "End a comped Sponsored ad response",
       "Enter an administrative resource context response",
-      "Exact business-name query to submit to /v1/search; never a branch or profile identifier.",
       "Exact can authorize local category/recommendation reach; coarse cannot activate local results, Sponsored placement, or impressions.",
       "Exact challenge UUID returned by the v3 SMS or owner-email send.",
       "Exact conversation referenced by a webhook; returns zero or one scoped thread.",

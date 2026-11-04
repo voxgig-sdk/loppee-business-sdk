@@ -38,6 +38,9 @@ describe("TrustCardDirect", function()
         end
       end
     end
+    if setup.live then
+      runner.live_pace()
+    end
     local client = setup.client
 
     local params = {}
@@ -78,6 +81,9 @@ describe("TrustCardDirect", function()
     if _should_skip then
       pending(_reason or "skipped via sdk-test-control.json")
       return
+    end
+    if setup.live then
+      runner.live_pace()
     end
     local client = setup.client
 

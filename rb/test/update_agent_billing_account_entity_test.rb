@@ -48,6 +48,7 @@ class UpdateAgentBillingAccountEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     update_agent_billing_account_ref01_ent = client.UpdateAgentBillingAccount(nil)
     update_agent_billing_account_ref01_data = Helpers.to_map(Vs.getprop(

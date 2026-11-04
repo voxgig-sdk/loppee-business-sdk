@@ -59,6 +59,9 @@ class ReviewEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $review_ref01_ent = $client->Review(null);
         $review_ref01_data = Helpers::to_map(Vs::getprop(

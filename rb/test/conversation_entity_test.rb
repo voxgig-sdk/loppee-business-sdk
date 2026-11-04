@@ -48,6 +48,7 @@ class ConversationEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     conversation_ref01_ent = client.Conversation(nil)
     conversation_ref01_data = Helpers.to_map(Vs.getprop(

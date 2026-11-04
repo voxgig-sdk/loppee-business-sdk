@@ -59,6 +59,9 @@ class CustomerEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $customer_ref01_ent = $client->Customer(null);
         $customer_ref01_data = Helpers::to_map(Vs::getprop(

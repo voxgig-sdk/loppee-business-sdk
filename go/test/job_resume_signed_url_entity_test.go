@@ -78,6 +78,9 @@ func TestJobResumeSignedUrlEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		jobResumeSignedUrlRef01Ent := client.JobResumeSignedUrl(nil)
 		jobResumeSignedUrlRef01Data := core.ToMapAny(vs.GetProp(

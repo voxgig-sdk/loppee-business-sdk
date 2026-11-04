@@ -114,13 +114,23 @@ class TestPricingEntity:
         assert client.Pricing(None).list(None, {"throw": False}) is None
         assert fired < hook.unexpected
 
+    def test_should_validate_each_listed_record(self):
+        if "validate" not in (shared_config().get("feature") or {}):
+            pytest.skip("feature not present in this SDK: validate")
+        opts = {"feature": {"validate": {"active": True, "request": False, "response": True}}}
+        listed = LoppeeBusinessSDK.test({"entity": {"pricing": {"v1": {"annual_usd": 1, "monthly_usd": 1, "radius_max_miles": 1}}}}, opts).Pricing(None).list(None, None)
+        assert ["v1"] == [ent.data_get().get("id") for ent in listed]
+        with pytest.raises(Exception) as err:
+            LoppeeBusinessSDK.test({"entity": {"pricing": {"v1": {"annual_usd": "x", "monthly_usd": 1, "radius_max_miles": 1}}}}, opts).Pricing(None).list(None, None)
+        assert "validate_failed" == getattr(err.value, "code", None)
+
     def test_should_refuse_an_invalid_request(self):
         if "validate" not in (shared_config().get("feature") or {}):
             pytest.skip("feature not present in this SDK: validate")
         client = LoppeeBusinessSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.Pricing(None).list({"generated_at": 1}, None)
+            client.Pricing(None).list({"annual_usd": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -143,6 +153,8 @@ class TestPricingEntity:
         if len(pricing_ref01_data_raw) > 0:
             pricing_ref01_data = helpers.to_map(pricing_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         pricing_ref01_ent = client.Pricing(None)
         pricing_ref01_match = {}

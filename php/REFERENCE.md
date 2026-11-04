@@ -661,12 +661,8 @@ $agent_openapi = $client->AgentOpenapi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `array` | Yes |  |
-| `info` | `array` | Yes |  |
-| `openapi` | `mixed` | Yes |  |
-| `paths` | `array` | Yes |  |
-| `servers` | `array` | Yes |  |
-| `tags` | `array` | Yes |  |
+| `description` | `string` | No |  |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -1045,7 +1041,7 @@ $business_deal = $client->BusinessDeal();
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
 
 ```php
-$results = $client->BusinessDeal()->list(["id" => "example"]);
+$results = $client->BusinessDeal()->list(["business_id" => "example"]);
 ```
 
 ### Common Methods
@@ -1585,12 +1581,6 @@ Return the entity name.
 $business_review = $client->BusinessReview();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | No |  |
-
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -1598,7 +1588,7 @@ $business_review = $client->BusinessReview();
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$result = $client->BusinessReview()->load(["id" => "business_review_id"]);
+$result = $client->BusinessReview()->load(["business_id" => "business_id"]);
 ```
 
 ### Common Methods
@@ -2110,7 +2100,6 @@ $conversation_close = $client->ConversationClose();
 | --- | --- | --- | --- |
 | `closed_at` | `string` | Yes |  |
 | `conversation_id` | `string` | Yes |  |
-| `id` | `string` | No |  |
 | `status` | `mixed` | Yes |  |
 
 ### Operations
@@ -2121,7 +2110,7 @@ Create a new entity with the given data. Returns the created entity and throws o
 
 ```php
 $result = $client->ConversationClose()->create([
-  "id" => null, // string
+  "conversation_id" => null, // string
 ]);
 ```
 
@@ -2166,7 +2155,6 @@ $conversation_report = $client->ConversationReport();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `detail` | `string` | No |  |
-| `id` | `string` | No |  |
 | `reason` | `mixed` | Yes |  |
 | `status` | `mixed` | Yes |  |
 
@@ -2178,7 +2166,7 @@ Create a new entity with the given data. Returns the created entity and throws o
 
 ```php
 $result = $client->ConversationReport()->create([
-  "id" => null, // string
+  "conversation_id" => null, // string
   "reason" => null, // mixed
 ]);
 ```
@@ -2428,26 +2416,20 @@ $customer_account = $client->CustomerAccount();
 | --- | --- | --- | --- |
 | `account_id` | `string` | Yes |  |
 | `account_role` | `string` | Yes |  |
-| `accuracy_meters` | `float` | Yes |  |
 | `acknowledge_data_effects` | `bool` | Yes |  |
 | `actions` | `array` | Yes |  |
-| `agent_key_id` | `string` | Yes |  |
 | `agent_receives_coordinates` | `bool` | Yes |  |
 | `all_paused` | `bool` | Yes |  |
 | `app_attest_registered` | `bool` | Yes |  |
-| `assertion` | `string` | Yes |  |
 | `attestation` | `string` | Yes |  |
 | `author_label` | `string` | Yes |  |
 | `author_type` | `string` | Yes |  |
 | `binding` | `mixed` | Yes |  |
 | `body` | `string` | Yes |  |
 | `business_id` | `mixed` | Yes |  |
-| `capture_source` | `mixed` | Yes |  |
-| `captured_at` | `string` | Yes |  |
 | `challenge` | `string` | Yes |  |
 | `challenge_id` | `string` | Yes |  |
 | `client_message_id` | `string` | Yes |  |
-| `completed` | `bool` | Yes |  |
 | `confirmation` | `string` | Yes |  |
 | `connection_id` | `string` | Yes |  |
 | `connection_kind` | `string` | Yes |  |
@@ -2455,7 +2437,6 @@ $customer_account = $client->CustomerAccount();
 | `coordinates_returned` | `bool` | Yes |  |
 | `created_at` | `string` | Yes |  |
 | `credential_id` | `string` | Yes |  |
-| `declined` | `bool` | Yes |  |
 | `delivery_contract` | `array` | Yes |  |
 | `disabled_reason` | `mixed` | Yes |  |
 | `disclosure` | `string` | Yes |  |
@@ -2467,21 +2448,17 @@ $customer_account = $client->CustomerAccount();
 | `event_id` | `string` | Yes |  |
 | `event_types` | `array` | Yes |  |
 | `failure_count` | `int` | Yes |  |
-| `handoff_id` | `string` | Yes |  |
 | `has_more` | `bool` | Yes |  |
 | `id` | `string` | Yes |  |
 | `idempotent_replay` | `bool` | Yes |  |
 | `installation_id` | `string` | Yes |  |
 | `key_id` | `string` | Yes |  |
 | `last_delivery_at` | `mixed` | Yes |  |
-| `latitude` | `float` | Yes |  |
 | `location` | `mixed` | No | An opaque location reference from the website's own location controls. |
-| `longitude` | `float` | Yes |  |
 | `message_alerts_enabled` | `bool` | Yes |  |
 | `messages` | `array` | Yes |  |
 | `mode` | `string` | Yes | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `string` | No |  |
-| `oauth_grant_id` | `mixed` | Yes |  |
 | `one_time_display` | `mixed` | Yes |  |
 | `platform` | `string` | Yes |  |
 | `policy` | `string` | Yes |  |
@@ -2490,7 +2467,6 @@ $customer_account = $client->CustomerAccount();
 | `reason` | `string` | Yes |  |
 | `registered_at` | `string` | Yes |  |
 | `reply` | `string` | Yes |  |
-| `request_mode` | `string` | Yes |  |
 | `requested_at` | `string` | Yes |  |
 | `results` | `array` | Yes |  |
 | `schema_version` | `string` | Yes |  |
@@ -2501,7 +2477,6 @@ $customer_account = $client->CustomerAccount();
 | `updated_at` | `string` | Yes |  |
 | `url` | `string` | Yes | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `string` | Yes |  |
-| `use_mode` | `string` | Yes |  |
 
 ### Field Usage by Operation
 
@@ -2509,26 +2484,20 @@ $customer_account = $client->CustomerAccount();
 | --- | --- |
 | `account_id` | - |
 | `account_role` | - |
-| `accuracy_meters` | - |
 | `acknowledge_data_effects` | - |
 | `actions` | - |
-| `agent_key_id` | - |
 | `agent_receives_coordinates` | - |
 | `all_paused` | - |
 | `app_attest_registered` | - |
-| `assertion` | - |
 | `attestation` | - |
 | `author_label` | - |
 | `author_type` | - |
 | `binding` | - |
 | `body` | - |
 | `business_id` | - |
-| `capture_source` | - |
-| `captured_at` | - |
 | `challenge` | - |
 | `challenge_id` | - |
 | `client_message_id` | - |
-| `completed` | - |
 | `confirmation` | - |
 | `connection_id` | - |
 | `connection_kind` | - |
@@ -2536,7 +2505,6 @@ $customer_account = $client->CustomerAccount();
 | `coordinates_returned` | - |
 | `created_at` | - |
 | `credential_id` | - |
-| `declined` | - |
 | `delivery_contract` | - |
 | `disabled_reason` | - |
 | `disclosure` | - |
@@ -2548,21 +2516,17 @@ $customer_account = $client->CustomerAccount();
 | `event_id` | - |
 | `event_types` | - |
 | `failure_count` | - |
-| `handoff_id` | - |
 | `has_more` | - |
 | `id` | - |
 | `idempotent_replay` | - |
 | `installation_id` | - |
 | `key_id` | - |
 | `last_delivery_at` | - |
-| `latitude` | - |
 | `location` | - |
-| `longitude` | - |
 | `message_alerts_enabled` | - |
 | `messages` | - |
 | `mode` | - |
 | `name` | - |
-| `oauth_grant_id` | - |
 | `one_time_display` | - |
 | `platform` | - |
 | `policy` | - |
@@ -2571,7 +2535,6 @@ $customer_account = $client->CustomerAccount();
 | `reason` | Yes |
 | `registered_at` | - |
 | `reply` | - |
-| `request_mode` | - |
 | `requested_at` | - |
 | `results` | - |
 | `schema_version` | - |
@@ -2582,7 +2545,6 @@ $customer_account = $client->CustomerAccount();
 | `updated_at` | - |
 | `url` | - |
 | `usable_until` | - |
-| `use_mode` | - |
 
 ### Operations
 
@@ -2594,33 +2556,26 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->CustomerAccount()->create([
   "account_id" => null, // string
   "account_role" => null, // string
-  "accuracy_meters" => null, // float
   "acknowledge_data_effects" => null, // bool
   "actions" => null, // array
-  "agent_key_id" => null, // string
   "agent_receives_coordinates" => null, // bool
   "all_paused" => null, // bool
   "app_attest_registered" => null, // bool
-  "assertion" => null, // string
   "attestation" => null, // string
   "author_label" => null, // string
   "author_type" => null, // string
   "binding" => null, // mixed
   "body" => null, // string
   "business_id" => null, // mixed
-  "capture_source" => null, // mixed
-  "captured_at" => null, // string
   "challenge" => null, // string
   "challenge_id" => null, // string
   "client_message_id" => null, // string
-  "completed" => null, // bool
   "confirmation" => null, // string
   "connection_id" => null, // string
   "connection_kind" => null, // string
   "coordinates_returned" => null, // bool
   "created_at" => null, // string
   "credential_id" => null, // string
-  "declined" => null, // bool
   "delivery_contract" => null, // array
   "disabled_reason" => null, // mixed
   "disclosure" => null, // string
@@ -2632,19 +2587,15 @@ $result = $client->CustomerAccount()->create([
   "event_id" => null, // string
   "event_types" => null, // array
   "failure_count" => null, // int
-  "handoff_id" => null, // string
   "has_more" => null, // bool
   "id" => null, // string
   "idempotent_replay" => null, // bool
   "installation_id" => null, // string
   "key_id" => null, // string
   "last_delivery_at" => null, // mixed
-  "latitude" => null, // float
-  "longitude" => null, // float
   "message_alerts_enabled" => null, // bool
   "messages" => null, // array
   "mode" => null, // string
-  "oauth_grant_id" => null, // mixed
   "one_time_display" => null, // mixed
   "platform" => null, // string
   "policy" => null, // string
@@ -2652,7 +2603,6 @@ $result = $client->CustomerAccount()->create([
   "push_token" => null, // string
   "registered_at" => null, // string
   "reply" => null, // string
-  "request_mode" => null, // string
   "requested_at" => null, // string
   "results" => null, // array
   "schema_version" => null, // string
@@ -2663,7 +2613,6 @@ $result = $client->CustomerAccount()->create([
   "updated_at" => null, // string
   "url" => null, // string
   "usable_until" => null, // string
-  "use_mode" => null, // string
 ]);
 ```
 
@@ -3203,6 +3152,12 @@ Return the entity name.
 $location_handoff = $client->LocationHandoff();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -3502,12 +3457,8 @@ $open_api_document = $client->OpenApiDocument();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `array` | Yes |  |
-| `info` | `array` | Yes |  |
-| `openapi` | `mixed` | Yes |  |
-| `paths` | `array` | Yes |  |
-| `servers` | `array` | Yes |  |
-| `tags` | `array` | Yes |  |
+| `description` | `string` | No |  |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -4387,18 +4338,9 @@ $pricing = $client->Pricing();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing` | `array` | Yes |  |
-| `branch_add_ons` | `array` | Yes |  |
-| `currency` | `mixed` | Yes |  |
-| `generated_at` | `string` | Yes |  |
-| `neutrality` | `string` | Yes |  |
-| `plans` | `array` | Yes |  |
-| `promotions` | `array` | Yes |  |
-| `published_at` | `mixed` | Yes |  |
-| `radius_extension` | `array` | Yes |  |
-| `revision_id` | `mixed` | Yes |  |
-| `source` | `mixed` | Yes |  |
-| `trust_model_version` | `mixed` | Yes |  |
+| `annual_usd` | `float` | Yes |  |
+| `monthly_usd` | `float` | Yes |  |
+| `radius_max_miles` | `float` | Yes |  |
 
 ### Operations
 
@@ -5054,10 +4996,9 @@ $suggest = $client->Suggest();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `categories` | `array` | Yes |  |
-| `names` | `array` | Yes |  |
-| `query` | `string` | Yes |  |
-| `schema_version` | `mixed` | Yes |  |
+| `alias` | `string` | Yes |  |
+| `path_titles` | `array` | Yes |  |
+| `title` | `string` | Yes |  |
 
 ### Operations
 
@@ -5122,7 +5063,7 @@ Create a new entity with the given data. Returns the created entity and throws o
 
 ```php
 $result = $client->SupportInternalNote()->create([
-  "id" => null, // string
+  "support_id" => null, // string
   "body" => null, // string
 ]);
 ```
@@ -5168,7 +5109,6 @@ $support_workflow = $client->SupportWorkflow();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `category` | `mixed` | No |  |
-| `id` | `string` | No |  |
 | `priority` | `mixed` | No |  |
 | `waiting_on` | `mixed` | No |  |
 
@@ -5180,7 +5120,7 @@ Create a new entity with the given data. Returns the created entity and throws o
 
 ```php
 $result = $client->SupportWorkflow()->create([
-  "id" => null, // string
+  "support_id" => null, // string
 ]);
 ```
 

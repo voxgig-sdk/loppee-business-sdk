@@ -12,7 +12,7 @@ main: kit: flow: BasicSupportInternalNoteFlow:
       }
 
       m: {
-        conversation_id: "conversation01"
+        support_id: "support01"
       }
 
       o: "create"

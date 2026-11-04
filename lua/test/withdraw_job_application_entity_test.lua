@@ -52,6 +52,9 @@ describe("WithdrawJobApplicationEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local withdraw_job_application_ref01_ent = client:WithdrawJobApplication(nil)
     local withdraw_job_application_ref01_data = helpers.to_map(vs.getprop(

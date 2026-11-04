@@ -38,7 +38,7 @@ func TestSupportWorkflowEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SupportWorkflow(nil).Create(map[string]any{"id": 1}, nil)
+		_, err := client.SupportWorkflow(nil).Create(map[string]any{"support_id": 1}, nil)
 		if sdkerr, ok := err.(*core.LoppeeBusinessError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSupportWorkflowEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{} {
+		for _, _op := range []string{"create"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "support_workflow." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -68,15 +68,33 @@ func TestSupportWorkflowEntity(t *testing.T) {
 			return
 		}
 
-		// Bootstrap entity data from existing test data (no create step in flow).
-		supportWorkflowRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.support_workflow")))
-		var supportWorkflowRef01Data map[string]any
-		if len(supportWorkflowRef01DataRaw) > 0 {
-			supportWorkflowRef01Data = core.ToMapAny(supportWorkflowRef01DataRaw[0][1])
+		if setup.live {
+			for _, _liveKey := range []string{"support01"} {
+				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
+					liveMiss(t, support_workflowEntityLiveStrict, "Live entity test blocked: needs %s via LOPPEE_BUSINESS_TEST_SUPPORT_WORKFLOW_ENTID", _liveKey)
+				}
+			}
 		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = supportWorkflowRef01Data
+		client := setup.client
+		_ = client
+
+		if setup.live {
+			livePace()
+		}
+		// CREATE
+		supportWorkflowRef01Ent := client.SupportWorkflow(nil)
+		supportWorkflowRef01Data := core.ToMapAny(vs.GetProp(
+			vs.GetPath(setup.data, []any{"new", "support_workflow"}), "support_workflow_ref01"))
+		supportWorkflowRef01Data["support_id"] = setup.idmap["support01"]
+
+		supportWorkflowRef01DataResult, err := supportWorkflowRef01Ent.Create(supportWorkflowRef01Data, nil)
+		if err != nil {
+			t.Fatalf("create failed: %v", err)
+		}
+		supportWorkflowRef01Data = core.ToMapAny(entityData(supportWorkflowRef01DataResult))
+		if supportWorkflowRef01Data == nil {
+			t.Fatal("expected create result to be a map")
+		}
 
 	})
 }
@@ -106,7 +124,7 @@ func support_workflowBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"support_workflow01", "support_workflow02", "support_workflow03"},
+		[]any{"support_workflow01", "support_workflow02", "support_workflow03", "support01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

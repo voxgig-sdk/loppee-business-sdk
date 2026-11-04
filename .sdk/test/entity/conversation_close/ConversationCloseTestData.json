@@ -2,31 +2,31 @@
   "existing": {
     "conversation_close": {
       "CONVERSATION_CLOSE00": {
-        "closed_at": "s28",
+        "closed_at": "s1e",
         "conversation_id": "CONVERSATION01",
-        "id": "CONVERSATION_CLOSE00",
-        "status": "s2b"
+        "status": "s20",
+        "id": "CONVERSATION_CLOSE00"
       },
       "CONVERSATION_CLOSE01": {
-        "closed_at": "s50",
+        "closed_at": "s3c",
         "conversation_id": "CONVERSATION01",
-        "id": "CONVERSATION_CLOSE01",
-        "status": "s53"
+        "status": "s3e",
+        "id": "CONVERSATION_CLOSE01"
       },
       "CONVERSATION_CLOSE02": {
-        "closed_at": "s78",
+        "closed_at": "s5a",
         "conversation_id": "CONVERSATION01",
-        "id": "CONVERSATION_CLOSE02",
-        "status": "s7b"
+        "status": "s5c",
+        "id": "CONVERSATION_CLOSE02"
       }
     }
   },
   "new": {
     "conversation_close": {
       "conversation_close_ref01": {
-        "closed_at": "sa0",
+        "closed_at": "s78",
         "conversation_id": "CONVERSATION01",
-        "status": "sa3"
+        "status": "s7a"
       }
     }
   },

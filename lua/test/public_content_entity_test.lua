@@ -54,6 +54,9 @@ describe("PublicContentEntity", function()
       public_content_ref01_data = helpers.to_map(public_content_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LOAD
     local public_content_ref01_ent = client:PublicContent(nil)
     local public_content_ref01_match_dt0 = {}

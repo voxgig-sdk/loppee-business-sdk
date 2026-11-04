@@ -1174,12 +1174,8 @@ const agent_openapi = client.AgentOpenapi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `Record<string, any>` | Yes |  |
-| `info` | `Record<string, any>` | Yes |  |
-| `openapi` | `any` | Yes |  |
-| `paths` | `Record<string, any>` | Yes |  |
-| `servers` | `any[]` | Yes |  |
-| `tags` | `any[]` | Yes |  |
+| `description` | `string` | No |  |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -1548,7 +1544,7 @@ const business_deal = client.BusinessDeal()
 List entities matching the given criteria. Resolves to an array of entities, one per record.
 
 ```ts
-const results = await client.BusinessDeal().list({ id: "example" })
+const results = await client.BusinessDeal().list({ business_id: "example" })
 ```
 
 ### Common Methods
@@ -2105,12 +2101,6 @@ Return a copy of the entity options.
 const business_review = client.BusinessReview()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | No |  |
-
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -2118,7 +2108,7 @@ const business_review = client.BusinessReview()
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const result = await client.BusinessReview().load({ id: 'business_review_id' })
+const result = await client.BusinessReview().load({ business_id: 'business_id' })
 ```
 
 ### Common Methods
@@ -2614,7 +2604,6 @@ const conversation_close = client.ConversationClose()
 | --- | --- | --- | --- |
 | `closed_at` | `string` | Yes |  |
 | `conversation_id` | `string` | Yes |  |
-| `id` | `string` | No |  |
 | `status` | `any` | Yes |  |
 
 ### Operations
@@ -2625,7 +2614,7 @@ Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.ConversationClose().create({
-  id: 'example_id',
+  conversation_id: 'example_conversation_id',
 })
 ```
 
@@ -2668,7 +2657,6 @@ const conversation_report = client.ConversationReport()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `detail` | `string` | No |  |
-| `id` | `string` | No |  |
 | `reason` | `any` | Yes |  |
 | `status` | `any` | Yes |  |
 
@@ -2680,7 +2668,7 @@ Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.ConversationReport().create({
-  id: 'example_id',
+  conversation_id: 'example_conversation_id',
   reason: 'example_reason',
 })
 ```
@@ -2922,26 +2910,20 @@ const customer_account = client.CustomerAccount()
 | --- | --- | --- | --- |
 | `account_id` | `string` | Yes |  |
 | `account_role` | `string` | Yes |  |
-| `accuracy_meters` | `number` | Yes |  |
 | `acknowledge_data_effects` | `boolean` | Yes |  |
 | `actions` | `any[]` | Yes |  |
-| `agent_key_id` | `string` | Yes |  |
 | `agent_receives_coordinates` | `boolean` | Yes |  |
 | `all_paused` | `boolean` | Yes |  |
 | `app_attest_registered` | `boolean` | Yes |  |
-| `assertion` | `string` | Yes |  |
 | `attestation` | `string` | Yes |  |
 | `author_label` | `string` | Yes |  |
 | `author_type` | `string` | Yes |  |
 | `binding` | `any` | Yes |  |
 | `body` | `string` | Yes |  |
 | `business_id` | `string | null` | Yes |  |
-| `capture_source` | `any` | Yes |  |
-| `captured_at` | `string` | Yes |  |
 | `challenge` | `string` | Yes |  |
 | `challenge_id` | `string` | Yes |  |
 | `client_message_id` | `string` | Yes |  |
-| `completed` | `boolean` | Yes |  |
 | `confirmation` | `string` | Yes |  |
 | `connection_id` | `string` | Yes |  |
 | `connection_kind` | `string` | Yes |  |
@@ -2949,7 +2931,6 @@ const customer_account = client.CustomerAccount()
 | `coordinates_returned` | `boolean` | Yes |  |
 | `created_at` | `string` | Yes |  |
 | `credential_id` | `string` | Yes |  |
-| `declined` | `boolean` | Yes |  |
 | `delivery_contract` | `Record<string, any>` | Yes |  |
 | `disabled_reason` | `string | null` | Yes |  |
 | `disclosure` | `string` | Yes |  |
@@ -2961,21 +2942,17 @@ const customer_account = client.CustomerAccount()
 | `event_id` | `string` | Yes |  |
 | `event_types` | `any[]` | Yes |  |
 | `failure_count` | `number` | Yes |  |
-| `handoff_id` | `string` | Yes |  |
 | `has_more` | `boolean` | Yes |  |
 | `id` | `string` | Yes |  |
 | `idempotent_replay` | `boolean` | Yes |  |
 | `installation_id` | `string` | Yes |  |
 | `key_id` | `string` | Yes |  |
 | `last_delivery_at` | `string | null` | Yes |  |
-| `latitude` | `number` | Yes |  |
 | `location` | `any` | No | An opaque location reference from the website's own location controls. |
-| `longitude` | `number` | Yes |  |
 | `message_alerts_enabled` | `boolean` | Yes |  |
 | `messages` | `any[]` | Yes |  |
 | `mode` | `string` | Yes | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `string` | No |  |
-| `oauth_grant_id` | `string | null` | Yes |  |
 | `one_time_display` | `any` | Yes |  |
 | `platform` | `string` | Yes |  |
 | `policy` | `string` | Yes |  |
@@ -2984,7 +2961,6 @@ const customer_account = client.CustomerAccount()
 | `reason` | `string` | Yes |  |
 | `registered_at` | `string` | Yes |  |
 | `reply` | `string` | Yes |  |
-| `request_mode` | `string` | Yes |  |
 | `requested_at` | `string` | Yes |  |
 | `results` | `any[]` | Yes |  |
 | `schema_version` | `string` | Yes |  |
@@ -2995,7 +2971,6 @@ const customer_account = client.CustomerAccount()
 | `updated_at` | `string` | Yes |  |
 | `url` | `string` | Yes | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `string` | Yes |  |
-| `use_mode` | `string` | Yes |  |
 
 ### Field Usage by Operation
 
@@ -3003,26 +2978,20 @@ const customer_account = client.CustomerAccount()
 | --- | --- |
 | `account_id` | - |
 | `account_role` | - |
-| `accuracy_meters` | - |
 | `acknowledge_data_effects` | - |
 | `actions` | - |
-| `agent_key_id` | - |
 | `agent_receives_coordinates` | - |
 | `all_paused` | - |
 | `app_attest_registered` | - |
-| `assertion` | - |
 | `attestation` | - |
 | `author_label` | - |
 | `author_type` | - |
 | `binding` | - |
 | `body` | - |
 | `business_id` | - |
-| `capture_source` | - |
-| `captured_at` | - |
 | `challenge` | - |
 | `challenge_id` | - |
 | `client_message_id` | - |
-| `completed` | - |
 | `confirmation` | - |
 | `connection_id` | - |
 | `connection_kind` | - |
@@ -3030,7 +2999,6 @@ const customer_account = client.CustomerAccount()
 | `coordinates_returned` | - |
 | `created_at` | - |
 | `credential_id` | - |
-| `declined` | - |
 | `delivery_contract` | - |
 | `disabled_reason` | - |
 | `disclosure` | - |
@@ -3042,21 +3010,17 @@ const customer_account = client.CustomerAccount()
 | `event_id` | - |
 | `event_types` | - |
 | `failure_count` | - |
-| `handoff_id` | - |
 | `has_more` | - |
 | `id` | - |
 | `idempotent_replay` | - |
 | `installation_id` | - |
 | `key_id` | - |
 | `last_delivery_at` | - |
-| `latitude` | - |
 | `location` | - |
-| `longitude` | - |
 | `message_alerts_enabled` | - |
 | `messages` | - |
 | `mode` | - |
 | `name` | - |
-| `oauth_grant_id` | - |
 | `one_time_display` | - |
 | `platform` | - |
 | `policy` | - |
@@ -3065,7 +3029,6 @@ const customer_account = client.CustomerAccount()
 | `reason` | Yes |
 | `registered_at` | - |
 | `reply` | - |
-| `request_mode` | - |
 | `requested_at` | - |
 | `results` | - |
 | `schema_version` | - |
@@ -3076,7 +3039,6 @@ const customer_account = client.CustomerAccount()
 | `updated_at` | - |
 | `url` | - |
 | `usable_until` | - |
-| `use_mode` | - |
 
 ### Operations
 
@@ -3088,33 +3050,26 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.CustomerAccount().create({
   account_id: 'example_account_id',
   account_role: 'example_account_role',
-  accuracy_meters: 1,
   acknowledge_data_effects: true,
   actions: [],
-  agent_key_id: 'example_agent_key_id',
   agent_receives_coordinates: true,
   all_paused: true,
   app_attest_registered: true,
-  assertion: 'example_assertion',
   attestation: 'example_attestation',
   author_label: 'example_author_label',
   author_type: 'example_author_type',
   binding: 'example_binding',
   body: 'example_body',
   business_id: 'example_business_id',
-  capture_source: 'example_capture_source',
-  captured_at: 'example_captured_at',
   challenge: 'example_challenge',
   challenge_id: 'example_challenge_id',
   client_message_id: 'example_client_message_id',
-  completed: true,
   confirmation: 'example_confirmation',
   connection_id: 'example_connection_id',
   connection_kind: 'example_connection_kind',
   coordinates_returned: true,
   created_at: 'example_created_at',
   credential_id: 'example_credential_id',
-  declined: true,
   delivery_contract: {},
   disabled_reason: 'example_disabled_reason',
   disclosure: 'example_disclosure',
@@ -3126,19 +3081,15 @@ const result = await client.CustomerAccount().create({
   event_id: 'example_event_id',
   event_types: [],
   failure_count: 1,
-  handoff_id: 'example_handoff_id',
   has_more: true,
   id: 'example_id',
   idempotent_replay: true,
   installation_id: 'example_installation_id',
   key_id: 'example_key_id',
   last_delivery_at: 'example_last_delivery_at',
-  latitude: 1,
-  longitude: 1,
   message_alerts_enabled: true,
   messages: [],
   mode: 'example_mode',
-  oauth_grant_id: 'example_oauth_grant_id',
   one_time_display: 'example_one_time_display',
   platform: 'example_platform',
   policy: 'example_policy',
@@ -3146,7 +3097,6 @@ const result = await client.CustomerAccount().create({
   push_token: 'example_push_token',
   registered_at: 'example_registered_at',
   reply: 'example_reply',
-  request_mode: 'example_request_mode',
   requested_at: 'example_requested_at',
   results: [],
   schema_version: 'example_schema_version',
@@ -3157,7 +3107,6 @@ const result = await client.CustomerAccount().create({
   updated_at: 'example_updated_at',
   url: 'example_url',
   usable_until: 'example_usable_until',
-  use_mode: 'example_use_mode',
 })
 ```
 
@@ -3701,6 +3650,33 @@ Return a copy of the entity options.
 const location_handoff = client.LocationHandoff()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `complete_from_device` | `/v1/account/location-handoffs/{handoff_id}/complete-from-device` | `client.LocationHandoff().create({ $action: 'complete_from_device', ... })` |
+| `decline_from_device` | `/v1/account/location-handoffs/{handoff_id}/decline-from-device` | `client.LocationHandoff().create({ $action: 'decline_from_device', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+LocationHandoff record — check the API definition for its shape.
+
+```ts
+const result = await client.LocationHandoff().create({
+  $action: 'complete_from_device',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -3994,12 +3970,8 @@ const open_api_document = client.OpenApiDocument()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `Record<string, any>` | Yes |  |
-| `info` | `Record<string, any>` | Yes |  |
-| `openapi` | `any` | Yes |  |
-| `paths` | `Record<string, any>` | Yes |  |
-| `servers` | `any[]` | Yes |  |
-| `tags` | `any[]` | Yes |  |
+| `description` | `string` | No |  |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -4891,18 +4863,9 @@ const pricing = client.Pricing()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing` | `Record<string, any>` | Yes |  |
-| `branch_add_ons` | `any[]` | Yes |  |
-| `currency` | `any` | Yes |  |
-| `generated_at` | `string` | Yes |  |
-| `neutrality` | `string` | Yes |  |
-| `plans` | `any[]` | Yes |  |
-| `promotions` | `any[]` | Yes |  |
-| `published_at` | `string | null` | Yes |  |
-| `radius_extension` | `Record<string, any>` | Yes |  |
-| `revision_id` | `string | null` | Yes |  |
-| `source` | `any` | Yes |  |
-| `trust_model_version` | `any` | Yes |  |
+| `annual_usd` | `number` | Yes |  |
+| `monthly_usd` | `number` | Yes |  |
+| `radius_max_miles` | `number` | Yes |  |
 
 ### Operations
 
@@ -5538,10 +5501,9 @@ const suggest = client.Suggest()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `categories` | `any[]` | Yes |  |
-| `names` | `any[]` | Yes |  |
-| `query` | `string` | Yes |  |
-| `schema_version` | `any` | Yes |  |
+| `alias` | `string` | Yes |  |
+| `path_titles` | `any[]` | Yes |  |
+| `title` | `string` | Yes |  |
 
 ### Operations
 
@@ -5604,7 +5566,7 @@ Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.SupportInternalNote().create({
-  id: 'example_id',
+  support_id: 'example_support_id',
   body: 'example_body',
 })
 ```
@@ -5648,7 +5610,6 @@ const support_workflow = client.SupportWorkflow()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `category` | `any` | No |  |
-| `id` | `string` | No |  |
 | `priority` | `any` | No |  |
 | `waiting_on` | `any` | No |  |
 
@@ -5660,7 +5621,7 @@ Create a new entity with the given data. Resolves to the created entity.
 
 ```ts
 const result = await client.SupportWorkflow().create({
-  id: 'example_id',
+  support_id: 'example_support_id',
 })
 ```
 

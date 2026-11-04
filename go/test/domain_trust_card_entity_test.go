@@ -62,6 +62,11 @@ func TestDomainTrustCardEntity(t *testing.T) {
 				return
 			}
 		}
+		if setup.live {
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
+		}
+
 		// Bootstrap entity data from existing test data (no create step in flow).
 		domainTrustCardRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.domain_trust_card")))
 		var domainTrustCardRef01Data map[string]any

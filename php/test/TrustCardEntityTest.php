@@ -55,9 +55,9 @@ class TrustCardEntityTest extends TestCase
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"trust_card.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /v1/businesses/{business_id}/license-records/{fact_id}/report"}' . "\n");
         if (!empty($setup["live"])) {
-            foreach (["business01"] as $_liveKey) {
+            foreach (["business01" => 'biz_elite_ac_llc_jacksonville_fl'] as $_liveKey => $_liveEx) {
                 if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via LOPPEE_BUSINESS_TEST_TRUST_CARD_ENTID");
+                    $setup["idmap"][$_liveKey] = $_liveEx;
                 }
             }
         }
@@ -71,6 +71,9 @@ class TrustCardEntityTest extends TestCase
             $trust_card_ref01_data = Helpers::to_map($trust_card_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LIST
         $trust_card_ref01_ent = $client->TrustCard(null);
         $trust_card_ref01_match = [
@@ -80,6 +83,9 @@ class TrustCardEntityTest extends TestCase
         $trust_card_ref01_list_result = $trust_card_ref01_ent->list($trust_card_ref01_match, null);
         $this->assertIsArray($trust_card_ref01_list_result);
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LOAD
         $trust_card_ref01_match_dt0 = [];
         if (!empty($setup["live"])) {
@@ -100,6 +106,9 @@ class TrustCardEntityTest extends TestCase
         }
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $trust_card_ref01_ent = $client->TrustCard(null);
         $trust_card_ref01_data = Helpers::to_map(Vs::getprop(
@@ -111,6 +120,9 @@ class TrustCardEntityTest extends TestCase
         $trust_card_ref01_data = Helpers::to_map(is_object($trust_card_ref01_data_result) && method_exists($trust_card_ref01_data_result, 'data_get') ? $trust_card_ref01_data_result->data_get() : $trust_card_ref01_data_result);
         $this->assertNotNull($trust_card_ref01_data);
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LIST
         $trust_card_ref01_match = [
             "business_id" => $setup["idmap"]["business01"],
@@ -119,6 +131,9 @@ class TrustCardEntityTest extends TestCase
         $trust_card_ref01_list_result = $trust_card_ref01_ent->list($trust_card_ref01_match, null);
         $this->assertIsArray($trust_card_ref01_list_result);
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LOAD
         $trust_card_ref01_match_dt0 = [];
         if (!empty($setup["live"])) {

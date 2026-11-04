@@ -60,7 +60,7 @@ main: kit: entity: support_internal_note: {
             params: [
               {
                 k: "param"
-                n: "id"
+                n: "support_id"
                 or: "conversation_id"
                 r: true
                 t: "`$STRING`"
@@ -71,12 +71,12 @@ main: kit: entity: support_internal_note: {
           o: "/v1/admin/support/{conversation_id}/internal-notes"
           q: {
             exist: [
-              "id"
+              "support_id"
             ]
           }
           r: {
             param: {
-              conversation_id: "id"
+              conversation_id: "support_id"
             }
           }
           rs: {
@@ -94,7 +94,7 @@ main: kit: entity: support_internal_note: {
               lit: "support"
             }
             {
-              var: "id"
+              var: "support_id"
             }
             {
               lit: "internal-notes"

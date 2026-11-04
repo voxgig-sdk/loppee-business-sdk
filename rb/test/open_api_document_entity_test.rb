@@ -134,6 +134,32 @@ class OpenApiDocumentEntityTest < Minitest::Test
     assert_operator hook.unexpected, :>, fired
   end
 
+  def test_validate_list_response
+    cfg = LoppeeBusinessConfig.shared_config
+    unless cfg["feature"].is_a?(Hash) && cfg["feature"].key?("validate")
+      skip("feature not present in this SDK: validate")
+    end
+    opts = { "feature" => { "validate" => { "active" => true, "request" => false, "response" => true } } }
+    listed = LoppeeBusinessSDK.test({ "entity" => { "open_api_document" => { "v1" => { "url" => "x" } } } }, opts).OpenApiDocument(nil).list(nil, nil)
+    assert_equal ["v1"], listed.map { |ent| ent.data_get["id"] }
+    err = assert_raises(StandardError) do
+      LoppeeBusinessSDK.test({ "entity" => { "open_api_document" => { "v1" => { "url" => "x", "description" => 1 } } } }, opts).OpenApiDocument(nil).list(nil, nil)
+    end
+    assert_equal "validate_failed", err.code
+  end
+
+  def test_validate
+    cfg = LoppeeBusinessConfig.shared_config
+    unless cfg["feature"].is_a?(Hash) && cfg["feature"].key?("validate")
+      skip("feature not present in this SDK: validate")
+    end
+    client = LoppeeBusinessSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
+    err = assert_raises(StandardError) do
+      client.OpenApiDocument(nil).list({ "description" => 1 }, nil)
+    end
+    assert_equal "validate_failed", err.code
+  end
+
   def test_basic_flow
     setup = open_api_document_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
@@ -155,6 +181,7 @@ class OpenApiDocumentEntityTest < Minitest::Test
       open_api_document_ref01_data = Helpers.to_map(open_api_document_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # LIST
     open_api_document_ref01_ent = client.OpenApiDocument(nil)
     open_api_document_ref01_match = {}

@@ -60,6 +60,9 @@ describe("SavedLocationEntity", function()
       saved_location_ref01_data = helpers.to_map(saved_location_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- UPDATE
     local saved_location_ref01_ent = client:SavedLocation(nil)
     local saved_location_ref01_data_up0_up = {

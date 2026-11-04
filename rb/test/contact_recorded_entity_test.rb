@@ -48,6 +48,7 @@ class ContactRecordedEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     contact_recorded_ref01_ent = client.ContactRecorded(nil)
     contact_recorded_ref01_data = Helpers.to_map(Vs.getprop(

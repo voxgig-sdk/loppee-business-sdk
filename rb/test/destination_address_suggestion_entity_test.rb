@@ -48,6 +48,7 @@ class DestinationAddressSuggestionEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     destination_address_suggestion_ref01_ent = client.DestinationAddressSuggestion(nil)
     destination_address_suggestion_ref01_data = Helpers.to_map(Vs.getprop(

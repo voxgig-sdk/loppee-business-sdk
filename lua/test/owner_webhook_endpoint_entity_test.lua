@@ -59,6 +59,9 @@ describe("OwnerWebhookEndpointEntity", function()
     end
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local owner_webhook_endpoint_ref01_ent = client:OwnerWebhookEndpoint(nil)
     local owner_webhook_endpoint_ref01_data = helpers.to_map(vs.getprop(

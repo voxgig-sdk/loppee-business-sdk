@@ -57,6 +57,8 @@ class TestCustomerEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         customer_ref01_ent = client.Customer(None)
         customer_ref01_data = helpers.to_map(vs.getprop(

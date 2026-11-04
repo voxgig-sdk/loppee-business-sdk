@@ -48,6 +48,7 @@ class ClaimVerificationVerifyEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     claim_verification_verify_ref01_ent = client.ClaimVerificationVerify(nil)
     claim_verification_verify_ref01_data = Helpers.to_map(Vs.getprop(

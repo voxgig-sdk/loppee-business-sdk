@@ -57,6 +57,8 @@ class TestUnsaveBusinessEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         unsave_business_ref01_ent = client.UnsaveBusiness(None)
         unsave_business_ref01_data = helpers.to_map(vs.getprop(

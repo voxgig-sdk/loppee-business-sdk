@@ -59,6 +59,9 @@ class WithdrawJobApplicationEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $withdraw_job_application_ref01_ent = $client->WithdrawJobApplication(null);
         $withdraw_job_application_ref01_data = Helpers::to_map(Vs::getprop(

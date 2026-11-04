@@ -62,6 +62,9 @@ func TestAgentCapabilityEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = agentCapabilityRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		agentCapabilityRef01Ent := client.AgentCapability(nil)
 		agentCapabilityRef01MatchDt0 := map[string]any{}

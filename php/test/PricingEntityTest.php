@@ -173,6 +173,24 @@ class PricingEntityTest extends TestCase
         $this->assertSame(2, $client->_cost["total"]["attempts"]);
     }
 
+    public function test_validate_list_response(): void
+    {
+        $cfg = LoppeeBusinessConfig::shared_config();
+        if (!isset($cfg["feature"]["validate"])) {
+            $this->markTestSkipped('feature not present in this SDK: validate');
+        }
+        $opts = ["feature" => ["validate" => ["active" => true, "request" => false, "response" => true]]];
+        $listed = LoppeeBusinessSDK::test(['entity' => ['pricing' => ['v1' => ['annual_usd' => 1, 'monthly_usd' => 1, 'radius_max_miles' => 1]]]], $opts)->Pricing(null)->list(null, null);
+        $this->assertSame(['v1'], array_map(fn($ent) => $ent->data_get()['id'] ?? null, $listed));
+        $err = null;
+        try {
+            LoppeeBusinessSDK::test(['entity' => ['pricing' => ['v1' => ['annual_usd' => 'x', 'monthly_usd' => 1, 'radius_max_miles' => 1]]]], $opts)->Pricing(null)->list(null, null);
+        } catch (\Throwable $e) {
+            $err = $e;
+        }
+        $this->assertSame('validate_failed', $err->sdk_code ?? null);
+    }
+
     public function test_validate(): void
     {
         $cfg = LoppeeBusinessConfig::shared_config();
@@ -182,7 +200,7 @@ class PricingEntityTest extends TestCase
         $client = LoppeeBusinessSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->Pricing(null)->list(["generated_at" => 1], null);
+            $client->Pricing(null)->list(["annual_usd" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -211,6 +229,9 @@ class PricingEntityTest extends TestCase
             $pricing_ref01_data = Helpers::to_map($pricing_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LIST
         $pricing_ref01_ent = $client->Pricing(null);
         $pricing_ref01_match = [];

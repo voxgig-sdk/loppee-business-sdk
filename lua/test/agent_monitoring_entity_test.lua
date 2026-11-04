@@ -54,6 +54,9 @@ describe("AgentMonitoringEntity", function()
       agent_monitoring_ref01_data = helpers.to_map(agent_monitoring_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LOAD
     local agent_monitoring_ref01_ent = client:AgentMonitoring(nil)
     local agent_monitoring_ref01_match_dt0 = {}

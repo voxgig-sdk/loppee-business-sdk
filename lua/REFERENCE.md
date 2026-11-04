@@ -659,12 +659,8 @@ local agent_openapi = client:AgentOpenapi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `table` | Yes |  |
-| `info` | `table` | Yes |  |
-| `openapi` | `any` | Yes |  |
-| `paths` | `table` | Yes |  |
-| `servers` | `table` | Yes |  |
-| `tags` | `table` | Yes |  |
+| `description` | `string` | No |  |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -1043,7 +1039,7 @@ local business_deal = client:BusinessDeal(nil)
 List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:BusinessDeal():list({ id = "example" })
+local results, err = client:BusinessDeal():list({ business_id = "example" })
 ```
 
 ### Common Methods
@@ -1583,12 +1579,6 @@ Return the entity name.
 local business_review = client:BusinessReview(nil)
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | No |  |
-
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -1596,7 +1586,7 @@ local business_review = client:BusinessReview(nil)
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:BusinessReview():load({ id = "business_review_id" })
+local result, err = client:BusinessReview():load({ business_id = "business_id" })
 ```
 
 ### Common Methods
@@ -2108,7 +2098,6 @@ local conversation_close = client:ConversationClose(nil)
 | --- | --- | --- | --- |
 | `closed_at` | `string` | Yes |  |
 | `conversation_id` | `string` | Yes |  |
-| `id` | `string` | No |  |
 | `status` | `any` | Yes |  |
 
 ### Operations
@@ -2119,7 +2108,7 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 
 ```lua
 local result, err = client:ConversationClose():create({
-  id = --[[ string ]],
+  conversation_id = --[[ string ]],
 })
 ```
 
@@ -2164,7 +2153,6 @@ local conversation_report = client:ConversationReport(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `detail` | `string` | No |  |
-| `id` | `string` | No |  |
 | `reason` | `any` | Yes |  |
 | `status` | `any` | Yes |  |
 
@@ -2176,7 +2164,7 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 
 ```lua
 local result, err = client:ConversationReport():create({
-  id = --[[ string ]],
+  conversation_id = --[[ string ]],
   reason = --[[ any ]],
 })
 ```
@@ -2426,26 +2414,20 @@ local customer_account = client:CustomerAccount(nil)
 | --- | --- | --- | --- |
 | `account_id` | `string` | Yes |  |
 | `account_role` | `string` | Yes |  |
-| `accuracy_meters` | `number` | Yes |  |
 | `acknowledge_data_effects` | `boolean` | Yes |  |
 | `actions` | `table` | Yes |  |
-| `agent_key_id` | `string` | Yes |  |
 | `agent_receives_coordinates` | `boolean` | Yes |  |
 | `all_paused` | `boolean` | Yes |  |
 | `app_attest_registered` | `boolean` | Yes |  |
-| `assertion` | `string` | Yes |  |
 | `attestation` | `string` | Yes |  |
 | `author_label` | `string` | Yes |  |
 | `author_type` | `string` | Yes |  |
 | `binding` | `any` | Yes |  |
 | `body` | `string` | Yes |  |
 | `business_id` | `string|nil` | Yes |  |
-| `capture_source` | `any` | Yes |  |
-| `captured_at` | `string` | Yes |  |
 | `challenge` | `string` | Yes |  |
 | `challenge_id` | `string` | Yes |  |
 | `client_message_id` | `string` | Yes |  |
-| `completed` | `boolean` | Yes |  |
 | `confirmation` | `string` | Yes |  |
 | `connection_id` | `string` | Yes |  |
 | `connection_kind` | `string` | Yes |  |
@@ -2453,7 +2435,6 @@ local customer_account = client:CustomerAccount(nil)
 | `coordinates_returned` | `boolean` | Yes |  |
 | `created_at` | `string` | Yes |  |
 | `credential_id` | `string` | Yes |  |
-| `declined` | `boolean` | Yes |  |
 | `delivery_contract` | `table` | Yes |  |
 | `disabled_reason` | `string|nil` | Yes |  |
 | `disclosure` | `string` | Yes |  |
@@ -2465,21 +2446,17 @@ local customer_account = client:CustomerAccount(nil)
 | `event_id` | `string` | Yes |  |
 | `event_types` | `table` | Yes |  |
 | `failure_count` | `number` | Yes |  |
-| `handoff_id` | `string` | Yes |  |
 | `has_more` | `boolean` | Yes |  |
 | `id` | `string` | Yes |  |
 | `idempotent_replay` | `boolean` | Yes |  |
 | `installation_id` | `string` | Yes |  |
 | `key_id` | `string` | Yes |  |
 | `last_delivery_at` | `string|nil` | Yes |  |
-| `latitude` | `number` | Yes |  |
 | `location` | `any` | No | An opaque location reference from the website's own location controls. |
-| `longitude` | `number` | Yes |  |
 | `message_alerts_enabled` | `boolean` | Yes |  |
 | `messages` | `table` | Yes |  |
 | `mode` | `string` | Yes | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `string` | No |  |
-| `oauth_grant_id` | `string|nil` | Yes |  |
 | `one_time_display` | `any` | Yes |  |
 | `platform` | `string` | Yes |  |
 | `policy` | `string` | Yes |  |
@@ -2488,7 +2465,6 @@ local customer_account = client:CustomerAccount(nil)
 | `reason` | `string` | Yes |  |
 | `registered_at` | `string` | Yes |  |
 | `reply` | `string` | Yes |  |
-| `request_mode` | `string` | Yes |  |
 | `requested_at` | `string` | Yes |  |
 | `results` | `table` | Yes |  |
 | `schema_version` | `string` | Yes |  |
@@ -2499,7 +2475,6 @@ local customer_account = client:CustomerAccount(nil)
 | `updated_at` | `string` | Yes |  |
 | `url` | `string` | Yes | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `string` | Yes |  |
-| `use_mode` | `string` | Yes |  |
 
 ### Field Usage by Operation
 
@@ -2507,26 +2482,20 @@ local customer_account = client:CustomerAccount(nil)
 | --- | --- |
 | `account_id` | - |
 | `account_role` | - |
-| `accuracy_meters` | - |
 | `acknowledge_data_effects` | - |
 | `actions` | - |
-| `agent_key_id` | - |
 | `agent_receives_coordinates` | - |
 | `all_paused` | - |
 | `app_attest_registered` | - |
-| `assertion` | - |
 | `attestation` | - |
 | `author_label` | - |
 | `author_type` | - |
 | `binding` | - |
 | `body` | - |
 | `business_id` | - |
-| `capture_source` | - |
-| `captured_at` | - |
 | `challenge` | - |
 | `challenge_id` | - |
 | `client_message_id` | - |
-| `completed` | - |
 | `confirmation` | - |
 | `connection_id` | - |
 | `connection_kind` | - |
@@ -2534,7 +2503,6 @@ local customer_account = client:CustomerAccount(nil)
 | `coordinates_returned` | - |
 | `created_at` | - |
 | `credential_id` | - |
-| `declined` | - |
 | `delivery_contract` | - |
 | `disabled_reason` | - |
 | `disclosure` | - |
@@ -2546,21 +2514,17 @@ local customer_account = client:CustomerAccount(nil)
 | `event_id` | - |
 | `event_types` | - |
 | `failure_count` | - |
-| `handoff_id` | - |
 | `has_more` | - |
 | `id` | - |
 | `idempotent_replay` | - |
 | `installation_id` | - |
 | `key_id` | - |
 | `last_delivery_at` | - |
-| `latitude` | - |
 | `location` | - |
-| `longitude` | - |
 | `message_alerts_enabled` | - |
 | `messages` | - |
 | `mode` | - |
 | `name` | - |
-| `oauth_grant_id` | - |
 | `one_time_display` | - |
 | `platform` | - |
 | `policy` | - |
@@ -2569,7 +2533,6 @@ local customer_account = client:CustomerAccount(nil)
 | `reason` | Yes |
 | `registered_at` | - |
 | `reply` | - |
-| `request_mode` | - |
 | `requested_at` | - |
 | `results` | - |
 | `schema_version` | - |
@@ -2580,7 +2543,6 @@ local customer_account = client:CustomerAccount(nil)
 | `updated_at` | - |
 | `url` | - |
 | `usable_until` | - |
-| `use_mode` | - |
 
 ### Operations
 
@@ -2592,33 +2554,26 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:CustomerAccount():create({
   account_id = --[[ string ]],
   account_role = --[[ string ]],
-  accuracy_meters = --[[ number ]],
   acknowledge_data_effects = --[[ boolean ]],
   actions = --[[ table ]],
-  agent_key_id = --[[ string ]],
   agent_receives_coordinates = --[[ boolean ]],
   all_paused = --[[ boolean ]],
   app_attest_registered = --[[ boolean ]],
-  assertion = --[[ string ]],
   attestation = --[[ string ]],
   author_label = --[[ string ]],
   author_type = --[[ string ]],
   binding = --[[ any ]],
   body = --[[ string ]],
   business_id = --[[ string|nil ]],
-  capture_source = --[[ any ]],
-  captured_at = --[[ string ]],
   challenge = --[[ string ]],
   challenge_id = --[[ string ]],
   client_message_id = --[[ string ]],
-  completed = --[[ boolean ]],
   confirmation = --[[ string ]],
   connection_id = --[[ string ]],
   connection_kind = --[[ string ]],
   coordinates_returned = --[[ boolean ]],
   created_at = --[[ string ]],
   credential_id = --[[ string ]],
-  declined = --[[ boolean ]],
   delivery_contract = --[[ table ]],
   disabled_reason = --[[ string|nil ]],
   disclosure = --[[ string ]],
@@ -2630,19 +2585,15 @@ local result, err = client:CustomerAccount():create({
   event_id = --[[ string ]],
   event_types = --[[ table ]],
   failure_count = --[[ number ]],
-  handoff_id = --[[ string ]],
   has_more = --[[ boolean ]],
   id = --[[ string ]],
   idempotent_replay = --[[ boolean ]],
   installation_id = --[[ string ]],
   key_id = --[[ string ]],
   last_delivery_at = --[[ string|nil ]],
-  latitude = --[[ number ]],
-  longitude = --[[ number ]],
   message_alerts_enabled = --[[ boolean ]],
   messages = --[[ table ]],
   mode = --[[ string ]],
-  oauth_grant_id = --[[ string|nil ]],
   one_time_display = --[[ any ]],
   platform = --[[ string ]],
   policy = --[[ string ]],
@@ -2650,7 +2601,6 @@ local result, err = client:CustomerAccount():create({
   push_token = --[[ string ]],
   registered_at = --[[ string ]],
   reply = --[[ string ]],
-  request_mode = --[[ string ]],
   requested_at = --[[ string ]],
   results = --[[ table ]],
   schema_version = --[[ string ]],
@@ -2661,7 +2611,6 @@ local result, err = client:CustomerAccount():create({
   updated_at = --[[ string ]],
   url = --[[ string ]],
   usable_until = --[[ string ]],
-  use_mode = --[[ string ]],
 })
 ```
 
@@ -3201,6 +3150,12 @@ Return the entity name.
 local location_handoff = client:LocationHandoff(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -3500,12 +3455,8 @@ local open_api_document = client:OpenApiDocument(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `table` | Yes |  |
-| `info` | `table` | Yes |  |
-| `openapi` | `any` | Yes |  |
-| `paths` | `table` | Yes |  |
-| `servers` | `table` | Yes |  |
-| `tags` | `table` | Yes |  |
+| `description` | `string` | No |  |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -4385,18 +4336,9 @@ local pricing = client:Pricing(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing` | `table` | Yes |  |
-| `branch_add_ons` | `table` | Yes |  |
-| `currency` | `any` | Yes |  |
-| `generated_at` | `string` | Yes |  |
-| `neutrality` | `string` | Yes |  |
-| `plans` | `table` | Yes |  |
-| `promotions` | `table` | Yes |  |
-| `published_at` | `string|nil` | Yes |  |
-| `radius_extension` | `table` | Yes |  |
-| `revision_id` | `string|nil` | Yes |  |
-| `source` | `any` | Yes |  |
-| `trust_model_version` | `any` | Yes |  |
+| `annual_usd` | `number` | Yes |  |
+| `monthly_usd` | `number` | Yes |  |
+| `radius_max_miles` | `number` | Yes |  |
 
 ### Operations
 
@@ -5052,10 +4994,9 @@ local suggest = client:Suggest(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `categories` | `table` | Yes |  |
-| `names` | `table` | Yes |  |
-| `query` | `string` | Yes |  |
-| `schema_version` | `any` | Yes |  |
+| `alias` | `string` | Yes |  |
+| `path_titles` | `table` | Yes |  |
+| `title` | `string` | Yes |  |
 
 ### Operations
 
@@ -5120,7 +5061,7 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 
 ```lua
 local result, err = client:SupportInternalNote():create({
-  id = --[[ string ]],
+  support_id = --[[ string ]],
   body = --[[ string ]],
 })
 ```
@@ -5166,7 +5107,6 @@ local support_workflow = client:SupportWorkflow(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `category` | `any` | No |  |
-| `id` | `string` | No |  |
 | `priority` | `any` | No |  |
 | `waiting_on` | `any` | No |  |
 
@@ -5178,7 +5118,7 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 
 ```lua
 local result, err = client:SupportWorkflow():create({
-  id = --[[ string ]],
+  support_id = --[[ string ]],
 })
 ```
 

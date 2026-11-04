@@ -56,7 +56,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  agentcapability = client.AgentCapability.load()
+  agentpolicy = client.AgentPolicy.load()
 rescue => err
   warn "load failed: #{err}"
 end
@@ -126,8 +126,8 @@ client = LoppeeBusinessSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # data_get reads its mock record.
-agentcapability = client.AgentCapability.load()
-puts agentcapability.data_get
+agentpolicy = client.AgentPolicy.load()
+puts agentpolicy.data_get
 ```
 
 ### Use a custom fetch function
@@ -420,12 +420,8 @@ API path: `/v1/agent-monitoring.json`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: List.
 
@@ -711,7 +707,6 @@ API path: `/v1/owner/agents/{agent_id}/disconnect`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 
 Operations: Load.
 
@@ -861,7 +856,6 @@ API path: `/v1/actions/list-my-conversations`
 | --- | --- |
 | `closed_at` |  |
 | `conversation_id` |  |
-| `id` |  |
 | `status` |  |
 
 Operations: Create.
@@ -873,7 +867,6 @@ API path: `/v1/account/conversations/{conversation_id}/close`
 | Field | Description |
 | --- | --- |
 | `detail` |  |
-| `id` |  |
 | `reason` |  |
 | `status` |  |
 
@@ -941,26 +934,20 @@ API path: `/v1/account/customer`
 | --- | --- |
 | `account_id` |  |
 | `account_role` |  |
-| `accuracy_meters` |  |
 | `acknowledge_data_effects` |  |
 | `actions` |  |
-| `agent_key_id` |  |
 | `agent_receives_coordinates` |  |
 | `all_paused` |  |
 | `app_attest_registered` |  |
-| `assertion` |  |
 | `attestation` |  |
 | `author_label` |  |
 | `author_type` |  |
 | `binding` |  |
 | `body` |  |
 | `business_id` |  |
-| `capture_source` |  |
-| `captured_at` |  |
 | `challenge` |  |
 | `challenge_id` |  |
 | `client_message_id` |  |
-| `completed` |  |
 | `confirmation` |  |
 | `connection_id` |  |
 | `connection_kind` |  |
@@ -968,7 +955,6 @@ API path: `/v1/account/customer`
 | `coordinates_returned` |  |
 | `created_at` |  |
 | `credential_id` |  |
-| `declined` |  |
 | `delivery_contract` |  |
 | `disabled_reason` |  |
 | `disclosure` |  |
@@ -980,21 +966,17 @@ API path: `/v1/account/customer`
 | `event_id` |  |
 | `event_types` |  |
 | `failure_count` |  |
-| `handoff_id` |  |
 | `has_more` |  |
 | `id` |  |
 | `idempotent_replay` |  |
 | `installation_id` |  |
 | `key_id` |  |
 | `last_delivery_at` |  |
-| `latitude` |  |
 | `location` | An opaque location reference from the website's own location controls. |
-| `longitude` |  |
 | `message_alerts_enabled` |  |
 | `messages` |  |
 | `mode` | fallback: a direct search answered because the language model was unavailable. |
 | `name` |  |
-| `oauth_grant_id` |  |
 | `one_time_display` |  |
 | `platform` |  |
 | `policy` |  |
@@ -1003,7 +985,6 @@ API path: `/v1/account/customer`
 | `reason` |  |
 | `registered_at` |  |
 | `reply` |  |
-| `request_mode` |  |
 | `requested_at` |  |
 | `results` |  |
 | `schema_version` |  |
@@ -1014,11 +995,10 @@ API path: `/v1/account/customer`
 | `updated_at` |  |
 | `url` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` |  |
-| `use_mode` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
+API path: `/v1/account/agent-location/app-attest/challenges`
 
 #### CustomerLocationProofRevocation
 
@@ -1150,10 +1130,11 @@ API path: `/v1/account/job-applications/{application_id}/resume-url`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs`
+API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
 
 #### Message
 
@@ -1231,12 +1212,8 @@ API path: `/v1/actions/contact-attempt`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: List.
 
@@ -1519,18 +1496,9 @@ API path: `/v1/owner/webhooks/{endpoint_id}/rotate-secret`
 
 | Field | Description |
 | --- | --- |
-| `billing` |  |
-| `branch_add_ons` |  |
-| `currency` |  |
-| `generated_at` |  |
-| `neutrality` |  |
-| `plans` |  |
-| `promotions` |  |
-| `published_at` |  |
-| `radius_extension` |  |
-| `revision_id` |  |
-| `source` |  |
-| `trust_model_version` |  |
+| `annual_usd` |  |
+| `monthly_usd` |  |
+| `radius_max_miles` |  |
 
 Operations: List.
 
@@ -1723,10 +1691,9 @@ API path: `/v1/business-claim/candidates`
 
 | Field | Description |
 | --- | --- |
-| `categories` |  |
-| `names` |  |
-| `query` |  |
-| `schema_version` |  |
+| `alias` |  |
+| `path_titles` |  |
+| `title` |  |
 
 Operations: List.
 
@@ -1750,7 +1717,6 @@ API path: `/v1/admin/support/{conversation_id}/internal-notes`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `id` |  |
 | `priority` |  |
 | `waiting_on` |  |
 
@@ -2042,12 +2008,8 @@ Create an instance: `agent_openapi = client.AgentOpenapi`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `Hash` |  |
-| `info` | `Hash` |  |
-| `openapi` | `Object` |  |
-| `paths` | `Hash` |  |
-| `servers` | `Array` |  |
-| `tags` | `Array` |  |
+| `description` | `String` |  |
+| `url` | `String` |  |
 
 #### Example: List
 
@@ -2231,7 +2193,7 @@ Create an instance: `business_deal = client.BusinessDeal`
 
 ```ruby
 # list returns an Array of BusinessDeal entities, one per record (raises on error).
-business_deals = client.BusinessDeal.list({ "id" => "example" })
+business_deals = client.BusinessDeal.list({ "business_id" => "example" })
 business_deals.each { |item| puts item.data_get }
 ```
 
@@ -2537,17 +2499,11 @@ Create an instance: `business_review = client.BusinessReview`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `String` |  |
-
 #### Example: Load
 
 ```ruby
 # load returns the ENTITY — call data_get for the BusinessReview record (raises on error).
-business_review = client.BusinessReview.load({ "id" => "business_review_id" })
+business_review = client.BusinessReview.load({ "business_id" => "business_id" })
 ```
 
 
@@ -2817,14 +2773,13 @@ Create an instance: `conversation_close = client.ConversationClose`
 | --- | --- | --- |
 | `closed_at` | `String` |  |
 | `conversation_id` | `String` |  |
-| `id` | `String` |  |
 | `status` | `Object` |  |
 
 #### Example: Create
 
 ```ruby
 conversation_close = client.ConversationClose.create({
-  "id" => "example_id", # String
+  "conversation_id" => "example_conversation_id", # String
 })
 ```
 
@@ -2844,7 +2799,6 @@ Create an instance: `conversation_report = client.ConversationReport`
 | Field | Type | Description |
 | --- | --- | --- |
 | `detail` | `String` |  |
-| `id` | `String` |  |
 | `reason` | `Object` |  |
 | `status` | `Object` |  |
 
@@ -2852,7 +2806,7 @@ Create an instance: `conversation_report = client.ConversationReport`
 
 ```ruby
 conversation_report = client.ConversationReport.create({
-  "id" => "example_id", # String
+  "conversation_id" => "example_conversation_id", # String
   "reason" => "example_reason", # Object
 })
 ```
@@ -2972,26 +2926,20 @@ Create an instance: `customer_account = client.CustomerAccount`
 | --- | --- | --- |
 | `account_id` | `String` |  |
 | `account_role` | `String` |  |
-| `accuracy_meters` | `Float` |  |
 | `acknowledge_data_effects` | `Boolean` |  |
 | `actions` | `Array` |  |
-| `agent_key_id` | `String` |  |
 | `agent_receives_coordinates` | `Boolean` |  |
 | `all_paused` | `Boolean` |  |
 | `app_attest_registered` | `Boolean` |  |
-| `assertion` | `String` |  |
 | `attestation` | `String` |  |
 | `author_label` | `String` |  |
 | `author_type` | `String` |  |
 | `binding` | `Object` |  |
 | `body` | `String` |  |
 | `business_id` | `Object` |  |
-| `capture_source` | `Object` |  |
-| `captured_at` | `String` |  |
 | `challenge` | `String` |  |
 | `challenge_id` | `String` |  |
 | `client_message_id` | `String` |  |
-| `completed` | `Boolean` |  |
 | `confirmation` | `String` |  |
 | `connection_id` | `String` |  |
 | `connection_kind` | `String` |  |
@@ -2999,7 +2947,6 @@ Create an instance: `customer_account = client.CustomerAccount`
 | `coordinates_returned` | `Boolean` |  |
 | `created_at` | `String` |  |
 | `credential_id` | `String` |  |
-| `declined` | `Boolean` |  |
 | `delivery_contract` | `Hash` |  |
 | `disabled_reason` | `Object` |  |
 | `disclosure` | `String` |  |
@@ -3011,21 +2958,17 @@ Create an instance: `customer_account = client.CustomerAccount`
 | `event_id` | `String` |  |
 | `event_types` | `Array` |  |
 | `failure_count` | `Integer` |  |
-| `handoff_id` | `String` |  |
 | `has_more` | `Boolean` |  |
 | `id` | `String` |  |
 | `idempotent_replay` | `Boolean` |  |
 | `installation_id` | `String` |  |
 | `key_id` | `String` |  |
 | `last_delivery_at` | `Object` |  |
-| `latitude` | `Float` |  |
 | `location` | `Object` | An opaque location reference from the website's own location controls. |
-| `longitude` | `Float` |  |
 | `message_alerts_enabled` | `Boolean` |  |
 | `messages` | `Array` |  |
 | `mode` | `String` | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `String` |  |
-| `oauth_grant_id` | `Object` |  |
 | `one_time_display` | `Object` |  |
 | `platform` | `String` |  |
 | `policy` | `String` |  |
@@ -3034,7 +2977,6 @@ Create an instance: `customer_account = client.CustomerAccount`
 | `reason` | `String` |  |
 | `registered_at` | `String` |  |
 | `reply` | `String` |  |
-| `request_mode` | `String` |  |
 | `requested_at` | `String` |  |
 | `results` | `Array` |  |
 | `schema_version` | `String` |  |
@@ -3045,7 +2987,6 @@ Create an instance: `customer_account = client.CustomerAccount`
 | `updated_at` | `String` |  |
 | `url` | `String` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `String` |  |
-| `use_mode` | `String` |  |
 
 #### Example: Create
 
@@ -3053,33 +2994,26 @@ Create an instance: `customer_account = client.CustomerAccount`
 customer_account = client.CustomerAccount.create({
   "account_id" => "example_account_id", # String
   "account_role" => "example_account_role", # String
-  "accuracy_meters" => 1, # Float
   "acknowledge_data_effects" => true, # Boolean
   "actions" => [], # Array
-  "agent_key_id" => "example_agent_key_id", # String
   "agent_receives_coordinates" => true, # Boolean
   "all_paused" => true, # Boolean
   "app_attest_registered" => true, # Boolean
-  "assertion" => "example_assertion", # String
   "attestation" => "example_attestation", # String
   "author_label" => "example_author_label", # String
   "author_type" => "example_author_type", # String
   "binding" => "example_binding", # Object
   "body" => "example_body", # String
   "business_id" => "example_business_id", # Object
-  "capture_source" => "example_capture_source", # Object
-  "captured_at" => "example_captured_at", # String
   "challenge" => "example_challenge", # String
   "challenge_id" => "example_challenge_id", # String
   "client_message_id" => "example_client_message_id", # String
-  "completed" => true, # Boolean
   "confirmation" => "example_confirmation", # String
   "connection_id" => "example_connection_id", # String
   "connection_kind" => "example_connection_kind", # String
   "coordinates_returned" => true, # Boolean
   "created_at" => "example_created_at", # String
   "credential_id" => "example_credential_id", # String
-  "declined" => true, # Boolean
   "delivery_contract" => {}, # Hash
   "disabled_reason" => "example_disabled_reason", # Object
   "disclosure" => "example_disclosure", # String
@@ -3091,19 +3025,15 @@ customer_account = client.CustomerAccount.create({
   "event_id" => "example_event_id", # String
   "event_types" => [], # Array
   "failure_count" => 1, # Integer
-  "handoff_id" => "example_handoff_id", # String
   "has_more" => true, # Boolean
   "id" => "example_id", # String
   "idempotent_replay" => true, # Boolean
   "installation_id" => "example_installation_id", # String
   "key_id" => "example_key_id", # String
   "last_delivery_at" => "example_last_delivery_at", # Object
-  "latitude" => 1, # Float
-  "longitude" => 1, # Float
   "message_alerts_enabled" => true, # Boolean
   "messages" => [], # Array
   "mode" => "example_mode", # String
-  "oauth_grant_id" => "example_oauth_grant_id", # Object
   "one_time_display" => "example_one_time_display", # Object
   "platform" => "example_platform", # String
   "policy" => "example_policy", # String
@@ -3111,7 +3041,6 @@ customer_account = client.CustomerAccount.create({
   "push_token" => "example_push_token", # String
   "registered_at" => "example_registered_at", # String
   "reply" => "example_reply", # String
-  "request_mode" => "example_request_mode", # String
   "requested_at" => "example_requested_at", # String
   "results" => [], # Array
   "schema_version" => "example_schema_version", # String
@@ -3122,7 +3051,6 @@ customer_account = client.CustomerAccount.create({
   "updated_at" => "example_updated_at", # String
   "url" => "example_url", # String
   "usable_until" => "example_usable_until", # String
-  "use_mode" => "example_use_mode", # String
 })
 ```
 
@@ -3380,6 +3308,12 @@ Create an instance: `location_handoff = client.LocationHandoff`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
 #### Example: Create
 
 ```ruby
@@ -3528,12 +3462,8 @@ Create an instance: `open_api_document = client.OpenApiDocument`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `Hash` |  |
-| `info` | `Hash` |  |
-| `openapi` | `Object` |  |
-| `paths` | `Hash` |  |
-| `servers` | `Array` |  |
-| `tags` | `Array` |  |
+| `description` | `String` |  |
+| `url` | `String` |  |
 
 #### Example: List
 
@@ -4019,18 +3949,9 @@ Create an instance: `pricing = client.Pricing`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing` | `Hash` |  |
-| `branch_add_ons` | `Array` |  |
-| `currency` | `Object` |  |
-| `generated_at` | `String` |  |
-| `neutrality` | `String` |  |
-| `plans` | `Array` |  |
-| `promotions` | `Array` |  |
-| `published_at` | `Object` |  |
-| `radius_extension` | `Hash` |  |
-| `revision_id` | `Object` |  |
-| `source` | `Object` |  |
-| `trust_model_version` | `Object` |  |
+| `annual_usd` | `Float` |  |
+| `monthly_usd` | `Float` |  |
+| `radius_max_miles` | `Float` |  |
 
 #### Example: List
 
@@ -4374,10 +4295,9 @@ Create an instance: `suggest = client.Suggest`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `Array` |  |
-| `names` | `Array` |  |
-| `query` | `String` |  |
-| `schema_version` | `Object` |  |
+| `alias` | `String` |  |
+| `path_titles` | `Array` |  |
+| `title` | `String` |  |
 
 #### Example: List
 
@@ -4411,7 +4331,7 @@ Create an instance: `support_internal_note = client.SupportInternalNote`
 
 ```ruby
 support_internal_note = client.SupportInternalNote.create({
-  "id" => "example_id", # String
+  "support_id" => "example_support_id", # String
   "body" => "example_body", # String
 })
 ```
@@ -4432,7 +4352,6 @@ Create an instance: `support_workflow = client.SupportWorkflow`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `Object` |  |
-| `id` | `String` |  |
 | `priority` | `Object` |  |
 | `waiting_on` | `Object` |  |
 
@@ -4440,7 +4359,7 @@ Create an instance: `support_workflow = client.SupportWorkflow`
 
 ```ruby
 support_workflow = client.SupportWorkflow.create({
-  "id" => "example_id", # String
+  "support_id" => "example_support_id", # String
 })
 ```
 
@@ -4805,11 +4724,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-agentcapability = client.AgentCapability
-agentcapability.load()
+agentpolicy = client.AgentPolicy
+agentpolicy.load()
 
-# agentcapability.data_get now returns the agentcapability data from the last load
-# agentcapability.match_get returns the last match criteria
+# agentpolicy.data_get now returns the agentpolicy data from the last load
+# agentpolicy.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

@@ -24,6 +24,7 @@
         "repr": "auto"
       },
       "contributor": {},
+      "copies": "merge",
       "doc": {
         "active": true,
         "assets": {
@@ -849,47 +850,19 @@
             "field": {}
           },
           "fields": {
-            "components": {
+            "description": {
               "a": true,
-              "h": "Components",
-              "n": "components",
-              "r": true,
-              "t": "`$OBJECT`"
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "t": "`$STRING`"
             },
-            "info": {
+            "url": {
               "a": true,
-              "h": "Info",
-              "n": "info",
+              "h": "Url",
+              "n": "url",
               "r": true,
-              "t": "`$OBJECT`"
-            },
-            "openapi": {
-              "a": true,
-              "h": "Openapi",
-              "n": "openapi",
-              "r": true,
-              "t": "`$ANY`"
-            },
-            "paths": {
-              "a": true,
-              "h": "Paths",
-              "n": "paths",
-              "r": true,
-              "t": "`$OBJECT`"
-            },
-            "servers": {
-              "a": true,
-              "h": "Servers",
-              "n": "servers",
-              "r": true,
-              "t": "`$ARRAY`"
-            },
-            "tags": {
-              "a": true,
-              "h": "Tags",
-              "n": "tags",
-              "r": true,
-              "t": "`$ARRAY`"
+              "t": "`$STRING`"
             }
           },
           "name": "agent_openapi",
@@ -925,7 +898,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.servers`"
                   }
                 }
               ]
@@ -1730,7 +1703,7 @@
                         "a": true,
                         "ex": "biz_elite_ac_llc_jacksonville_fl",
                         "k": "param",
-                        "n": "id",
+                        "n": "business_id",
                         "or": "business_id",
                         "r": true,
                         "t": "`$STRING`"
@@ -1742,14 +1715,10 @@
                   "o": "/v1/businesses/{business_id}/deals.json",
                   "q": {
                     "exist": [
-                      "id"
+                      "business_id"
                     ]
                   },
-                  "r": {
-                    "param": {
-                      "business_id": "id"
-                    }
-                  },
+                  "r": {},
                   "rs": {
                     "kind": "json",
                     "media": "application/json"
@@ -1762,7 +1731,7 @@
                       "lit": "businesses"
                     },
                     {
-                      "var": "id"
+                      "var": "business_id"
                     },
                     {
                       "lit": "deals.json"
@@ -6282,19 +6251,7 @@
           "alias": {
             "field": {}
           },
-          "fields": {
-            "id": {
-              "a": true,
-              "h": "Id",
-              "n": "id",
-              "r": false,
-              "t": "`$STRING`"
-            }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
-          },
+          "fields": {},
           "name": "business_review",
           "op": {
             "load": {
@@ -6314,7 +6271,7 @@
                         "a": true,
                         "ex": "biz_elite_ac_llc_jacksonville_fl",
                         "k": "param",
-                        "n": "id",
+                        "n": "business_id",
                         "or": "business_id",
                         "r": true,
                         "t": "`$STRING`"
@@ -6352,14 +6309,10 @@
                   "o": "/v1/businesses/{business_id}/reviews.json",
                   "q": {
                     "exist": [
-                      "id"
+                      "business_id"
                     ]
                   },
-                  "r": {
-                    "param": {
-                      "business_id": "id"
-                    }
-                  },
+                  "r": {},
                   "rs": {
                     "kind": "json",
                     "media": "application/json"
@@ -6372,7 +6325,7 @@
                       "lit": "businesses"
                     },
                     {
-                      "var": "id"
+                      "var": "business_id"
                     },
                     {
                       "lit": "reviews.json"
@@ -7935,13 +7888,6 @@
               "r": true,
               "t": "`$STRING`"
             },
-            "id": {
-              "a": true,
-              "h": "Id",
-              "n": "id",
-              "r": false,
-              "t": "`$STRING`"
-            },
             "status": {
               "a": true,
               "h": "Status",
@@ -7949,10 +7895,6 @@
               "r": true,
               "t": "`$ANY`"
             }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
           },
           "name": "conversation_close",
           "op": {
@@ -7973,7 +7915,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "id",
+                        "n": "conversation_id",
                         "or": "conversation_id",
                         "r": true,
                         "t": "`$STRING`"
@@ -7985,14 +7927,10 @@
                   "o": "/v1/account/conversations/{conversation_id}/close",
                   "q": {
                     "exist": [
-                      "id"
+                      "conversation_id"
                     ]
                   },
-                  "r": {
-                    "param": {
-                      "conversation_id": "id"
-                    }
-                  },
+                  "r": {},
                   "rs": {
                     "kind": "json",
                     "media": "application/json"
@@ -8008,7 +7946,7 @@
                       "lit": "conversations"
                     },
                     {
-                      "var": "id"
+                      "var": "conversation_id"
                     },
                     {
                       "lit": "close"
@@ -8023,7 +7961,11 @@
             }
           },
           "relations": {
-            "ancestors": []
+            "ancestors": [
+              [
+                "$.main.kit.entity.conversation"
+              ]
+            ]
           }
         },
         "conversation_report": {
@@ -8036,13 +7978,6 @@
               "a": true,
               "h": "Detail",
               "n": "detail",
-              "r": false,
-              "t": "`$STRING`"
-            },
-            "id": {
-              "a": true,
-              "h": "Id",
-              "n": "id",
               "r": false,
               "t": "`$STRING`"
             },
@@ -8060,10 +7995,6 @@
               "r": true,
               "t": "`$ANY`"
             }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
           },
           "name": "conversation_report",
           "op": {
@@ -8087,7 +8018,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "id",
+                        "n": "conversation_id",
                         "or": "conversation_id",
                         "r": true,
                         "t": "`$STRING`"
@@ -8099,14 +8030,10 @@
                   "o": "/v1/account/conversations/{conversation_id}/report",
                   "q": {
                     "exist": [
-                      "id"
+                      "conversation_id"
                     ]
                   },
-                  "r": {
-                    "param": {
-                      "conversation_id": "id"
-                    }
-                  },
+                  "r": {},
                   "rs": {
                     "kind": "json",
                     "media": "application/json"
@@ -8122,7 +8049,7 @@
                       "lit": "conversations"
                     },
                     {
-                      "var": "id"
+                      "var": "conversation_id"
                     },
                     {
                       "lit": "report"
@@ -8206,6 +8133,9 @@
           },
           "relations": {
             "ancestors": [
+              [
+                "$.main.kit.entity.conversation"
+              ],
               [
                 "$.main.kit.entity.message"
               ]
@@ -8719,13 +8649,6 @@
               "r": true,
               "t": "`$STRING`"
             },
-            "accuracy_meters": {
-              "a": true,
-              "h": "Accuracy Meters",
-              "n": "accuracy_meters",
-              "r": true,
-              "t": "`$NUMBER`"
-            },
             "acknowledge_data_effects": {
               "a": true,
               "h": "Acknowledge Data Effects",
@@ -8744,14 +8667,6 @@
                 "count": 1,
                 "depth": 1
               }
-            },
-            "agent_key_id": {
-              "a": true,
-              "fo": "uuid",
-              "h": "Agent Key Id",
-              "n": "agent_key_id",
-              "r": true,
-              "t": "`$STRING`"
             },
             "agent_receives_coordinates": {
               "a": true,
@@ -8773,13 +8688,6 @@
               "n": "app_attest_registered",
               "r": true,
               "t": "`$BOOLEAN`"
-            },
-            "assertion": {
-              "a": true,
-              "h": "Assertion",
-              "n": "assertion",
-              "r": true,
-              "t": "`$STRING`"
             },
             "attestation": {
               "a": true,
@@ -8834,21 +8742,6 @@
                 ]
               ]
             },
-            "capture_source": {
-              "a": true,
-              "h": "Capture Source",
-              "n": "capture_source",
-              "r": true,
-              "t": "`$ANY`"
-            },
-            "captured_at": {
-              "a": true,
-              "fo": "date-time",
-              "h": "Captured At",
-              "n": "captured_at",
-              "r": true,
-              "t": "`$STRING`"
-            },
             "challenge": {
               "a": true,
               "h": "Challenge",
@@ -8870,13 +8763,6 @@
               "n": "client_message_id",
               "r": true,
               "t": "`$STRING`"
-            },
-            "completed": {
-              "a": true,
-              "h": "Completed",
-              "n": "completed",
-              "r": true,
-              "t": "`$BOOLEAN`"
             },
             "confirmation": {
               "a": true,
@@ -8935,13 +8821,6 @@
               "n": "credential_id",
               "r": true,
               "t": "`$STRING`"
-            },
-            "declined": {
-              "a": true,
-              "h": "Declined",
-              "n": "declined",
-              "r": true,
-              "t": "`$BOOLEAN`"
             },
             "delivery_contract": {
               "a": true,
@@ -9027,14 +8906,6 @@
               "r": true,
               "t": "`$INTEGER`"
             },
-            "handoff_id": {
-              "a": true,
-              "fo": "uuid",
-              "h": "Handoff Id",
-              "n": "handoff_id",
-              "r": true,
-              "t": "`$STRING`"
-            },
             "has_more": {
               "a": true,
               "h": "Has More",
@@ -9086,13 +8957,6 @@
                 ]
               ]
             },
-            "latitude": {
-              "a": true,
-              "h": "Latitude",
-              "n": "latitude",
-              "r": true,
-              "t": "`$NUMBER`"
-            },
             "location": {
               "a": true,
               "h": "Location",
@@ -9105,13 +8969,6 @@
                 "count": 1,
                 "depth": 0
               }
-            },
-            "longitude": {
-              "a": true,
-              "h": "Longitude",
-              "n": "longitude",
-              "r": true,
-              "t": "`$NUMBER`"
             },
             "message_alerts_enabled": {
               "a": true,
@@ -9141,20 +8998,6 @@
               "n": "name",
               "r": false,
               "t": "`$STRING`"
-            },
-            "oauth_grant_id": {
-              "a": true,
-              "fo": "uuid",
-              "h": "Oauth Grant Id",
-              "n": "oauth_grant_id",
-              "r": true,
-              "t": [
-                "`$ONE`",
-                [
-                  "`$STRING`",
-                  "`$NULL`"
-                ]
-              ]
             },
             "one_time_display": {
               "a": true,
@@ -9216,13 +9059,6 @@
               "a": true,
               "h": "Reply",
               "n": "reply",
-              "r": true,
-              "t": "`$STRING`"
-            },
-            "request_mode": {
-              "a": true,
-              "h": "Request Mode",
-              "n": "request_mode",
               "r": true,
               "t": "`$STRING`"
             },
@@ -9301,13 +9137,6 @@
               "n": "usable_until",
               "r": true,
               "t": "`$STRING`"
-            },
-            "use_mode": {
-              "a": true,
-              "h": "Use Mode",
-              "n": "use_mode",
-              "r": true,
-              "t": "`$STRING`"
             }
           },
           "id": {
@@ -9320,214 +9149,6 @@
               "input": "data",
               "name": "create",
               "points": [
-                {
-                  "a": true,
-                  "bf": [
-                    "accuracy_meters",
-                    "agent_key_id",
-                    "assertion",
-                    "capture_source",
-                    "captured_at",
-                    "challenge",
-                    "challenge_id",
-                    "connection_id",
-                    "installation_id",
-                    "key_id",
-                    "latitude",
-                    "longitude",
-                    "oauth_grant_id",
-                    "use_mode"
-                  ],
-                  "co": {
-                    "id": "POST /v1/account/location-handoffs/{handoff_id}/complete-from-device",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "header": [
-                      {
-                        "a": true,
-                        "k": "header",
-                        "n": "x_loppee_client_platform",
-                        "or": "X-Loppee-Client-Platform",
-                        "r": true,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "header",
-                        "n": "x_loppee_installation_id",
-                        "or": "X-Loppee-Installation-Id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ],
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "location_handoff_id",
-                        "or": "handoff_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v1/account/location-handoffs/{handoff_id}/complete-from-device",
-                  "q": {
-                    "exist": [
-                      "location_handoff_id",
-                      "x_loppee_client_platform",
-                      "x_loppee_installation_id"
-                    ]
-                  },
-                  "r": {
-                    "param": {
-                      "handoff_id": "location_handoff_id"
-                    }
-                  },
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "account"
-                    },
-                    {
-                      "lit": "location-handoffs"
-                    },
-                    {
-                      "var": "location_handoff_id"
-                    },
-                    {
-                      "lit": "complete-from-device"
-                    }
-                  ],
-                  "t": {
-                    "req": {
-                      "accuracy_meters": "`reqdata.accuracy_meter`",
-                      "agent_key_id": "`reqdata.agent_key_id`",
-                      "assertion": "`reqdata.assertion`",
-                      "capture_source": "`reqdata.capture_source`",
-                      "captured_at": "`reqdata.captured_at`",
-                      "challenge": "`reqdata.challenge`",
-                      "challenge_id": "`reqdata.challenge_id`",
-                      "connection_id": "`reqdata.connection_id`",
-                      "installation_id": "`reqdata.installation_id`",
-                      "key_id": "`reqdata.key_id`",
-                      "latitude": "`reqdata.latitude`",
-                      "longitude": "`reqdata.longitude`",
-                      "oauth_grant_id": "`reqdata.oauth_grant_id`",
-                      "use_mode": "`reqdata.use_mode`"
-                    },
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "bf": [
-                    "agent_key_id",
-                    "assertion",
-                    "challenge",
-                    "challenge_id",
-                    "connection_id",
-                    "installation_id",
-                    "key_id",
-                    "oauth_grant_id",
-                    "request_mode"
-                  ],
-                  "co": {
-                    "id": "POST /v1/account/location-handoffs/{handoff_id}/decline-from-device",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "header": [
-                      {
-                        "a": true,
-                        "k": "header",
-                        "n": "x_loppee_client_platform",
-                        "or": "X-Loppee-Client-Platform",
-                        "r": true,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "k": "header",
-                        "n": "x_loppee_installation_id",
-                        "or": "X-Loppee-Installation-Id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ],
-                    "params": [
-                      {
-                        "a": true,
-                        "k": "param",
-                        "n": "location_handoff_id",
-                        "or": "handoff_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v1/account/location-handoffs/{handoff_id}/decline-from-device",
-                  "q": {
-                    "exist": [
-                      "location_handoff_id",
-                      "x_loppee_client_platform",
-                      "x_loppee_installation_id"
-                    ]
-                  },
-                  "r": {
-                    "param": {
-                      "handoff_id": "location_handoff_id"
-                    }
-                  },
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v1"
-                    },
-                    {
-                      "lit": "account"
-                    },
-                    {
-                      "lit": "location-handoffs"
-                    },
-                    {
-                      "var": "location_handoff_id"
-                    },
-                    {
-                      "lit": "decline-from-device"
-                    }
-                  ],
-                  "t": {
-                    "req": {
-                      "agent_key_id": "`reqdata.agent_key_id`",
-                      "assertion": "`reqdata.assertion`",
-                      "challenge": "`reqdata.challenge`",
-                      "challenge_id": "`reqdata.challenge_id`",
-                      "connection_id": "`reqdata.connection_id`",
-                      "installation_id": "`reqdata.installation_id`",
-                      "key_id": "`reqdata.key_id`",
-                      "oauth_grant_id": "`reqdata.oauth_grant_id`",
-                      "request_mode": "`reqdata.request_mode`"
-                    },
-                    "res": "`body`"
-                  }
-                },
                 {
                   "a": true,
                   "bf": [
@@ -10443,9 +10064,6 @@
             "ancestors": [
               [
                 "$.main.kit.entity.conversation"
-              ],
-              [
-                "$.main.kit.entity.location_handoff"
               ]
             ]
           }
@@ -11243,6 +10861,7 @@
               "h": "Id",
               "n": "id",
               "r": false,
+              "syn": true,
               "t": "`$STRING`"
             },
             "job_id": {
@@ -11794,13 +11413,236 @@
           "alias": {
             "field": {}
           },
-          "fields": {},
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "syn": true,
+              "t": "`$STRING`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
           "name": "location_handoff",
           "op": {
             "create": {
               "input": "data",
               "name": "create",
               "points": [
+                {
+                  "a": true,
+                  "bf": [
+                    "accuracy_meters",
+                    "agent_key_id",
+                    "assertion",
+                    "capture_source",
+                    "captured_at",
+                    "challenge",
+                    "challenge_id",
+                    "connection_id",
+                    "installation_id",
+                    "key_id",
+                    "latitude",
+                    "longitude",
+                    "oauth_grant_id",
+                    "use_mode"
+                  ],
+                  "co": {
+                    "id": "POST /v1/account/location-handoffs/{handoff_id}/complete-from-device",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_loppee_client_platform",
+                        "or": "X-Loppee-Client-Platform",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_loppee_installation_id",
+                        "or": "X-Loppee-Installation-Id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "handoff_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/account/location-handoffs/{handoff_id}/complete-from-device",
+                  "q": {
+                    "$action": "complete_from_device",
+                    "exist": [
+                      "id",
+                      "x_loppee_client_platform",
+                      "x_loppee_installation_id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "handoff_id": "id"
+                    }
+                  },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "account"
+                    },
+                    {
+                      "lit": "location-handoffs"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "complete-from-device"
+                    }
+                  ],
+                  "t": {
+                    "req": {
+                      "accuracy_meters": "`reqdata.accuracy_meter`",
+                      "agent_key_id": "`reqdata.agent_key_id`",
+                      "assertion": "`reqdata.assertion`",
+                      "capture_source": "`reqdata.capture_source`",
+                      "captured_at": "`reqdata.captured_at`",
+                      "challenge": "`reqdata.challenge`",
+                      "challenge_id": "`reqdata.challenge_id`",
+                      "connection_id": "`reqdata.connection_id`",
+                      "installation_id": "`reqdata.installation_id`",
+                      "key_id": "`reqdata.key_id`",
+                      "latitude": "`reqdata.latitude`",
+                      "longitude": "`reqdata.longitude`",
+                      "oauth_grant_id": "`reqdata.oauth_grant_id`",
+                      "use_mode": "`reqdata.use_mode`"
+                    },
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "bf": [
+                    "agent_key_id",
+                    "assertion",
+                    "challenge",
+                    "challenge_id",
+                    "connection_id",
+                    "installation_id",
+                    "key_id",
+                    "oauth_grant_id",
+                    "request_mode"
+                  ],
+                  "co": {
+                    "id": "POST /v1/account/location-handoffs/{handoff_id}/decline-from-device",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_loppee_client_platform",
+                        "or": "X-Loppee-Client-Platform",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_loppee_installation_id",
+                        "or": "X-Loppee-Installation-Id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "handoff_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v1/account/location-handoffs/{handoff_id}/decline-from-device",
+                  "q": {
+                    "$action": "decline_from_device",
+                    "exist": [
+                      "id",
+                      "x_loppee_client_platform",
+                      "x_loppee_installation_id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "handoff_id": "id"
+                    }
+                  },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "account"
+                    },
+                    {
+                      "lit": "location-handoffs"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "decline-from-device"
+                    }
+                  ],
+                  "t": {
+                    "req": {
+                      "agent_key_id": "`reqdata.agent_key_id`",
+                      "assertion": "`reqdata.assertion`",
+                      "challenge": "`reqdata.challenge`",
+                      "challenge_id": "`reqdata.challenge_id`",
+                      "connection_id": "`reqdata.connection_id`",
+                      "installation_id": "`reqdata.installation_id`",
+                      "key_id": "`reqdata.key_id`",
+                      "oauth_grant_id": "`reqdata.oauth_grant_id`",
+                      "request_mode": "`reqdata.request_mode`"
+                    },
+                    "res": "`body`"
+                  }
+                },
                 {
                   "a": true,
                   "co": {
@@ -12773,47 +12615,19 @@
             "field": {}
           },
           "fields": {
-            "components": {
+            "description": {
               "a": true,
-              "h": "Components",
-              "n": "components",
-              "r": true,
-              "t": "`$OBJECT`"
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "t": "`$STRING`"
             },
-            "info": {
+            "url": {
               "a": true,
-              "h": "Info",
-              "n": "info",
+              "h": "Url",
+              "n": "url",
               "r": true,
-              "t": "`$OBJECT`"
-            },
-            "openapi": {
-              "a": true,
-              "h": "Openapi",
-              "n": "openapi",
-              "r": true,
-              "t": "`$ANY`"
-            },
-            "paths": {
-              "a": true,
-              "h": "Paths",
-              "n": "paths",
-              "r": true,
-              "t": "`$OBJECT`"
-            },
-            "servers": {
-              "a": true,
-              "h": "Servers",
-              "n": "servers",
-              "r": true,
-              "t": "`$ARRAY`"
-            },
-            "tags": {
-              "a": true,
-              "h": "Tags",
-              "n": "tags",
-              "r": true,
-              "t": "`$ARRAY`"
+              "t": "`$STRING`"
             }
           },
           "name": "open_api_document",
@@ -12846,7 +12660,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.servers`"
                   }
                 },
                 {
@@ -12876,7 +12690,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.servers`"
                   }
                 }
               ]
@@ -20494,102 +20308,26 @@
             "field": {}
           },
           "fields": {
-            "billing": {
+            "annual_usd": {
               "a": true,
-              "h": "Billing",
-              "n": "billing",
+              "h": "Annual Usd",
+              "n": "annual_usd",
               "r": true,
-              "t": "`$OBJECT`"
+              "t": "`$NUMBER`"
             },
-            "branch_add_ons": {
+            "monthly_usd": {
               "a": true,
-              "h": "Branch Add Ons",
-              "n": "branch_add_ons",
+              "h": "Monthly Usd",
+              "n": "monthly_usd",
               "r": true,
-              "t": "`$ARRAY`"
+              "t": "`$NUMBER`"
             },
-            "currency": {
+            "radius_max_miles": {
               "a": true,
-              "h": "Currency",
-              "n": "currency",
+              "h": "Radius Max Miles",
+              "n": "radius_max_miles",
               "r": true,
-              "t": "`$ANY`"
-            },
-            "generated_at": {
-              "a": true,
-              "fo": "date-time",
-              "h": "Generated At",
-              "n": "generated_at",
-              "r": true,
-              "t": "`$STRING`"
-            },
-            "neutrality": {
-              "a": true,
-              "h": "Neutrality",
-              "n": "neutrality",
-              "r": true,
-              "t": "`$STRING`"
-            },
-            "plans": {
-              "a": true,
-              "h": "Plans",
-              "n": "plans",
-              "r": true,
-              "t": "`$ARRAY`"
-            },
-            "promotions": {
-              "a": true,
-              "h": "Promotions",
-              "n": "promotions",
-              "r": true,
-              "t": "`$ARRAY`"
-            },
-            "published_at": {
-              "a": true,
-              "h": "Published At",
-              "n": "published_at",
-              "r": true,
-              "t": [
-                "`$ONE`",
-                [
-                  "`$STRING`",
-                  "`$NULL`"
-                ]
-              ]
-            },
-            "radius_extension": {
-              "a": true,
-              "h": "Radius Extension",
-              "n": "radius_extension",
-              "r": true,
-              "t": "`$OBJECT`"
-            },
-            "revision_id": {
-              "a": true,
-              "h": "Revision Id",
-              "n": "revision_id",
-              "r": true,
-              "t": [
-                "`$ONE`",
-                [
-                  "`$STRING`",
-                  "`$NULL`"
-                ]
-              ]
-            },
-            "source": {
-              "a": true,
-              "h": "Source",
-              "n": "source",
-              "r": true,
-              "t": "`$ANY`"
-            },
-            "trust_model_version": {
-              "a": true,
-              "h": "Trust Model Version",
-              "n": "trust_model_version",
-              "r": true,
-              "t": "`$ANY`"
+              "t": "`$NUMBER`"
             }
           },
           "name": "pricing",
@@ -20625,7 +20363,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.branch_add_ons`"
                   }
                 }
               ]
@@ -21213,7 +20951,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.fallback_registry`"
                   }
                 }
               ]
@@ -22429,33 +22167,26 @@
             "field": {}
           },
           "fields": {
-            "categories": {
+            "alias": {
               "a": true,
-              "h": "Categories",
-              "n": "categories",
-              "r": true,
-              "t": "`$ARRAY`"
-            },
-            "names": {
-              "a": true,
-              "h": "Names",
-              "n": "names",
-              "r": true,
-              "t": "`$ARRAY`"
-            },
-            "query": {
-              "a": true,
-              "h": "Query",
-              "n": "query",
+              "h": "Alias",
+              "n": "alias",
               "r": true,
               "t": "`$STRING`"
             },
-            "schema_version": {
+            "path_titles": {
               "a": true,
-              "h": "Schema Version",
-              "n": "schema_version",
+              "h": "Path Titles",
+              "n": "path_titles",
               "r": true,
-              "t": "`$ANY`"
+              "t": "`$ARRAY`"
+            },
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": true,
+              "t": "`$STRING`"
             }
           },
           "name": "suggest",
@@ -22502,7 +22233,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.categories`"
                   }
                 }
               ]
@@ -22578,7 +22309,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "id",
+                        "n": "support_id",
                         "or": "conversation_id",
                         "r": true,
                         "t": "`$STRING`"
@@ -22590,12 +22321,12 @@
                   "o": "/v1/admin/support/{conversation_id}/internal-notes",
                   "q": {
                     "exist": [
-                      "id"
+                      "support_id"
                     ]
                   },
                   "r": {
                     "param": {
-                      "conversation_id": "id"
+                      "conversation_id": "support_id"
                     }
                   },
                   "rs": {
@@ -22613,7 +22344,7 @@
                       "lit": "support"
                     },
                     {
-                      "var": "id"
+                      "var": "support_id"
                     },
                     {
                       "lit": "internal-notes"
@@ -22646,13 +22377,6 @@
               "r": false,
               "t": "`$ANY`"
             },
-            "id": {
-              "a": true,
-              "h": "Id",
-              "n": "id",
-              "r": false,
-              "t": "`$STRING`"
-            },
             "priority": {
               "a": true,
               "h": "Priority",
@@ -22667,10 +22391,6 @@
               "r": false,
               "t": "`$ANY`"
             }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
           },
           "name": "support_workflow",
           "op": {
@@ -22695,7 +22415,7 @@
                       {
                         "a": true,
                         "k": "param",
-                        "n": "id",
+                        "n": "support_id",
                         "or": "conversation_id",
                         "r": true,
                         "t": "`$STRING`"
@@ -22707,12 +22427,12 @@
                   "o": "/v1/admin/support/{conversation_id}/workflow",
                   "q": {
                     "exist": [
-                      "id"
+                      "support_id"
                     ]
                   },
                   "r": {
                     "param": {
-                      "conversation_id": "id"
+                      "conversation_id": "support_id"
                     }
                   },
                   "rs": {
@@ -22730,7 +22450,7 @@
                       "lit": "support"
                     },
                     {
-                      "var": "id"
+                      "var": "support_id"
                     },
                     {
                       "lit": "workflow"
@@ -25437,7 +25157,7 @@
                 "ref": "support_internal_note_ref01"
               },
               "m": {
-                "conversation_id": "conversation01"
+                "support_id": "support01"
               },
               "o": "create",
               "s": [],
@@ -25460,7 +25180,7 @@
                 "ref": "support_workflow_ref01"
               },
               "m": {
-                "conversation_id": "conversation01"
+                "support_id": "support01"
               },
               "o": "create",
               "s": [],
@@ -25621,6 +25341,9 @@
             }
           ]
         }
+      },
+      "http": {
+        "useragent": ""
       },
       "info": {
         "description": "Customers and administrators supply and operate their external agents. Loppee provides scoped API/MCP access and keys only; it does not provide, host, or operate an agent or AI service. Under v3, this access is available at no charge for now. Loppee v3 exposes explicit Verified and Listed business classes. Category recommendations may also contain a reviewed_registry section within the three-mile Free reach and an exclusive fallback_registry section containing at most one unclaimed record; owner-submitted and claimed-but-unpublished Registry records are never fallback results. Exact/genuine-prefix name recommendations preserve direct-entity relevance and may contain identity-reviewed Registry rows without radius entitlement or unrated fallback. Registry businesses retain their explicit claim_status and disclosure and are not currently published as Verified or Listed. Identity-verified reviewer ratings influence quality only within the applicable class or Registry pool. Local category discovery and recommendations require a current precise location proof or handoff, a user-confirmed validated destination authority, or a saved_exact Home location. City/state, ZIP, and saved_coarse locations are neutral area context for business-name disambiguation only: they return no local category or recommendation results, cannot activate Sponsored placement, and record no impressions. A connected assistant's current location comes only from the registered Loppee iPhone; provider IP, caller-supplied coordinates, host metadata, and computer/browser location are rejected as current-location authority. Exact and genuine-prefix business-name lookup remains universal; without precise location it is commercially neutral. Account, owner and admin GET operations that need an ID were removed because they require a Loppee session token or agent key (401/403 without one). 83 GET operations that require a key or session were removed on 2026-10-23.",

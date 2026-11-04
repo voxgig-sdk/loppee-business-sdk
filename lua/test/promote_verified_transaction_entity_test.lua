@@ -52,6 +52,9 @@ describe("PromoteVerifiedTransactionEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local promote_verified_transaction_ref01_ent = client:PromoteVerifiedTransaction(nil)
     local promote_verified_transaction_ref01_data = helpers.to_map(vs.getprop(

@@ -337,7 +337,7 @@ main: kit: entity: recommend: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.fallback_registry`"
           }
         }
       ]

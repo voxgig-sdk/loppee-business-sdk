@@ -37,7 +37,7 @@ class TestSupportWorkflowEntity:
         client = LoppeeBusinessSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.SupportWorkflow(None).create({"id": 1}, None)
+            client.SupportWorkflow(None).create({"support_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,7 +46,7 @@ class TestSupportWorkflowEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in []:
+        for _op in ["create"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "support_workflow." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -55,14 +55,22 @@ class TestSupportWorkflowEntity:
             print("LIVE STEP {\"id\":\"support_workflow.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/admin/support/{conversation_id}/workflow\"}")
             pytest.skip("Live coverage incomplete: support_workflow.create.0 excluded (GET-only live run: needs POST /v1/admin/support/{conversation_id}/workflow)")
 
+        if setup["live"]:
+            for _live_key in ["support01"]:
+                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
+                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via LOPPEE_BUSINESS_TEST_SUPPORT_WORKFLOW_ENTID")
         client = setup["client"]
 
-        # Bootstrap entity data from existing test data.
-        support_workflow_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.support_workflow")))
-        support_workflow_ref01_data = None
-        if len(support_workflow_ref01_data_raw) > 0:
-            support_workflow_ref01_data = helpers.to_map(support_workflow_ref01_data_raw[0][1])
+        if setup["live"]:
+            runner.live_pace()
+        # CREATE
+        support_workflow_ref01_ent = client.SupportWorkflow(None)
+        support_workflow_ref01_data = helpers.to_map(vs.getprop(
+            vs.getpath(setup["data"], "new.support_workflow"), "support_workflow_ref01"))
+        support_workflow_ref01_data["support_id"] = setup["idmap"]["support01"]
+
+        support_workflow_ref01_data = helpers.to_map(runner.entity_data(support_workflow_ref01_ent.create(support_workflow_ref01_data, None)))
+        assert support_workflow_ref01_data is not None
 
 
 
@@ -82,7 +90,7 @@ def _support_workflow_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["support_workflow01", "support_workflow02", "support_workflow03"],
+        ["support_workflow01", "support_workflow02", "support_workflow03", "support01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

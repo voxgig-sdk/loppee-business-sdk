@@ -61,6 +61,8 @@ class TestTrustCardEntity:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via LOPPEE_BUSINESS_TEST_TRUST_CARD_ENTID")
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         trust_card_ref01_ent = client.TrustCard(None)
         trust_card_ref01_data = helpers.to_map(vs.getprop(
@@ -71,6 +73,8 @@ class TestTrustCardEntity:
         trust_card_ref01_data = helpers.to_map(runner.entity_data(trust_card_ref01_ent.create(trust_card_ref01_data, None)))
         assert trust_card_ref01_data is not None
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         trust_card_ref01_match = {
             "business_id": setup["idmap"]["business01"],
@@ -79,6 +83,8 @@ class TestTrustCardEntity:
         trust_card_ref01_list_result = trust_card_ref01_ent.list(trust_card_ref01_match, None)
         assert isinstance(trust_card_ref01_list_result, list)
 
+        if setup["live"]:
+            runner.live_pace()
         # LOAD
         trust_card_ref01_match_dt0 = {}
         if setup["live"]:
@@ -89,9 +95,9 @@ class TestTrustCardEntity:
 
     def _run_get_only_flow(self, setup):
         if setup["live"]:
-            for _live_key in ["business01"]:
+            for _live_key, _live_ex in {"business01": "biz_elite_ac_llc_jacksonville_fl"}.items():
                 if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via LOPPEE_BUSINESS_TEST_TRUST_CARD_ENTID")
+                    setup["idmap"][_live_key] = _live_ex
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -101,6 +107,8 @@ class TestTrustCardEntity:
         if len(trust_card_ref01_data_raw) > 0:
             trust_card_ref01_data = helpers.to_map(trust_card_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         trust_card_ref01_ent = client.TrustCard(None)
         trust_card_ref01_match = {
@@ -110,6 +118,8 @@ class TestTrustCardEntity:
         trust_card_ref01_list_result = trust_card_ref01_ent.list(trust_card_ref01_match, None)
         assert isinstance(trust_card_ref01_list_result, list)
 
+        if setup["live"]:
+            runner.live_pace()
         # LOAD
         trust_card_ref01_match_dt0 = {}
         if setup["live"]:

@@ -167,6 +167,7 @@ class BusinessIndexEntityTest < Minitest::Test
       business_index_ref01_data = Helpers.to_map(business_index_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # LIST
     business_index_ref01_ent = client.BusinessIndex(nil)
     business_index_ref01_match = {}

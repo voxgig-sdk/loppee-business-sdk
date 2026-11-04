@@ -59,6 +59,9 @@ class DestinationAddressSuggestionEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $destination_address_suggestion_ref01_ent = $client->DestinationAddressSuggestion(null);
         $destination_address_suggestion_ref01_data = Helpers::to_map(Vs::getprop(

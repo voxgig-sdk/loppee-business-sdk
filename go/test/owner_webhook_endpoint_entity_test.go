@@ -78,6 +78,9 @@ func TestOwnerWebhookEndpointEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		ownerWebhookEndpointRef01Ent := client.OwnerWebhookEndpoint(nil)
 		ownerWebhookEndpointRef01Data := core.ToMapAny(vs.GetProp(

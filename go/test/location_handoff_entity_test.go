@@ -31,6 +31,19 @@ func TestLocationHandoffEntity(t *testing.T) {
 		}
 	})
 
+	t.Run("validate", func(t *testing.T) {
+		if !fhHasFeature("validate") {
+			t.Skip("feature not present in this SDK: validate")
+		}
+		client := sdk.TestSDK(nil, map[string]any{
+			"feature": map[string]any{"validate": map[string]any{"active": true}},
+		})
+		_, err := client.LocationHandoff(nil).Create(map[string]any{"id": 1}, nil)
+		if sdkerr, ok := err.(*core.LoppeeBusinessError); !ok || "validate_failed" != sdkerr.Code {
+			t.Fatalf("expected validate_failed, got %v", err)
+		}
+	})
+
 	t.Run("basic", func(tt *testing.T) {
 		var t testing.TB = tt
 		setup := location_handoffBasicSetup(nil)
@@ -50,14 +63,17 @@ func TestLocationHandoffEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"location_handoff.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/location-handoffs\"}")
-			t.Skip("Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs)")
+			t.Log("LIVE STEP {\"id\":\"location_handoff.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device\"}")
+			t.Skip("Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device)")
 			return
 		}
 
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		locationHandoffRef01Ent := client.LocationHandoff(nil)
 		locationHandoffRef01Data := core.ToMapAny(vs.GetProp(
@@ -70,6 +86,9 @@ func TestLocationHandoffEntity(t *testing.T) {
 		locationHandoffRef01Data = core.ToMapAny(entityData(locationHandoffRef01DataResult))
 		if locationHandoffRef01Data == nil {
 			t.Fatal("expected create result to be a map")
+		}
+		if locationHandoffRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
 		}
 
 	})

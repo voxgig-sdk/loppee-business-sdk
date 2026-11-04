@@ -34,25 +34,28 @@ func TestBusinessDealDirect(t *testing.T) {
 			return
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"business_deal01"} {
+			for _, _liveKey := range []string{"business01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
 					liveMiss(t, business_dealDirectLiveStrict, "Live test blocked: needs %s via LOPPEE_BUSINESS_TEST_BUSINESS_DEAL_ENTID", _liveKey)
 					return
 				}
 			}
 		}
+		if setup.live {
+			livePace()
+		}
 		client := setup.client
 
 		params := map[string]any{}
 		query := map[string]any{}
 		if setup.live {
-			params["id"] = setup.idmap["business_deal01"]
+			params["business_id"] = setup.idmap["business01"]
 		} else {
-			params["id"] = "direct01"
+			params["business_id"] = "direct01"
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "v1/businesses/{id}/deals.json",
+			"path":   "v1/businesses/{business_id}/deals.json",
 			"method": "GET",
 			"params": params,
 			"query":  query,
@@ -150,7 +153,7 @@ func business_dealDirectSetup(mockres any) *business_dealDirectSetupResult {
 			}
 		}
 		// A path parameter's example stands in for an id *_ENTID does not give.
-		for k, v := range map[string]any{"business_deal01": "biz_elite_ac_llc_jacksonville_fl"} {
+		for k, v := range map[string]any{"business01": "biz_elite_ac_llc_jacksonville_fl"} {
 			if idmap[k] == nil {
 				idmap[k] = v
 			}

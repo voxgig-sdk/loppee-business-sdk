@@ -143,20 +143,12 @@ export interface AgentMonitoringLoadMatch {
     version?: string;
 }
 export interface AgentOpenapi {
-    components: Record<string, any>;
-    info: Record<string, any>;
-    openapi: any;
-    paths: Record<string, any>;
-    servers: any[];
-    tags: any[];
+    description?: string;
+    url: string;
 }
 export interface AgentOpenapiListMatch {
-    components?: Record<string, any>;
-    info?: Record<string, any>;
-    openapi?: any;
-    paths?: Record<string, any>;
-    servers?: any[];
-    tags?: any[];
+    description?: string;
+    url?: string;
 }
 export interface AgentPolicy {
     external_agent_access: Record<string, any>;
@@ -268,7 +260,7 @@ export interface BusinessDeal {
     title: string;
 }
 export interface BusinessDealListMatch {
-    id: string;
+    business_id: string;
 }
 export interface BusinessIndex {
     brand_assets?: any;
@@ -724,10 +716,9 @@ export interface BusinessOwnerUpdateData {
     zip?: string;
 }
 export interface BusinessReview {
-    id?: string;
 }
 export interface BusinessReviewLoadMatch {
-    id: string;
+    business_id: string;
     limit?: number;
     page?: number;
     rating?: string;
@@ -875,20 +866,18 @@ export interface ConversationCreateData {
 export interface ConversationClose {
     closed_at: string;
     conversation_id: string;
-    id?: string;
     status: any;
 }
 export interface ConversationCloseCreateData {
-    id: string;
+    conversation_id: string;
 }
 export interface ConversationReport {
     detail?: string;
-    id?: string;
     reason: any;
     status: any;
 }
 export interface ConversationReportCreateData {
-    id: string;
+    conversation_id: string;
     detail?: string;
     reason: any;
 }
@@ -952,26 +941,20 @@ export interface CustomerCreateData {
 export interface CustomerAccount {
     account_id: string;
     account_role: string;
-    accuracy_meters: number;
     acknowledge_data_effects: boolean;
     actions: any[];
-    agent_key_id: string;
     agent_receives_coordinates: boolean;
     all_paused: boolean;
     app_attest_registered: boolean;
-    assertion: string;
     attestation: string;
     author_label: string;
     author_type: string;
     binding: any;
     body: string;
     business_id: string | null;
-    capture_source: any;
-    captured_at: string;
     challenge: string;
     challenge_id: string;
     client_message_id: string;
-    completed: boolean;
     confirmation: string;
     connection_id: string;
     connection_kind: string;
@@ -979,7 +962,6 @@ export interface CustomerAccount {
     coordinates_returned: boolean;
     created_at: string;
     credential_id: string;
-    declined: boolean;
     delivery_contract: Record<string, any>;
     disabled_reason: string | null;
     disclosure: string;
@@ -991,21 +973,17 @@ export interface CustomerAccount {
     event_id: string;
     event_types: any[];
     failure_count: number;
-    handoff_id: string;
     has_more: boolean;
     id: string;
     idempotent_replay: boolean;
     installation_id: string;
     key_id: string;
     last_delivery_at: string | null;
-    latitude: number;
     location?: any;
-    longitude: number;
     message_alerts_enabled: boolean;
     messages: any[];
     mode: string;
     name?: string;
-    oauth_grant_id: string | null;
     one_time_display: any;
     platform: string;
     policy: string;
@@ -1014,7 +992,6 @@ export interface CustomerAccount {
     reason: string;
     registered_at: string;
     reply: string;
-    request_mode: string;
     requested_at: string;
     results: any[];
     schema_version: string;
@@ -1025,31 +1002,24 @@ export interface CustomerAccount {
     updated_at: string;
     url: string;
     usable_until: string;
-    use_mode: string;
 }
 export interface CustomerAccountCreateData {
     account_id: string;
     account_role: string;
-    accuracy_meters: number;
     acknowledge_data_effects: boolean;
     actions: any[];
-    agent_key_id: string;
     agent_receives_coordinates: boolean;
     all_paused: boolean;
     app_attest_registered: boolean;
-    assertion: string;
     attestation: string;
     author_label: string;
     author_type: string;
     binding: any;
     body: string;
     business_id: string | null;
-    capture_source: any;
-    captured_at: string;
     challenge: string;
     challenge_id: string;
     client_message_id: string;
-    completed: boolean;
     confirmation: string;
     connection_id: string;
     connection_kind: string;
@@ -1057,7 +1027,6 @@ export interface CustomerAccountCreateData {
     coordinates_returned: boolean;
     created_at: string;
     credential_id: string;
-    declined: boolean;
     delivery_contract: Record<string, any>;
     disabled_reason: string | null;
     disclosure: string;
@@ -1069,21 +1038,17 @@ export interface CustomerAccountCreateData {
     event_id: string;
     event_types: any[];
     failure_count: number;
-    handoff_id: string;
     has_more: boolean;
     id: string;
     idempotent_replay: boolean;
     installation_id: string;
     key_id: string;
     last_delivery_at: string | null;
-    latitude: number;
     location?: any;
-    longitude: number;
     message_alerts_enabled: boolean;
     messages: any[];
     mode: string;
     name?: string;
-    oauth_grant_id: string | null;
     one_time_display: any;
     platform: string;
     policy: string;
@@ -1092,7 +1057,6 @@ export interface CustomerAccountCreateData {
     reason?: string;
     registered_at: string;
     reply: string;
-    request_mode: string;
     requested_at: string;
     results: any[];
     schema_version: string;
@@ -1103,10 +1067,14 @@ export interface CustomerAccountCreateData {
     updated_at: string;
     url: string;
     usable_until: string;
-    use_mode: string;
     action?: any;
+    agent_key_id?: any;
+    assertion?: any;
     consent_copy_version?: any;
+    handoff_id?: any;
+    oauth_grant_id?: any;
     paused?: any;
+    use_mode?: any;
 }
 export interface CustomerLocationProofRevocation {
     accuracy_meters: number;
@@ -1231,8 +1199,12 @@ export interface JobResumeSignedUrlCreateData {
     job_application_id: string;
 }
 export interface LocationHandoff {
+    id?: string;
 }
 export interface LocationHandoffCreateData {
+    id?: string;
+    $action?: string;
+    [action: string]: any;
 }
 export interface Message {
     account_id: string;
@@ -1367,20 +1339,12 @@ export interface ModeratedActionCreateData {
     target_business_id: string;
 }
 export interface OpenApiDocument {
-    components: Record<string, any>;
-    info: Record<string, any>;
-    openapi: any;
-    paths: Record<string, any>;
-    servers: any[];
-    tags: any[];
+    description?: string;
+    url: string;
 }
 export interface OpenApiDocumentListMatch {
-    components?: Record<string, any>;
-    info?: Record<string, any>;
-    openapi?: any;
-    paths?: Record<string, any>;
-    servers?: any[];
-    tags?: any[];
+    description?: string;
+    url?: string;
 }
 export interface OperationType {
     account_id: string;
@@ -1866,32 +1830,14 @@ export interface OwnerWebhookRegistrationCreateData {
     url: string;
 }
 export interface Pricing {
-    billing: Record<string, any>;
-    branch_add_ons: any[];
-    currency: any;
-    generated_at: string;
-    neutrality: string;
-    plans: any[];
-    promotions: any[];
-    published_at: string | null;
-    radius_extension: Record<string, any>;
-    revision_id: string | null;
-    source: any;
-    trust_model_version: any;
+    annual_usd: number;
+    monthly_usd: number;
+    radius_max_miles: number;
 }
 export interface PricingListMatch {
-    billing?: Record<string, any>;
-    branch_add_ons?: any[];
-    currency?: any;
-    generated_at?: string;
-    neutrality?: string;
-    plans?: any[];
-    promotions?: any[];
-    published_at?: string | null;
-    radius_extension?: Record<string, any>;
-    revision_id?: string | null;
-    source?: any;
-    trust_model_version?: any;
+    annual_usd?: number;
+    monthly_usd?: number;
+    radius_max_miles?: number;
 }
 export interface PromoteVerifiedTransaction {
     business_id: string;
@@ -2100,10 +2046,9 @@ export interface SearchListMatch {
     zip?: string;
 }
 export interface Suggest {
-    categories: any[];
-    names: any[];
-    query: string;
-    schema_version: any;
+    alias: string;
+    path_titles: any[];
+    title: string;
 }
 export interface SuggestListMatch {
     q?: string;
@@ -2115,17 +2060,16 @@ export interface SupportInternalNote {
     id: string;
 }
 export interface SupportInternalNoteCreateData {
-    id: string;
+    support_id: string;
     body: string;
 }
 export interface SupportWorkflow {
     category?: any;
-    id?: string;
     priority?: any;
     waiting_on?: any;
 }
 export interface SupportWorkflowCreateData {
-    id: string;
+    support_id: string;
     category?: any;
     priority?: any;
     waiting_on?: any;

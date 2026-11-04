@@ -59,6 +59,9 @@ describe("OwnerNotificationEntity", function()
     end
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local owner_notification_ref01_ent = client:OwnerNotification(nil)
     local owner_notification_ref01_data = helpers.to_map(vs.getprop(

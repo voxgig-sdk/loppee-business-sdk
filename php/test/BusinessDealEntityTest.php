@@ -33,7 +33,7 @@ class BusinessDealEntityTest extends TestCase
         $client = LoppeeBusinessSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->BusinessDeal(null)->list(["id" => 1], null);
+            $client->BusinessDeal(null)->list(["business_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,11 +45,18 @@ class BusinessDealEntityTest extends TestCase
         $setup = business_deal_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach ([] as $_op) {
+        foreach (["list"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "business_deal." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
                 return;
+            }
+        }
+        if (!empty($setup["live"])) {
+            foreach (["business01" => 'biz_elite_ac_llc_jacksonville_fl'] as $_liveKey => $_liveEx) {
+                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
+                    $setup["idmap"][$_liveKey] = $_liveEx;
+                }
             }
         }
         $client = $setup["client"];
@@ -61,6 +68,18 @@ class BusinessDealEntityTest extends TestCase
         if (count($business_deal_ref01_data_raw) > 0) {
             $business_deal_ref01_data = Helpers::to_map($business_deal_ref01_data_raw[0][1]);
         }
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LIST
+        $business_deal_ref01_ent = $client->BusinessDeal(null);
+        $business_deal_ref01_match = [
+            "business_id" => $setup["idmap"]["business01"],
+        ];
+
+        $business_deal_ref01_list_result = $business_deal_ref01_ent->list($business_deal_ref01_match, null);
+        $this->assertIsArray($business_deal_ref01_list_result);
 
     }
 }
@@ -80,7 +99,7 @@ function business_deal_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["business_deal01", "business_deal02", "business_deal03"] as $k) {
+    foreach (["business_deal01", "business_deal02", "business_deal03", "business01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

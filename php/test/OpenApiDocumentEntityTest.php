@@ -173,6 +173,40 @@ class OpenApiDocumentEntityTest extends TestCase
         $this->assertSame(2, $client->_cost["total"]["attempts"]);
     }
 
+    public function test_validate_list_response(): void
+    {
+        $cfg = LoppeeBusinessConfig::shared_config();
+        if (!isset($cfg["feature"]["validate"])) {
+            $this->markTestSkipped('feature not present in this SDK: validate');
+        }
+        $opts = ["feature" => ["validate" => ["active" => true, "request" => false, "response" => true]]];
+        $listed = LoppeeBusinessSDK::test(['entity' => ['open_api_document' => ['v1' => ['url' => 'x']]]], $opts)->OpenApiDocument(null)->list(null, null);
+        $this->assertSame(['v1'], array_map(fn($ent) => $ent->data_get()['id'] ?? null, $listed));
+        $err = null;
+        try {
+            LoppeeBusinessSDK::test(['entity' => ['open_api_document' => ['v1' => ['url' => 'x', 'description' => 1]]]], $opts)->OpenApiDocument(null)->list(null, null);
+        } catch (\Throwable $e) {
+            $err = $e;
+        }
+        $this->assertSame('validate_failed', $err->sdk_code ?? null);
+    }
+
+    public function test_validate(): void
+    {
+        $cfg = LoppeeBusinessConfig::shared_config();
+        if (!isset($cfg["feature"]["validate"])) {
+            $this->markTestSkipped('feature not present in this SDK: validate');
+        }
+        $client = LoppeeBusinessSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
+        $err = null;
+        try {
+            $client->OpenApiDocument(null)->list(["description" => 1], null);
+        } catch (\Throwable $e) {
+            $err = $e;
+        }
+        $this->assertSame('validate_failed', $err->sdk_code ?? null);
+    }
+
     public function test_basic_flow(): void
     {
         $setup = open_api_document_basic_setup(null);
@@ -195,6 +229,9 @@ class OpenApiDocumentEntityTest extends TestCase
             $open_api_document_ref01_data = Helpers::to_map($open_api_document_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LIST
         $open_api_document_ref01_ent = $client->OpenApiDocument(null);
         $open_api_document_ref01_match = [];

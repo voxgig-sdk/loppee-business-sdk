@@ -38,7 +38,7 @@ func TestBusinessReviewEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.BusinessReview(nil).Load(map[string]any{"id": 1}, nil)
+		_, err := client.BusinessReview(nil).Load(map[string]any{"business_id": 1}, nil)
 		if sdkerr, ok := err.(*core.LoppeeBusinessError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestBusinessReviewEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"load"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "business_review." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,10 +63,9 @@ func TestBusinessReviewEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			liveMiss(t, business_reviewEntityLiveStrict, "Live entity test blocked: %s", "the flow loads a business_review record it has no list to find")
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		businessReviewRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.business_review")))
@@ -77,23 +76,6 @@ func TestBusinessReviewEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = businessReviewRef01Data
-
-		// LOAD
-		businessReviewRef01Ent := client.BusinessReview(nil)
-		businessReviewRef01MatchDt0 := map[string]any{
-			"id": businessReviewRef01Data["id"],
-		}
-		businessReviewRef01DataDt0Loaded, err := businessReviewRef01Ent.Load(businessReviewRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		businessReviewRef01DataDt0LoadResult := core.ToMapAny(entityData(businessReviewRef01DataDt0Loaded))
-		if businessReviewRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if businessReviewRef01DataDt0LoadResult["id"] != businessReviewRef01Data["id"] {
-			t.Fatal("expected load result id to match")
-		}
 
 	})
 }

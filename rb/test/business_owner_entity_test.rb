@@ -49,6 +49,7 @@ class BusinessOwnerEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     business_owner_ref01_ent = client.BusinessOwner(nil)
     business_owner_ref01_data = Helpers.to_map(Vs.getprop(
@@ -59,6 +60,7 @@ class BusinessOwnerEntityTest < Minitest::Test
     assert !business_owner_ref01_data.nil?
     assert !business_owner_ref01_data["id"].nil?
 
+    Runner.live_pace if setup[:live]
     # UPDATE
     business_owner_ref01_data_up0_up = {
       "id" => business_owner_ref01_data["id"],
@@ -71,7 +73,7 @@ class BusinessOwnerEntityTest < Minitest::Test
     business_owner_ref01_resdata_up0_result = business_owner_ref01_ent.update(business_owner_ref01_data_up0_up, nil)
     business_owner_ref01_resdata_up0 = Helpers.to_map(business_owner_ref01_resdata_up0_result.respond_to?(:data_get) ? business_owner_ref01_resdata_up0_result.data_get : business_owner_ref01_resdata_up0_result)
     assert !business_owner_ref01_resdata_up0.nil?
-    assert_equal business_owner_ref01_resdata_up0["id"], business_owner_ref01_data_up0_up["id"]
+    assert Runner.live_same_id(business_owner_ref01_resdata_up0["id"], business_owner_ref01_data_up0_up["id"])
     assert_equal business_owner_ref01_resdata_up0[business_owner_ref01_markdef_up0_name], business_owner_ref01_markdef_up0_value
 
   end

@@ -59,6 +59,9 @@ class AgentAccessEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $agent_access_ref01_ent = $client->AgentAccess(null);
         $agent_access_ref01_data = Helpers::to_map(Vs::getprop(

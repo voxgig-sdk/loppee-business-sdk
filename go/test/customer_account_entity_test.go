@@ -38,7 +38,7 @@ func TestCustomerAccountEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.CustomerAccount(nil).Create(map[string]any{"account_id": 1, "account_role": "x", "accuracy_meters": 1, "acknowledge_data_effects": true, "actions": "x", "agent_key_id": "x", "agent_receives_coordinates": true, "all_paused": true, "app_attest_registered": true, "assertion": "x", "attestation": "x", "author_label": "x", "author_type": "x", "binding": "x", "body": "x", "business_id": "x", "capture_source": "x", "captured_at": "x", "challenge": "x", "challenge_id": "x", "client_message_id": "x", "completed": true, "confirmation": "x", "connection_id": "x", "connection_kind": "x", "coordinates_returned": true, "created_at": "x", "credential_id": "x", "declined": true, "delivery_contract": "x", "disabled_reason": "x", "disclosure": "x", "enabled": true, "endpoint": "x", "endpoint_id": "x", "endpoint_url": "x", "environment": "x", "event_id": "x", "event_types": "x", "failure_count": 1, "handoff_id": "x", "has_more": true, "id": "x", "idempotent_replay": true, "installation_id": "x", "key_id": "x", "last_delivery_at": "x", "latitude": 1, "longitude": 1, "message_alerts_enabled": true, "messages": "x", "mode": "x", "oauth_grant_id": "x", "one_time_display": "x", "platform": "x", "policy": "x", "purpose": "x", "push_token": "x", "registered_at": "x", "reply": "x", "request_mode": "x", "requested_at": "x", "results": "x", "schema_version": "x", "selected_at": "x", "signed_in": true, "signing_secret": "x", "status": "x", "updated_at": "x", "url": "x", "usable_until": "x", "use_mode": "x"}, nil)
+		_, err := client.CustomerAccount(nil).Create(map[string]any{"account_id": 1, "account_role": "x", "acknowledge_data_effects": true, "actions": "x", "agent_receives_coordinates": true, "all_paused": true, "app_attest_registered": true, "attestation": "x", "author_label": "x", "author_type": "x", "binding": "x", "body": "x", "business_id": "x", "challenge": "x", "challenge_id": "x", "client_message_id": "x", "confirmation": "x", "connection_id": "x", "connection_kind": "x", "coordinates_returned": true, "created_at": "x", "credential_id": "x", "delivery_contract": "x", "disabled_reason": "x", "disclosure": "x", "enabled": true, "endpoint": "x", "endpoint_id": "x", "endpoint_url": "x", "environment": "x", "event_id": "x", "event_types": "x", "failure_count": 1, "has_more": true, "id": "x", "idempotent_replay": true, "installation_id": "x", "key_id": "x", "last_delivery_at": "x", "message_alerts_enabled": true, "messages": "x", "mode": "x", "one_time_display": "x", "platform": "x", "policy": "x", "purpose": "x", "push_token": "x", "registered_at": "x", "reply": "x", "requested_at": "x", "results": "x", "schema_version": "x", "selected_at": "x", "signed_in": true, "signing_secret": "x", "status": "x", "updated_at": "x", "url": "x", "usable_until": "x"}, nil)
 		if sdkerr, ok := err.(*core.LoppeeBusinessError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -63,14 +63,17 @@ func TestCustomerAccountEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"customer_account.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device\"}")
-			t.Skip("Live coverage incomplete: customer_account.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device)")
+			t.Log("LIVE STEP {\"id\":\"customer_account.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/agent-location/app-attest/challenges\"}")
+			t.Skip("Live coverage incomplete: customer_account.create.0 excluded (GET-only live run: needs POST /v1/account/agent-location/app-attest/challenges)")
 			return
 		}
 
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		customerAccountRef01Ent := client.CustomerAccount(nil)
 		customerAccountRef01Data := core.ToMapAny(vs.GetProp(
@@ -116,7 +119,7 @@ func customer_accountBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"customer_account01", "customer_account02", "customer_account03", "conversation01", "conversation02", "conversation03", "location_handoff01", "location_handoff02", "location_handoff03"},
+		[]any{"customer_account01", "customer_account02", "customer_account03", "conversation01", "conversation02", "conversation03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

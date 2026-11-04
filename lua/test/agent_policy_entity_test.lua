@@ -43,6 +43,9 @@ describe("AgentPolicyEntity", function()
       agent_policy_ref01_data = helpers.to_map(agent_policy_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LOAD
     local agent_policy_ref01_ent = client:AgentPolicy(nil)
     local agent_policy_ref01_match_dt0 = {}

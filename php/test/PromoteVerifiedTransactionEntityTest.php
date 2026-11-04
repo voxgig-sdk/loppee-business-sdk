@@ -59,6 +59,9 @@ class PromoteVerifiedTransactionEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $promote_verified_transaction_ref01_ent = $client->PromoteVerifiedTransaction(null);
         $promote_verified_transaction_ref01_data = Helpers::to_map(Vs::getprop(

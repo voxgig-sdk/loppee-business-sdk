@@ -48,6 +48,7 @@ class AgentAccessEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     agent_access_ref01_ent = client.AgentAccess(nil)
     agent_access_ref01_data = Helpers.to_map(Vs.getprop(

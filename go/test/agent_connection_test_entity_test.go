@@ -71,6 +71,9 @@ func TestAgentConnectionTestEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		agentConnectionTestRef01Ent := client.AgentConnectionTest(nil)
 		agentConnectionTestRef01Data := core.ToMapAny(vs.GetProp(

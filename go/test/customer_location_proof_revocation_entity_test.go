@@ -72,6 +72,9 @@ func TestCustomerLocationProofRevocationEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		customerLocationProofRevocationRef01Ent := client.CustomerLocationProofRevocation(nil)
 		customerLocationProofRevocationRef01Data := core.ToMapAny(vs.GetProp(

@@ -11,12 +11,6 @@ main: kit: entity: support_workflow: {
       r: false
       t: "`$ANY`"
     }
-    id: {
-      h: "Id"
-      n: "id"
-      r: false
-      t: "`$STRING`"
-    }
     priority: {
       h: "Priority"
       n: "priority"
@@ -29,11 +23,6 @@ main: kit: entity: support_workflow: {
       r: false
       t: "`$ANY`"
     }
-  }
-
-  id: {
-    field: "id"
-    name: "id"
   }
 
   name: "support_workflow"
@@ -56,7 +45,7 @@ main: kit: entity: support_workflow: {
             params: [
               {
                 k: "param"
-                n: "id"
+                n: "support_id"
                 or: "conversation_id"
                 r: true
                 t: "`$STRING`"
@@ -67,12 +56,12 @@ main: kit: entity: support_workflow: {
           o: "/v1/admin/support/{conversation_id}/workflow"
           q: {
             exist: [
-              "id"
+              "support_id"
             ]
           }
           r: {
             param: {
-              conversation_id: "id"
+              conversation_id: "support_id"
             }
           }
           rs: {
@@ -90,7 +79,7 @@ main: kit: entity: support_workflow: {
               lit: "support"
             }
             {
-              var: "id"
+              var: "support_id"
             }
             {
               lit: "workflow"

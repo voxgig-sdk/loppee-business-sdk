@@ -47,7 +47,7 @@ describe('BusinessDealEntity', async () => {
       return
     }
     const client = LoppeeBusinessSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.BusinessDeal().list({"id":1} as any),
+    await assert.rejects(client.BusinessDeal().list({"business_id":1} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -56,14 +56,14 @@ describe('BusinessDealEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.LOPPEE_BUSINESS_TEST_LIVE
-    for (const op of []) {
+    for (const op of ['list']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'business_deal.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"createdAt":{"a":true,"h":"Created At","n":"createdAt","r":true,"t":"`$STRING`","key$":"createdAt","index$":0},"description":{"a":true,"h":"Description","n":"description","r":true,"t":"`$STRING`","key$":"description","index$":1},"discountLabel":{"a":true,"h":"Discount Label","n":"discountLabel","r":true,"t":"`$STRING`","key$":"discountLabel","index$":2},"endsAt":{"a":true,"h":"Ends At","n":"endsAt","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"endsAt","index$":3},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$STRING`","key$":"id","index$":4},"promoCode":{"a":true,"h":"Promo Code","n":"promoCode","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"promoCode","index$":5},"startsAt":{"a":true,"h":"Starts At","n":"startsAt","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"startsAt","index$":6},"terms":{"a":true,"h":"Terms","n":"terms","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"terms","index$":7},"title":{"a":true,"h":"Title","n":"title","r":true,"t":"`$STRING`","key$":"title","index$":8}},"id":{"field":"id","name":"id"},"name":"business_deal","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /v1/businesses/{business_id}/deals.json","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"biz_elite_ac_llc_jacksonville_fl","k":"param","n":"id","or":"business_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/v1/businesses/{business_id}/deals.json","q":{"exist":["id"]},"r":{"param":{"business_id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v1"},{"lit":"businesses"},{"var":"id"},{"lit":"deals.json"}],"t":{"req":"`reqdata`","res":"`body.deals`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"business_deal","name__orig":"business_deal","Name":"BusinessDeal","name_":"business_deal","name-":"business-deal","NAME":"BUSINESS_DEAL","index$":10}, {"active":true,"entity":"business_deal","key$":"BasicBusinessDealFlow","kind":"basic","name":"BasicBusinessDealFlow","param":{},"step":[{"a":false,"d":{},"i":{},"m":{"business_id":"business01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"business_deal_ref01"}}],"unreachable":true}]}, 'BusinessDeal', {"GET /v1/businesses/{business_id}/deals.json":{"protocol":"http","parameters":[{"name":"business_id","in":"path","required":true,"description":"Loppee business id.","schema":{"type":"string"},"example":"biz_elite_ac_llc_jacksonville_fl","index$":0}]}}, { strict: LIVE_STRICT, t })
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"createdAt":{"a":true,"h":"Created At","n":"createdAt","r":true,"t":"`$STRING`","key$":"createdAt","index$":0},"description":{"a":true,"h":"Description","n":"description","r":true,"t":"`$STRING`","key$":"description","index$":1},"discountLabel":{"a":true,"h":"Discount Label","n":"discountLabel","r":true,"t":"`$STRING`","key$":"discountLabel","index$":2},"endsAt":{"a":true,"h":"Ends At","n":"endsAt","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"endsAt","index$":3},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$STRING`","key$":"id","index$":4},"promoCode":{"a":true,"h":"Promo Code","n":"promoCode","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"promoCode","index$":5},"startsAt":{"a":true,"h":"Starts At","n":"startsAt","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"startsAt","index$":6},"terms":{"a":true,"h":"Terms","n":"terms","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"terms","index$":7},"title":{"a":true,"h":"Title","n":"title","r":true,"t":"`$STRING`","key$":"title","index$":8}},"id":{"field":"id","name":"id"},"name":"business_deal","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /v1/businesses/{business_id}/deals.json","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"biz_elite_ac_llc_jacksonville_fl","k":"param","n":"business_id","or":"business_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/v1/businesses/{business_id}/deals.json","q":{"exist":["business_id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v1"},{"lit":"businesses"},{"var":"business_id"},{"lit":"deals.json"}],"t":{"req":"`reqdata`","res":"`body.deals`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"business_deal","name__orig":"business_deal","Name":"BusinessDeal","name_":"business_deal","name-":"business-deal","NAME":"BUSINESS_DEAL","index$":10}, {"active":true,"entity":"business_deal","key$":"BasicBusinessDealFlow","kind":"basic","name":"BasicBusinessDealFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"business_id":"business01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"business_deal_ref01"}}],"index$":0}]}, 'BusinessDeal', {"GET /v1/businesses/{business_id}/deals.json":{"protocol":"http","parameters":[{"name":"business_id","in":"path","required":true,"description":"Loppee business id.","schema":{"type":"string"},"example":"biz_elite_ac_llc_jacksonville_fl","index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +72,14 @@ describe('BusinessDealEntity', async () => {
     const select = struct.select
 
     let business_deal_ref01_data = Object.values(setup.data.existing.business_deal)[0] as any
+
+    // LIST
+    const business_deal_ref01_ent = client.BusinessDeal()
+    const business_deal_ref01_match: any = {}
+    business_deal_ref01_match['business_id'] = setup.idmap['business01']
+
+    const business_deal_ref01_list = (await business_deal_ref01_ent.list(business_deal_ref01_match)).map((e: any) => e.data())
+
 
   })
 })
@@ -107,7 +115,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['business_deal01','business_deal02','business_deal03'],
+    ['business_deal01','business_deal02','business_deal03','business01'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',

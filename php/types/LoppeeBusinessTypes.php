@@ -189,23 +189,15 @@ class AgentMonitoringLoadMatch
 /** AgentOpenapi entity data model. */
 class AgentOpenapi
 {
-    public array $components;
-    public array $info;
-    public mixed $openapi;
-    public array $paths;
-    public array $servers;
-    public array $tags;
+    public ?string $description = null;
+    public string $url;
 }
 
 /** Request payload for AgentOpenapi#list. */
 class AgentOpenapiListMatch
 {
-    public ?array $components = null;
-    public ?array $info = null;
-    public mixed $openapi = null;
-    public ?array $paths = null;
-    public ?array $servers = null;
-    public ?array $tags = null;
+    public ?string $description = null;
+    public ?string $url = null;
 }
 
 /** AgentPolicy entity data model. */
@@ -350,7 +342,7 @@ class BusinessDeal
 /** Request payload for BusinessDeal#list. */
 class BusinessDealListMatch
 {
-    public string $id;
+    public string $business_id;
 }
 
 /** BusinessIndex entity data model. */
@@ -822,13 +814,12 @@ class BusinessOwnerUpdateData
 /** BusinessReview entity data model. */
 class BusinessReview
 {
-    public ?string $id = null;
 }
 
 /** Request payload for BusinessReview#load. */
 class BusinessReviewLoadMatch
 {
-    public string $id;
+    public string $business_id;
     public ?float $limit = null;
     public ?float $page = null;
     public ?string $rating = null;
@@ -1021,21 +1012,19 @@ class ConversationClose
 {
     public string $closed_at;
     public string $conversation_id;
-    public ?string $id = null;
     public mixed $status;
 }
 
 /** Request payload for ConversationClose#create. */
 class ConversationCloseCreateData
 {
-    public string $id;
+    public string $conversation_id;
 }
 
 /** ConversationReport entity data model. */
 class ConversationReport
 {
     public ?string $detail = null;
-    public ?string $id = null;
     public mixed $reason;
     public mixed $status;
 }
@@ -1043,7 +1032,7 @@ class ConversationReport
 /** Request payload for ConversationReport#create. */
 class ConversationReportCreateData
 {
-    public string $id;
+    public string $conversation_id;
     public ?string $detail = null;
     public mixed $reason;
 }
@@ -1128,26 +1117,20 @@ class CustomerAccount
 {
     public string $account_id;
     public string $account_role;
-    public float $accuracy_meters;
     public bool $acknowledge_data_effects;
     public array $actions;
-    public string $agent_key_id;
     public bool $agent_receives_coordinates;
     public bool $all_paused;
     public bool $app_attest_registered;
-    public string $assertion;
     public string $attestation;
     public string $author_label;
     public string $author_type;
     public mixed $binding;
     public string $body;
     public mixed $business_id;
-    public mixed $capture_source;
-    public string $captured_at;
     public string $challenge;
     public string $challenge_id;
     public string $client_message_id;
-    public bool $completed;
     public string $confirmation;
     public string $connection_id;
     public string $connection_kind;
@@ -1155,7 +1138,6 @@ class CustomerAccount
     public bool $coordinates_returned;
     public string $created_at;
     public string $credential_id;
-    public bool $declined;
     public array $delivery_contract;
     public mixed $disabled_reason;
     public string $disclosure;
@@ -1167,21 +1149,17 @@ class CustomerAccount
     public string $event_id;
     public array $event_types;
     public int $failure_count;
-    public string $handoff_id;
     public bool $has_more;
     public string $id;
     public bool $idempotent_replay;
     public string $installation_id;
     public string $key_id;
     public mixed $last_delivery_at;
-    public float $latitude;
     public mixed $location = null;
-    public float $longitude;
     public bool $message_alerts_enabled;
     public array $messages;
     public string $mode;
     public ?string $name = null;
-    public mixed $oauth_grant_id;
     public mixed $one_time_display;
     public string $platform;
     public string $policy;
@@ -1190,7 +1168,6 @@ class CustomerAccount
     public string $reason;
     public string $registered_at;
     public string $reply;
-    public string $request_mode;
     public string $requested_at;
     public array $results;
     public string $schema_version;
@@ -1201,7 +1178,6 @@ class CustomerAccount
     public string $updated_at;
     public string $url;
     public string $usable_until;
-    public string $use_mode;
 }
 
 /** Request payload for CustomerAccount#create. */
@@ -1209,26 +1185,20 @@ class CustomerAccountCreateData
 {
     public string $account_id;
     public string $account_role;
-    public float $accuracy_meters;
     public bool $acknowledge_data_effects;
     public array $actions;
-    public string $agent_key_id;
     public bool $agent_receives_coordinates;
     public bool $all_paused;
     public bool $app_attest_registered;
-    public string $assertion;
     public string $attestation;
     public string $author_label;
     public string $author_type;
     public mixed $binding;
     public string $body;
     public mixed $business_id;
-    public mixed $capture_source;
-    public string $captured_at;
     public string $challenge;
     public string $challenge_id;
     public string $client_message_id;
-    public bool $completed;
     public string $confirmation;
     public string $connection_id;
     public string $connection_kind;
@@ -1236,7 +1206,6 @@ class CustomerAccountCreateData
     public bool $coordinates_returned;
     public string $created_at;
     public string $credential_id;
-    public bool $declined;
     public array $delivery_contract;
     public mixed $disabled_reason;
     public string $disclosure;
@@ -1248,21 +1217,17 @@ class CustomerAccountCreateData
     public string $event_id;
     public array $event_types;
     public int $failure_count;
-    public string $handoff_id;
     public bool $has_more;
     public string $id;
     public bool $idempotent_replay;
     public string $installation_id;
     public string $key_id;
     public mixed $last_delivery_at;
-    public float $latitude;
     public mixed $location = null;
-    public float $longitude;
     public bool $message_alerts_enabled;
     public array $messages;
     public string $mode;
     public ?string $name = null;
-    public mixed $oauth_grant_id;
     public mixed $one_time_display;
     public string $platform;
     public string $policy;
@@ -1271,7 +1236,6 @@ class CustomerAccountCreateData
     public ?string $reason = null;
     public string $registered_at;
     public string $reply;
-    public string $request_mode;
     public string $requested_at;
     public array $results;
     public string $schema_version;
@@ -1282,10 +1246,14 @@ class CustomerAccountCreateData
     public string $updated_at;
     public string $url;
     public string $usable_until;
-    public string $use_mode;
     public mixed $action = null;
+    public mixed $agent_key_id = null;
+    public mixed $assertion = null;
     public mixed $consent_copy_version = null;
+    public mixed $handoff_id = null;
+    public mixed $oauth_grant_id = null;
     public mixed $paused = null;
+    public mixed $use_mode = null;
 }
 
 /** CustomerLocationProofRevocation entity data model. */
@@ -1462,11 +1430,13 @@ class JobResumeSignedUrlCreateData
 /** LocationHandoff entity data model. */
 class LocationHandoff
 {
+    public ?string $id = null;
 }
 
 /** Request payload for LocationHandoff#create. */
 class LocationHandoffCreateData
 {
+    public ?string $id = null;
 }
 
 /** Message entity data model. */
@@ -1619,23 +1589,15 @@ class ModeratedActionCreateData
 /** OpenApiDocument entity data model. */
 class OpenApiDocument
 {
-    public array $components;
-    public array $info;
-    public mixed $openapi;
-    public array $paths;
-    public array $servers;
-    public array $tags;
+    public ?string $description = null;
+    public string $url;
 }
 
 /** Request payload for OpenApiDocument#list. */
 class OpenApiDocumentListMatch
 {
-    public ?array $components = null;
-    public ?array $info = null;
-    public mixed $openapi = null;
-    public ?array $paths = null;
-    public ?array $servers = null;
-    public ?array $tags = null;
+    public ?string $description = null;
+    public ?string $url = null;
 }
 
 /** Operation entity data model. */
@@ -2161,35 +2123,17 @@ class OwnerWebhookRegistrationCreateData
 /** Pricing entity data model. */
 class Pricing
 {
-    public array $billing;
-    public array $branch_add_ons;
-    public mixed $currency;
-    public string $generated_at;
-    public string $neutrality;
-    public array $plans;
-    public array $promotions;
-    public mixed $published_at;
-    public array $radius_extension;
-    public mixed $revision_id;
-    public mixed $source;
-    public mixed $trust_model_version;
+    public float $annual_usd;
+    public float $monthly_usd;
+    public float $radius_max_miles;
 }
 
 /** Request payload for Pricing#list. */
 class PricingListMatch
 {
-    public ?array $billing = null;
-    public ?array $branch_add_ons = null;
-    public mixed $currency = null;
-    public ?string $generated_at = null;
-    public ?string $neutrality = null;
-    public ?array $plans = null;
-    public ?array $promotions = null;
-    public mixed $published_at = null;
-    public ?array $radius_extension = null;
-    public mixed $revision_id = null;
-    public mixed $source = null;
-    public mixed $trust_model_version = null;
+    public ?float $annual_usd = null;
+    public ?float $monthly_usd = null;
+    public ?float $radius_max_miles = null;
 }
 
 /** PromoteVerifiedTransaction entity data model. */
@@ -2458,10 +2402,9 @@ class SearchListMatch
 /** Suggest entity data model. */
 class Suggest
 {
-    public array $categories;
-    public array $names;
-    public string $query;
-    public mixed $schema_version;
+    public string $alias;
+    public array $path_titles;
+    public string $title;
 }
 
 /** Request payload for Suggest#list. */
@@ -2482,7 +2425,7 @@ class SupportInternalNote
 /** Request payload for SupportInternalNote#create. */
 class SupportInternalNoteCreateData
 {
-    public string $id;
+    public string $support_id;
     public string $body;
 }
 
@@ -2490,7 +2433,6 @@ class SupportInternalNoteCreateData
 class SupportWorkflow
 {
     public mixed $category = null;
-    public ?string $id = null;
     public mixed $priority = null;
     public mixed $waiting_on = null;
 }
@@ -2498,7 +2440,7 @@ class SupportWorkflow
 /** Request payload for SupportWorkflow#create. */
 class SupportWorkflowCreateData
 {
-    public string $id;
+    public string $support_id;
     public mixed $category = null;
     public mixed $priority = null;
     public mixed $waiting_on = null;

@@ -57,6 +57,8 @@ class TestConversationEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         conversation_ref01_ent = client.Conversation(None)
         conversation_ref01_data = helpers.to_map(vs.getprop(

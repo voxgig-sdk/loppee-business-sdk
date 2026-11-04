@@ -211,6 +211,9 @@ class SearchEntityTest extends TestCase
             $search_ref01_data = Helpers::to_map($search_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LIST
         $search_ref01_ent = $client->Search(null);
         $search_ref01_match = [];

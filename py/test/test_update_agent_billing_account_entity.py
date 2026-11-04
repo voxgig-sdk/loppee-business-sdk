@@ -57,6 +57,8 @@ class TestUpdateAgentBillingAccountEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         update_agent_billing_account_ref01_ent = client.UpdateAgentBillingAccount(None)
         update_agent_billing_account_ref01_data = helpers.to_map(vs.getprop(

@@ -132,6 +132,17 @@ describe("OpenApiDocumentEntity", function()
     assert.is_true(hook.unexpected > fired)
   end)
 
+  it("should refuse an invalid request", function()
+    local config = require("config_shared")()
+    if type(config.feature) ~= "table" or config.feature.validate == nil then
+      pending("feature not present in this SDK: validate")
+      return
+    end
+    local client = sdk.test(nil, { feature = { validate = { active = true } } })
+    local _, err = client:OpenApiDocument(nil):list({ ["description"] = 1 }, nil)
+    assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
+  end)
+
   it("should run basic flow", function()
     local setup = open_api_document_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
@@ -153,6 +164,9 @@ describe("OpenApiDocumentEntity", function()
       open_api_document_ref01_data = helpers.to_map(open_api_document_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LIST
     local open_api_document_ref01_ent = client:OpenApiDocument(nil)
     local open_api_document_ref01_match = {}

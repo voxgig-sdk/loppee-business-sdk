@@ -52,6 +52,9 @@ describe("SavedBusinessEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local saved_business_ref01_ent = client:SavedBusiness(nil)
     local saved_business_ref01_data = helpers.to_map(vs.getprop(

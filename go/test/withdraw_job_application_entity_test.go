@@ -71,6 +71,9 @@ func TestWithdrawJobApplicationEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		withdrawJobApplicationRef01Ent := client.WithdrawJobApplication(nil)
 		withdrawJobApplicationRef01Data := core.ToMapAny(vs.GetProp(

@@ -49,6 +49,7 @@ class CustomerLocationProofRevocationEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     customer_location_proof_revocation_ref01_ent = client.CustomerLocationProofRevocation(nil)
     customer_location_proof_revocation_ref01_data = Helpers.to_map(Vs.getprop(

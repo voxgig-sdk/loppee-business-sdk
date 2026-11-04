@@ -57,6 +57,8 @@ class TestOwnerWebhookRegistrationEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         owner_webhook_registration_ref01_ent = client.OwnerWebhookRegistration(None)
         owner_webhook_registration_ref01_data = helpers.to_map(vs.getprop(

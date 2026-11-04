@@ -52,6 +52,9 @@ describe("DestinationLocationProofEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local destination_location_proof_ref01_ent = client:DestinationLocationProof(nil)
     local destination_location_proof_ref01_data = helpers.to_map(vs.getprop(

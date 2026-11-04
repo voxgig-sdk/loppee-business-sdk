@@ -2,12 +2,15 @@
   "existing": {
     "business_review": {
       "BUSINESS_REVIEW00": {
+        "business_id": "BUSINESS01",
         "id": "BUSINESS_REVIEW00"
       },
       "BUSINESS_REVIEW01": {
+        "business_id": "BUSINESS01",
         "id": "BUSINESS_REVIEW01"
       },
       "BUSINESS_REVIEW02": {
+        "business_id": "BUSINESS01",
         "id": "BUSINESS_REVIEW02"
       }
     }

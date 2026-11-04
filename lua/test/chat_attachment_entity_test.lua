@@ -59,6 +59,9 @@ describe("ChatAttachmentEntity", function()
     end
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local chat_attachment_ref01_ent = client:ChatAttachment(nil)
     local chat_attachment_ref01_data = helpers.to_map(vs.getprop(

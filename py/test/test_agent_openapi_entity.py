@@ -114,6 +114,25 @@ class TestAgentOpenapiEntity:
         assert client.AgentOpenapi(None).list(None, {"throw": False}) is None
         assert fired < hook.unexpected
 
+    def test_should_validate_each_listed_record(self):
+        if "validate" not in (shared_config().get("feature") or {}):
+            pytest.skip("feature not present in this SDK: validate")
+        opts = {"feature": {"validate": {"active": True, "request": False, "response": True}}}
+        listed = LoppeeBusinessSDK.test({"entity": {"agent_openapi": {"v1": {"url": "x"}}}}, opts).AgentOpenapi(None).list(None, None)
+        assert ["v1"] == [ent.data_get().get("id") for ent in listed]
+        with pytest.raises(Exception) as err:
+            LoppeeBusinessSDK.test({"entity": {"agent_openapi": {"v1": {"url": "x", "description": 1}}}}, opts).AgentOpenapi(None).list(None, None)
+        assert "validate_failed" == getattr(err.value, "code", None)
+
+    def test_should_refuse_an_invalid_request(self):
+        if "validate" not in (shared_config().get("feature") or {}):
+            pytest.skip("feature not present in this SDK: validate")
+        client = LoppeeBusinessSDK.test(
+            None, {"feature": {"validate": {"active": True}}})
+        with pytest.raises(Exception) as err:
+            client.AgentOpenapi(None).list({"description": 1}, None)
+        assert "validate_failed" == getattr(err.value, "code", None)
+
     def test_should_run_basic_flow(self):
         setup = _agent_openapi_basic_setup(None)
         # Per-op sdk-test-control.json skip — basic test exercises a flow with
@@ -134,6 +153,8 @@ class TestAgentOpenapiEntity:
         if len(agent_openapi_ref01_data_raw) > 0:
             agent_openapi_ref01_data = helpers.to_map(agent_openapi_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         agent_openapi_ref01_ent = client.AgentOpenapi(None)
         agent_openapi_ref01_match = {}

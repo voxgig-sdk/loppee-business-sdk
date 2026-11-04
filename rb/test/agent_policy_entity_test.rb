@@ -39,6 +39,7 @@ class AgentPolicyEntityTest < Minitest::Test
       agent_policy_ref01_data = Helpers.to_map(agent_policy_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # LOAD
     agent_policy_ref01_ent = client.AgentPolicy(nil)
     agent_policy_ref01_match_dt0 = {}

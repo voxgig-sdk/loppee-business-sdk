@@ -212,6 +212,9 @@ func TestAgentIntegrationEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = agentIntegrationRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LIST
 		agentIntegrationRef01Ent := client.AgentIntegration(nil)
 		agentIntegrationRef01Match := map[string]any{}

@@ -2,31 +2,34 @@
   "existing": {
     "support_workflow": {
       "SUPPORT_WORKFLOW00": {
-        "category": "s28",
-        "id": "SUPPORT_WORKFLOW00",
-        "priority": "s2a",
-        "waiting_on": "s2b"
+        "category": "s1e",
+        "priority": "s1f",
+        "waiting_on": "s20",
+        "support_id": "SUPPORT01",
+        "id": "SUPPORT_WORKFLOW00"
       },
       "SUPPORT_WORKFLOW01": {
-        "category": "s50",
-        "id": "SUPPORT_WORKFLOW01",
-        "priority": "s52",
-        "waiting_on": "s53"
+        "category": "s3c",
+        "priority": "s3d",
+        "waiting_on": "s3e",
+        "support_id": "SUPPORT01",
+        "id": "SUPPORT_WORKFLOW01"
       },
       "SUPPORT_WORKFLOW02": {
-        "category": "s78",
-        "id": "SUPPORT_WORKFLOW02",
-        "priority": "s7a",
-        "waiting_on": "s7b"
+        "category": "s5a",
+        "priority": "s5b",
+        "waiting_on": "s5c",
+        "support_id": "SUPPORT01",
+        "id": "SUPPORT_WORKFLOW02"
       }
     }
   },
   "new": {
     "support_workflow": {
       "support_workflow_ref01": {
-        "category": "sa0",
-        "priority": "sa2",
-        "waiting_on": "sa3"
+        "category": "s78",
+        "priority": "s79",
+        "waiting_on": "s7a"
       }
     }
   },

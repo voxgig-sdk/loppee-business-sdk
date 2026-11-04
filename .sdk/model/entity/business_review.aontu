@@ -4,20 +4,6 @@ main: kit: entity: business_review: {
 
   alias: field: {}
 
-  fields: {
-    id: {
-      h: "Id"
-      n: "id"
-      r: false
-      t: "`$STRING`"
-    }
-  }
-
-  id: {
-    field: "id"
-    name: "id"
-  }
-
   name: "business_review"
   op: {
     load: {
@@ -34,7 +20,7 @@ main: kit: entity: business_review: {
               {
                 ex: "biz_elite_ac_llc_jacksonville_fl"
                 k: "param"
-                n: "id"
+                n: "business_id"
                 or: "business_id"
                 r: true
                 t: "`$STRING`"
@@ -68,13 +54,8 @@ main: kit: entity: business_review: {
           o: "/v1/businesses/{business_id}/reviews.json"
           q: {
             exist: [
-              "id"
+              "business_id"
             ]
-          }
-          r: {
-            param: {
-              business_id: "id"
-            }
           }
           rs: {
             kind: "json"
@@ -88,7 +69,7 @@ main: kit: entity: business_review: {
               lit: "businesses"
             }
             {
-              var: "id"
+              var: "business_id"
             }
             {
               lit: "reviews.json"
@@ -101,6 +82,9 @@ main: kit: entity: business_review: {
         }
       ]
     }
+  }
+
+  fields: {
   }
 
 

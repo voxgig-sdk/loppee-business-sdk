@@ -134,6 +134,20 @@ class PricingEntityTest < Minitest::Test
     assert_operator hook.unexpected, :>, fired
   end
 
+  def test_validate_list_response
+    cfg = LoppeeBusinessConfig.shared_config
+    unless cfg["feature"].is_a?(Hash) && cfg["feature"].key?("validate")
+      skip("feature not present in this SDK: validate")
+    end
+    opts = { "feature" => { "validate" => { "active" => true, "request" => false, "response" => true } } }
+    listed = LoppeeBusinessSDK.test({ "entity" => { "pricing" => { "v1" => { "annual_usd" => 1, "monthly_usd" => 1, "radius_max_miles" => 1 } } } }, opts).Pricing(nil).list(nil, nil)
+    assert_equal ["v1"], listed.map { |ent| ent.data_get["id"] }
+    err = assert_raises(StandardError) do
+      LoppeeBusinessSDK.test({ "entity" => { "pricing" => { "v1" => { "annual_usd" => "x", "monthly_usd" => 1, "radius_max_miles" => 1 } } } }, opts).Pricing(nil).list(nil, nil)
+    end
+    assert_equal "validate_failed", err.code
+  end
+
   def test_validate
     cfg = LoppeeBusinessConfig.shared_config
     unless cfg["feature"].is_a?(Hash) && cfg["feature"].key?("validate")
@@ -141,7 +155,7 @@ class PricingEntityTest < Minitest::Test
     end
     client = LoppeeBusinessSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.Pricing(nil).list({ "generated_at" => 1 }, nil)
+      client.Pricing(nil).list({ "annual_usd" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -167,6 +181,7 @@ class PricingEntityTest < Minitest::Test
       pricing_ref01_data = Helpers.to_map(pricing_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # LIST
     pricing_ref01_ent = client.Pricing(nil)
     pricing_ref01_match = {}

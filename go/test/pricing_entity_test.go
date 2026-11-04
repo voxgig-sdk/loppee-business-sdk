@@ -175,7 +175,7 @@ func TestPricingEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.Pricing(nil).List(map[string]any{"generated_at": 1}, nil)
+		_, err := client.Pricing(nil).List(map[string]any{"annual_usd": "x"}, nil)
 		if sdkerr, ok := err.(*core.LoppeeBusinessError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -212,6 +212,9 @@ func TestPricingEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = pricingRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LIST
 		pricingRef01Ent := client.Pricing(nil)
 		pricingRef01Match := map[string]any{}

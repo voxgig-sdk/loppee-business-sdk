@@ -52,6 +52,9 @@ describe("UnsaveBusinessEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local unsave_business_ref01_ent = client:UnsaveBusiness(nil)
     local unsave_business_ref01_data = helpers.to_map(vs.getprop(

@@ -25,14 +25,14 @@ import {
   buildIdNames,
   getMatchEntries,
   isAuthActive,
-  entityDataIdField, envName, envToken,
+  entityDataIdField, entityRecordIdField, envName, envToken,
   serverVarEnv,
   serverVariables,
   invalidRequest,
   liveFlowNeeds, liveStrict, liveStrictNote,
   liveRouteExamples, liveStepExamples, flowLoadRoute, flowLoadReadsRecord,
-  liveGetOnly, liveExcludedLines, liveExcludedSummary, LIVE_GETONLY_ENV,
-  liveEntity,
+  liveGates, liveExcludedLines, liveExcludedSummary, LIVE_GETONLY_ENV,
+  liveEntity, liveIdentity, liveRepeatsId, liveLoadComparesId, liveUnrouted,
 } from '@voxgig/sdkgen'
 
 import { formatRubyValue } from './utility_rb'
@@ -40,8 +40,19 @@ import { formatRubyValue } from './utility_rb'
 
 // The live prologue of a flow built from offline fixtures: blocked without
 // the ids it binds, and a create-less load reading the first listed record.
-function liveFlowGate(entity: any, needs: any, entidEnv: string): string {
+function liveFlowGate(entity: any, needs: any, identity: any, entidEnv: string): string {
   let out = ''
+  if (null != needs.examples) {
+    out += `    if setup[:live]
+      { ${needs.examples
+      .map(([k, ex]: any) => JSON.stringify(k) + ' => ' + formatRubyValue(ex)).join(', ')} }.each do |_live_key, _live_ex|
+        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
+          setup[:idmap][_live_key] = _live_ex
+        end
+      end
+    end
+`
+  }
   if (0 < needs.keys.length) {
     out += `    if setup[:live]
       [${needs.keys.map((k: string) => JSON.stringify(k)).join(', ')}].each do |_live_key|
@@ -59,14 +70,28 @@ function liveFlowGate(entity: any, needs: any, entidEnv: string): string {
 `
   }
   out += '    client = setup[:client]\n'
+  if (null != needs.record) {
+    const id = `setup[:idmap][${JSON.stringify(needs.record)}]`
+    out += `    if setup[:live]
+      Runner.live_existing(setup, LIVE_STRICT, ${JSON.stringify(entity.name)}, ${JSON.stringify(identity.field)}, ${id}) do
+        [{ "id" => ${id} }]
+      end
+    end
+`
+  }
   if (null != needs.discover) {
-    const match = Object.entries(needs.discover)
+    const match = '{' + Object.entries(needs.discover)
       .map(([k, v]: any) => `${JSON.stringify(k)} => setup[:idmap][${JSON.stringify(v)}]`)
       .concat(liveRouteExamples(entity, 'list', Object.keys(needs.discover))
-        .map(([k, ex]) => `${JSON.stringify(k)} => ${formatRubyValue(ex)}`)).join(', ')
+        .map(([k, ex]) => `${JSON.stringify(k)} => ${formatRubyValue(ex)}`)).join(', ') + '}'
+    const omit = needs.unrouted || []
     out += `    if setup[:live]
-      Runner.live_existing(setup, LIVE_STRICT, ${JSON.stringify(entity.name)}) do
-        client.${entity.Name}(nil).list({${match}}, nil)
+      _live_id = setup[:synthetic_only] ? nil : setup[:idmap][${JSON.stringify(identity.key)}]
+${undefined === identity.ex ? '' : `      _live_id = ${formatRubyValue(identity.ex)} if _live_id.nil?
+`}${0 === omit.length ? '' : `      _live_match = ${match}
+${liveOmit(omit, '_live_match', '      ')}`}      Runner.live_pace
+      Runner.live_existing(setup, LIVE_STRICT, ${JSON.stringify(entity.name)}, ${JSON.stringify(identity.field)}, _live_id) do
+        client.${entity.Name}(nil).list(${0 === omit.length ? match : '_live_match'}, nil)
       end
     end
 `
@@ -231,7 +256,7 @@ ${failureTests(model, entity)}${validateListTest(model, entity)}` : ''}${validat
 
     const flowBody = (flow: any) => {
       const steps = flowSteps(flow) as any[]
-      Content(liveFlowGate(entity, liveFlowNeeds(entity, flow), entidEnv) + '\n')
+      Content(liveFlowGate(entity, liveFlowNeeds(entity, flow), liveIdentity(entity, flow), entidEnv) + '\n')
 
       // Check if the flow has a create step
       const flowHasCreate = steps.some((s: any) => s.o === 'create')
@@ -259,24 +284,24 @@ ${failureTests(model, entity)}${validateListTest(model, entity)}` : ''}${validat
         }
         const opgen: OpGen = GENERATE_OP[step.o]
         if (opgen) {
+          Content(LIVE_PACE)
           opgen({ ...genCtx, flow }, step, index)
           Content('\n')
         }
       })
     }
 
-    const getOnly = liveGetOnly(entity, basicflow)
-    if (null != getOnly) {
-      Content(`    if setup[:live] && ENV[${formatRubyValue(LIVE_GETONLY_ENV)}] == "TRUE"
-${liveExcludedLines(getOnly).map((line) => '      puts ' + formatRubyValue(line) + '\n').join('')}`)
-      if (0 === flowSteps(getOnly.flow).length) {
-        Content(`      skip(${formatRubyValue(liveExcludedSummary(getOnly))})
+    for (const { getOnly, plan, runs } of liveGates(entity, basicflow)) {
+      Content(`    if setup[:live]${getOnly ? ` && ENV[${formatRubyValue(LIVE_GETONLY_ENV)}] == "TRUE"` : ''}
+${liveExcludedLines(plan).map((line) => '      puts ' + formatRubyValue(line) + '\n').join('')}`)
+      if (!runs) {
+        Content(`      skip(${formatRubyValue(liveExcludedSummary(plan))})
     end
 
 `)
       }
       else {
-        flowBody(getOnly.flow)
+        flowBody(plan.flow)
         Content(`      return
     end
 
@@ -302,7 +327,7 @@ end
   entity_data_file = File.join(__dir__, "..", "..", ".sdk", "test", "entity", "${entity.name}", "${entity.Name}TestData.json")
   entity_data_source = File.read(entity_data_file, encoding: "UTF-8")
   entity_data = JSON.parse(entity_data_source)
-
+${fixtureIdentity(entity)}
   options = {}
   options["entity"] = entity_data["existing"]
 
@@ -428,7 +453,7 @@ const generateCreate: OpGen = (ctx, step, index) => {
     assert !${datavar}.nil?
 `)
   if (null != ctx.entity.id) {
-    Content(`    assert !${datavar}["id"].nil?
+    Content(`    assert !${datavar}[${rid(ctx.entity)}].nil?
 `)
   }
 }
@@ -467,7 +492,7 @@ const generateList: OpGen = (ctx, step, index) => {
     Content(`    }
 `)
   }
-  Content(liveFill(entity, step, matchvar))
+  Content(liveFill(entity, step, matchvar, flow))
 
   Content(`
     ${listvar}_result = ${entvar}.list(${matchvar}, nil)
@@ -487,7 +512,7 @@ const generateList: OpGen = (ctx, step, index) => {
         Content(`
     found_item = Vs.select(
       Runner.entity_list_to_data(${listvar}_result),
-      { "id" => ${refDataVar}["id"] })
+      { ${rid(entity)} => ${refDataVar}[${rid(entity)}] })
     assert !Vs.isempty(found_item)
 `)
       } else if ('ItemNotExists' === validator.apply && hasRefData && hasDataId) {
@@ -495,7 +520,7 @@ const generateList: OpGen = (ctx, step, index) => {
         Content(`
     not_found_item = Vs.select(
       Runner.entity_list_to_data(${listvar}_result),
-      { "id" => ${refDataVar}["id"] })
+      { ${rid(entity)} => ${refDataVar}[${rid(entity)}] })
     assert Vs.isempty(not_found_item)
 `)
       }
@@ -528,7 +553,7 @@ const generateUpdate: OpGen = (ctx, step, index) => {
   Content(`    ${datavar}_up = {
 `)
   if (hasEntIdU) {
-    Content(`      "id" => ${srcdatavar}["id"],
+    Content(`      "id" => ${srcdatavar}[${rid(entity)}],
 `)
   }
 
@@ -563,8 +588,7 @@ const generateUpdate: OpGen = (ctx, step, index) => {
     assert !${resdatavar}.nil?
 `)
   if (hasEntIdU) {
-    Content(`    assert_equal ${resdatavar}["id"], ${datavar}_up["id"]
-`)
+    Content(sameId(liveRepeatsId(entity), `${resdatavar}[${rid(entity)}]`, `${datavar}_up["id"]`))
   }
 
   if (step.s) {
@@ -621,17 +645,16 @@ const generateLoad: OpGen = (ctx, step, index) => {
   }
   if (hasEntId) {
     Content(`    ${matchvar} = {
-      "id" => ${srcdatavar}["id"],
+      "id" => ${srcdatavar}[${rid(entity)}],
     }
-${loadMatch(entity, step, matchvar, srcdatavar)}${liveFill(entity, step, matchvar)}    ${datavar}_loaded = ${entvar}.load(${matchvar}, nil)
+${loadMatch(entity, step, matchvar, srcdatavar)}${liveFill(entity, step, matchvar, flow)}    ${datavar}_loaded = ${entvar}.load(${matchvar}, nil)
     ${datavar}_load_result = Helpers.to_map(${datavar}_loaded.respond_to?(:data_get) ? ${datavar}_loaded.data_get : ${datavar}_loaded)
     assert !${datavar}_load_result.nil?
-    assert_equal ${datavar}_load_result["id"], ${srcdatavar}["id"]
-`)
+${sameId(liveLoadComparesId(entity, flow), `${datavar}_load_result[${rid(entity)}]`, `${srcdatavar}[${rid(entity)}]`)}`)
   }
   else {
     Content(`    ${matchvar} = {}
-${loadMatch(entity, step, matchvar, srcdatavar)}${liveFill(entity, step, matchvar)}    ${datavar}_loaded = ${entvar}.load(${matchvar}, nil)
+${loadMatch(entity, step, matchvar, srcdatavar)}${liveFill(entity, step, matchvar, flow)}    ${datavar}_loaded = ${entvar}.load(${matchvar}, nil)
     assert !${datavar}_loaded.nil?
 `)
   }
@@ -660,7 +683,7 @@ const generateRemove: OpGen = (ctx, step, index) => {
   }
   // Always match the prior-created entity by id to avoid mock-order flakes.
   Content(`    ${matchvar} = {
-      "id" => ${srcdatavar}["id"],
+      "id" => ${srcdatavar}[${rid(entity)}],
     }
 ${parentMatch(step, matchvar)}    ${entvar}.remove(${matchvar}, nil)
 `)
@@ -668,15 +691,54 @@ ${parentMatch(step, matchvar)}    ${entvar}.remove(${matchvar}, nil)
 
 
 
+// The record field the entity's identity is read from, as a Ruby string.
+function rid(entity: any): string {
+  return JSON.stringify(entityRecordIdField(entity))
+}
+
+
+const LIVE_PACE = `    Runner.live_pace if setup[:live]
+`
+
+
+// A result's identity matches the one asked for, live only as the live
+// entity harness compares it.
+function sameId(compares: boolean, result: string, expected: string): string {
+  return `    assert Runner.live_same_id(${result}, ${expected})${compares ? '' : ' unless setup[:live]'}
+`
+}
+
+
+// The fixture keeps each record's key in `id`; an entity keeping its identity
+// in another field reads the key from there too.
+function fixtureIdentity(entity: any): string {
+  const field = entityRecordIdField(entity)
+  return 'id' === field ? '' : `
+  ((entity_data["existing"] || {})[${JSON.stringify(entity.name)}] || {}).each_value do |rec|
+    rec[${JSON.stringify(field)}] = rec["id"] if rec.is_a?(Hash) && !rec["id"].nil?
+  end
+`
+}
+
+
 // A child's route names its parents, and an entity no earlier step has
 // filled knows none of them, so the call itself gives each parent id. A live
 // ENTID may key a parent by its field name, the fixture by its own name.
 // A live step sends each example its route requires and the step leaves unbound.
-function liveFill(entity: any, step: any, matchvar: string): string {
-  const fills = liveStepExamples(entity, step)
-  return 0 === fills.length ? '' : `    if setup[:live]
-${fills.map(([k, ex]) => `      ${matchvar}[${JSON.stringify(k)}] = ${formatRubyValue(ex)}\n`).join('')}    end
+function liveFill(entity: any, step: any, matchvar: string, flow: any): string {
+  const fills = liveStepExamples(entity, step, flow)
+  const omit = liveUnrouted(entity, step, flow)
+  return 0 === fills.length + omit.length ? '' : `    if setup[:live]
+${fills.map(([k, ex]) => `      ${matchvar}[${JSON.stringify(k)}] = ${formatRubyValue(ex)}\n`).join('')}${liveOmit(omit, matchvar, '      ')}    end
 `
+}
+
+
+// A binding the live route does not take is sent only as *_ENTID gives it.
+function liveOmit(omit: [string, string][], matchvar: string, indent: string): string {
+  return omit.map(([name, key]) =>
+    `${indent}${matchvar}.delete(${JSON.stringify(name)}) if setup[:synthetic_only] || setup[:idmap][${JSON.stringify(key)}].nil?
+`).join('')
 }
 
 

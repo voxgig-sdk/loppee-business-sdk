@@ -10,7 +10,8 @@
         "promoCode": "s5f",
         "startsAt": "s60",
         "terms": "s61",
-        "title": "s62"
+        "title": "s62",
+        "business_id": "BUSINESS01"
       },
       "BUSINESS_DEAL01": {
         "createdAt": "sb4",
@@ -21,7 +22,8 @@
         "promoCode": "sb9",
         "startsAt": "sba",
         "terms": "sbb",
-        "title": "sbc"
+        "title": "sbc",
+        "business_id": "BUSINESS01"
       },
       "BUSINESS_DEAL02": {
         "createdAt": "s10e",
@@ -32,7 +34,8 @@
         "promoCode": "s113",
         "startsAt": "s114",
         "terms": "s115",
-        "title": "s116"
+        "title": "s116",
+        "business_id": "BUSINESS01"
       }
     }
   },

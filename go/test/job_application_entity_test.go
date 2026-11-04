@@ -71,6 +71,9 @@ func TestJobApplicationEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		jobApplicationRef01Ent := client.JobApplication(nil)
 		jobApplicationRef01Data := core.ToMapAny(vs.GetProp(

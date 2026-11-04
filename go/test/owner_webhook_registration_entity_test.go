@@ -71,6 +71,9 @@ func TestOwnerWebhookRegistrationEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		ownerWebhookRegistrationRef01Ent := client.OwnerWebhookRegistration(nil)
 		ownerWebhookRegistrationRef01Data := core.ToMapAny(vs.GetProp(

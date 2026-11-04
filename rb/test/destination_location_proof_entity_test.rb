@@ -48,6 +48,7 @@ class DestinationLocationProofEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     destination_location_proof_ref01_ent = client.DestinationLocationProof(nil)
     destination_location_proof_ref01_data = Helpers.to_map(Vs.getprop(

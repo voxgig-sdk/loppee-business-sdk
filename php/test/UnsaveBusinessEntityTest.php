@@ -59,6 +59,9 @@ class UnsaveBusinessEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $unsave_business_ref01_ent = $client->UnsaveBusiness(null);
         $unsave_business_ref01_data = Helpers::to_map(Vs::getprop(

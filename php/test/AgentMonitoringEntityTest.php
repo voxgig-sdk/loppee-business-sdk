@@ -62,6 +62,9 @@ class AgentMonitoringEntityTest extends TestCase
             $agent_monitoring_ref01_data = Helpers::to_map($agent_monitoring_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LOAD
         $agent_monitoring_ref01_ent = $client->AgentMonitoring(null);
         $agent_monitoring_ref01_match_dt0 = [];

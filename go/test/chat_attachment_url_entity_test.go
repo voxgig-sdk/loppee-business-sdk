@@ -65,6 +65,9 @@ func TestChatAttachmentUrlEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		chatAttachmentUrlRef01Ent := client.ChatAttachmentUrl(nil)
 		chatAttachmentUrlRef01Data := core.ToMapAny(vs.GetProp(

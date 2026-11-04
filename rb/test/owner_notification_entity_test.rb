@@ -55,6 +55,7 @@ class OwnerNotificationEntityTest < Minitest::Test
     end
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     owner_notification_ref01_ent = client.OwnerNotification(nil)
     owner_notification_ref01_data = Helpers.to_map(Vs.getprop(

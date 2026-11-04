@@ -48,251 +48,251 @@ client := sdk.TestSDK(testopts, sdkopts)
 
 ### Instance Methods
 
-#### `AgentAccess(data map[string]any) LoppeeBusinessEntity`
+#### `AgentAccess(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `AgentAccess` entity instance. Pass `nil` for no initial data.
 
-#### `AgentCapability(data map[string]any) LoppeeBusinessEntity`
+#### `AgentCapability(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `AgentCapability` entity instance. Pass `nil` for no initial data.
 
-#### `AgentConnectionTest(data map[string]any) LoppeeBusinessEntity`
+#### `AgentConnectionTest(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `AgentConnectionTest` entity instance. Pass `nil` for no initial data.
 
-#### `AgentIntegration(data map[string]any) LoppeeBusinessEntity`
+#### `AgentIntegration(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `AgentIntegration` entity instance. Pass `nil` for no initial data.
 
-#### `AgentMonitoring(data map[string]any) LoppeeBusinessEntity`
+#### `AgentMonitoring(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `AgentMonitoring` entity instance. Pass `nil` for no initial data.
 
-#### `AgentOpenapi(data map[string]any) LoppeeBusinessEntity`
+#### `AgentOpenapi(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `AgentOpenapi` entity instance. Pass `nil` for no initial data.
 
-#### `AgentPolicy(data map[string]any) LoppeeBusinessEntity`
+#### `AgentPolicy(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `AgentPolicy` entity instance. Pass `nil` for no initial data.
 
-#### `AnonymousLocationProofRevocation(data map[string]any) LoppeeBusinessEntity`
+#### `AnonymousLocationProofRevocation(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `AnonymousLocationProofRevocation` entity instance. Pass `nil` for no initial data.
 
-#### `BusinessApplication(data map[string]any) LoppeeBusinessEntity`
+#### `BusinessApplication(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `BusinessApplication` entity instance. Pass `nil` for no initial data.
 
-#### `BusinessClaim(data map[string]any) LoppeeBusinessEntity`
+#### `BusinessClaim(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `BusinessClaim` entity instance. Pass `nil` for no initial data.
 
-#### `BusinessDeal(data map[string]any) LoppeeBusinessEntity`
+#### `BusinessDeal(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `BusinessDeal` entity instance. Pass `nil` for no initial data.
 
-#### `BusinessIndex(data map[string]any) LoppeeBusinessEntity`
+#### `BusinessIndex(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `BusinessIndex` entity instance. Pass `nil` for no initial data.
 
-#### `BusinessOwner(data map[string]any) LoppeeBusinessEntity`
+#### `BusinessOwner(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `BusinessOwner` entity instance. Pass `nil` for no initial data.
 
-#### `BusinessReview(data map[string]any) LoppeeBusinessEntity`
+#### `BusinessReview(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `BusinessReview` entity instance. Pass `nil` for no initial data.
 
-#### `ChatAttachment(data map[string]any) LoppeeBusinessEntity`
+#### `ChatAttachment(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `ChatAttachment` entity instance. Pass `nil` for no initial data.
 
-#### `ChatAttachmentUrl(data map[string]any) LoppeeBusinessEntity`
+#### `ChatAttachmentUrl(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `ChatAttachmentUrl` entity instance. Pass `nil` for no initial data.
 
-#### `ClaimVerificationSend(data map[string]any) LoppeeBusinessEntity`
+#### `ClaimVerificationSend(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `ClaimVerificationSend` entity instance. Pass `nil` for no initial data.
 
-#### `ClaimVerificationVerify(data map[string]any) LoppeeBusinessEntity`
+#### `ClaimVerificationVerify(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `ClaimVerificationVerify` entity instance. Pass `nil` for no initial data.
 
-#### `CommercialClick(data map[string]any) LoppeeBusinessEntity`
+#### `CommercialClick(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `CommercialClick` entity instance. Pass `nil` for no initial data.
 
-#### `ContactRecorded(data map[string]any) LoppeeBusinessEntity`
+#### `ContactRecorded(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `ContactRecorded` entity instance. Pass `nil` for no initial data.
 
-#### `Conversation(data map[string]any) LoppeeBusinessEntity`
+#### `Conversation(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Conversation` entity instance. Pass `nil` for no initial data.
 
-#### `ConversationClose(data map[string]any) LoppeeBusinessEntity`
+#### `ConversationClose(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `ConversationClose` entity instance. Pass `nil` for no initial data.
 
-#### `ConversationReport(data map[string]any) LoppeeBusinessEntity`
+#### `ConversationReport(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `ConversationReport` entity instance. Pass `nil` for no initial data.
 
-#### `ConversationWorkflow(data map[string]any) LoppeeBusinessEntity`
+#### `ConversationWorkflow(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `ConversationWorkflow` entity instance. Pass `nil` for no initial data.
 
-#### `CreateAgentApiKey(data map[string]any) LoppeeBusinessEntity`
+#### `CreateAgentApiKey(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `CreateAgentApiKey` entity instance. Pass `nil` for no initial data.
 
-#### `Customer(data map[string]any) LoppeeBusinessEntity`
+#### `Customer(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Customer` entity instance. Pass `nil` for no initial data.
 
-#### `CustomerAccount(data map[string]any) LoppeeBusinessEntity`
+#### `CustomerAccount(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `CustomerAccount` entity instance. Pass `nil` for no initial data.
 
-#### `CustomerLocationProofRevocation(data map[string]any) LoppeeBusinessEntity`
+#### `CustomerLocationProofRevocation(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `CustomerLocationProofRevocation` entity instance. Pass `nil` for no initial data.
 
-#### `DestinationAddressSuggestion(data map[string]any) LoppeeBusinessEntity`
+#### `DestinationAddressSuggestion(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `DestinationAddressSuggestion` entity instance. Pass `nil` for no initial data.
 
-#### `DestinationLocationProof(data map[string]any) LoppeeBusinessEntity`
+#### `DestinationLocationProof(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `DestinationLocationProof` entity instance. Pass `nil` for no initial data.
 
-#### `DomainTrustCard(data map[string]any) LoppeeBusinessEntity`
+#### `DomainTrustCard(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `DomainTrustCard` entity instance. Pass `nil` for no initial data.
 
-#### `GeoContext(data map[string]any) LoppeeBusinessEntity`
+#### `GeoContext(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `GeoContext` entity instance. Pass `nil` for no initial data.
 
-#### `Health(data map[string]any) LoppeeBusinessEntity`
+#### `Health(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Health` entity instance. Pass `nil` for no initial data.
 
-#### `JobApplication(data map[string]any) LoppeeBusinessEntity`
+#### `JobApplication(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `JobApplication` entity instance. Pass `nil` for no initial data.
 
-#### `JobResumeSignedUrl(data map[string]any) LoppeeBusinessEntity`
+#### `JobResumeSignedUrl(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `JobResumeSignedUrl` entity instance. Pass `nil` for no initial data.
 
-#### `LocationHandoff(data map[string]any) LoppeeBusinessEntity`
+#### `LocationHandoff(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `LocationHandoff` entity instance. Pass `nil` for no initial data.
 
-#### `Message(data map[string]any) LoppeeBusinessEntity`
+#### `Message(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Message` entity instance. Pass `nil` for no initial data.
 
-#### `ModeratedAction(data map[string]any) LoppeeBusinessEntity`
+#### `ModeratedAction(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `ModeratedAction` entity instance. Pass `nil` for no initial data.
 
-#### `OpenApiDocument(data map[string]any) LoppeeBusinessEntity`
+#### `OpenApiDocument(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `OpenApiDocument` entity instance. Pass `nil` for no initial data.
 
-#### `Operation(data map[string]any) LoppeeBusinessEntity`
+#### `Operation(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Operation` entity instance. Pass `nil` for no initial data.
 
-#### `OwnerNotification(data map[string]any) LoppeeBusinessEntity`
+#### `OwnerNotification(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `OwnerNotification` entity instance. Pass `nil` for no initial data.
 
-#### `OwnerNotificationSetting(data map[string]any) LoppeeBusinessEntity`
+#### `OwnerNotificationSetting(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `OwnerNotificationSetting` entity instance. Pass `nil` for no initial data.
 
-#### `OwnerWebhookEndpoint(data map[string]any) LoppeeBusinessEntity`
+#### `OwnerWebhookEndpoint(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `OwnerWebhookEndpoint` entity instance. Pass `nil` for no initial data.
 
-#### `OwnerWebhookRegistration(data map[string]any) LoppeeBusinessEntity`
+#### `OwnerWebhookRegistration(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `OwnerWebhookRegistration` entity instance. Pass `nil` for no initial data.
 
-#### `Pricing(data map[string]any) LoppeeBusinessEntity`
+#### `Pricing(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Pricing` entity instance. Pass `nil` for no initial data.
 
-#### `PromoteVerifiedTransaction(data map[string]any) LoppeeBusinessEntity`
+#### `PromoteVerifiedTransaction(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `PromoteVerifiedTransaction` entity instance. Pass `nil` for no initial data.
 
-#### `PublicContent(data map[string]any) LoppeeBusinessEntity`
+#### `PublicContent(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `PublicContent` entity instance. Pass `nil` for no initial data.
 
-#### `Recommend(data map[string]any) LoppeeBusinessEntity`
+#### `Recommend(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Recommend` entity instance. Pass `nil` for no initial data.
 
-#### `Review(data map[string]any) LoppeeBusinessEntity`
+#### `Review(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Review` entity instance. Pass `nil` for no initial data.
 
-#### `Revoke(data map[string]any) LoppeeBusinessEntity`
+#### `Revoke(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Revoke` entity instance. Pass `nil` for no initial data.
 
-#### `SaveBusiness(data map[string]any) LoppeeBusinessEntity`
+#### `SaveBusiness(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `SaveBusiness` entity instance. Pass `nil` for no initial data.
 
-#### `SavedBusiness(data map[string]any) LoppeeBusinessEntity`
+#### `SavedBusiness(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `SavedBusiness` entity instance. Pass `nil` for no initial data.
 
-#### `SavedLocation(data map[string]any) LoppeeBusinessEntity`
+#### `SavedLocation(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `SavedLocation` entity instance. Pass `nil` for no initial data.
 
-#### `Search(data map[string]any) LoppeeBusinessEntity`
+#### `Search(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Search` entity instance. Pass `nil` for no initial data.
 
-#### `Suggest(data map[string]any) LoppeeBusinessEntity`
+#### `Suggest(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `Suggest` entity instance. Pass `nil` for no initial data.
 
-#### `SupportInternalNote(data map[string]any) LoppeeBusinessEntity`
+#### `SupportInternalNote(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `SupportInternalNote` entity instance. Pass `nil` for no initial data.
 
-#### `SupportWorkflow(data map[string]any) LoppeeBusinessEntity`
+#### `SupportWorkflow(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `SupportWorkflow` entity instance. Pass `nil` for no initial data.
 
-#### `TaxonomySuggestion(data map[string]any) LoppeeBusinessEntity`
+#### `TaxonomySuggestion(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `TaxonomySuggestion` entity instance. Pass `nil` for no initial data.
 
-#### `TrustCard(data map[string]any) LoppeeBusinessEntity`
+#### `TrustCard(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `TrustCard` entity instance. Pass `nil` for no initial data.
 
-#### `UnsaveBusiness(data map[string]any) LoppeeBusinessEntity`
+#### `UnsaveBusiness(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `UnsaveBusiness` entity instance. Pass `nil` for no initial data.
 
-#### `UpdateAgentBillingAccount(data map[string]any) LoppeeBusinessEntity`
+#### `UpdateAgentBillingAccount(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `UpdateAgentBillingAccount` entity instance. Pass `nil` for no initial data.
 
-#### `WithdrawJobApplication(data map[string]any) LoppeeBusinessEntity`
+#### `WithdrawJobApplication(data map[string]any) LoppeeBusinessEntityBase`
 
 Create a new `WithdrawJobApplication` entity instance. Pass `nil` for no initial data.
 
@@ -704,12 +704,8 @@ fmt.Println(agentOpenapi.GetName()) // "agent_openapi"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `map[string]any` | Yes |  |
-| `info` | `map[string]any` | Yes |  |
-| `openapi` | `any` | Yes |  |
-| `paths` | `map[string]any` | Yes |  |
-| `servers` | `[]any` | Yes |  |
-| `tags` | `[]any` | Yes |  |
+| `description` | `string` | No |  |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -1129,7 +1125,7 @@ fmt.Println(businessDeal.GetName()) // "business_deal"
 List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
 
 ```go
-results, err := client.BusinessDeal(nil).List(map[string]any{"id": "example"}, nil)
+results, err := client.BusinessDeal(nil).List(map[string]any{"business_id": "example"}, nil)
 if err != nil {
     panic(err)
 }
@@ -1698,12 +1694,6 @@ businessReview := client.BusinessReview(nil)
 fmt.Println(businessReview.GetName()) // "business_review"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `string` | No |  |
-
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -1711,7 +1701,7 @@ fmt.Println(businessReview.GetName()) // "business_review"
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-result, err := client.BusinessReview(nil).Load(map[string]any{"id": "business_review_id"}, nil)
+result, err := client.BusinessReview(nil).Load(map[string]any{"business_id": "business_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -2279,7 +2269,6 @@ fmt.Println(conversationClose.GetName()) // "conversation_close"
 | --- | --- | --- | --- |
 | `closed_at` | `string` | Yes |  |
 | `conversation_id` | `string` | Yes |  |
-| `id` | `string` | No |  |
 | `status` | `any` | Yes |  |
 
 ### Operations
@@ -2290,7 +2279,7 @@ Create a new entity with the given data. Returns the created entity; `err` is no
 
 ```go
 result, err := client.ConversationClose(nil).Create(map[string]any{
-    "id": "example_id",
+    "conversation_id": "example_conversation_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -2342,7 +2331,6 @@ fmt.Println(conversationReport.GetName()) // "conversation_report"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `detail` | `string` | No |  |
-| `id` | `string` | No |  |
 | `reason` | `any` | Yes |  |
 | `status` | `any` | Yes |  |
 
@@ -2354,7 +2342,7 @@ Create a new entity with the given data. Returns the created entity; `err` is no
 
 ```go
 result, err := client.ConversationReport(nil).Create(map[string]any{
-    "id": "example_id",
+    "conversation_id": "example_conversation_id",
     "reason": "example_reason",
 }, nil)
 if err != nil {
@@ -2632,26 +2620,20 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | --- | --- | --- | --- |
 | `account_id` | `string` | Yes |  |
 | `account_role` | `string` | Yes |  |
-| `accuracy_meters` | `float64` | Yes |  |
 | `acknowledge_data_effects` | `bool` | Yes |  |
 | `actions` | `[]any` | Yes |  |
-| `agent_key_id` | `string` | Yes |  |
 | `agent_receives_coordinates` | `bool` | Yes |  |
 | `all_paused` | `bool` | Yes |  |
 | `app_attest_registered` | `bool` | Yes |  |
-| `assertion` | `string` | Yes |  |
 | `attestation` | `string` | Yes |  |
 | `author_label` | `string` | Yes |  |
 | `author_type` | `string` | Yes |  |
 | `binding` | `any` | Yes |  |
 | `body` | `string` | Yes |  |
 | `business_id` | `any` | Yes |  |
-| `capture_source` | `any` | Yes |  |
-| `captured_at` | `string` | Yes |  |
 | `challenge` | `string` | Yes |  |
 | `challenge_id` | `string` | Yes |  |
 | `client_message_id` | `string` | Yes |  |
-| `completed` | `bool` | Yes |  |
 | `confirmation` | `string` | Yes |  |
 | `connection_id` | `string` | Yes |  |
 | `connection_kind` | `string` | Yes |  |
@@ -2659,7 +2641,6 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | `coordinates_returned` | `bool` | Yes |  |
 | `created_at` | `string` | Yes |  |
 | `credential_id` | `string` | Yes |  |
-| `declined` | `bool` | Yes |  |
 | `delivery_contract` | `map[string]any` | Yes |  |
 | `disabled_reason` | `any` | Yes |  |
 | `disclosure` | `string` | Yes |  |
@@ -2671,21 +2652,17 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | `event_id` | `string` | Yes |  |
 | `event_types` | `[]any` | Yes |  |
 | `failure_count` | `int` | Yes |  |
-| `handoff_id` | `string` | Yes |  |
 | `has_more` | `bool` | Yes |  |
 | `id` | `string` | Yes |  |
 | `idempotent_replay` | `bool` | Yes |  |
 | `installation_id` | `string` | Yes |  |
 | `key_id` | `string` | Yes |  |
 | `last_delivery_at` | `any` | Yes |  |
-| `latitude` | `float64` | Yes |  |
 | `location` | `any` | No | An opaque location reference from the website's own location controls. |
-| `longitude` | `float64` | Yes |  |
 | `message_alerts_enabled` | `bool` | Yes |  |
 | `messages` | `[]any` | Yes |  |
 | `mode` | `string` | Yes | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `string` | No |  |
-| `oauth_grant_id` | `any` | Yes |  |
 | `one_time_display` | `any` | Yes |  |
 | `platform` | `string` | Yes |  |
 | `policy` | `string` | Yes |  |
@@ -2694,7 +2671,6 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | `reason` | `string` | Yes |  |
 | `registered_at` | `string` | Yes |  |
 | `reply` | `string` | Yes |  |
-| `request_mode` | `string` | Yes |  |
 | `requested_at` | `string` | Yes |  |
 | `results` | `[]any` | Yes |  |
 | `schema_version` | `string` | Yes |  |
@@ -2705,7 +2681,6 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | `updated_at` | `string` | Yes |  |
 | `url` | `string` | Yes | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `string` | Yes |  |
-| `use_mode` | `string` | Yes |  |
 
 ### Field Usage by Operation
 
@@ -2713,26 +2688,20 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | --- | --- |
 | `account_id` | - |
 | `account_role` | - |
-| `accuracy_meters` | - |
 | `acknowledge_data_effects` | - |
 | `actions` | - |
-| `agent_key_id` | - |
 | `agent_receives_coordinates` | - |
 | `all_paused` | - |
 | `app_attest_registered` | - |
-| `assertion` | - |
 | `attestation` | - |
 | `author_label` | - |
 | `author_type` | - |
 | `binding` | - |
 | `body` | - |
 | `business_id` | - |
-| `capture_source` | - |
-| `captured_at` | - |
 | `challenge` | - |
 | `challenge_id` | - |
 | `client_message_id` | - |
-| `completed` | - |
 | `confirmation` | - |
 | `connection_id` | - |
 | `connection_kind` | - |
@@ -2740,7 +2709,6 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | `coordinates_returned` | - |
 | `created_at` | - |
 | `credential_id` | - |
-| `declined` | - |
 | `delivery_contract` | - |
 | `disabled_reason` | - |
 | `disclosure` | - |
@@ -2752,21 +2720,17 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | `event_id` | - |
 | `event_types` | - |
 | `failure_count` | - |
-| `handoff_id` | - |
 | `has_more` | - |
 | `id` | - |
 | `idempotent_replay` | - |
 | `installation_id` | - |
 | `key_id` | - |
 | `last_delivery_at` | - |
-| `latitude` | - |
 | `location` | - |
-| `longitude` | - |
 | `message_alerts_enabled` | - |
 | `messages` | - |
 | `mode` | - |
 | `name` | - |
-| `oauth_grant_id` | - |
 | `one_time_display` | - |
 | `platform` | - |
 | `policy` | - |
@@ -2775,7 +2739,6 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | `reason` | Yes |
 | `registered_at` | - |
 | `reply` | - |
-| `request_mode` | - |
 | `requested_at` | - |
 | `results` | - |
 | `schema_version` | - |
@@ -2786,7 +2749,6 @@ fmt.Println(customerAccount.GetName()) // "customer_account"
 | `updated_at` | - |
 | `url` | - |
 | `usable_until` | - |
-| `use_mode` | - |
 
 ### Operations
 
@@ -2798,33 +2760,26 @@ Create a new entity with the given data. Returns the created entity; `err` is no
 result, err := client.CustomerAccount(nil).Create(map[string]any{
     "account_id": "example_account_id",
     "account_role": "example_account_role",
-    "accuracy_meters": 1,
     "acknowledge_data_effects": true,
     "actions": []any{},
-    "agent_key_id": "example_agent_key_id",
     "agent_receives_coordinates": true,
     "all_paused": true,
     "app_attest_registered": true,
-    "assertion": "example_assertion",
     "attestation": "example_attestation",
     "author_label": "example_author_label",
     "author_type": "example_author_type",
     "binding": "example_binding",
     "body": "example_body",
     "business_id": "example_business_id",
-    "capture_source": "example_capture_source",
-    "captured_at": "example_captured_at",
     "challenge": "example_challenge",
     "challenge_id": "example_challenge_id",
     "client_message_id": "example_client_message_id",
-    "completed": true,
     "confirmation": "example_confirmation",
     "connection_id": "example_connection_id",
     "connection_kind": "example_connection_kind",
     "coordinates_returned": true,
     "created_at": "example_created_at",
     "credential_id": "example_credential_id",
-    "declined": true,
     "delivery_contract": map[string]any{},
     "disabled_reason": "example_disabled_reason",
     "disclosure": "example_disclosure",
@@ -2836,19 +2791,15 @@ result, err := client.CustomerAccount(nil).Create(map[string]any{
     "event_id": "example_event_id",
     "event_types": []any{},
     "failure_count": 1,
-    "handoff_id": "example_handoff_id",
     "has_more": true,
     "id": "example_id",
     "idempotent_replay": true,
     "installation_id": "example_installation_id",
     "key_id": "example_key_id",
     "last_delivery_at": "example_last_delivery_at",
-    "latitude": 1,
-    "longitude": 1,
     "message_alerts_enabled": true,
     "messages": []any{},
     "mode": "example_mode",
-    "oauth_grant_id": "example_oauth_grant_id",
     "one_time_display": "example_one_time_display",
     "platform": "example_platform",
     "policy": "example_policy",
@@ -2856,7 +2807,6 @@ result, err := client.CustomerAccount(nil).Create(map[string]any{
     "push_token": "example_push_token",
     "registered_at": "example_registered_at",
     "reply": "example_reply",
-    "request_mode": "example_request_mode",
     "requested_at": "example_requested_at",
     "results": []any{},
     "schema_version": "example_schema_version",
@@ -2867,7 +2817,6 @@ result, err := client.CustomerAccount(nil).Create(map[string]any{
     "updated_at": "example_updated_at",
     "url": "example_url",
     "usable_until": "example_usable_until",
-    "use_mode": "example_use_mode",
 }, nil)
 if err != nil {
     panic(err)
@@ -3474,6 +3423,12 @@ locationHandoff := client.LocationHandoff(nil)
 fmt.Println(locationHandoff.GetName()) // "location_handoff"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -3798,12 +3753,8 @@ fmt.Println(openApiDocument.GetName()) // "open_api_document"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `map[string]any` | Yes |  |
-| `info` | `map[string]any` | Yes |  |
-| `openapi` | `any` | Yes |  |
-| `paths` | `map[string]any` | Yes |  |
-| `servers` | `[]any` | Yes |  |
-| `tags` | `[]any` | Yes |  |
+| `description` | `string` | No |  |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -4739,18 +4690,9 @@ fmt.Println(pricing.GetName()) // "pricing"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing` | `map[string]any` | Yes |  |
-| `branch_add_ons` | `[]any` | Yes |  |
-| `currency` | `any` | Yes |  |
-| `generated_at` | `string` | Yes |  |
-| `neutrality` | `string` | Yes |  |
-| `plans` | `[]any` | Yes |  |
-| `promotions` | `[]any` | Yes |  |
-| `published_at` | `any` | Yes |  |
-| `radius_extension` | `map[string]any` | Yes |  |
-| `revision_id` | `any` | Yes |  |
-| `source` | `any` | Yes |  |
-| `trust_model_version` | `any` | Yes |  |
+| `annual_usd` | `float64` | Yes |  |
+| `monthly_usd` | `float64` | Yes |  |
+| `radius_max_miles` | `float64` | Yes |  |
 
 ### Operations
 
@@ -5486,10 +5428,9 @@ fmt.Println(suggest.GetName()) // "suggest"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `categories` | `[]any` | Yes |  |
-| `names` | `[]any` | Yes |  |
-| `query` | `string` | Yes |  |
-| `schema_version` | `any` | Yes |  |
+| `alias` | `string` | Yes |  |
+| `path_titles` | `[]any` | Yes |  |
+| `title` | `string` | Yes |  |
 
 ### Operations
 
@@ -5563,7 +5504,7 @@ Create a new entity with the given data. Returns the created entity; `err` is no
 
 ```go
 result, err := client.SupportInternalNote(nil).Create(map[string]any{
-    "id": "example_id",
+    "support_id": "example_support_id",
     "body": "example_body",
 }, nil)
 if err != nil {
@@ -5616,7 +5557,6 @@ fmt.Println(supportWorkflow.GetName()) // "support_workflow"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `category` | `any` | No |  |
-| `id` | `string` | No |  |
 | `priority` | `any` | No |  |
 | `waiting_on` | `any` | No |  |
 
@@ -5628,7 +5568,7 @@ Create a new entity with the given data. Returns the created entity; `err` is no
 
 ```go
 result, err := client.SupportWorkflow(nil).Create(map[string]any{
-    "id": "example_id",
+    "support_id": "example_support_id",
 }, nil)
 if err != nil {
     panic(err)

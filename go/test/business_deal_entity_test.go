@@ -38,7 +38,7 @@ func TestBusinessDealEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.BusinessDeal(nil).List(map[string]any{"id": 1}, nil)
+		_, err := client.BusinessDeal(nil).List(map[string]any{"business_id": 1}, nil)
 		if sdkerr, ok := err.(*core.LoppeeBusinessError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestBusinessDealEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{} {
+		for _, _op := range []string{"list"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "business_deal." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -62,6 +62,16 @@ func TestBusinessDealEntity(t *testing.T) {
 				return
 			}
 		}
+		if setup.live {
+			for _liveKey, _liveEx := range map[string]any{"business01": "biz_elite_ac_llc_jacksonville_fl"} {
+				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
+					setup.idmap[_liveKey] = _liveEx
+				}
+			}
+		}
+		client := setup.client
+		_ = client
+
 		// Bootstrap entity data from existing test data (no create step in flow).
 		businessDealRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.business_deal")))
 		var businessDealRef01Data map[string]any
@@ -71,6 +81,24 @@ func TestBusinessDealEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = businessDealRef01Data
+
+		if setup.live {
+			livePace()
+		}
+		// LIST
+		businessDealRef01Ent := client.BusinessDeal(nil)
+		businessDealRef01Match := map[string]any{
+			"business_id": setup.idmap["business01"],
+		}
+
+		businessDealRef01ListResult, err := businessDealRef01Ent.List(businessDealRef01Match, nil)
+		if err != nil {
+			t.Fatalf("list failed: %v", err)
+		}
+		_, businessDealRef01ListOk := businessDealRef01ListResult.([]any)
+		if !businessDealRef01ListOk {
+			t.Fatalf("expected list result to be an array, got %T", businessDealRef01ListResult)
+		}
 
 	})
 }
@@ -100,7 +128,7 @@ func business_dealBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"business_deal01", "business_deal02", "business_deal03"},
+		[]any{"business_deal01", "business_deal02", "business_deal03", "business01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

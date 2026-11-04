@@ -60,6 +60,9 @@ class BusinessOwnerEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $business_owner_ref01_ent = $client->BusinessOwner(null);
         $business_owner_ref01_data = Helpers::to_map(Vs::getprop(
@@ -70,6 +73,9 @@ class BusinessOwnerEntityTest extends TestCase
         $this->assertNotNull($business_owner_ref01_data);
         $this->assertNotNull($business_owner_ref01_data["id"]);
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // UPDATE
         $business_owner_ref01_data_up0_up = [
             "id" => $business_owner_ref01_data["id"],
@@ -82,7 +88,7 @@ class BusinessOwnerEntityTest extends TestCase
         $business_owner_ref01_resdata_up0_result = $business_owner_ref01_ent->update($business_owner_ref01_data_up0_up, null);
         $business_owner_ref01_resdata_up0 = Helpers::to_map(is_object($business_owner_ref01_resdata_up0_result) && method_exists($business_owner_ref01_resdata_up0_result, 'data_get') ? $business_owner_ref01_resdata_up0_result->data_get() : $business_owner_ref01_resdata_up0_result);
         $this->assertNotNull($business_owner_ref01_resdata_up0);
-        $this->assertEquals($business_owner_ref01_resdata_up0["id"], $business_owner_ref01_data_up0_up["id"]);
+        $this->assertTrue(Runner::live_same_id($business_owner_ref01_resdata_up0["id"] ?? null, $business_owner_ref01_data_up0_up["id"]));
         $this->assertEquals($business_owner_ref01_resdata_up0[$business_owner_ref01_markdef_up0_name], $business_owner_ref01_markdef_up0_value);
 
     }

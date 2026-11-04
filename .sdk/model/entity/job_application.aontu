@@ -69,6 +69,7 @@ main: kit: entity: job_application: {
       h: "Id"
       n: "id"
       r: false
+      syn: true
       t: "`$STRING`"
     }
     job_id: {

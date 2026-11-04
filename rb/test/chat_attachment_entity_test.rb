@@ -55,6 +55,7 @@ class ChatAttachmentEntityTest < Minitest::Test
     end
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     chat_attachment_ref01_ent = client.ChatAttachment(nil)
     chat_attachment_ref01_data = Helpers.to_map(Vs.getprop(

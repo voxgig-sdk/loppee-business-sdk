@@ -791,39 +791,14 @@ module LoppeeBusinessConfig
         "agent_openapi" => {
           "fields" => [
             {
-              "name" => "components",
-              "title" => "Components",
-              "type" => "`$OBJECT`",
-              "req" => true,
+              "name" => "description",
+              "title" => "Description",
+              "type" => "`$STRING`",
             },
             {
-              "name" => "info",
-              "title" => "Info",
-              "type" => "`$OBJECT`",
-              "req" => true,
-            },
-            {
-              "name" => "openapi",
-              "title" => "Openapi",
-              "type" => "`$ANY`",
-              "req" => true,
-            },
-            {
-              "name" => "paths",
-              "title" => "Paths",
-              "type" => "`$OBJECT`",
-              "req" => true,
-            },
-            {
-              "name" => "servers",
-              "title" => "Servers",
-              "type" => "`$ARRAY`",
-              "req" => true,
-            },
-            {
-              "name" => "tags",
-              "title" => "Tags",
-              "type" => "`$ARRAY`",
+              "name" => "url",
+              "title" => "Url",
+              "type" => "`$STRING`",
               "req" => true,
             },
           ],
@@ -852,7 +827,7 @@ module LoppeeBusinessConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.servers`",
                   },
                   "args" => {},
                   "select" => {},
@@ -1529,7 +1504,7 @@ module LoppeeBusinessConfig
                       "lit" => "businesses",
                     },
                     {
-                      "var" => "id",
+                      "var" => "business_id",
                     },
                     {
                       "lit" => "deals.json",
@@ -1538,14 +1513,10 @@ module LoppeeBusinessConfig
                   "parts" => [
                     "v1",
                     "businesses",
-                    "{id}",
+                    "{business_id}",
                     "deals.json",
                   ],
-                  "rename" => {
-                    "param" => {
-                      "business_id" => "id",
-                    },
-                  },
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.deals`",
@@ -1553,7 +1524,7 @@ module LoppeeBusinessConfig
                   "args" => {
                     "params" => [
                       {
-                        "name" => "id",
+                        "name" => "business_id",
                         "orig" => "business_id",
                         "type" => "`$STRING`",
                         "kind" => "param",
@@ -1564,7 +1535,7 @@ module LoppeeBusinessConfig
                   },
                   "select" => {
                     "exist" => [
-                      "id",
+                      "business_id",
                     ],
                   },
                   "response" => {
@@ -5511,17 +5482,7 @@ module LoppeeBusinessConfig
           },
         },
         "business_review" => {
-          "fields" => [
-            {
-              "name" => "id",
-              "title" => "Id",
-              "type" => "`$STRING`",
-            },
-          ],
-          "id" => {
-            "field" => "id",
-            "name" => "id",
-          },
+          "fields" => [],
           "name" => "business_review",
           "op" => {
             "load" => {
@@ -5540,7 +5501,7 @@ module LoppeeBusinessConfig
                       "lit" => "businesses",
                     },
                     {
-                      "var" => "id",
+                      "var" => "business_id",
                     },
                     {
                       "lit" => "reviews.json",
@@ -5549,14 +5510,10 @@ module LoppeeBusinessConfig
                   "parts" => [
                     "v1",
                     "businesses",
-                    "{id}",
+                    "{business_id}",
                     "reviews.json",
                   ],
-                  "rename" => {
-                    "param" => {
-                      "business_id" => "id",
-                    },
-                  },
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
@@ -5564,7 +5521,7 @@ module LoppeeBusinessConfig
                   "args" => {
                     "params" => [
                       {
-                        "name" => "id",
+                        "name" => "business_id",
                         "orig" => "business_id",
                         "type" => "`$STRING`",
                         "kind" => "param",
@@ -5595,7 +5552,7 @@ module LoppeeBusinessConfig
                   },
                   "select" => {
                     "exist" => [
-                      "id",
+                      "business_id",
                     ],
                   },
                   "response" => {
@@ -6949,21 +6906,12 @@ module LoppeeBusinessConfig
               "req" => true,
             },
             {
-              "name" => "id",
-              "title" => "Id",
-              "type" => "`$STRING`",
-            },
-            {
               "name" => "status",
               "title" => "Status",
               "type" => "`$ANY`",
               "req" => true,
             },
           ],
-          "id" => {
-            "field" => "id",
-            "name" => "id",
-          },
           "name" => "conversation_close",
           "op" => {
             "create" => {
@@ -6985,7 +6933,7 @@ module LoppeeBusinessConfig
                       "lit" => "conversations",
                     },
                     {
-                      "var" => "id",
+                      "var" => "conversation_id",
                     },
                     {
                       "lit" => "close",
@@ -6995,14 +6943,10 @@ module LoppeeBusinessConfig
                     "v1",
                     "account",
                     "conversations",
-                    "{id}",
+                    "{conversation_id}",
                     "close",
                   ],
-                  "rename" => {
-                    "param" => {
-                      "conversation_id" => "id",
-                    },
-                  },
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
@@ -7010,7 +6954,7 @@ module LoppeeBusinessConfig
                   "args" => {
                     "params" => [
                       {
-                        "name" => "id",
+                        "name" => "conversation_id",
                         "orig" => "conversation_id",
                         "type" => "`$STRING`",
                         "kind" => "param",
@@ -7020,7 +6964,7 @@ module LoppeeBusinessConfig
                   },
                   "select" => {
                     "exist" => [
-                      "id",
+                      "conversation_id",
                     ],
                   },
                   "response" => {
@@ -7032,7 +6976,11 @@ module LoppeeBusinessConfig
             },
           },
           "relations" => {
-            "ancestors" => [],
+            "ancestors" => [
+              [
+                "$.main.kit.entity.conversation",
+              ],
+            ],
           },
         },
         "conversation_report" => {
@@ -7040,11 +6988,6 @@ module LoppeeBusinessConfig
             {
               "name" => "detail",
               "title" => "Detail",
-              "type" => "`$STRING`",
-            },
-            {
-              "name" => "id",
-              "title" => "Id",
               "type" => "`$STRING`",
             },
             {
@@ -7060,10 +7003,6 @@ module LoppeeBusinessConfig
               "req" => true,
             },
           ],
-          "id" => {
-            "field" => "id",
-            "name" => "id",
-          },
           "name" => "conversation_report",
           "op" => {
             "create" => {
@@ -7085,7 +7024,7 @@ module LoppeeBusinessConfig
                       "lit" => "conversations",
                     },
                     {
-                      "var" => "id",
+                      "var" => "conversation_id",
                     },
                     {
                       "lit" => "report",
@@ -7095,14 +7034,10 @@ module LoppeeBusinessConfig
                     "v1",
                     "account",
                     "conversations",
-                    "{id}",
+                    "{conversation_id}",
                     "report",
                   ],
-                  "rename" => {
-                    "param" => {
-                      "conversation_id" => "id",
-                    },
-                  },
+                  "rename" => {},
                   "transform" => {
                     "req" => {
                       "detail" => "`reqdata.detail`",
@@ -7113,7 +7048,7 @@ module LoppeeBusinessConfig
                   "args" => {
                     "params" => [
                       {
-                        "name" => "id",
+                        "name" => "conversation_id",
                         "orig" => "conversation_id",
                         "type" => "`$STRING`",
                         "kind" => "param",
@@ -7123,7 +7058,7 @@ module LoppeeBusinessConfig
                   },
                   "select" => {
                     "exist" => [
-                      "id",
+                      "conversation_id",
                     ],
                   },
                   "response" => {
@@ -7197,6 +7132,9 @@ module LoppeeBusinessConfig
           },
           "relations" => {
             "ancestors" => [
+              [
+                "$.main.kit.entity.conversation",
+              ],
               [
                 "$.main.kit.entity.message",
               ],
@@ -7625,12 +7563,6 @@ module LoppeeBusinessConfig
               "req" => true,
             },
             {
-              "name" => "accuracy_meters",
-              "title" => "Accuracy Meters",
-              "type" => "`$NUMBER`",
-              "req" => true,
-            },
-            {
               "name" => "acknowledge_data_effects",
               "title" => "Acknowledge Data Effects",
               "type" => "`$BOOLEAN`",
@@ -7641,13 +7573,6 @@ module LoppeeBusinessConfig
               "title" => "Actions",
               "type" => "`$ARRAY`",
               "req" => true,
-            },
-            {
-              "name" => "agent_key_id",
-              "title" => "Agent Key Id",
-              "type" => "`$STRING`",
-              "req" => true,
-              "format" => "uuid",
             },
             {
               "name" => "agent_receives_coordinates",
@@ -7665,12 +7590,6 @@ module LoppeeBusinessConfig
               "name" => "app_attest_registered",
               "title" => "App Attest Registered",
               "type" => "`$BOOLEAN`",
-              "req" => true,
-            },
-            {
-              "name" => "assertion",
-              "title" => "Assertion",
-              "type" => "`$STRING`",
               "req" => true,
             },
             {
@@ -7716,19 +7635,6 @@ module LoppeeBusinessConfig
               "req" => true,
             },
             {
-              "name" => "capture_source",
-              "title" => "Capture Source",
-              "type" => "`$ANY`",
-              "req" => true,
-            },
-            {
-              "name" => "captured_at",
-              "title" => "Captured At",
-              "type" => "`$STRING`",
-              "req" => true,
-              "format" => "date-time",
-            },
-            {
               "name" => "challenge",
               "title" => "Challenge",
               "type" => "`$STRING`",
@@ -7745,12 +7651,6 @@ module LoppeeBusinessConfig
               "name" => "client_message_id",
               "title" => "Client Message Id",
               "type" => "`$STRING`",
-              "req" => true,
-            },
-            {
-              "name" => "completed",
-              "title" => "Completed",
-              "type" => "`$BOOLEAN`",
               "req" => true,
             },
             {
@@ -7801,12 +7701,6 @@ module LoppeeBusinessConfig
               "name" => "credential_id",
               "title" => "Credential Id",
               "type" => "`$STRING`",
-              "req" => true,
-            },
-            {
-              "name" => "declined",
-              "title" => "Declined",
-              "type" => "`$BOOLEAN`",
               "req" => true,
             },
             {
@@ -7883,13 +7777,6 @@ module LoppeeBusinessConfig
               "req" => true,
             },
             {
-              "name" => "handoff_id",
-              "title" => "Handoff Id",
-              "type" => "`$STRING`",
-              "req" => true,
-              "format" => "uuid",
-            },
-            {
               "name" => "has_more",
               "title" => "Has More",
               "type" => "`$BOOLEAN`",
@@ -7935,22 +7822,10 @@ module LoppeeBusinessConfig
               "format" => "date-time",
             },
             {
-              "name" => "latitude",
-              "title" => "Latitude",
-              "type" => "`$NUMBER`",
-              "req" => true,
-            },
-            {
               "name" => "location",
               "title" => "Location",
               "type" => "`$ANY`",
               "short" => "An opaque location reference from the website's own location controls.",
-            },
-            {
-              "name" => "longitude",
-              "title" => "Longitude",
-              "type" => "`$NUMBER`",
-              "req" => true,
             },
             {
               "name" => "message_alerts_enabled",
@@ -7975,19 +7850,6 @@ module LoppeeBusinessConfig
               "name" => "name",
               "title" => "Name",
               "type" => "`$STRING`",
-            },
-            {
-              "name" => "oauth_grant_id",
-              "title" => "Oauth Grant Id",
-              "type" => [
-                "`$ONE`",
-                [
-                  "`$STRING`",
-                  "`$NULL`",
-                ],
-              ],
-              "req" => true,
-              "format" => "uuid",
             },
             {
               "name" => "one_time_display",
@@ -8040,12 +7902,6 @@ module LoppeeBusinessConfig
             {
               "name" => "reply",
               "title" => "Reply",
-              "type" => "`$STRING`",
-              "req" => true,
-            },
-            {
-              "name" => "request_mode",
-              "title" => "Request Mode",
               "type" => "`$STRING`",
               "req" => true,
             },
@@ -8115,12 +7971,6 @@ module LoppeeBusinessConfig
               "req" => true,
               "format" => "date-time",
             },
-            {
-              "name" => "use_mode",
-              "title" => "Use Mode",
-              "type" => "`$STRING`",
-              "req" => true,
-            },
           ],
           "id" => {
             "field" => "id",
@@ -8132,183 +7982,6 @@ module LoppeeBusinessConfig
               "input" => "data",
               "name" => "create",
               "points" => [
-                {
-                  "kind" => "http",
-                  "method" => "POST",
-                  "orig" => "/v1/account/location-handoffs/{handoff_id}/complete-from-device",
-                  "segments" => [
-                    {
-                      "lit" => "v1",
-                    },
-                    {
-                      "lit" => "account",
-                    },
-                    {
-                      "lit" => "location-handoffs",
-                    },
-                    {
-                      "var" => "location_handoff_id",
-                    },
-                    {
-                      "lit" => "complete-from-device",
-                    },
-                  ],
-                  "parts" => [
-                    "v1",
-                    "account",
-                    "location-handoffs",
-                    "{location_handoff_id}",
-                    "complete-from-device",
-                  ],
-                  "rename" => {
-                    "param" => {
-                      "handoff_id" => "location_handoff_id",
-                    },
-                  },
-                  "transform" => {
-                    "req" => {
-                      "accuracy_meters" => "`reqdata.accuracy_meter`",
-                      "agent_key_id" => "`reqdata.agent_key_id`",
-                      "assertion" => "`reqdata.assertion`",
-                      "capture_source" => "`reqdata.capture_source`",
-                      "captured_at" => "`reqdata.captured_at`",
-                      "challenge" => "`reqdata.challenge`",
-                      "challenge_id" => "`reqdata.challenge_id`",
-                      "connection_id" => "`reqdata.connection_id`",
-                      "installation_id" => "`reqdata.installation_id`",
-                      "key_id" => "`reqdata.key_id`",
-                      "latitude" => "`reqdata.latitude`",
-                      "longitude" => "`reqdata.longitude`",
-                      "oauth_grant_id" => "`reqdata.oauth_grant_id`",
-                      "use_mode" => "`reqdata.use_mode`",
-                    },
-                    "res" => "`body`",
-                  },
-                  "args" => {
-                    "header" => [
-                      {
-                        "name" => "x_loppee_client_platform",
-                        "orig" => "X-Loppee-Client-Platform",
-                        "type" => "`$STRING`",
-                        "kind" => "header",
-                        "reqd" => true,
-                      },
-                      {
-                        "name" => "x_loppee_installation_id",
-                        "orig" => "X-Loppee-Installation-Id",
-                        "type" => "`$STRING`",
-                        "kind" => "header",
-                        "reqd" => true,
-                      },
-                    ],
-                    "params" => [
-                      {
-                        "name" => "location_handoff_id",
-                        "orig" => "handoff_id",
-                        "type" => "`$STRING`",
-                        "kind" => "param",
-                        "reqd" => true,
-                      },
-                    ],
-                  },
-                  "select" => {
-                    "exist" => [
-                      "location_handoff_id",
-                      "x_loppee_client_platform",
-                      "x_loppee_installation_id",
-                    ],
-                  },
-                  "response" => {
-                    "kind" => "json",
-                    "media" => "application/json",
-                  },
-                },
-                {
-                  "kind" => "http",
-                  "method" => "POST",
-                  "orig" => "/v1/account/location-handoffs/{handoff_id}/decline-from-device",
-                  "segments" => [
-                    {
-                      "lit" => "v1",
-                    },
-                    {
-                      "lit" => "account",
-                    },
-                    {
-                      "lit" => "location-handoffs",
-                    },
-                    {
-                      "var" => "location_handoff_id",
-                    },
-                    {
-                      "lit" => "decline-from-device",
-                    },
-                  ],
-                  "parts" => [
-                    "v1",
-                    "account",
-                    "location-handoffs",
-                    "{location_handoff_id}",
-                    "decline-from-device",
-                  ],
-                  "rename" => {
-                    "param" => {
-                      "handoff_id" => "location_handoff_id",
-                    },
-                  },
-                  "transform" => {
-                    "req" => {
-                      "agent_key_id" => "`reqdata.agent_key_id`",
-                      "assertion" => "`reqdata.assertion`",
-                      "challenge" => "`reqdata.challenge`",
-                      "challenge_id" => "`reqdata.challenge_id`",
-                      "connection_id" => "`reqdata.connection_id`",
-                      "installation_id" => "`reqdata.installation_id`",
-                      "key_id" => "`reqdata.key_id`",
-                      "oauth_grant_id" => "`reqdata.oauth_grant_id`",
-                      "request_mode" => "`reqdata.request_mode`",
-                    },
-                    "res" => "`body`",
-                  },
-                  "args" => {
-                    "header" => [
-                      {
-                        "name" => "x_loppee_client_platform",
-                        "orig" => "X-Loppee-Client-Platform",
-                        "type" => "`$STRING`",
-                        "kind" => "header",
-                        "reqd" => true,
-                      },
-                      {
-                        "name" => "x_loppee_installation_id",
-                        "orig" => "X-Loppee-Installation-Id",
-                        "type" => "`$STRING`",
-                        "kind" => "header",
-                        "reqd" => true,
-                      },
-                    ],
-                    "params" => [
-                      {
-                        "name" => "location_handoff_id",
-                        "orig" => "handoff_id",
-                        "type" => "`$STRING`",
-                        "kind" => "param",
-                        "reqd" => true,
-                      },
-                    ],
-                  },
-                  "select" => {
-                    "exist" => [
-                      "location_handoff_id",
-                      "x_loppee_client_platform",
-                      "x_loppee_installation_id",
-                    ],
-                  },
-                  "response" => {
-                    "kind" => "json",
-                    "media" => "application/json",
-                  },
-                },
                 {
                   "kind" => "http",
                   "method" => "POST",
@@ -9152,9 +8825,6 @@ module LoppeeBusinessConfig
             "ancestors" => [
               [
                 "$.main.kit.entity.conversation",
-              ],
-              [
-                "$.main.kit.entity.location_handoff",
               ],
             ],
           },
@@ -10334,13 +10004,202 @@ module LoppeeBusinessConfig
           },
         },
         "location_handoff" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "title" => "Id",
+              "type" => "`$STRING`",
+            },
+          ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "location_handoff",
           "op" => {
             "create" => {
               "input" => "data",
               "name" => "create",
               "points" => [
+                {
+                  "kind" => "http",
+                  "method" => "POST",
+                  "orig" => "/v1/account/location-handoffs/{handoff_id}/complete-from-device",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "account",
+                    },
+                    {
+                      "lit" => "location-handoffs",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "complete-from-device",
+                    },
+                  ],
+                  "parts" => [
+                    "v1",
+                    "account",
+                    "location-handoffs",
+                    "{id}",
+                    "complete-from-device",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "handoff_id" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => {
+                      "accuracy_meters" => "`reqdata.accuracy_meter`",
+                      "agent_key_id" => "`reqdata.agent_key_id`",
+                      "assertion" => "`reqdata.assertion`",
+                      "capture_source" => "`reqdata.capture_source`",
+                      "captured_at" => "`reqdata.captured_at`",
+                      "challenge" => "`reqdata.challenge`",
+                      "challenge_id" => "`reqdata.challenge_id`",
+                      "connection_id" => "`reqdata.connection_id`",
+                      "installation_id" => "`reqdata.installation_id`",
+                      "key_id" => "`reqdata.key_id`",
+                      "latitude" => "`reqdata.latitude`",
+                      "longitude" => "`reqdata.longitude`",
+                      "oauth_grant_id" => "`reqdata.oauth_grant_id`",
+                      "use_mode" => "`reqdata.use_mode`",
+                    },
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "header" => [
+                      {
+                        "name" => "x_loppee_client_platform",
+                        "orig" => "X-Loppee-Client-Platform",
+                        "type" => "`$STRING`",
+                        "kind" => "header",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "x_loppee_installation_id",
+                        "orig" => "X-Loppee-Installation-Id",
+                        "type" => "`$STRING`",
+                        "kind" => "header",
+                        "reqd" => true,
+                      },
+                    ],
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "handoff_id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "$action" => "complete_from_device",
+                    "exist" => [
+                      "id",
+                      "x_loppee_client_platform",
+                      "x_loppee_installation_id",
+                    ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
+                },
+                {
+                  "kind" => "http",
+                  "method" => "POST",
+                  "orig" => "/v1/account/location-handoffs/{handoff_id}/decline-from-device",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "account",
+                    },
+                    {
+                      "lit" => "location-handoffs",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "decline-from-device",
+                    },
+                  ],
+                  "parts" => [
+                    "v1",
+                    "account",
+                    "location-handoffs",
+                    "{id}",
+                    "decline-from-device",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "handoff_id" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => {
+                      "agent_key_id" => "`reqdata.agent_key_id`",
+                      "assertion" => "`reqdata.assertion`",
+                      "challenge" => "`reqdata.challenge`",
+                      "challenge_id" => "`reqdata.challenge_id`",
+                      "connection_id" => "`reqdata.connection_id`",
+                      "installation_id" => "`reqdata.installation_id`",
+                      "key_id" => "`reqdata.key_id`",
+                      "oauth_grant_id" => "`reqdata.oauth_grant_id`",
+                      "request_mode" => "`reqdata.request_mode`",
+                    },
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "header" => [
+                      {
+                        "name" => "x_loppee_client_platform",
+                        "orig" => "X-Loppee-Client-Platform",
+                        "type" => "`$STRING`",
+                        "kind" => "header",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "x_loppee_installation_id",
+                        "orig" => "X-Loppee-Installation-Id",
+                        "type" => "`$STRING`",
+                        "kind" => "header",
+                        "reqd" => true,
+                      },
+                    ],
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "handoff_id",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "$action" => "decline_from_device",
+                    "exist" => [
+                      "id",
+                      "x_loppee_client_platform",
+                      "x_loppee_installation_id",
+                    ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
+                  },
+                },
                 {
                   "kind" => "http",
                   "method" => "POST",
@@ -11164,39 +11023,14 @@ module LoppeeBusinessConfig
         "open_api_document" => {
           "fields" => [
             {
-              "name" => "components",
-              "title" => "Components",
-              "type" => "`$OBJECT`",
-              "req" => true,
+              "name" => "description",
+              "title" => "Description",
+              "type" => "`$STRING`",
             },
             {
-              "name" => "info",
-              "title" => "Info",
-              "type" => "`$OBJECT`",
-              "req" => true,
-            },
-            {
-              "name" => "openapi",
-              "title" => "Openapi",
-              "type" => "`$ANY`",
-              "req" => true,
-            },
-            {
-              "name" => "paths",
-              "title" => "Paths",
-              "type" => "`$OBJECT`",
-              "req" => true,
-            },
-            {
-              "name" => "servers",
-              "title" => "Servers",
-              "type" => "`$ARRAY`",
-              "req" => true,
-            },
-            {
-              "name" => "tags",
-              "title" => "Tags",
-              "type" => "`$ARRAY`",
+              "name" => "url",
+              "title" => "Url",
+              "type" => "`$STRING`",
               "req" => true,
             },
           ],
@@ -11221,7 +11055,7 @@ module LoppeeBusinessConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.servers`",
                   },
                   "args" => {},
                   "select" => {},
@@ -11249,7 +11083,7 @@ module LoppeeBusinessConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.servers`",
                   },
                   "args" => {},
                   "select" => {},
@@ -18170,88 +18004,21 @@ module LoppeeBusinessConfig
         "pricing" => {
           "fields" => [
             {
-              "name" => "billing",
-              "title" => "Billing",
-              "type" => "`$OBJECT`",
+              "name" => "annual_usd",
+              "title" => "Annual Usd",
+              "type" => "`$NUMBER`",
               "req" => true,
             },
             {
-              "name" => "branch_add_ons",
-              "title" => "Branch Add Ons",
-              "type" => "`$ARRAY`",
+              "name" => "monthly_usd",
+              "title" => "Monthly Usd",
+              "type" => "`$NUMBER`",
               "req" => true,
             },
             {
-              "name" => "currency",
-              "title" => "Currency",
-              "type" => "`$ANY`",
-              "req" => true,
-            },
-            {
-              "name" => "generated_at",
-              "title" => "Generated At",
-              "type" => "`$STRING`",
-              "req" => true,
-              "format" => "date-time",
-            },
-            {
-              "name" => "neutrality",
-              "title" => "Neutrality",
-              "type" => "`$STRING`",
-              "req" => true,
-            },
-            {
-              "name" => "plans",
-              "title" => "Plans",
-              "type" => "`$ARRAY`",
-              "req" => true,
-            },
-            {
-              "name" => "promotions",
-              "title" => "Promotions",
-              "type" => "`$ARRAY`",
-              "req" => true,
-            },
-            {
-              "name" => "published_at",
-              "title" => "Published At",
-              "type" => [
-                "`$ONE`",
-                [
-                  "`$STRING`",
-                  "`$NULL`",
-                ],
-              ],
-              "req" => true,
-            },
-            {
-              "name" => "radius_extension",
-              "title" => "Radius Extension",
-              "type" => "`$OBJECT`",
-              "req" => true,
-            },
-            {
-              "name" => "revision_id",
-              "title" => "Revision Id",
-              "type" => [
-                "`$ONE`",
-                [
-                  "`$STRING`",
-                  "`$NULL`",
-                ],
-              ],
-              "req" => true,
-            },
-            {
-              "name" => "source",
-              "title" => "Source",
-              "type" => "`$ANY`",
-              "req" => true,
-            },
-            {
-              "name" => "trust_model_version",
-              "title" => "Trust Model Version",
-              "type" => "`$ANY`",
+              "name" => "radius_max_miles",
+              "title" => "Radius Max Miles",
+              "type" => "`$NUMBER`",
               "req" => true,
             },
           ],
@@ -18280,7 +18047,7 @@ module LoppeeBusinessConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.branch_add_ons`",
                   },
                   "args" => {},
                   "select" => {},
@@ -18675,7 +18442,7 @@ module LoppeeBusinessConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.fallback_registry`",
                   },
                   "args" => {
                     "query" => [
@@ -19764,27 +19531,21 @@ module LoppeeBusinessConfig
         "suggest" => {
           "fields" => [
             {
-              "name" => "categories",
-              "title" => "Categories",
-              "type" => "`$ARRAY`",
-              "req" => true,
-            },
-            {
-              "name" => "names",
-              "title" => "Names",
-              "type" => "`$ARRAY`",
-              "req" => true,
-            },
-            {
-              "name" => "query",
-              "title" => "Query",
+              "name" => "alias",
+              "title" => "Alias",
               "type" => "`$STRING`",
               "req" => true,
             },
             {
-              "name" => "schema_version",
-              "title" => "Schema Version",
-              "type" => "`$ANY`",
+              "name" => "path_titles",
+              "title" => "Path Titles",
+              "type" => "`$ARRAY`",
+              "req" => true,
+            },
+            {
+              "name" => "title",
+              "title" => "Title",
+              "type" => "`$STRING`",
               "req" => true,
             },
           ],
@@ -19813,7 +19574,7 @@ module LoppeeBusinessConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.categories`",
                   },
                   "args" => {
                     "query" => [
@@ -19896,7 +19657,7 @@ module LoppeeBusinessConfig
                       "lit" => "support",
                     },
                     {
-                      "var" => "id",
+                      "var" => "support_id",
                     },
                     {
                       "lit" => "internal-notes",
@@ -19906,12 +19667,12 @@ module LoppeeBusinessConfig
                     "v1",
                     "admin",
                     "support",
-                    "{id}",
+                    "{support_id}",
                     "internal-notes",
                   ],
                   "rename" => {
                     "param" => {
-                      "conversation_id" => "id",
+                      "conversation_id" => "support_id",
                     },
                   },
                   "transform" => {
@@ -19923,7 +19684,7 @@ module LoppeeBusinessConfig
                   "args" => {
                     "params" => [
                       {
-                        "name" => "id",
+                        "name" => "support_id",
                         "orig" => "conversation_id",
                         "type" => "`$STRING`",
                         "kind" => "param",
@@ -19933,7 +19694,7 @@ module LoppeeBusinessConfig
                   },
                   "select" => {
                     "exist" => [
-                      "id",
+                      "support_id",
                     ],
                   },
                   "response" => {
@@ -19956,11 +19717,6 @@ module LoppeeBusinessConfig
               "type" => "`$ANY`",
             },
             {
-              "name" => "id",
-              "title" => "Id",
-              "type" => "`$STRING`",
-            },
-            {
               "name" => "priority",
               "title" => "Priority",
               "type" => "`$ANY`",
@@ -19971,10 +19727,6 @@ module LoppeeBusinessConfig
               "type" => "`$ANY`",
             },
           ],
-          "id" => {
-            "field" => "id",
-            "name" => "id",
-          },
           "name" => "support_workflow",
           "op" => {
             "create" => {
@@ -19996,7 +19748,7 @@ module LoppeeBusinessConfig
                       "lit" => "support",
                     },
                     {
-                      "var" => "id",
+                      "var" => "support_id",
                     },
                     {
                       "lit" => "workflow",
@@ -20006,12 +19758,12 @@ module LoppeeBusinessConfig
                     "v1",
                     "admin",
                     "support",
-                    "{id}",
+                    "{support_id}",
                     "workflow",
                   ],
                   "rename" => {
                     "param" => {
-                      "conversation_id" => "id",
+                      "conversation_id" => "support_id",
                     },
                   },
                   "transform" => {
@@ -20025,7 +19777,7 @@ module LoppeeBusinessConfig
                   "args" => {
                     "params" => [
                       {
-                        "name" => "id",
+                        "name" => "support_id",
                         "orig" => "conversation_id",
                         "type" => "`$STRING`",
                         "kind" => "param",
@@ -20035,7 +19787,7 @@ module LoppeeBusinessConfig
                   },
                   "select" => {
                     "exist" => [
-                      "id",
+                      "support_id",
                     ],
                   },
                   "response" => {

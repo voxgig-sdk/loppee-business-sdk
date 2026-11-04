@@ -5,41 +5,17 @@ main: kit: entity: open_api_document: {
   alias: field: {}
 
   fields: {
-    components: {
-      h: "Components"
-      n: "components"
-      r: true
-      t: "`$OBJECT`"
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
     }
-    info: {
-      h: "Info"
-      n: "info"
+    url: {
+      h: "Url"
+      n: "url"
       r: true
-      t: "`$OBJECT`"
-    }
-    openapi: {
-      h: "Openapi"
-      n: "openapi"
-      r: true
-      t: "`$ANY`"
-    }
-    paths: {
-      h: "Paths"
-      n: "paths"
-      r: true
-      t: "`$OBJECT`"
-    }
-    servers: {
-      h: "Servers"
-      n: "servers"
-      r: true
-      t: "`$ARRAY`"
-    }
-    tags: {
-      h: "Tags"
-      n: "tags"
-      r: true
-      t: "`$ARRAY`"
+      t: "`$STRING`"
     }
   }
 
@@ -67,7 +43,7 @@ main: kit: entity: open_api_document: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.servers`"
           }
         }
         {
@@ -92,7 +68,7 @@ main: kit: entity: open_api_document: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.servers`"
           }
         }
       ]

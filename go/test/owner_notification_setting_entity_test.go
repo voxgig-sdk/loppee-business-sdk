@@ -71,6 +71,9 @@ func TestOwnerNotificationSettingEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		ownerNotificationSettingRef01Ent := client.OwnerNotificationSetting(nil)
 		ownerNotificationSettingRef01Data := core.ToMapAny(vs.GetProp(

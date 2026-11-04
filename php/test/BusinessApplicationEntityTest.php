@@ -59,6 +59,9 @@ class BusinessApplicationEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $business_application_ref01_ent = $client->BusinessApplication(null);
         $business_application_ref01_data = Helpers::to_map(Vs::getprop(

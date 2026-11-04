@@ -77,6 +77,9 @@ func TestModeratedActionEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = moderatedActionRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		moderatedActionRef01Ent := client.ModeratedAction(nil)
 		moderatedActionRef01MatchDt0 := map[string]any{}
@@ -94,6 +97,9 @@ func TestModeratedActionEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		moderatedActionRef01Ent := client.ModeratedAction(nil)
 		moderatedActionRef01Data := core.ToMapAny(vs.GetProp(
@@ -108,6 +114,9 @@ func TestModeratedActionEntity(t *testing.T) {
 			t.Fatal("expected create result to be a map")
 		}
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		moderatedActionRef01MatchDt0 := map[string]any{}
 		moderatedActionRef01DataDt0Loaded, err := moderatedActionRef01Ent.Load(moderatedActionRef01MatchDt0, nil)

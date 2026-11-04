@@ -33,7 +33,7 @@ class ConversationCloseEntityTest extends TestCase
         $client = LoppeeBusinessSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->ConversationClose(null)->create(["id" => 1], null);
+            $client->ConversationClose(null)->create(["conversation_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class ConversationCloseEntityTest extends TestCase
         $setup = conversation_close_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach ([] as $_op) {
+        foreach (["create"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "conversation_close." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -57,15 +57,27 @@ class ConversationCloseEntityTest extends TestCase
             $this->markTestSkipped('Live coverage incomplete: conversation_close.create.0 excluded (GET-only live run: needs POST /v1/account/conversations/{conversation_id}/close)');
         }
 
+        if (!empty($setup["live"])) {
+            foreach (["conversation01"] as $_liveKey) {
+                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
+                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via LOPPEE_BUSINESS_TEST_CONVERSATION_CLOSE_ENTID");
+                }
+            }
+        }
         $client = $setup["client"];
 
-        // Bootstrap entity data from existing test data.
-        $conversation_close_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.conversation_close")));
-        $conversation_close_ref01_data = null;
-        if (count($conversation_close_ref01_data_raw) > 0) {
-            $conversation_close_ref01_data = Helpers::to_map($conversation_close_ref01_data_raw[0][1]);
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
         }
+        // CREATE
+        $conversation_close_ref01_ent = $client->ConversationClose(null);
+        $conversation_close_ref01_data = Helpers::to_map(Vs::getprop(
+            Vs::getpath($setup["data"], "new.conversation_close"), "conversation_close_ref01"));
+        $conversation_close_ref01_data["conversation_id"] = $setup["idmap"]["conversation01"];
+
+        $conversation_close_ref01_data_result = $conversation_close_ref01_ent->create($conversation_close_ref01_data, null);
+        $conversation_close_ref01_data = Helpers::to_map(is_object($conversation_close_ref01_data_result) && method_exists($conversation_close_ref01_data_result, 'data_get') ? $conversation_close_ref01_data_result->data_get() : $conversation_close_ref01_data_result);
+        $this->assertNotNull($conversation_close_ref01_data);
 
     }
 }
@@ -85,7 +97,7 @@ function conversation_close_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["conversation_close01", "conversation_close02", "conversation_close03"] as $k) {
+    foreach (["conversation_close01", "conversation_close02", "conversation_close03", "conversation01", "conversation02", "conversation03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

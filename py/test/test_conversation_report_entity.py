@@ -37,7 +37,7 @@ class TestConversationReportEntity:
         client = LoppeeBusinessSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.ConversationReport(None).create({"id": 1, "reason": "x"}, None)
+            client.ConversationReport(None).create({"conversation_id": 1, "reason": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -61,6 +61,8 @@ class TestConversationReportEntity:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via LOPPEE_BUSINESS_TEST_CONVERSATION_REPORT_ENTID")
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         conversation_report_ref01_ent = client.ConversationReport(None)
         conversation_report_ref01_data = helpers.to_map(vs.getprop(
@@ -69,7 +71,6 @@ class TestConversationReportEntity:
 
         conversation_report_ref01_data = helpers.to_map(runner.entity_data(conversation_report_ref01_ent.create(conversation_report_ref01_data, None)))
         assert conversation_report_ref01_data is not None
-        assert conversation_report_ref01_data["id"] is not None
 
 
 
@@ -89,7 +90,7 @@ def _conversation_report_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["conversation_report01", "conversation_report02", "conversation_report03", "message01", "message02", "message03"],
+        ["conversation_report01", "conversation_report02", "conversation_report03", "conversation01", "conversation02", "conversation03", "message01", "message02", "message03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

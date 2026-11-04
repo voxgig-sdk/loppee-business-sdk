@@ -58,6 +58,8 @@ class TestBusinessOwnerEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         business_owner_ref01_ent = client.BusinessOwner(None)
         business_owner_ref01_data = helpers.to_map(vs.getprop(
@@ -67,6 +69,8 @@ class TestBusinessOwnerEntity:
         assert business_owner_ref01_data is not None
         assert business_owner_ref01_data["id"] is not None
 
+        if setup["live"]:
+            runner.live_pace()
         # UPDATE
         business_owner_ref01_data_up0_up = {
             "id": business_owner_ref01_data["id"],
@@ -78,7 +82,7 @@ class TestBusinessOwnerEntity:
 
         business_owner_ref01_resdata_up0 = helpers.to_map(runner.entity_data(business_owner_ref01_ent.update(business_owner_ref01_data_up0_up, None)))
         assert business_owner_ref01_resdata_up0 is not None
-        assert business_owner_ref01_resdata_up0["id"] == business_owner_ref01_data_up0_up["id"]
+        assert runner.live_same_id(business_owner_ref01_resdata_up0.get("id"), business_owner_ref01_data_up0_up["id"])
         assert business_owner_ref01_resdata_up0[business_owner_ref01_markdef_up0_name] == business_owner_ref01_markdef_up0_value
 
 

@@ -2,32 +2,28 @@
   "existing": {
     "suggest": {
       "SUGGEST00": {
-        "categories": [],
-        "names": [],
-        "query": "s2a",
-        "schema_version": "s2b"
+        "alias": "s1e",
+        "path_titles": [],
+        "title": "s20"
       },
       "SUGGEST01": {
-        "categories": [],
-        "names": [],
-        "query": "s52",
-        "schema_version": "s53"
+        "alias": "s3c",
+        "path_titles": [],
+        "title": "s3e"
       },
       "SUGGEST02": {
-        "categories": [],
-        "names": [],
-        "query": "s7a",
-        "schema_version": "s7b"
+        "alias": "s5a",
+        "path_titles": [],
+        "title": "s5c"
       }
     }
   },
   "new": {
     "suggest": {
       "suggest_ref01": {
-        "categories": [],
-        "names": [],
-        "query": "sa2",
-        "schema_version": "sa3"
+        "alias": "s78",
+        "path_titles": [],
+        "title": "s7a"
       }
     }
   },

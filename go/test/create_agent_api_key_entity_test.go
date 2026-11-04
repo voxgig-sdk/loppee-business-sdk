@@ -71,6 +71,9 @@ func TestCreateAgentApiKeyEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		createAgentApiKeyRef01Ent := client.CreateAgentApiKey(nil)
 		createAgentApiKeyRef01Data := core.ToMapAny(vs.GetProp(

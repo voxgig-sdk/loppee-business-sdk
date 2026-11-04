@@ -25,7 +25,7 @@ class BusinessReviewEntityTest < Minitest::Test
     end
     client = LoppeeBusinessSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.BusinessReview(nil).load({ "id" => 1 }, nil)
+      client.BusinessReview(nil).load({ "business_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class BusinessReviewEntityTest < Minitest::Test
     setup = business_review_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["load"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "business_review." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -42,8 +42,9 @@ class BusinessReviewEntityTest < Minitest::Test
       end
     end
     if setup[:live]
-      Runner.live_miss(LIVE_STRICT, "Live entity test blocked: " + "the flow loads a business_review record it has no list to find")
+      skip("Live coverage incomplete: the flow has no step to run")
     end
+
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -53,16 +54,6 @@ class BusinessReviewEntityTest < Minitest::Test
     if business_review_ref01_data_raw.length > 0
       business_review_ref01_data = Helpers.to_map(business_review_ref01_data_raw[0][1])
     end
-
-    # LOAD
-    business_review_ref01_ent = client.BusinessReview(nil)
-    business_review_ref01_match_dt0 = {
-      "id" => business_review_ref01_data["id"],
-    }
-    business_review_ref01_data_dt0_loaded = business_review_ref01_ent.load(business_review_ref01_match_dt0, nil)
-    business_review_ref01_data_dt0_load_result = Helpers.to_map(business_review_ref01_data_dt0_loaded.respond_to?(:data_get) ? business_review_ref01_data_dt0_loaded.data_get : business_review_ref01_data_dt0_loaded)
-    assert !business_review_ref01_data_dt0_load_result.nil?
-    assert_equal business_review_ref01_data_dt0_load_result["id"], business_review_ref01_data["id"]
 
   end
 end

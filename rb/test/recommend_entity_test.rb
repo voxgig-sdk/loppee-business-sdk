@@ -167,6 +167,7 @@ class RecommendEntityTest < Minitest::Test
       recommend_ref01_data = Helpers.to_map(recommend_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # LIST
     recommend_ref01_ent = client.Recommend(nil)
     recommend_ref01_match = {}

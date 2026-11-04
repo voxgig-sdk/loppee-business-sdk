@@ -61,6 +61,9 @@ describe("OperationEntity", function()
     end
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local operation_ref01_ent = client:Operation(nil)
     local operation_ref01_data = helpers.to_map(vs.getprop(
@@ -73,6 +76,9 @@ describe("OperationEntity", function()
     assert.is_not_nil(operation_ref01_data)
     assert.is_not_nil(operation_ref01_data["id"])
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- UPDATE
     local operation_ref01_data_up0_up = {
       id = operation_ref01_data["id"],
@@ -86,9 +92,12 @@ describe("OperationEntity", function()
     assert.is_nil(err)
     local operation_ref01_resdata_up0 = helpers.to_map(type(operation_ref01_resdata_up0_result) == 'table' and operation_ref01_resdata_up0_result.data_get and operation_ref01_resdata_up0_result:data_get() or operation_ref01_resdata_up0_result)
     assert.is_not_nil(operation_ref01_resdata_up0)
-    assert.are.equal(operation_ref01_resdata_up0["id"], operation_ref01_data_up0_up["id"])
+    assert.is_true(runner.live_same_id(operation_ref01_resdata_up0["id"], operation_ref01_data_up0_up["id"]))
     assert.are.equal(operation_ref01_resdata_up0[operation_ref01_markdef_up0_name], operation_ref01_markdef_up0_value)
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- REMOVE
     local operation_ref01_match_rm0 = {
       id = operation_ref01_data["id"],

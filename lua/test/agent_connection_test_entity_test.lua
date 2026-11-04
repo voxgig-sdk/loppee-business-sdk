@@ -52,6 +52,9 @@ describe("AgentConnectionTestEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local agent_connection_test_ref01_ent = client:AgentConnectionTest(nil)
     local agent_connection_test_ref01_data = helpers.to_map(vs.getprop(

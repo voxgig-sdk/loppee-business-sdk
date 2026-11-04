@@ -211,6 +211,9 @@ class BusinessIndexEntityTest extends TestCase
             $business_index_ref01_data = Helpers::to_map($business_index_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LIST
         $business_index_ref01_ent = $client->BusinessIndex(null);
         $business_index_ref01_match = [];

@@ -33,7 +33,7 @@ class ConversationReportEntityTest extends TestCase
         $client = LoppeeBusinessSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->ConversationReport(null)->create(["id" => 1, "reason" => 'x'], null);
+            $client->ConversationReport(null)->create(["conversation_id" => 1, "reason" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -66,6 +66,9 @@ class ConversationReportEntityTest extends TestCase
         }
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $conversation_report_ref01_ent = $client->ConversationReport(null);
         $conversation_report_ref01_data = Helpers::to_map(Vs::getprop(
@@ -75,7 +78,6 @@ class ConversationReportEntityTest extends TestCase
         $conversation_report_ref01_data_result = $conversation_report_ref01_ent->create($conversation_report_ref01_data, null);
         $conversation_report_ref01_data = Helpers::to_map(is_object($conversation_report_ref01_data_result) && method_exists($conversation_report_ref01_data_result, 'data_get') ? $conversation_report_ref01_data_result->data_get() : $conversation_report_ref01_data_result);
         $this->assertNotNull($conversation_report_ref01_data);
-        $this->assertNotNull($conversation_report_ref01_data["id"]);
 
     }
 }
@@ -95,7 +97,7 @@ function conversation_report_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["conversation_report01", "conversation_report02", "conversation_report03", "message01", "message02", "message03"] as $k) {
+    foreach (["conversation_report01", "conversation_report02", "conversation_report03", "conversation01", "conversation02", "conversation03", "message01", "message02", "message03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

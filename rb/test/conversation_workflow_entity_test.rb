@@ -55,6 +55,7 @@ class ConversationWorkflowEntityTest < Minitest::Test
     end
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     conversation_workflow_ref01_ent = client.ConversationWorkflow(nil)
     conversation_workflow_ref01_data = Helpers.to_map(Vs.getprop(

@@ -71,6 +71,9 @@ func TestSavedBusinessEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		savedBusinessRef01Ent := client.SavedBusiness(nil)
 		savedBusinessRef01Data := core.ToMapAny(vs.GetProp(

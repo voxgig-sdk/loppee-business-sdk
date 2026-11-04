@@ -53,6 +53,9 @@ describe("AnonymousLocationProofRevocationEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local anonymous_location_proof_revocation_ref01_ent = client:AnonymousLocationProofRevocation(nil)
     local anonymous_location_proof_revocation_ref01_data = helpers.to_map(vs.getprop(

@@ -11,19 +11,6 @@ guide: {
   entity: agent_access: {
     path: "/v1/actions/agent-access-request": {
       op: create: method: *POST
-      op: create: transform: req: "agent_name": *("`reqdata.agent_name`")|top
-      op: create: transform: req: "agent_type": *("`reqdata.agent_type`")|top
-      op: create: transform: req: "callback_url": *("`reqdata.callback_url`")|top
-      op: create: transform: req: "compliance_notes": *("`reqdata.compliance_note`")|top
-      op: create: transform: req: "data_needs": *("`reqdata.data_need`")|top
-      op: create: transform: req: "developer_email": *("`reqdata.developer_email`")|top
-      op: create: transform: req: "operating_states": *("`reqdata.operating_state`")|top
-      op: create: transform: req: "organization_name": *("`reqdata.organization_name`")|top
-      op: create: transform: req: "requested_actions": *("`reqdata.requested_action`")|top
-      op: create: transform: req: "safety_contact": *("`reqdata.safety_contact`")|top
-      op: create: transform: req: "target_categories": *("`reqdata.target_category`")|top
-      op: create: transform: req: "use_case": *("`reqdata.use_case`")|top
-      op: create: transform: req: "website": *("`reqdata.website`")|top
     }
   }
 
@@ -36,7 +23,6 @@ guide: {
   entity: agent_connection_test: {
     path: "/v1/actions/agent-connection-test": {
       op: create: method: *POST
-      op: create: transform: req: "key": *("`reqdata.key`")|top
     }
   }
 
@@ -55,6 +41,7 @@ guide: {
   entity: agent_openapi: {
     path: "/v1/agent-openapi.json": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.servers`")|top
     }
   }
 
@@ -67,10 +54,6 @@ guide: {
   entity: anonymous_location_proof_revocation: {
     path: "/v1/location-proofs": {
       op: create: method: *POST
-      op: create: transform: req: "accuracy_meters": *("`reqdata.accuracy_meter`")|top
-      op: create: transform: req: "captured_at": *("`reqdata.captured_at`")|top
-      op: create: transform: req: "latitude": *("`reqdata.latitude`")|top
-      op: create: transform: req: "longitude": *("`reqdata.longitude`")|top
     }
     path: "/v1/location-proofs/{location_proof_id}": {
       op: remove: method: *DELETE
@@ -80,38 +63,17 @@ guide: {
   entity: business_application: {
     path: "/v1/actions/business-application": {
       op: create: method: *POST
-      op: create: transform: req: "application": *("`reqdata.application`")|top
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
-      op: create: transform: req: "claim_id": *("`reqdata.claim_id`")|top
-      op: create: transform: req: "files": *("`reqdata.file`")|top
-      op: create: transform: req: "listing_id": *("`reqdata.listing_id`")|top
     }
   }
 
   entity: business_claim: {
     path: "/v1/actions/business-claim": {
       op: create: method: *POST
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
-      op: create: transform: req: "category": *("`reqdata.category`")|top
-      op: create: transform: req: "city": *("`reqdata.city`")|top
-      op: create: transform: req: "claimant_email": *("`reqdata.claimant_email`")|top
-      op: create: transform: req: "claimant_name": *("`reqdata.claimant_name`")|top
-      op: create: transform: req: "claimant_relationship": *("`reqdata.claimant_relationship`")|top
-      op: create: transform: req: "display_name": *("`reqdata.display_name`")|top
-      op: create: transform: req: "listing_id": *("`reqdata.listing_id`")|top
-      op: create: transform: req: "notes": *("`reqdata.note`")|top
-      op: create: transform: req: "phone": *("`reqdata.phone`")|top
-      op: create: transform: req: "source": *("`reqdata.source`")|top
-      op: create: transform: req: "source_type": *("`reqdata.source_type`")|top
-      op: create: transform: req: "source_url": *("`reqdata.source_url`")|top
-      op: create: transform: req: "state": *("`reqdata.state`")|top
-      op: create: transform: req: "website": *("`reqdata.website`")|top
     }
   }
 
   entity: business_deal: {
     path: "/v1/businesses/{business_id}/deals.json": {
-      rename: param: "business_id": *"id"
       op: list: method: *GET
       op: list: transform: res: *("`body.deals`")|top
     }
@@ -177,9 +139,6 @@ guide: {
     }
     path: "/v1/owner/agents": {
       op: create: method: *POST
-      op: create: transform: req: "actions": *("`reqdata.action`")|top
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
-      op: create: transform: req: "name": *("`reqdata.name`")|top
     }
     path: "/v1/owner/agents/{agent_id}/disconnect": {
       op: create: method: *POST
@@ -187,14 +146,12 @@ guide: {
     path: "/v1/owner/agents/{agent_id}/permissions": {
       op: create: method: *POST
       op: create: transform: res: *("`body.agent`")|top
-      op: create: transform: req: "actions": *("`reqdata.action`")|top
     }
     path: "/v1/owner/agents/{agent_id}/rotate-key": {
       op: create: method: *POST
     }
     path: "/v1/owner/agents/{agent_id}/webhook": {
       op: create: method: *POST
-      op: create: transform: req: "url": *("`reqdata.url`")|top
     }
     path: "/v1/owner/agents/{agent_id}/webhook/disable": {
       op: create: method: *POST
@@ -237,15 +194,9 @@ guide: {
     path: "/v1/owner/deletion-requests": {
       op: create: method: *POST
       op: create: transform: res: *("`body.request`")|top
-      op: create: transform: req: "acknowledge_data_effects": *("`reqdata.acknowledge_data_effect`")|top
-      op: create: transform: req: "confirmation": *("`reqdata.confirmation`")|top
-      op: create: transform: req: "reason": *("`reqdata.reason`")|top
     }
     path: "/v1/owner/diamond-radius": {
       op: create: method: *POST
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
-      op: create: transform: req: "period": *("`reqdata.period`")|top
-      op: create: transform: req: "radius_miles": *("`reqdata.radius_mile`")|top
     }
     path: "/v1/owner/evidence": {
       op: create: method: *POST
@@ -297,8 +248,6 @@ guide: {
     path: "/v1/owner/messages/{interaction_id}/reply": {
       rename: param: "interaction_id": *"message_id"
       op: create: method: *POST
-      op: create: transform: req: "body": *("`reqdata.body`")|top
-      op: create: transform: req: "client_message_id": *("`reqdata.client_message_id`")|top
     }
     path: "/v1/owner/missed-contacts/convert": {
       op: create: method: *POST
@@ -306,13 +255,9 @@ guide: {
     path: "/v1/owner/mobile-devices": {
       op: create: method: *POST
       op: create: transform: res: *("`body.device`")|top
-      op: create: transform: req: "installation_id": *("`reqdata.installation_id`")|top
-      op: create: transform: req: "platform": *("`reqdata.platform`")|top
-      op: create: transform: req: "push_token": *("`reqdata.push_token`")|top
     }
     path: "/v1/owner/mobile-devices/revoke": {
       op: create: method: *POST
-      op: create: transform: req: "installation_id": *("`reqdata.installation_id`")|top
     }
     path: "/v1/owner/photos": {
       op: create: method: *POST
@@ -345,7 +290,6 @@ guide: {
 
   entity: business_review: {
     path: "/v1/businesses/{business_id}/reviews.json": {
-      rename: param: "business_id": *"id"
       op: load: method: *GET
     }
   }
@@ -354,37 +298,21 @@ guide: {
     path: "/v1/account/conversations/{conversation_id}/attachments": {
       op: create: method: *POST
       op: create: transform: res: *("`body.attachment`")|top
-      op: create: transform: req: "content_type": *("`reqdata.content_type`")|top
-      op: create: transform: req: "data_base64": *("`reqdata.data_base64`")|top
-      op: create: transform: req: "file_name": *("`reqdata.file_name`")|top
-      op: create: transform: req: "size_bytes": *("`reqdata.size_byte`")|top
     }
     path: "/v1/admin/support/{conversation_id}/attachments": {
       rename: param: "conversation_id": *"support_id"
       op: create: method: *POST
       op: create: transform: res: *("`body.attachment`")|top
-      op: create: transform: req: "content_type": *("`reqdata.content_type`")|top
-      op: create: transform: req: "data_base64": *("`reqdata.data_base64`")|top
-      op: create: transform: req: "file_name": *("`reqdata.file_name`")|top
-      op: create: transform: req: "size_bytes": *("`reqdata.size_byte`")|top
     }
     path: "/v1/owner/messages/{interaction_id}/attachments": {
       rename: param: "interaction_id": *"message_id"
       op: create: method: *POST
       op: create: transform: res: *("`body.attachment`")|top
-      op: create: transform: req: "content_type": *("`reqdata.content_type`")|top
-      op: create: transform: req: "data_base64": *("`reqdata.data_base64`")|top
-      op: create: transform: req: "file_name": *("`reqdata.file_name`")|top
-      op: create: transform: req: "size_bytes": *("`reqdata.size_byte`")|top
     }
     path: "/v1/owner/support/{conversation_id}/attachments": {
       rename: param: "conversation_id": *"support_id"
       op: create: method: *POST
       op: create: transform: res: *("`body.attachment`")|top
-      op: create: transform: req: "content_type": *("`reqdata.content_type`")|top
-      op: create: transform: req: "data_base64": *("`reqdata.data_base64`")|top
-      op: create: transform: req: "file_name": *("`reqdata.file_name`")|top
-      op: create: transform: req: "size_bytes": *("`reqdata.size_byte`")|top
     }
   }
 
@@ -413,80 +341,46 @@ guide: {
   entity: claim_verification_send: {
     path: "/v1/actions/claim-verification/send": {
       op: create: method: *POST
-      op: create: transform: req: "channel": *("`reqdata.channel`")|top
-      op: create: transform: req: "claim_id": *("`reqdata.claim_id`")|top
-      op: create: transform: req: "request_id": *("`reqdata.request_id`")|top
     }
   }
 
   entity: claim_verification_verify: {
     path: "/v1/actions/claim-verification/verify": {
       op: create: method: *POST
-      op: create: transform: req: "challenge_id": *("`reqdata.challenge_id`")|top
-      op: create: transform: req: "channel": *("`reqdata.channel`")|top
-      op: create: transform: req: "claim_id": *("`reqdata.claim_id`")|top
-      op: create: transform: req: "code": *("`reqdata.code`")|top
     }
   }
 
   entity: commercial_click: {
     path: "/v1/actions/commercial-click": {
       op: create: method: *POST
-      op: create: transform: req: "action_type": *("`reqdata.action_type`")|top
-      op: create: transform: req: "ad_receipt": *("`reqdata.ad_receipt`")|top
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
-      op: create: transform: req: "category": *("`reqdata.category`")|top
-      op: create: transform: req: "city": *("`reqdata.city`")|top
-      op: create: transform: req: "commercial_status": *("`reqdata.commercial_status`")|top
-      op: create: transform: req: "directory_listing_id": *("`reqdata.directory_listing_id`")|top
-      op: create: transform: req: "display_name": *("`reqdata.display_name`")|top
-      op: create: transform: req: "listing_id": *("`reqdata.listing_id`")|top
-      op: create: transform: req: "metadata": *("`reqdata.metadata`")|top
-      op: create: transform: req: "page_path": *("`reqdata.page_path`")|top
-      op: create: transform: req: "referrer": *("`reqdata.referrer`")|top
-      op: create: transform: req: "source_type": *("`reqdata.source_type`")|top
-      op: create: transform: req: "state": *("`reqdata.state`")|top
-      op: create: transform: req: "surface": *("`reqdata.surface`")|top
-      op: create: transform: req: "target_url": *("`reqdata.target_url`")|top
     }
   }
 
   entity: contact_recorded: {
     path: "/v1/actions/confirm-interaction": {
       op: create: method: *POST
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
     }
   }
 
   entity: conversation: {
     path: "/v1/actions/list-my-conversations": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "conversation_id": *("`reqdata.conversation_id`")|top
-      op: create: transform: req: "cursor": *("`reqdata.cursor`")|top
-      op: create: transform: req: "limit": *("`reqdata.limit`")|top
     }
   }
 
   entity: conversation_close: {
     path: "/v1/account/conversations/{conversation_id}/close": {
-      rename: param: "conversation_id": *"id"
       op: create: method: *POST
     }
   }
 
   entity: conversation_report: {
     path: "/v1/account/conversations/{conversation_id}/report": {
-      rename: param: "conversation_id": *"id"
       op: create: method: *POST
-      op: create: transform: req: "detail": *("`reqdata.detail`")|top
-      op: create: transform: req: "reason": *("`reqdata.reason`")|top
     }
     path: "/v1/owner/messages/{interaction_id}/report": {
       rename: param: "interaction_id": *"message_id"
       op: create: method: *POST
-      op: create: transform: req: "detail": *("`reqdata.detail`")|top
-      op: create: transform: req: "reason": *("`reqdata.reason`")|top
     }
   }
 
@@ -495,8 +389,6 @@ guide: {
       rename: param: "interaction_id": *"message_id"
       op: create: method: *POST
       op: create: transform: res: *("`body.conversation`")|top
-      op: create: transform: req: "priority": *("`reqdata.priority`")|top
-      op: create: transform: req: "status": *("`reqdata.status`")|top
     }
   }
 
@@ -510,14 +402,6 @@ guide: {
     path: "/v1/account/customer": {
       op: create: method: *POST
       op: create: transform: res: *("`body.account`")|top
-      op: create: transform: req: "auth_provider": *("`reqdata.auth_provider`")|top
-      op: create: transform: req: "avatar_url": *("`reqdata.avatar_url`")|top
-      op: create: transform: req: "city": *("`reqdata.city`")|top
-      op: create: transform: req: "full_name": *("`reqdata.full_name`")|top
-      op: create: transform: req: "phone": *("`reqdata.phone`")|top
-      op: create: transform: req: "search_category": *("`reqdata.search_category`")|top
-      op: create: transform: req: "service_need": *("`reqdata.service_need`")|top
-      op: create: transform: req: "state": *("`reqdata.state`")|top
     }
   }
 
@@ -527,11 +411,6 @@ guide: {
     }
     path: "/v1/account/agent-location/app-attest/keys": {
       op: create: method: *POST
-      op: create: transform: req: "attestation": *("`reqdata.attestation`")|top
-      op: create: transform: req: "challenge": *("`reqdata.challenge`")|top
-      op: create: transform: req: "challenge_id": *("`reqdata.challenge_id`")|top
-      op: create: transform: req: "installation_id": *("`reqdata.installation_id`")|top
-      op: create: transform: req: "key_id": *("`reqdata.key_id`")|top
     }
     path: "/v1/account/agent-location/connections/{connection_id}/policy": {
       op: create: method: *POST
@@ -550,7 +429,6 @@ guide: {
     }
     path: "/v1/account/agents/{agent_id}/webhook": {
       op: create: method: *POST
-      op: create: transform: req: "url": *("`reqdata.url`")|top
     }
     path: "/v1/account/agents/{agent_id}/webhook/disable": {
       op: create: method: *POST
@@ -561,9 +439,6 @@ guide: {
     }
     path: "/v1/account/assistant/chat": {
       op: create: method: *POST
-      op: create: transform: req: "continuation": *("`reqdata.continuation`")|top
-      op: create: transform: req: "location": *("`reqdata.location`")|top
-      op: create: transform: req: "messages": *("`reqdata.message`")|top
     }
     path: "/v1/account/conversations/{conversation_id}/read": {
       op: create: method: *POST
@@ -571,72 +446,26 @@ guide: {
     path: "/v1/account/conversations/{conversation_id}/reply": {
       op: create: method: *POST
       op: create: transform: res: *("`body.reply`")|top
-      op: create: transform: req: "body": *("`reqdata.body`")|top
-      op: create: transform: req: "client_message_id": *("`reqdata.client_message_id`")|top
     }
     path: "/v1/account/deletion-requests": {
       op: create: method: *POST
       op: create: transform: res: *("`body.request`")|top
-      op: create: transform: req: "acknowledge_data_effects": *("`reqdata.acknowledge_data_effect`")|top
-      op: create: transform: req: "confirmation": *("`reqdata.confirmation`")|top
-      op: create: transform: req: "reason": *("`reqdata.reason`")|top
-    }
-    path: "/v1/account/location-handoffs/{handoff_id}/complete-from-device": {
-      rename: param: "handoff_id": *"location_handoff_id"
-      op: create: method: *POST
-      op: create: transform: req: "accuracy_meters": *("`reqdata.accuracy_meter`")|top
-      op: create: transform: req: "agent_key_id": *("`reqdata.agent_key_id`")|top
-      op: create: transform: req: "assertion": *("`reqdata.assertion`")|top
-      op: create: transform: req: "capture_source": *("`reqdata.capture_source`")|top
-      op: create: transform: req: "captured_at": *("`reqdata.captured_at`")|top
-      op: create: transform: req: "challenge": *("`reqdata.challenge`")|top
-      op: create: transform: req: "challenge_id": *("`reqdata.challenge_id`")|top
-      op: create: transform: req: "connection_id": *("`reqdata.connection_id`")|top
-      op: create: transform: req: "installation_id": *("`reqdata.installation_id`")|top
-      op: create: transform: req: "key_id": *("`reqdata.key_id`")|top
-      op: create: transform: req: "latitude": *("`reqdata.latitude`")|top
-      op: create: transform: req: "longitude": *("`reqdata.longitude`")|top
-      op: create: transform: req: "oauth_grant_id": *("`reqdata.oauth_grant_id`")|top
-      op: create: transform: req: "use_mode": *("`reqdata.use_mode`")|top
-    }
-    path: "/v1/account/location-handoffs/{handoff_id}/decline-from-device": {
-      rename: param: "handoff_id": *"location_handoff_id"
-      op: create: method: *POST
-      op: create: transform: req: "agent_key_id": *("`reqdata.agent_key_id`")|top
-      op: create: transform: req: "assertion": *("`reqdata.assertion`")|top
-      op: create: transform: req: "challenge": *("`reqdata.challenge`")|top
-      op: create: transform: req: "challenge_id": *("`reqdata.challenge_id`")|top
-      op: create: transform: req: "connection_id": *("`reqdata.connection_id`")|top
-      op: create: transform: req: "installation_id": *("`reqdata.installation_id`")|top
-      op: create: transform: req: "key_id": *("`reqdata.key_id`")|top
-      op: create: transform: req: "oauth_grant_id": *("`reqdata.oauth_grant_id`")|top
-      op: create: transform: req: "request_mode": *("`reqdata.request_mode`")|top
     }
     path: "/v1/account/mobile-devices": {
       op: create: method: *POST
       op: create: transform: res: *("`body.device`")|top
-      op: create: transform: req: "installation_id": *("`reqdata.installation_id`")|top
-      op: create: transform: req: "platform": *("`reqdata.platform`")|top
-      op: create: transform: req: "push_token": *("`reqdata.push_token`")|top
     }
     path: "/v1/account/mobile-devices/message-alerts": {
       op: create: method: *POST
-      op: create: transform: req: "enabled": *("`reqdata.enabled`")|top
-      op: create: transform: req: "installation_id": *("`reqdata.installation_id`")|top
     }
     path: "/v1/account/mobile-devices/revoke": {
       op: create: method: *POST
-      op: create: transform: req: "installation_id": *("`reqdata.installation_id`")|top
     }
   }
 
   entity: customer_location_proof_revocation: {
     path: "/v1/account/location-proofs": {
       op: create: method: *POST
-      op: create: transform: req: "accuracy_meters": *("`reqdata.accuracy_meter`")|top
-      op: create: transform: req: "captured_at": *("`reqdata.captured_at`")|top
-      op: create: transform: req: "latitude": *("`reqdata.latitude`")|top
-      op: create: transform: req: "longitude": *("`reqdata.longitude`")|top
     }
     path: "/v1/account/location-proofs/{location_proof_id}": {
       op: remove: method: *DELETE
@@ -646,24 +475,18 @@ guide: {
   entity: destination_address_suggestion: {
     path: "/v1/account/destination-address-suggestions": {
       op: create: method: *POST
-      op: create: transform: req: "input": *("`reqdata.input`")|top
     }
     path: "/v1/destination-address-suggestions": {
       op: create: method: *POST
-      op: create: transform: req: "input": *("`reqdata.input`")|top
     }
   }
 
   entity: destination_location_proof: {
     path: "/v1/account/destination-location-proofs": {
       op: create: method: *POST
-      op: create: transform: req: "address": *("`reqdata.address`")|top
-      op: create: transform: req: "premise_proximity_confirmation_token": *("`reqdata.premise_proximity_confirmation_token`")|top
     }
     path: "/v1/destination-location-proofs": {
       op: create: method: *POST
-      op: create: transform: req: "address": *("`reqdata.address`")|top
-      op: create: transform: req: "premise_proximity_confirmation_token": *("`reqdata.premise_proximity_confirmation_token`")|top
     }
   }
 
@@ -693,30 +516,19 @@ guide: {
     }
     path: "/v1/actions/job-application": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "cover_note": *("`reqdata.cover_note`")|top
-      op: create: transform: req: "job_id": *("`reqdata.job_id`")|top
-      op: create: transform: req: "resume": *("`reqdata.resume`")|top
     }
     path: "/v1/actions/list-my-job-applications": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "limit": *("`reqdata.limit`")|top
-      op: create: transform: req: "offset": *("`reqdata.offset`")|top
-      op: create: transform: req: "status": *("`reqdata.status`")|top
     }
     path: "/v1/jobs/{job_id}/apply": {
       action: "apply": {}
       rename: param: "job_id": *"id"
       op: create: method: *POST
-      op: create: transform: req: "cover_note": *("`reqdata.cover_note`")|top
-      op: create: transform: req: "resume": *("`reqdata.resume`")|top
     }
     path: "/v1/owner/job-applications/{application_id}/status": {
       action: "status": {}
       rename: param: "application_id": *"id"
       op: create: method: *POST
-      op: create: transform: req: "status": *("`reqdata.status`")|top
     }
   }
 
@@ -735,27 +547,24 @@ guide: {
     path: "/v1/account/location-handoffs": {
       op: create: method: *POST
     }
+    path: "/v1/account/location-handoffs/{handoff_id}/complete-from-device": {
+      action: "complete_from_device": {}
+      rename: param: "handoff_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/v1/account/location-handoffs/{handoff_id}/decline-from-device": {
+      action: "decline_from_device": {}
+      rename: param: "handoff_id": *"id"
+      op: create: method: *POST
+    }
   }
 
   entity: message: {
     path: "/v1/actions/business-message": {
       op: create: method: *POST
-      op: create: transform: req: "message": *("`reqdata.message`")|top
-      op: create: transform: req: "source_path": *("`reqdata.source_path`")|top
-      op: create: transform: req: "subject": *("`reqdata.subject`")|top
-      op: create: transform: req: "target_business_id": *("`reqdata.target_business_id`")|top
-      op: create: transform: req: "target_business_name": *("`reqdata.target_business_name`")|top
-      op: create: transform: req: "target_business_source": *("`reqdata.target_business_source`")|top
     }
     path: "/v1/actions/message-request": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "client_message_id": *("`reqdata.client_message_id`")|top
-      op: create: transform: req: "message": *("`reqdata.message`")|top
-      op: create: transform: req: "subject": *("`reqdata.subject`")|top
-      op: create: transform: req: "target_business_id": *("`reqdata.target_business_id`")|top
-      op: create: transform: req: "target_business_name": *("`reqdata.target_business_name`")|top
-      op: create: transform: req: "target_business_source": *("`reqdata.target_business_source`")|top
     }
   }
 
@@ -765,9 +574,6 @@ guide: {
     }
     path: "/v1/assistant/chat": {
       op: create: method: *POST
-      op: create: transform: req: "continuation": *("`reqdata.continuation`")|top
-      op: create: transform: req: "location": *("`reqdata.location`")|top
-      op: create: transform: req: "messages": *("`reqdata.message`")|top
     }
     path: "/v1/assistant/native/status": {
       op: load: method: *GET
@@ -777,15 +583,6 @@ guide: {
     }
     path: "/v1/internal/jobs/resume-scan-results": {
       op: create: method: *POST
-      op: create: transform: req: "content_type": *("`reqdata.content_type`")|top
-      op: create: transform: req: "file_sha256": *("`reqdata.file_sha256`")|top
-      op: create: transform: req: "intent_id": *("`reqdata.intent_id`")|top
-      op: create: transform: req: "result": *("`reqdata.result`")|top
-      op: create: transform: req: "scan_authority_id": *("`reqdata.scan_authority_id`")|top
-      op: create: transform: req: "scanner": *("`reqdata.scanner`")|top
-      op: create: transform: req: "scanner_version": *("`reqdata.scanner_version`")|top
-      op: create: transform: req: "signature": *("`reqdata.signature`")|top
-      op: create: transform: req: "size_bytes": *("`reqdata.size_byte`")|top
     }
     path: "/v1/internal/owner-evidence/scan-results": {
       op: create: method: *POST
@@ -798,27 +595,23 @@ guide: {
     }
     path: "/v1/support/guide/help": {
       op: create: method: *POST
-      op: create: transform: req: "question": *("`reqdata.question`")|top
     }
   }
 
   entity: open_api_document: {
     path: "/openapi.json": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.servers`")|top
     }
     path: "/v1/openapi.json": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.servers`")|top
     }
   }
 
   entity: operation: {
     path: "/v1/admin/access-contexts": {
       op: create: method: *POST
-      op: create: transform: req: "context_id": *("`reqdata.context_id`")|top
-      op: create: transform: req: "context_type": *("`reqdata.context_type`")|top
-      op: create: transform: req: "purpose_code": *("`reqdata.purpose_code`")|top
-      op: create: transform: req: "related_case_id": *("`reqdata.related_case_id`")|top
-      op: create: transform: req: "scope": *("`reqdata.scope`")|top
     }
     path: "/v1/admin/access-contexts/{access_context_id}": {
       op: remove: method: *DELETE
@@ -871,8 +664,6 @@ guide: {
     path: "/v1/admin/ai-connections": {
       op: create: method: *POST
       op: create: transform: res: *("`body.connection`")|top
-      op: create: transform: req: "api_key": *("`reqdata.api_key`")|top
-      op: create: transform: req: "provider": *("`reqdata.provider`")|top
     }
     path: "/v1/admin/ai-connections/{connection_id}": {
       op: remove: method: *DELETE
@@ -881,7 +672,6 @@ guide: {
       action: "rotate": {}
       op: create: method: *POST
       op: create: transform: res: *("`body.connection`")|top
-      op: create: transform: req: "api_key": *("`reqdata.api_key`")|top
     }
     path: "/v1/admin/ai-connections/{connection_id}/test": {
       action: "test": {}
@@ -891,22 +681,13 @@ guide: {
       op: remove: method: *DELETE
       op: update: method: *PUT
       op: update: transform: res: *("`body.binding`")|top
-      op: update: transform: req: "connection_id": *("`reqdata.connection_id`")|top
-      op: update: transform: req: "enabled": *("`reqdata.enabled`")|top
-      op: update: transform: req: "model_id": *("`reqdata.model_id`")|top
     }
     path: "/v1/admin/assistant-provider/active": {
       op: create: method: *POST
-      op: create: transform: req: "provider": *("`reqdata.provider`")|top
     }
     path: "/v1/admin/assistant-provider/{provider}": {
       op: remove: method: *DELETE
       op: update: method: *PUT
-      op: update: transform: req: "api_key": *("`reqdata.api_key`")|top
-      op: update: transform: req: "base_url": *("`reqdata.base_url`")|top
-      op: update: transform: req: "custom_wire": *("`reqdata.custom_wire`")|top
-      op: update: transform: req: "make_active": *("`reqdata.make_active`")|top
-      op: update: transform: req: "model": *("`reqdata.model`")|top
     }
     path: "/v1/admin/assistant-provider/{provider}/test": {
       action: "test": {}
@@ -986,7 +767,6 @@ guide: {
     }
     path: "/v1/admin/florida-seo/reviews/inspect": {
       op: create: method: *POST
-      op: create: transform: req: "business_ids": *("`reqdata.business_id`")|top
     }
     path: "/v1/admin/license-record-reports/{report_id}/resolve": {
       rename: param: "report_id": *"license_record_report_id"
@@ -1059,7 +839,6 @@ guide: {
     path: "/v1/admin/support/{conversation_id}/ai-draft": {
       rename: param: "conversation_id": *"support_id"
       op: create: method: *POST
-      op: create: transform: req: "instruction": *("`reqdata.instruction`")|top
     }
     path: "/v1/admin/support/{conversation_id}/ai-drafts/{draft_id}": {
       rename: param: "conversation_id": *"support_id"
@@ -1078,8 +857,6 @@ guide: {
       rename: param: "conversation_id": *"support_id"
       op: create: method: *POST
       op: create: transform: res: *("`body.conversation`")|top
-      op: create: transform: req: "ai_draft_id": *("`reqdata.ai_draft_id`")|top
-      op: create: transform: req: "body": *("`reqdata.body`")|top
     }
     path: "/v1/admin/support/{conversation_id}/status": {
       rename: param: "conversation_id": *"support_id"
@@ -1092,8 +869,6 @@ guide: {
     }
     path: "/v1/admin/switches/{key}": {
       op: create: method: *POST
-      op: create: transform: req: "reason": *("`reqdata.reason`")|top
-      op: create: transform: req: "value": *("`reqdata.value`")|top
     }
     path: "/v1/admin/team/agents": {
       op: create: method: *POST
@@ -1112,7 +887,6 @@ guide: {
     }
     path: "/v1/admin/team/agents/{agent_id}/webhook": {
       op: create: method: *POST
-      op: create: transform: req: "url": *("`reqdata.url`")|top
     }
     path: "/v1/admin/team/agents/{agent_id}/webhook/disable": {
       op: create: method: *POST
@@ -1140,20 +914,6 @@ guide: {
     path: "/v1/admin/v3/manual-verification-submissions/{submission_id}/decision": {
       rename: param: "submission_id": *"manual_verification_submission_id"
       op: create: method: *POST
-      op: create: transform: req: "active_or_good_standing": *("`reqdata.active_or_good_standing`")|top
-      op: create: transform: req: "confirmation": *("`reqdata.confirmation`")|top
-      op: create: transform: req: "credential_expires_at": *("`reqdata.credential_expires_at`")|top
-      op: create: transform: req: "holder_name_match": *("`reqdata.holder_name_match`")|top
-      op: create: transform: req: "identifier_match": *("`reqdata.identifier_match`")|top
-      op: create: transform: req: "observed_at": *("`reqdata.observed_at`")|top
-      op: create: transform: req: "outcome": *("`reqdata.outcome`")|top
-      op: create: transform: req: "owner_reason_code": *("`reqdata.owner_reason_code`")|top
-      op: create: transform: req: "reason": *("`reqdata.reason`")|top
-      op: create: transform: req: "source_authority": *("`reqdata.source_authority`")|top
-      op: create: transform: req: "source_url": *("`reqdata.source_url`")|top
-      op: create: transform: req: "valid_until": *("`reqdata.valid_until`")|top
-      op: create: transform: req: "verification_method": *("`reqdata.verification_method`")|top
-      op: create: transform: req: "verified_service_scope": *("`reqdata.verified_service_scope`")|top
     }
     path: "/v1/admin/v3/review-anomalies/{flag_id}/resolve": {
       rename: param: "flag_id": *"review_anomaly_id"
@@ -1176,10 +936,6 @@ guide: {
     path: "/v1/owner/notification-settings": {
       op: create: method: *POST
       op: create: transform: res: *("`body.settings`")|top
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
-      op: create: transform: req: "email_enabled": *("`reqdata.email_enabled`")|top
-      op: create: transform: req: "event_types": *("`reqdata.event_type`")|top
-      op: create: transform: req: "webhook_enabled": *("`reqdata.webhook_enabled`")|top
     }
   }
 
@@ -1194,9 +950,6 @@ guide: {
   entity: owner_webhook_registration: {
     path: "/v1/owner/webhooks": {
       op: create: method: *POST
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
-      op: create: transform: req: "event_types": *("`reqdata.event_type`")|top
-      op: create: transform: req: "url": *("`reqdata.url`")|top
     }
     path: "/v1/owner/webhooks/{endpoint_id}/rotate-secret": {
       rename: param: "endpoint_id": *"webhook_id"
@@ -1207,14 +960,13 @@ guide: {
   entity: pricing: {
     path: "/v1/pricing": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.branch_add_ons`")|top
     }
   }
 
   entity: promote_verified_transaction: {
     path: "/v1/actions/promote-verified-transaction": {
       op: create: method: *POST
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
-      op: create: transform: req: "evidence_id": *("`reqdata.evidence_id`")|top
     }
   }
 
@@ -1227,30 +979,16 @@ guide: {
   entity: recommend: {
     path: "/v1/recommend": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.fallback_registry`")|top
     }
   }
 
   entity: review: {
     path: "/v1/actions/public-review": {
       op: create: method: *POST
-      op: create: transform: req: "attestation_accepted": *("`reqdata.attestation_accepted`")|top
-      op: create: transform: req: "customer_confirmed": *("`reqdata.customer_confirmed`")|top
-      op: create: transform: req: "message": *("`reqdata.message`")|top
-      op: create: transform: req: "rating": *("`reqdata.rating`")|top
-      op: create: transform: req: "service_date": *("`reqdata.service_date`")|top
-      op: create: transform: req: "subject": *("`reqdata.subject`")|top
-      op: create: transform: req: "target_business_id": *("`reqdata.target_business_id`")|top
     }
     path: "/v1/actions/review": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "attestation_accepted": *("`reqdata.attestation_accepted`")|top
-      op: create: transform: req: "customer_confirmed": *("`reqdata.customer_confirmed`")|top
-      op: create: transform: req: "message": *("`reqdata.message`")|top
-      op: create: transform: req: "rating": *("`reqdata.rating`")|top
-      op: create: transform: req: "service_date": *("`reqdata.service_date`")|top
-      op: create: transform: req: "subject": *("`reqdata.subject`")|top
-      op: create: transform: req: "target_business_id": *("`reqdata.target_business_id`")|top
     }
   }
 
@@ -1264,22 +1002,12 @@ guide: {
   entity: save_business: {
     path: "/v1/actions/save-business": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
-      op: create: transform: req: "business_name": *("`reqdata.business_name`")|top
-      op: create: transform: req: "business_source": *("`reqdata.business_source`")|top
-      op: create: transform: req: "category": *("`reqdata.category`")|top
-      op: create: transform: req: "city": *("`reqdata.city`")|top
-      op: create: transform: req: "notes": *("`reqdata.note`")|top
-      op: create: transform: req: "state": *("`reqdata.state`")|top
     }
   }
 
   entity: saved_business: {
     path: "/v1/actions/list-saved-businesses": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "limit": *("`reqdata.limit`")|top
     }
   }
 
@@ -1287,9 +1015,6 @@ guide: {
     path: "/v1/account/location": {
       op: remove: method: *DELETE
       op: update: method: *PUT
-      op: update: transform: req: "label": *("`reqdata.label`")|top
-      op: update: transform: req: "location_proof_id": *("`reqdata.location_proof_id`")|top
-      op: update: transform: req: "zip": *("`reqdata.zip`")|top
     }
   }
 
@@ -1307,26 +1032,23 @@ guide: {
   entity: suggest: {
     path: "/v1/suggest": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.categories`")|top
     }
   }
 
   entity: support_internal_note: {
     path: "/v1/admin/support/{conversation_id}/internal-notes": {
-      rename: param: "conversation_id": *"id"
+      rename: param: "conversation_id": *"support_id"
       op: create: method: *POST
       op: create: transform: res: *("`body.note`")|top
-      op: create: transform: req: "body": *("`reqdata.body`")|top
     }
   }
 
   entity: support_workflow: {
     path: "/v1/admin/support/{conversation_id}/workflow": {
-      rename: param: "conversation_id": *"id"
+      rename: param: "conversation_id": *"support_id"
       op: create: method: *POST
       op: create: transform: res: *("`body.conversation`")|top
-      op: create: transform: req: "category": *("`reqdata.category`")|top
-      op: create: transform: req: "priority": *("`reqdata.priority`")|top
-      op: create: transform: req: "waiting_on": *("`reqdata.waiting_on`")|top
     }
   }
 
@@ -1361,28 +1083,18 @@ guide: {
   entity: unsave_business: {
     path: "/v1/actions/unsave-business": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "business_id": *("`reqdata.business_id`")|top
     }
   }
 
   entity: update_agent_billing_account: {
     path: "/v1/admin/agent-billing-accounts": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "billing_status": *("`reqdata.billing_status`")|top
-      op: create: transform: req: "included_actions": *("`reqdata.included_action`")|top
-      op: create: transform: req: "monthly_fee_cents": *("`reqdata.monthly_fee_cent`")|top
-      op: create: transform: req: "overage_cents": *("`reqdata.overage_cent`")|top
-      op: create: transform: req: "plan": *("`reqdata.plan`")|top
     }
   }
 
   entity: withdraw_job_application: {
     path: "/v1/actions/withdraw-job-application": {
       op: create: method: *POST
-      op: create: transform: req: "account_id": *("`reqdata.account_id`")|top
-      op: create: transform: req: "application_id": *("`reqdata.application_id`")|top
     }
   }
 

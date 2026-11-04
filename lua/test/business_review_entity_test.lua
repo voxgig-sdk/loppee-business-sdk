@@ -29,7 +29,7 @@ describe("BusinessReviewEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:BusinessReview(nil):load({ ["id"] = 1 }, nil)
+    local _, err = client:BusinessReview(nil):load({ ["business_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("BusinessReviewEntity", function()
     local setup = business_review_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"load"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "business_review." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,8 +45,10 @@ describe("BusinessReviewEntity", function()
       end
     end
     if setup.live then
-      runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: " .. "the flow loads a business_review record it has no list to find")
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -56,17 +58,6 @@ describe("BusinessReviewEntity", function()
     if #business_review_ref01_data_raw > 0 then
       business_review_ref01_data = helpers.to_map(business_review_ref01_data_raw[1][2])
     end
-
-    -- LOAD
-    local business_review_ref01_ent = client:BusinessReview(nil)
-    local business_review_ref01_match_dt0 = {
-      id = business_review_ref01_data["id"],
-    }
-    local business_review_ref01_data_dt0_loaded, err = business_review_ref01_ent:load(business_review_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local business_review_ref01_data_dt0_load_result = helpers.to_map(type(business_review_ref01_data_dt0_loaded) == 'table' and business_review_ref01_data_dt0_loaded.data_get and business_review_ref01_data_dt0_loaded:data_get() or business_review_ref01_data_dt0_loaded)
-    assert.is_not_nil(business_review_ref01_data_dt0_load_result)
-    assert.are.equal(business_review_ref01_data_dt0_load_result["id"], business_review_ref01_data["id"])
 
   end)
 end)

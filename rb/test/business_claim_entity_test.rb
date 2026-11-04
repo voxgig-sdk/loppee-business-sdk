@@ -48,6 +48,7 @@ class BusinessClaimEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     business_claim_ref01_ent = client.BusinessClaim(nil)
     business_claim_ref01_data = Helpers.to_map(Vs.getprop(

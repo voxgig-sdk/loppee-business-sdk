@@ -32,24 +32,27 @@ describe("BusinessDealDirect", function()
       return
     end
     if setup.live then
-      for _, _live_key in ipairs({"business_deal01"}) do
+      for _, _live_key in ipairs({"business01"}) do
         if setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via LOPPEE_BUSINESS_TEST_BUSINESS_DEAL_ENTID")
         end
       end
+    end
+    if setup.live then
+      runner.live_pace()
     end
     local client = setup.client
 
     local params = {}
     local query = {}
     if setup.live then
-      params["id"] = setup.idmap["business_deal01"]
+      params["business_id"] = setup.idmap["business01"]
     else
-      params["id"] = "direct01"
+      params["business_id"] = "direct01"
     end
 
     local result, err = client:direct({
-      path = "v1/businesses/{id}/deals.json",
+      path = "v1/businesses/{business_id}/deals.json",
       method = "GET",
       params = params,
       query = query,
@@ -105,7 +108,7 @@ function business_deal_direct_setup(mockres)
       idmap = {}
     end
     -- A path parameter's example stands in for an id *_ENTID does not give.
-    for _k, _v in pairs({["business_deal01"] = "biz_elite_ac_llc_jacksonville_fl"}) do
+    for _k, _v in pairs({["business01"] = "biz_elite_ac_llc_jacksonville_fl"}) do
       if idmap[_k] == nil then
         idmap[_k] = _v
       end

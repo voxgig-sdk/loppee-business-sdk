@@ -48,6 +48,7 @@ class ReviewEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     review_ref01_ent = client.Review(nil)
     review_ref01_data = Helpers.to_map(Vs.getprop(

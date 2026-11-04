@@ -38,7 +38,7 @@ func TestSupportInternalNoteEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SupportInternalNote(nil).Create(map[string]any{"id": 1, "body": "x"}, nil)
+		_, err := client.SupportInternalNote(nil).Create(map[string]any{"support_id": 1, "body": "x"}, nil)
 		if sdkerr, ok := err.(*core.LoppeeBusinessError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSupportInternalNoteEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{} {
+		for _, _op := range []string{"create"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "support_internal_note." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -68,15 +68,36 @@ func TestSupportInternalNoteEntity(t *testing.T) {
 			return
 		}
 
-		// Bootstrap entity data from existing test data (no create step in flow).
-		supportInternalNoteRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.support_internal_note")))
-		var supportInternalNoteRef01Data map[string]any
-		if len(supportInternalNoteRef01DataRaw) > 0 {
-			supportInternalNoteRef01Data = core.ToMapAny(supportInternalNoteRef01DataRaw[0][1])
+		if setup.live {
+			for _, _liveKey := range []string{"support01"} {
+				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
+					liveMiss(t, support_internal_noteEntityLiveStrict, "Live entity test blocked: needs %s via LOPPEE_BUSINESS_TEST_SUPPORT_INTERNAL_NOTE_ENTID", _liveKey)
+				}
+			}
 		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = supportInternalNoteRef01Data
+		client := setup.client
+		_ = client
+
+		if setup.live {
+			livePace()
+		}
+		// CREATE
+		supportInternalNoteRef01Ent := client.SupportInternalNote(nil)
+		supportInternalNoteRef01Data := core.ToMapAny(vs.GetProp(
+			vs.GetPath(setup.data, []any{"new", "support_internal_note"}), "support_internal_note_ref01"))
+		supportInternalNoteRef01Data["support_id"] = setup.idmap["support01"]
+
+		supportInternalNoteRef01DataResult, err := supportInternalNoteRef01Ent.Create(supportInternalNoteRef01Data, nil)
+		if err != nil {
+			t.Fatalf("create failed: %v", err)
+		}
+		supportInternalNoteRef01Data = core.ToMapAny(entityData(supportInternalNoteRef01DataResult))
+		if supportInternalNoteRef01Data == nil {
+			t.Fatal("expected create result to be a map")
+		}
+		if supportInternalNoteRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 	})
 }
@@ -106,7 +127,7 @@ func support_internal_noteBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"support_internal_note01", "support_internal_note02", "support_internal_note03"},
+		[]any{"support_internal_note01", "support_internal_note02", "support_internal_note03", "support01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

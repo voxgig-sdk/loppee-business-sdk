@@ -2,64 +2,28 @@
   "existing": {
     "pricing": {
       "PRICING00": {
-        "billing": {},
-        "branch_add_ons": [],
-        "currency": "s7a",
-        "generated_at": "s7b",
-        "neutrality": "s7c",
-        "plans": [],
-        "promotions": [],
-        "published_at": "s7f",
-        "radius_extension": {},
-        "revision_id": "REVISION01",
-        "source": "s82",
-        "trust_model_version": "s83"
+        "annual_usd": 30,
+        "monthly_usd": 31,
+        "radius_max_miles": 32
       },
       "PRICING01": {
-        "billing": {},
-        "branch_add_ons": [],
-        "currency": "sf2",
-        "generated_at": "sf3",
-        "neutrality": "sf4",
-        "plans": [],
-        "promotions": [],
-        "published_at": "sf7",
-        "radius_extension": {},
-        "revision_id": "REVISION01",
-        "source": "sfa",
-        "trust_model_version": "sfb"
+        "annual_usd": 60,
+        "monthly_usd": 61,
+        "radius_max_miles": 62
       },
       "PRICING02": {
-        "billing": {},
-        "branch_add_ons": [],
-        "currency": "s16a",
-        "generated_at": "s16b",
-        "neutrality": "s16c",
-        "plans": [],
-        "promotions": [],
-        "published_at": "s16f",
-        "radius_extension": {},
-        "revision_id": "REVISION01",
-        "source": "s172",
-        "trust_model_version": "s173"
+        "annual_usd": 90,
+        "monthly_usd": 91,
+        "radius_max_miles": 92
       }
     }
   },
   "new": {
     "pricing": {
       "pricing_ref01": {
-        "billing": {},
-        "branch_add_ons": [],
-        "currency": "s1e2",
-        "generated_at": "s1e3",
-        "neutrality": "s1e4",
-        "plans": [],
-        "promotions": [],
-        "published_at": "s1e7",
-        "radius_extension": {},
-        "revision_id": "REVISION01",
-        "source": "s1ea",
-        "trust_model_version": "s1eb"
+        "annual_usd": 120,
+        "monthly_usd": 121,
+        "radius_max_miles": 122
       }
     }
   },

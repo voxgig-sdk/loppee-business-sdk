@@ -48,6 +48,7 @@ class PromoteVerifiedTransactionEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     promote_verified_transaction_ref01_ent = client.PromoteVerifiedTransaction(nil)
     promote_verified_transaction_ref01_data = Helpers.to_map(Vs.getprop(

@@ -28,18 +28,21 @@ describe("BusinessReviewDirect", function()
       pending(_reason or "skipped via sdk-test-control.json")
       return
     end
+    if setup.live then
+      runner.live_pace()
+    end
     local client = setup.client
 
     local params = {}
     local query = {}
     if setup.live then
-      params["id"] = "biz_elite_ac_llc_jacksonville_fl"
+      params["business_id"] = "biz_elite_ac_llc_jacksonville_fl"
     else
-      params["id"] = "direct01"
+      params["business_id"] = "direct01"
     end
 
     local result, err = client:direct({
-      path = "v1/businesses/{id}/reviews.json",
+      path = "v1/businesses/{business_id}/reviews.json",
       method = "GET",
       params = params,
       query = query,
@@ -97,7 +100,7 @@ function business_review_direct_setup(mockres)
       idmap = {}
     end
     -- A path parameter's example stands in for an id *_ENTID does not give.
-    for _k, _v in pairs({["business_review01"] = "biz_elite_ac_llc_jacksonville_fl"}) do
+    for _k, _v in pairs({["business01"] = "biz_elite_ac_llc_jacksonville_fl"}) do
       if idmap[_k] == nil then
         idmap[_k] = _v
       end

@@ -66,6 +66,9 @@ class RevokeEntityTest extends TestCase
         }
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $revoke_ref01_ent = $client->Revoke(null);
         $revoke_ref01_data = Helpers::to_map(Vs::getprop(

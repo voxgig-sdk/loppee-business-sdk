@@ -78,6 +78,9 @@ func TestConversationWorkflowEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		conversationWorkflowRef01Ent := client.ConversationWorkflow(nil)
 		conversationWorkflowRef01Data := core.ToMapAny(vs.GetProp(

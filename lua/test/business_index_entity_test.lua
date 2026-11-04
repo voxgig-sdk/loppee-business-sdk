@@ -164,6 +164,9 @@ describe("BusinessIndexEntity", function()
       business_index_ref01_data = helpers.to_map(business_index_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LIST
     local business_index_ref01_ent = client:BusinessIndex(nil)
     local business_index_ref01_match = {}

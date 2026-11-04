@@ -71,6 +71,9 @@ func TestUpdateAgentBillingAccountEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		updateAgentBillingAccountRef01Ent := client.UpdateAgentBillingAccount(nil)
 		updateAgentBillingAccountRef01Data := core.ToMapAny(vs.GetProp(

@@ -5,29 +5,23 @@ main: kit: entity: suggest: {
   alias: field: {}
 
   fields: {
-    categories: {
-      h: "Categories"
-      n: "categories"
-      r: true
-      t: "`$ARRAY`"
-    }
-    names: {
-      h: "Names"
-      n: "names"
-      r: true
-      t: "`$ARRAY`"
-    }
-    query: {
-      h: "Query"
-      n: "query"
+    alias: {
+      h: "Alias"
+      n: "alias"
       r: true
       t: "`$STRING`"
     }
-    schema_version: {
-      h: "Schema Version"
-      n: "schema_version"
+    path_titles: {
+      h: "Path Titles"
+      n: "path_titles"
       r: true
-      t: "`$ANY`"
+      t: "`$ARRAY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
     }
   }
 
@@ -69,7 +63,7 @@ main: kit: entity: suggest: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.categories`"
           }
         }
       ]

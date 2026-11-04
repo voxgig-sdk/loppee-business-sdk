@@ -56,6 +56,9 @@ describe("ModeratedActionEntity", function()
       moderated_action_ref01_data = helpers.to_map(moderated_action_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LOAD
     local moderated_action_ref01_ent = client:ModeratedAction(nil)
     local moderated_action_ref01_match_dt0 = {}
@@ -68,6 +71,9 @@ describe("ModeratedActionEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local moderated_action_ref01_ent = client:ModeratedAction(nil)
     local moderated_action_ref01_data = helpers.to_map(vs.getprop(
@@ -78,6 +84,9 @@ describe("ModeratedActionEntity", function()
     moderated_action_ref01_data = helpers.to_map(type(moderated_action_ref01_data_result) == 'table' and moderated_action_ref01_data_result.data_get and moderated_action_ref01_data_result:data_get() or moderated_action_ref01_data_result)
     assert.is_not_nil(moderated_action_ref01_data)
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LOAD
     local moderated_action_ref01_match_dt0 = {}
     local moderated_action_ref01_data_dt0_loaded, err = moderated_action_ref01_ent:load(moderated_action_ref01_match_dt0, nil)

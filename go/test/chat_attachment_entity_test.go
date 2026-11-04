@@ -78,6 +78,9 @@ func TestChatAttachmentEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		chatAttachmentRef01Ent := client.ChatAttachment(nil)
 		chatAttachmentRef01Data := core.ToMapAny(vs.GetProp(

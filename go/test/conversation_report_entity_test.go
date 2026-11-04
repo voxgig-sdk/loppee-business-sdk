@@ -38,7 +38,7 @@ func TestConversationReportEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.ConversationReport(nil).Create(map[string]any{"id": 1, "reason": "x"}, nil)
+		_, err := client.ConversationReport(nil).Create(map[string]any{"conversation_id": 1, "reason": "x"}, nil)
 		if sdkerr, ok := err.(*core.LoppeeBusinessError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -78,6 +78,9 @@ func TestConversationReportEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		conversationReportRef01Ent := client.ConversationReport(nil)
 		conversationReportRef01Data := core.ToMapAny(vs.GetProp(
@@ -91,9 +94,6 @@ func TestConversationReportEntity(t *testing.T) {
 		conversationReportRef01Data = core.ToMapAny(entityData(conversationReportRef01DataResult))
 		if conversationReportRef01Data == nil {
 			t.Fatal("expected create result to be a map")
-		}
-		if conversationReportRef01Data["id"] == nil {
-			t.Fatal("expected created entity to have an id")
 		}
 
 	})
@@ -124,7 +124,7 @@ func conversation_reportBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"conversation_report01", "conversation_report02", "conversation_report03", "message01", "message02", "message03"},
+		[]any{"conversation_report01", "conversation_report02", "conversation_report03", "conversation01", "conversation02", "conversation03", "message01", "message02", "message03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

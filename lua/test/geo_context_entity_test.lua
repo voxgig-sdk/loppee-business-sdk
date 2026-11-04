@@ -43,6 +43,9 @@ describe("GeoContextEntity", function()
       geo_context_ref01_data = helpers.to_map(geo_context_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LOAD
     local geo_context_ref01_ent = client:GeoContext(nil)
     local geo_context_ref01_match_dt0 = {}

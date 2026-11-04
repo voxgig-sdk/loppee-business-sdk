@@ -168,6 +168,19 @@ func TestAgentOpenapiEntity(t *testing.T) {
 		}
 	})
 
+	t.Run("validate", func(t *testing.T) {
+		if !fhHasFeature("validate") {
+			t.Skip("feature not present in this SDK: validate")
+		}
+		client := sdk.TestSDK(nil, map[string]any{
+			"feature": map[string]any{"validate": map[string]any{"active": true}},
+		})
+		_, err := client.AgentOpenapi(nil).List(map[string]any{"description": 1}, nil)
+		if sdkerr, ok := err.(*core.LoppeeBusinessError); !ok || "validate_failed" != sdkerr.Code {
+			t.Fatalf("expected validate_failed, got %v", err)
+		}
+	})
+
 	t.Run("basic", func(tt *testing.T) {
 		var t testing.TB = tt
 		setup := agent_openapiBasicSetup(nil)
@@ -199,6 +212,9 @@ func TestAgentOpenapiEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = agentOpenapiRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LIST
 		agentOpenapiRef01Ent := client.AgentOpenapi(nil)
 		agentOpenapiRef01Match := map[string]any{}

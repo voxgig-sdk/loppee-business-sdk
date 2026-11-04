@@ -22,6 +22,17 @@ describe("LocationHandoffEntity", function()
     assert.is_not_nil(ent)
   end)
 
+  it("should refuse an invalid request", function()
+    local config = require("config_shared")()
+    if type(config.feature) ~= "table" or config.feature.validate == nil then
+      pending("feature not present in this SDK: validate")
+      return
+    end
+    local client = sdk.test(nil, { feature = { validate = { active = true } } })
+    local _, err = client:LocationHandoff(nil):create({ ["id"] = 1 }, nil)
+    assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
+  end)
+
   it("should run basic flow", function()
     local setup = location_handoff_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
@@ -34,13 +45,16 @@ describe("LocationHandoffEntity", function()
       end
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"location_handoff.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/location-handoffs\"}")
-      pending("Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs)")
+      print("LIVE STEP {\"id\":\"location_handoff.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device\"}")
+      pending("Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device)")
       return
     end
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local location_handoff_ref01_ent = client:LocationHandoff(nil)
     local location_handoff_ref01_data = helpers.to_map(vs.getprop(
@@ -50,6 +64,7 @@ describe("LocationHandoffEntity", function()
     assert.is_nil(err)
     location_handoff_ref01_data = helpers.to_map(type(location_handoff_ref01_data_result) == 'table' and location_handoff_ref01_data_result.data_get and location_handoff_ref01_data_result:data_get() or location_handoff_ref01_data_result)
     assert.is_not_nil(location_handoff_ref01_data)
+    assert.is_not_nil(location_handoff_ref01_data["id"])
 
   end)
 end)

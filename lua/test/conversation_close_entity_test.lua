@@ -29,7 +29,7 @@ describe("ConversationCloseEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:ConversationClose(nil):create({ ["id"] = 1 }, nil)
+    local _, err = client:ConversationClose(nil):create({ ["conversation_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("ConversationCloseEntity", function()
     local setup = conversation_close_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({}) do
+    for _, _op in ipairs({"create"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "conversation_close." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -50,15 +50,28 @@ describe("ConversationCloseEntity", function()
       return
     end
 
+    if setup.live then
+      for _, _live_key in ipairs({"conversation01"}) do
+        if setup.synthetic_only or setup.idmap[_live_key] == nil then
+          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via LOPPEE_BUSINESS_TEST_CONVERSATION_CLOSE_ENTID")
+        end
+      end
+    end
     local client = setup.client
 
-    -- Bootstrap entity data from existing test data.
-    local conversation_close_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.conversation_close")))
-    local conversation_close_ref01_data = nil
-    if #conversation_close_ref01_data_raw > 0 then
-      conversation_close_ref01_data = helpers.to_map(conversation_close_ref01_data_raw[1][2])
+    if setup.live then
+      runner.live_pace()
     end
+    -- CREATE
+    local conversation_close_ref01_ent = client:ConversationClose(nil)
+    local conversation_close_ref01_data = helpers.to_map(vs.getprop(
+      vs.getpath(setup.data, "new.conversation_close"), "conversation_close_ref01"))
+    conversation_close_ref01_data["conversation_id"] = setup.idmap["conversation01"]
+
+    local conversation_close_ref01_data_result, err = conversation_close_ref01_ent:create(conversation_close_ref01_data, nil)
+    assert.is_nil(err)
+    conversation_close_ref01_data = helpers.to_map(type(conversation_close_ref01_data_result) == 'table' and conversation_close_ref01_data_result.data_get and conversation_close_ref01_data_result:data_get() or conversation_close_ref01_data_result)
+    assert.is_not_nil(conversation_close_ref01_data)
 
   end)
 end)
@@ -83,7 +96,7 @@ function conversation_close_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "conversation_close01", "conversation_close02", "conversation_close03" },
+    { "conversation_close01", "conversation_close02", "conversation_close03", "conversation01", "conversation02", "conversation03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

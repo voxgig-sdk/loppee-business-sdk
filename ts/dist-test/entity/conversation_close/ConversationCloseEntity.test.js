@@ -60,23 +60,28 @@ const utility_1 = require("../../utility");
             return;
         }
         const client = __1.LoppeeBusinessSDK.test(undefined, { feature: { validate: { active: true } } });
-        await node_assert_1.default.rejects(client.ConversationClose().create({ "id": 1 }), (err) => 'validate_failed' === err.code);
+        await node_assert_1.default.rejects(client.ConversationClose().create({ "conversation_id": 1 }), (err) => 'validate_failed' === err.code);
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.LOPPEE_BUSINESS_TEST_LIVE;
-        for (const op of []) {
+        for (const op of ['create']) {
             if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'conversation_close.' + op, live))
                 return;
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "closed_at": { "a": true, "fo": "date-time", "h": "Closed At", "n": "closed_at", "r": true, "t": "`$STRING`", "key$": "closed_at", "index$": 0 }, "conversation_id": { "a": true, "h": "Conversation Id", "n": "conversation_id", "r": true, "t": "`$STRING`", "key$": "conversation_id", "index$": 1 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 2 }, "status": { "a": true, "h": "Status", "n": "status", "r": true, "t": "`$ANY`", "key$": "status", "index$": 3 } }, "id": { "field": "id", "name": "id" }, "name": "conversation_close", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": false, "co": { "id": "POST /v1/account/conversations/{conversation_id}/close", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "conversation_id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "POST", "o": "/v1/account/conversations/{conversation_id}/close", "q": { "exist": ["id"] }, "r": { "param": { "conversation_id": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "v1" }, { "lit": "account" }, { "lit": "conversations" }, { "var": "id" }, { "lit": "close" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" } }, "relations": { "ancestors": [] }, "key$": "conversation_close", "name__orig": "conversation_close", "Name": "ConversationClose", "name_": "conversation_close", "name-": "conversation-close", "NAME": "CONVERSATION_CLOSE", "index$": 21 }, { "active": true, "entity": "conversation_close", "key$": "BasicConversationCloseFlow", "kind": "basic", "name": "BasicConversationCloseFlow", "param": {}, "step": [{ "a": false, "d": {}, "i": { "ref": "conversation_close_ref01" }, "m": { "conversation_id": "conversation01" }, "o": "create", "s": [], "v": [], "unreachable": true }] }, 'ConversationClose', { "POST /v1/account/conversations/{conversation_id}/close": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "maxProperties": 0, "additionalProperties": false, "x-ref": "#/components/schemas/EmptyRequest", "index$": 1 } } } }, "parameters": [{ "name": "conversation_id", "in": "path", "required": true, "description": "Customer conversation id.", "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "conversation_close.create.0": "GET-only live run: needs POST /v1/account/conversations/{conversation_id}/close" } : {});
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "closed_at": { "a": true, "fo": "date-time", "h": "Closed At", "n": "closed_at", "r": true, "t": "`$STRING`", "key$": "closed_at", "index$": 0 }, "conversation_id": { "a": true, "h": "Conversation Id", "n": "conversation_id", "r": true, "t": "`$STRING`", "key$": "conversation_id", "index$": 1 }, "status": { "a": true, "h": "Status", "n": "status", "r": true, "t": "`$ANY`", "key$": "status", "index$": 2 } }, "name": "conversation_close", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": false, "co": { "id": "POST /v1/account/conversations/{conversation_id}/close", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "conversation_id", "or": "conversation_id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "POST", "o": "/v1/account/conversations/{conversation_id}/close", "q": { "exist": ["conversation_id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "v1" }, { "lit": "account" }, { "lit": "conversations" }, { "var": "conversation_id" }, { "lit": "close" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" } }, "relations": { "ancestors": [["$.main.kit.entity.conversation"]] }, "key$": "conversation_close", "name__orig": "conversation_close", "Name": "ConversationClose", "name_": "conversation_close", "name-": "conversation-close", "NAME": "CONVERSATION_CLOSE", "index$": 21 }, { "active": true, "entity": "conversation_close", "key$": "BasicConversationCloseFlow", "kind": "basic", "name": "BasicConversationCloseFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "conversation_close_ref01" }, "m": { "conversation_id": "conversation01" }, "o": "create", "s": [], "v": [], "index$": 0 }] }, 'ConversationClose', { "POST /v1/account/conversations/{conversation_id}/close": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "maxProperties": 0, "additionalProperties": false, "x-ref": "#/components/schemas/EmptyRequest", "index$": 1 } } } }, "parameters": [{ "name": "conversation_id", "in": "path", "required": true, "description": "Customer conversation id.", "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "conversation_close.create.0": "GET-only live run: needs POST /v1/account/conversations/{conversation_id}/close" } : {});
         }
         const client = setup.client;
         const struct = setup.struct;
         const isempty = struct.isempty;
         const select = struct.select;
-        let conversation_close_ref01_data = Object.values(setup.data.existing.conversation_close)[0];
+        // CREATE
+        const conversation_close_ref01_ent = client.ConversationClose();
+        let conversation_close_ref01_data = setup.data.new.conversation_close['conversation_close_ref01'];
+        conversation_close_ref01_data['conversation_id'] = setup.idmap['conversation01'];
+        conversation_close_ref01_data = (await conversation_close_ref01_ent.create(conversation_close_ref01_data)).data();
+        (0, node_assert_1.default)(null != conversation_close_ref01_data);
     });
 });
 // main.kit.test.live.strict is true (the default is true): a live
@@ -98,7 +103,7 @@ function basicSetup(extra) {
     const struct = client.utility().struct;
     const merge = struct.merge;
     const transform = struct.transform;
-    let idmap = transform(['conversation_close01', 'conversation_close02', 'conversation_close03'], {
+    let idmap = transform(['conversation_close01', 'conversation_close02', 'conversation_close03', 'conversation01', 'conversation02', 'conversation03'], {
         '`$PACK`': ['', {
                 '`$KEY`': '`$COPY`',
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']

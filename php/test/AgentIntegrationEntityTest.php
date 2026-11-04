@@ -211,6 +211,9 @@ class AgentIntegrationEntityTest extends TestCase
             $agent_integration_ref01_data = Helpers::to_map($agent_integration_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LIST
         $agent_integration_ref01_ent = $client->AgentIntegration(null);
         $agent_integration_ref01_match = [];

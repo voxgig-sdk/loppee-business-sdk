@@ -18,6 +18,18 @@ class LocationHandoffEntityTest < Minitest::Test
     assert !ent.nil?
   end
 
+  def test_validate
+    cfg = LoppeeBusinessConfig.shared_config
+    unless cfg["feature"].is_a?(Hash) && cfg["feature"].key?("validate")
+      skip("feature not present in this SDK: validate")
+    end
+    client = LoppeeBusinessSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
+    err = assert_raises(StandardError) do
+      client.LocationHandoff(nil).create({ "id" => 1 }, nil)
+    end
+    assert_equal "validate_failed", err.code
+  end
+
   def test_basic_flow
     setup = location_handoff_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
@@ -30,12 +42,13 @@ class LocationHandoffEntityTest < Minitest::Test
       end
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
-      puts "LIVE STEP {\"id\":\"location_handoff.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/location-handoffs\"}"
-      skip("Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs)")
+      puts "LIVE STEP {\"id\":\"location_handoff.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device\"}"
+      skip("Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device)")
     end
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     location_handoff_ref01_ent = client.LocationHandoff(nil)
     location_handoff_ref01_data = Helpers.to_map(Vs.getprop(
@@ -44,6 +57,7 @@ class LocationHandoffEntityTest < Minitest::Test
     location_handoff_ref01_data_result = location_handoff_ref01_ent.create(location_handoff_ref01_data, nil)
     location_handoff_ref01_data = Helpers.to_map(location_handoff_ref01_data_result.respond_to?(:data_get) ? location_handoff_ref01_data_result.data_get : location_handoff_ref01_data_result)
     assert !location_handoff_ref01_data.nil?
+    assert !location_handoff_ref01_data["id"].nil?
 
   end
 end

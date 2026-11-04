@@ -71,6 +71,9 @@ func TestDestinationAddressSuggestionEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		destinationAddressSuggestionRef01Ent := client.DestinationAddressSuggestion(nil)
 		destinationAddressSuggestionRef01Data := core.ToMapAny(vs.GetProp(

@@ -50,6 +50,9 @@ class ChatAttachmentUrlEntityTest extends TestCase
         }
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $chat_attachment_url_ref01_ent = $client->ChatAttachmentUrl(null);
         $chat_attachment_url_ref01_data = Helpers::to_map(Vs::getprop(

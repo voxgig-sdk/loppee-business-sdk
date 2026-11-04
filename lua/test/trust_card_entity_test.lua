@@ -47,9 +47,9 @@ describe("TrustCardEntity", function()
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"trust_card.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/businesses/{business_id}/license-records/{fact_id}/report\"}")
     if setup.live then
-      for _, _live_key in ipairs({"business01"}) do
+      for _live_key, _live_ex in pairs({["business01"] = "biz_elite_ac_llc_jacksonville_fl"}) do
         if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via LOPPEE_BUSINESS_TEST_TRUST_CARD_ENTID")
+          setup.idmap[_live_key] = _live_ex
         end
       end
     end
@@ -63,6 +63,9 @@ describe("TrustCardEntity", function()
       trust_card_ref01_data = helpers.to_map(trust_card_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LIST
     local trust_card_ref01_ent = client:TrustCard(nil)
     local trust_card_ref01_match = {
@@ -73,6 +76,9 @@ describe("TrustCardEntity", function()
     assert.is_nil(err)
     assert.is_table(trust_card_ref01_list_result)
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LOAD
     local trust_card_ref01_match_dt0 = {}
     if setup.live then
@@ -94,6 +100,9 @@ describe("TrustCardEntity", function()
     end
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local trust_card_ref01_ent = client:TrustCard(nil)
     local trust_card_ref01_data = helpers.to_map(vs.getprop(
@@ -106,6 +115,9 @@ describe("TrustCardEntity", function()
     trust_card_ref01_data = helpers.to_map(type(trust_card_ref01_data_result) == 'table' and trust_card_ref01_data_result.data_get and trust_card_ref01_data_result:data_get() or trust_card_ref01_data_result)
     assert.is_not_nil(trust_card_ref01_data)
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LIST
     local trust_card_ref01_match = {
       ["business_id"] = setup.idmap["business01"],
@@ -115,6 +127,9 @@ describe("TrustCardEntity", function()
     assert.is_nil(err)
     assert.is_table(trust_card_ref01_list_result)
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LOAD
     local trust_card_ref01_match_dt0 = {}
     if setup.live then

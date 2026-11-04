@@ -51,6 +51,8 @@ class TestAgentCapabilityEntity:
         if len(agent_capability_ref01_data_raw) > 0:
             agent_capability_ref01_data = helpers.to_map(agent_capability_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LOAD
         agent_capability_ref01_ent = client.AgentCapability(None)
         agent_capability_ref01_match_dt0 = {}

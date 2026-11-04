@@ -71,6 +71,9 @@ func TestBusinessClaimEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		businessClaimRef01Ent := client.BusinessClaim(nil)
 		businessClaimRef01Data := core.ToMapAny(vs.GetProp(

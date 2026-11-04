@@ -52,6 +52,9 @@ describe("CreateAgentApiKeyEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local create_agent_api_key_ref01_ent = client:CreateAgentApiKey(nil)
     local create_agent_api_key_ref01_data = helpers.to_map(vs.getprop(

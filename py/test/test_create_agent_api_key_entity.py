@@ -57,6 +57,8 @@ class TestCreateAgentApiKeyEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         create_agent_api_key_ref01_ent = client.CreateAgentApiKey(None)
         create_agent_api_key_ref01_data = helpers.to_map(vs.getprop(

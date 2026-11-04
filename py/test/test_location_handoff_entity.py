@@ -31,6 +31,15 @@ class TestLocationHandoffEntity:
         ent = testsdk.LocationHandoff(None)
         assert ent is not None
 
+    def test_should_refuse_an_invalid_request(self):
+        if "validate" not in (shared_config().get("feature") or {}):
+            pytest.skip("feature not present in this SDK: validate")
+        client = LoppeeBusinessSDK.test(
+            None, {"feature": {"validate": {"active": True}}})
+        with pytest.raises(Exception) as err:
+            client.LocationHandoff(None).create({"id": 1}, None)
+        assert "validate_failed" == getattr(err.value, "code", None)
+
     def test_should_run_basic_flow(self):
         setup = _location_handoff_basic_setup(None)
         # Per-op sdk-test-control.json skip — basic test exercises a flow with
@@ -43,11 +52,13 @@ class TestLocationHandoffEntity:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"location_handoff.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/location-handoffs\"}")
-            pytest.skip("Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs)")
+            print("LIVE STEP {\"id\":\"location_handoff.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device\"}")
+            pytest.skip("Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device)")
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         location_handoff_ref01_ent = client.LocationHandoff(None)
         location_handoff_ref01_data = helpers.to_map(vs.getprop(
@@ -55,6 +66,7 @@ class TestLocationHandoffEntity:
 
         location_handoff_ref01_data = helpers.to_map(runner.entity_data(location_handoff_ref01_ent.create(location_handoff_ref01_data, None)))
         assert location_handoff_ref01_data is not None
+        assert location_handoff_ref01_data["id"] is not None
 
 
 

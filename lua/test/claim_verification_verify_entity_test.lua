@@ -52,6 +52,9 @@ describe("ClaimVerificationVerifyEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local claim_verification_verify_ref01_ent = client:ClaimVerificationVerify(nil)
     local claim_verification_verify_ref01_data = helpers.to_map(vs.getprop(

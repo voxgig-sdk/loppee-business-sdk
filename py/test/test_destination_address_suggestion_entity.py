@@ -57,6 +57,8 @@ class TestDestinationAddressSuggestionEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         destination_address_suggestion_ref01_ent = client.DestinationAddressSuggestion(None)
         destination_address_suggestion_ref01_data = helpers.to_map(vs.getprop(

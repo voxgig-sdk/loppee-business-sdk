@@ -67,6 +67,9 @@ class SavedLocationEntityTest extends TestCase
             $saved_location_ref01_data = Helpers::to_map($saved_location_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // UPDATE
         $saved_location_ref01_ent = $client->SavedLocation(null);
         $saved_location_ref01_data_up0_up = [

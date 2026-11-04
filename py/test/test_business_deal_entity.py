@@ -37,7 +37,7 @@ class TestBusinessDealEntity:
         client = LoppeeBusinessSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.BusinessDeal(None).list({"id": 1}, None)
+            client.BusinessDeal(None).list({"business_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,11 +46,15 @@ class TestBusinessDealEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in []:
+        for _op in ["list"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "business_deal." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
+        if setup["live"]:
+            for _live_key, _live_ex in {"business01": "biz_elite_ac_llc_jacksonville_fl"}.items():
+                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
+                    setup["idmap"][_live_key] = _live_ex
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -59,6 +63,17 @@ class TestBusinessDealEntity:
         business_deal_ref01_data = None
         if len(business_deal_ref01_data_raw) > 0:
             business_deal_ref01_data = helpers.to_map(business_deal_ref01_data_raw[0][1])
+
+        if setup["live"]:
+            runner.live_pace()
+        # LIST
+        business_deal_ref01_ent = client.BusinessDeal(None)
+        business_deal_ref01_match = {
+            "business_id": setup["idmap"]["business01"],
+        }
+
+        business_deal_ref01_list_result = business_deal_ref01_ent.list(business_deal_ref01_match, None)
+        assert isinstance(business_deal_ref01_list_result, list)
 
 
 
@@ -78,7 +93,7 @@ def _business_deal_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["business_deal01", "business_deal02", "business_deal03"],
+        ["business_deal01", "business_deal02", "business_deal03", "business01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

@@ -59,6 +59,9 @@ class BusinessClaimEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $business_claim_ref01_ent = $client->BusinessClaim(null);
         $business_claim_ref01_data = Helpers::to_map(Vs::getprop(

@@ -139,7 +139,7 @@ describe("PricingEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:Pricing(nil):list({ ["generated_at"] = 1 }, nil)
+    local _, err = client:Pricing(nil):list({ ["annual_usd"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -164,6 +164,9 @@ describe("PricingEntity", function()
       pricing_ref01_data = helpers.to_map(pricing_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LIST
     local pricing_ref01_ent = client:Pricing(nil)
     local pricing_ref01_match = {}

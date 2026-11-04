@@ -51,6 +51,8 @@ class TestGeoContextEntity:
         if len(geo_context_ref01_data_raw) > 0:
             geo_context_ref01_data = helpers.to_map(geo_context_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LOAD
         geo_context_ref01_ent = client.GeoContext(None)
         geo_context_ref01_match_dt0 = {}

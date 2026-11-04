@@ -52,6 +52,9 @@ describe("ContactRecordedEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local contact_recorded_ref01_ent = client:ContactRecorded(nil)
     local contact_recorded_ref01_data = helpers.to_map(vs.getprop(

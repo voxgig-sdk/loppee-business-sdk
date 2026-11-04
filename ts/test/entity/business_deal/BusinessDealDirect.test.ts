@@ -43,19 +43,19 @@ describe('BusinessDealDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
     if (maybeSkipControl(t, 'direct', 'direct-list-business_deal', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["business_deal01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["business01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      params.id = setup.idmap['business_deal01']
+      params.business_id = setup.idmap['business01']
     } else {
-      params.id = 'direct01'
+      params.business_id = 'direct01'
     }
 
     const result: any = await client.direct({
-      path: 'v1/businesses/{id}/deals.json',
+      path: 'v1/businesses/{business_id}/deals.json',
       method: 'GET',
       params,
       query,
@@ -117,7 +117,7 @@ function directSetup(mockres?: any) {
       idmap = JSON.parse(idmap)
     }
     // A path parameter's example stands in for an id *_ENTID does not give.
-    idmap = Object.assign({ business_deal01: 'biz_elite_ac_llc_jacksonville_fl' },
+    idmap = Object.assign({ business01: 'biz_elite_ac_llc_jacksonville_fl' },
       'object' === typeof idmap ? idmap : {})
 
     return { client, calls, live, idmap, transport }

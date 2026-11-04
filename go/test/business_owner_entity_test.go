@@ -73,6 +73,9 @@ func TestBusinessOwnerEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		businessOwnerRef01Ent := client.BusinessOwner(nil)
 		businessOwnerRef01Data := core.ToMapAny(vs.GetProp(
@@ -90,6 +93,9 @@ func TestBusinessOwnerEntity(t *testing.T) {
 			t.Fatal("expected created entity to have an id")
 		}
 
+		if setup.live {
+			livePace()
+		}
 		// UPDATE
 		businessOwnerRef01DataUp0Up := map[string]any{
 			"id": businessOwnerRef01Data["id"],
@@ -107,7 +113,7 @@ func TestBusinessOwnerEntity(t *testing.T) {
 		if businessOwnerRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
-		if businessOwnerRef01ResdataUp0["id"] != businessOwnerRef01DataUp0Up["id"] {
+		if !liveSameId(businessOwnerRef01ResdataUp0["id"], businessOwnerRef01DataUp0Up["id"]) {
 			t.Fatal("expected update result id to match")
 		}
 		if businessOwnerRef01ResdataUp0[businessOwnerRef01MarkdefUp0Name] != businessOwnerRef01MarkdefUp0Value {

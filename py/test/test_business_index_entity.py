@@ -143,6 +143,8 @@ class TestBusinessIndexEntity:
         if len(business_index_ref01_data_raw) > 0:
             business_index_ref01_data = helpers.to_map(business_index_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         business_index_ref01_ent = client.BusinessIndex(None)
         business_index_ref01_match = {}

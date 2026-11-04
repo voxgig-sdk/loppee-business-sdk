@@ -34,20 +34,23 @@ class BusinessDealDirectTest extends TestCase
             return;
         }
         if ($setup["live"]) {
-            foreach (["business_deal01"] as $_liveKey) {
+            foreach (["business01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via LOPPEE_BUSINESS_TEST_BUSINESS_DEAL_ENTID");
                 }
             }
         }
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         $client = $setup["client"];
 
         $params = [];
         $query = [];
-        $params["id"] = $setup["live"] ? ($setup["idmap"]["business_deal01"] ?? null) : "direct01";
+        $params["business_id"] = $setup["live"] ? ($setup["idmap"]["business01"] ?? null) : "direct01";
 
         $result = $client->direct([
-            "path" => "v1/businesses/{id}/deals.json",
+            "path" => "v1/businesses/{business_id}/deals.json",
             "method" => "GET",
             "params" => $params,
             "query" => $query,
@@ -96,7 +99,7 @@ function business_deal_direct_setup($mockres)
         $client = new LoppeeBusinessSDK($merged_opts);
         $idmap = $env["LOPPEE_BUSINESS_TEST_BUSINESS_DEAL_ENTID"] ?? [];
         // A path parameter's example stands in for an id *_ENTID does not give.
-        $idmap = array_merge(["business_deal01" => 'biz_elite_ac_llc_jacksonville_fl'],
+        $idmap = array_merge(["business01" => 'biz_elite_ac_llc_jacksonville_fl'],
             is_array($idmap) ? $idmap : []);
         return [
             "client" => $client,

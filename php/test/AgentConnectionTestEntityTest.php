@@ -59,6 +59,9 @@ class AgentConnectionTestEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $agent_connection_test_ref01_ent = $client->AgentConnectionTest(null);
         $agent_connection_test_ref01_data = Helpers::to_map(Vs::getprop(

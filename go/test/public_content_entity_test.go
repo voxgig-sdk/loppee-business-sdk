@@ -75,6 +75,9 @@ func TestPublicContentEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = publicContentRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		publicContentRef01Ent := client.PublicContent(nil)
 		publicContentRef01MatchDt0 := map[string]any{}

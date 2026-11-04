@@ -72,6 +72,9 @@ func TestAnonymousLocationProofRevocationEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		anonymousLocationProofRevocationRef01Ent := client.AnonymousLocationProofRevocation(nil)
 		anonymousLocationProofRevocationRef01Data := core.ToMapAny(vs.GetProp(

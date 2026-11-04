@@ -59,6 +59,9 @@ class DestinationLocationProofEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $destination_location_proof_ref01_ent = $client->DestinationLocationProof(null);
         $destination_location_proof_ref01_data = Helpers::to_map(Vs::getprop(

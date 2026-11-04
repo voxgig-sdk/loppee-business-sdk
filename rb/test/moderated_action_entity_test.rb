@@ -53,6 +53,7 @@ class ModeratedActionEntityTest < Minitest::Test
       moderated_action_ref01_data = Helpers.to_map(moderated_action_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # LOAD
     moderated_action_ref01_ent = client.ModeratedAction(nil)
     moderated_action_ref01_match_dt0 = {}
@@ -64,6 +65,7 @@ class ModeratedActionEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     moderated_action_ref01_ent = client.ModeratedAction(nil)
     moderated_action_ref01_data = Helpers.to_map(Vs.getprop(
@@ -73,6 +75,7 @@ class ModeratedActionEntityTest < Minitest::Test
     moderated_action_ref01_data = Helpers.to_map(moderated_action_ref01_data_result.respond_to?(:data_get) ? moderated_action_ref01_data_result.data_get : moderated_action_ref01_data_result)
     assert !moderated_action_ref01_data.nil?
 
+    Runner.live_pace if setup[:live]
     # LOAD
     moderated_action_ref01_match_dt0 = {}
     moderated_action_ref01_data_dt0_loaded = moderated_action_ref01_ent.load(moderated_action_ref01_match_dt0, nil)

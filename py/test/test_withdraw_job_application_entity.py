@@ -57,6 +57,8 @@ class TestWithdrawJobApplicationEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         withdraw_job_application_ref01_ent = client.WithdrawJobApplication(None)
         withdraw_job_application_ref01_data = helpers.to_map(vs.getprop(

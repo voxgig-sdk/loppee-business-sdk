@@ -71,6 +71,9 @@ func TestDestinationLocationProofEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		destinationLocationProofRef01Ent := client.DestinationLocationProof(nil)
 		destinationLocationProofRef01Data := core.ToMapAny(vs.GetProp(

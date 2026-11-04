@@ -60,23 +60,28 @@ const utility_1 = require("../../utility");
             return;
         }
         const client = __1.LoppeeBusinessSDK.test(undefined, { feature: { validate: { active: true } } });
-        await node_assert_1.default.rejects(client.SupportWorkflow().create({ "id": 1 }), (err) => 'validate_failed' === err.code);
+        await node_assert_1.default.rejects(client.SupportWorkflow().create({ "support_id": 1 }), (err) => 'validate_failed' === err.code);
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.LOPPEE_BUSINESS_TEST_LIVE;
-        for (const op of []) {
+        for (const op of ['create']) {
             if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'support_workflow.' + op, live))
                 return;
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "category": { "a": true, "h": "Category", "n": "category", "r": false, "t": "`$ANY`", "key$": "category", "index$": 0 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 1 }, "priority": { "a": true, "h": "Priority", "n": "priority", "r": false, "t": "`$ANY`", "key$": "priority", "index$": 2 }, "waiting_on": { "a": true, "h": "Waiting On", "n": "waiting_on", "r": false, "t": "`$ANY`", "key$": "waiting_on", "index$": 3 } }, "id": { "field": "id", "name": "id" }, "name": "support_workflow", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": ["category", "priority", "waiting_on"], "co": { "id": "POST /v1/admin/support/{conversation_id}/workflow", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "conversation_id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "POST", "o": "/v1/admin/support/{conversation_id}/workflow", "q": { "exist": ["id"] }, "r": { "param": { "conversation_id": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "v1" }, { "lit": "admin" }, { "lit": "support" }, { "var": "id" }, { "lit": "workflow" }], "t": { "req": { "category": "`reqdata.category`", "priority": "`reqdata.priority`", "waiting_on": "`reqdata.waiting_on`" }, "res": "`body.conversation`" }, "index$": 0 }], "key$": "create" } }, "relations": { "ancestors": [] }, "key$": "support_workflow", "name__orig": "support_workflow", "Name": "SupportWorkflow", "name_": "support_workflow", "name-": "support-workflow", "NAME": "SUPPORT_WORKFLOW", "index$": 56 }, { "active": true, "entity": "support_workflow", "key$": "BasicSupportWorkflowFlow", "kind": "basic", "name": "BasicSupportWorkflowFlow", "param": {}, "step": [{ "a": false, "d": {}, "i": { "ref": "support_workflow_ref01" }, "m": { "conversation_id": "conversation01" }, "o": "create", "s": [], "v": [], "unreachable": true }] }, 'SupportWorkflow', { "POST /v1/admin/support/{conversation_id}/workflow": { "protocol": "http", "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "minProperties": 1, "additionalProperties": false, "properties": { "category": { "enum": ["verification", "billing", "profile", "agent_api", "technical", "report", "general"], "key$": "category" }, "priority": { "enum": ["urgent", "high", "normal", "low"], "key$": "priority" }, "waiting_on": { "enum": ["support", "owner", "none"], "key$": "waiting_on" } }, "x-ref": "#/components/schemas/SupportWorkflowRequest", "index$": 1 } } } }, "parameters": [{ "name": "conversation_id", "in": "path", "required": true, "description": "Support conversation id.", "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "support_workflow.create.0": "GET-only live run: needs POST /v1/admin/support/{conversation_id}/workflow" } : {});
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "category": { "a": true, "h": "Category", "n": "category", "r": false, "t": "`$ANY`", "key$": "category", "index$": 0 }, "priority": { "a": true, "h": "Priority", "n": "priority", "r": false, "t": "`$ANY`", "key$": "priority", "index$": 1 }, "waiting_on": { "a": true, "h": "Waiting On", "n": "waiting_on", "r": false, "t": "`$ANY`", "key$": "waiting_on", "index$": 2 } }, "name": "support_workflow", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": ["category", "priority", "waiting_on"], "co": { "id": "POST /v1/admin/support/{conversation_id}/workflow", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "support_id", "or": "conversation_id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "POST", "o": "/v1/admin/support/{conversation_id}/workflow", "q": { "exist": ["support_id"] }, "r": { "param": { "conversation_id": "support_id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "v1" }, { "lit": "admin" }, { "lit": "support" }, { "var": "support_id" }, { "lit": "workflow" }], "t": { "req": { "category": "`reqdata.category`", "priority": "`reqdata.priority`", "waiting_on": "`reqdata.waiting_on`" }, "res": "`body.conversation`" }, "index$": 0 }], "key$": "create" } }, "relations": { "ancestors": [] }, "key$": "support_workflow", "name__orig": "support_workflow", "Name": "SupportWorkflow", "name_": "support_workflow", "name-": "support-workflow", "NAME": "SUPPORT_WORKFLOW", "index$": 56 }, { "active": true, "entity": "support_workflow", "key$": "BasicSupportWorkflowFlow", "kind": "basic", "name": "BasicSupportWorkflowFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "support_workflow_ref01" }, "m": { "support_id": "support01" }, "o": "create", "s": [], "v": [], "index$": 0 }] }, 'SupportWorkflow', { "POST /v1/admin/support/{conversation_id}/workflow": { "protocol": "http", "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "minProperties": 1, "additionalProperties": false, "properties": { "category": { "enum": ["verification", "billing", "profile", "agent_api", "technical", "report", "general"], "key$": "category" }, "priority": { "enum": ["urgent", "high", "normal", "low"], "key$": "priority" }, "waiting_on": { "enum": ["support", "owner", "none"], "key$": "waiting_on" } }, "x-ref": "#/components/schemas/SupportWorkflowRequest", "index$": 1 } } } }, "parameters": [{ "name": "conversation_id", "in": "path", "required": true, "description": "Support conversation id.", "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "support_workflow.create.0": "GET-only live run: needs POST /v1/admin/support/{conversation_id}/workflow" } : {});
         }
         const client = setup.client;
         const struct = setup.struct;
         const isempty = struct.isempty;
         const select = struct.select;
-        let support_workflow_ref01_data = Object.values(setup.data.existing.support_workflow)[0];
+        // CREATE
+        const support_workflow_ref01_ent = client.SupportWorkflow();
+        let support_workflow_ref01_data = setup.data.new.support_workflow['support_workflow_ref01'];
+        support_workflow_ref01_data['support_id'] = setup.idmap['support01'];
+        support_workflow_ref01_data = (await support_workflow_ref01_ent.create(support_workflow_ref01_data)).data();
+        (0, node_assert_1.default)(null != support_workflow_ref01_data);
     });
 });
 // main.kit.test.live.strict is true (the default is true): a live
@@ -98,7 +103,7 @@ function basicSetup(extra) {
     const struct = client.utility().struct;
     const merge = struct.merge;
     const transform = struct.transform;
-    let idmap = transform(['support_workflow01', 'support_workflow02', 'support_workflow03'], {
+    let idmap = transform(['support_workflow01', 'support_workflow02', 'support_workflow03', 'support01'], {
         '`$PACK`': ['', {
                 '`$KEY`': '`$COPY`',
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']

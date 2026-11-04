@@ -54,7 +54,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $agentcapability = $client->AgentCapability()->load();
+    $agentpolicy = $client->AgentPolicy()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -121,18 +121,15 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = LoppeeBusinessSDK::test([
-    "entity" => ["business_review" => ["test01" => ["id" => "test01"]]],
-]);
+$client = LoppeeBusinessSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$businessreview = $client->BusinessReview()->load(["id" => "test01"]);
-print_r($businessreview->data_get());
+$agentpolicy = $client->AgentPolicy()->load();
+print_r($agentpolicy->data_get());
 ```
 
 ### Use a custom fetch function
@@ -428,12 +425,8 @@ API path: `/v1/agent-monitoring.json`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: List.
 
@@ -719,7 +712,6 @@ API path: `/v1/owner/agents/{agent_id}/disconnect`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 
 Operations: Load.
 
@@ -869,7 +861,6 @@ API path: `/v1/actions/list-my-conversations`
 | --- | --- |
 | `closed_at` |  |
 | `conversation_id` |  |
-| `id` |  |
 | `status` |  |
 
 Operations: Create.
@@ -881,7 +872,6 @@ API path: `/v1/account/conversations/{conversation_id}/close`
 | Field | Description |
 | --- | --- |
 | `detail` |  |
-| `id` |  |
 | `reason` |  |
 | `status` |  |
 
@@ -949,26 +939,20 @@ API path: `/v1/account/customer`
 | --- | --- |
 | `account_id` |  |
 | `account_role` |  |
-| `accuracy_meters` |  |
 | `acknowledge_data_effects` |  |
 | `actions` |  |
-| `agent_key_id` |  |
 | `agent_receives_coordinates` |  |
 | `all_paused` |  |
 | `app_attest_registered` |  |
-| `assertion` |  |
 | `attestation` |  |
 | `author_label` |  |
 | `author_type` |  |
 | `binding` |  |
 | `body` |  |
 | `business_id` |  |
-| `capture_source` |  |
-| `captured_at` |  |
 | `challenge` |  |
 | `challenge_id` |  |
 | `client_message_id` |  |
-| `completed` |  |
 | `confirmation` |  |
 | `connection_id` |  |
 | `connection_kind` |  |
@@ -976,7 +960,6 @@ API path: `/v1/account/customer`
 | `coordinates_returned` |  |
 | `created_at` |  |
 | `credential_id` |  |
-| `declined` |  |
 | `delivery_contract` |  |
 | `disabled_reason` |  |
 | `disclosure` |  |
@@ -988,21 +971,17 @@ API path: `/v1/account/customer`
 | `event_id` |  |
 | `event_types` |  |
 | `failure_count` |  |
-| `handoff_id` |  |
 | `has_more` |  |
 | `id` |  |
 | `idempotent_replay` |  |
 | `installation_id` |  |
 | `key_id` |  |
 | `last_delivery_at` |  |
-| `latitude` |  |
 | `location` | An opaque location reference from the website's own location controls. |
-| `longitude` |  |
 | `message_alerts_enabled` |  |
 | `messages` |  |
 | `mode` | fallback: a direct search answered because the language model was unavailable. |
 | `name` |  |
-| `oauth_grant_id` |  |
 | `one_time_display` |  |
 | `platform` |  |
 | `policy` |  |
@@ -1011,7 +990,6 @@ API path: `/v1/account/customer`
 | `reason` |  |
 | `registered_at` |  |
 | `reply` |  |
-| `request_mode` |  |
 | `requested_at` |  |
 | `results` |  |
 | `schema_version` |  |
@@ -1022,11 +1000,10 @@ API path: `/v1/account/customer`
 | `updated_at` |  |
 | `url` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` |  |
-| `use_mode` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
+API path: `/v1/account/agent-location/app-attest/challenges`
 
 #### CustomerLocationProofRevocation
 
@@ -1158,10 +1135,11 @@ API path: `/v1/account/job-applications/{application_id}/resume-url`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs`
+API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
 
 #### Message
 
@@ -1239,12 +1217,8 @@ API path: `/v1/actions/contact-attempt`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: List.
 
@@ -1527,18 +1501,9 @@ API path: `/v1/owner/webhooks/{endpoint_id}/rotate-secret`
 
 | Field | Description |
 | --- | --- |
-| `billing` |  |
-| `branch_add_ons` |  |
-| `currency` |  |
-| `generated_at` |  |
-| `neutrality` |  |
-| `plans` |  |
-| `promotions` |  |
-| `published_at` |  |
-| `radius_extension` |  |
-| `revision_id` |  |
-| `source` |  |
-| `trust_model_version` |  |
+| `annual_usd` |  |
+| `monthly_usd` |  |
+| `radius_max_miles` |  |
 
 Operations: List.
 
@@ -1731,10 +1696,9 @@ API path: `/v1/business-claim/candidates`
 
 | Field | Description |
 | --- | --- |
-| `categories` |  |
-| `names` |  |
-| `query` |  |
-| `schema_version` |  |
+| `alias` |  |
+| `path_titles` |  |
+| `title` |  |
 
 Operations: List.
 
@@ -1758,7 +1722,6 @@ API path: `/v1/admin/support/{conversation_id}/internal-notes`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `id` |  |
 | `priority` |  |
 | `waiting_on` |  |
 
@@ -2049,12 +2012,8 @@ Create an instance: `$agent_openapi = $client->AgentOpenapi();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `array` |  |
-| `info` | `array` |  |
-| `openapi` | `mixed` |  |
-| `paths` | `array` |  |
-| `servers` | `array` |  |
-| `tags` | `array` |  |
+| `description` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -2237,7 +2196,7 @@ Create an instance: `$business_deal = $client->BusinessDeal();`
 
 ```php
 // list() returns an array of BusinessDeal entities, one per record (throws on error).
-$business_deals = $client->BusinessDeal()->list(["id" => "example"]);
+$business_deals = $client->BusinessDeal()->list(["business_id" => "example"]);
 ```
 
 
@@ -2541,17 +2500,11 @@ Create an instance: `$business_review = $client->BusinessReview();`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` |  |
-
 #### Example: Load
 
 ```php
 // load() returns the ENTITY — call data_get() for the BusinessReview record (throws on error).
-$business_review = $client->BusinessReview()->load(["id" => "business_review_id"]);
+$business_review = $client->BusinessReview()->load(["business_id" => "business_id"]);
 ```
 
 
@@ -2821,14 +2774,13 @@ Create an instance: `$conversation_close = $client->ConversationClose();`
 | --- | --- | --- |
 | `closed_at` | `string` |  |
 | `conversation_id` | `string` |  |
-| `id` | `string` |  |
 | `status` | `mixed` |  |
 
 #### Example: Create
 
 ```php
 $conversation_close = $client->ConversationClose()->create([
-    "id" => null, // string
+    "conversation_id" => null, // string
 ]);
 ```
 
@@ -2848,7 +2800,6 @@ Create an instance: `$conversation_report = $client->ConversationReport();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `detail` | `string` |  |
-| `id` | `string` |  |
 | `reason` | `mixed` |  |
 | `status` | `mixed` |  |
 
@@ -2856,7 +2807,7 @@ Create an instance: `$conversation_report = $client->ConversationReport();`
 
 ```php
 $conversation_report = $client->ConversationReport()->create([
-    "id" => null, // string
+    "conversation_id" => null, // string
     "reason" => null, // mixed
 ]);
 ```
@@ -2976,26 +2927,20 @@ Create an instance: `$customer_account = $client->CustomerAccount();`
 | --- | --- | --- |
 | `account_id` | `string` |  |
 | `account_role` | `string` |  |
-| `accuracy_meters` | `float` |  |
 | `acknowledge_data_effects` | `bool` |  |
 | `actions` | `array` |  |
-| `agent_key_id` | `string` |  |
 | `agent_receives_coordinates` | `bool` |  |
 | `all_paused` | `bool` |  |
 | `app_attest_registered` | `bool` |  |
-| `assertion` | `string` |  |
 | `attestation` | `string` |  |
 | `author_label` | `string` |  |
 | `author_type` | `string` |  |
 | `binding` | `mixed` |  |
 | `body` | `string` |  |
 | `business_id` | `mixed` |  |
-| `capture_source` | `mixed` |  |
-| `captured_at` | `string` |  |
 | `challenge` | `string` |  |
 | `challenge_id` | `string` |  |
 | `client_message_id` | `string` |  |
-| `completed` | `bool` |  |
 | `confirmation` | `string` |  |
 | `connection_id` | `string` |  |
 | `connection_kind` | `string` |  |
@@ -3003,7 +2948,6 @@ Create an instance: `$customer_account = $client->CustomerAccount();`
 | `coordinates_returned` | `bool` |  |
 | `created_at` | `string` |  |
 | `credential_id` | `string` |  |
-| `declined` | `bool` |  |
 | `delivery_contract` | `array` |  |
 | `disabled_reason` | `mixed` |  |
 | `disclosure` | `string` |  |
@@ -3015,21 +2959,17 @@ Create an instance: `$customer_account = $client->CustomerAccount();`
 | `event_id` | `string` |  |
 | `event_types` | `array` |  |
 | `failure_count` | `int` |  |
-| `handoff_id` | `string` |  |
 | `has_more` | `bool` |  |
 | `id` | `string` |  |
 | `idempotent_replay` | `bool` |  |
 | `installation_id` | `string` |  |
 | `key_id` | `string` |  |
 | `last_delivery_at` | `mixed` |  |
-| `latitude` | `float` |  |
 | `location` | `mixed` | An opaque location reference from the website's own location controls. |
-| `longitude` | `float` |  |
 | `message_alerts_enabled` | `bool` |  |
 | `messages` | `array` |  |
 | `mode` | `string` | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `string` |  |
-| `oauth_grant_id` | `mixed` |  |
 | `one_time_display` | `mixed` |  |
 | `platform` | `string` |  |
 | `policy` | `string` |  |
@@ -3038,7 +2978,6 @@ Create an instance: `$customer_account = $client->CustomerAccount();`
 | `reason` | `string` |  |
 | `registered_at` | `string` |  |
 | `reply` | `string` |  |
-| `request_mode` | `string` |  |
 | `requested_at` | `string` |  |
 | `results` | `array` |  |
 | `schema_version` | `string` |  |
@@ -3049,7 +2988,6 @@ Create an instance: `$customer_account = $client->CustomerAccount();`
 | `updated_at` | `string` |  |
 | `url` | `string` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `string` |  |
-| `use_mode` | `string` |  |
 
 #### Example: Create
 
@@ -3057,33 +2995,26 @@ Create an instance: `$customer_account = $client->CustomerAccount();`
 $customer_account = $client->CustomerAccount()->create([
     "account_id" => null, // string
     "account_role" => null, // string
-    "accuracy_meters" => null, // float
     "acknowledge_data_effects" => null, // bool
     "actions" => null, // array
-    "agent_key_id" => null, // string
     "agent_receives_coordinates" => null, // bool
     "all_paused" => null, // bool
     "app_attest_registered" => null, // bool
-    "assertion" => null, // string
     "attestation" => null, // string
     "author_label" => null, // string
     "author_type" => null, // string
     "binding" => null, // mixed
     "body" => null, // string
     "business_id" => null, // mixed
-    "capture_source" => null, // mixed
-    "captured_at" => null, // string
     "challenge" => null, // string
     "challenge_id" => null, // string
     "client_message_id" => null, // string
-    "completed" => null, // bool
     "confirmation" => null, // string
     "connection_id" => null, // string
     "connection_kind" => null, // string
     "coordinates_returned" => null, // bool
     "created_at" => null, // string
     "credential_id" => null, // string
-    "declined" => null, // bool
     "delivery_contract" => null, // array
     "disabled_reason" => null, // mixed
     "disclosure" => null, // string
@@ -3095,19 +3026,15 @@ $customer_account = $client->CustomerAccount()->create([
     "event_id" => null, // string
     "event_types" => null, // array
     "failure_count" => null, // int
-    "handoff_id" => null, // string
     "has_more" => null, // bool
     "id" => null, // string
     "idempotent_replay" => null, // bool
     "installation_id" => null, // string
     "key_id" => null, // string
     "last_delivery_at" => null, // mixed
-    "latitude" => null, // float
-    "longitude" => null, // float
     "message_alerts_enabled" => null, // bool
     "messages" => null, // array
     "mode" => null, // string
-    "oauth_grant_id" => null, // mixed
     "one_time_display" => null, // mixed
     "platform" => null, // string
     "policy" => null, // string
@@ -3115,7 +3042,6 @@ $customer_account = $client->CustomerAccount()->create([
     "push_token" => null, // string
     "registered_at" => null, // string
     "reply" => null, // string
-    "request_mode" => null, // string
     "requested_at" => null, // string
     "results" => null, // array
     "schema_version" => null, // string
@@ -3126,7 +3052,6 @@ $customer_account = $client->CustomerAccount()->create([
     "updated_at" => null, // string
     "url" => null, // string
     "usable_until" => null, // string
-    "use_mode" => null, // string
 ]);
 ```
 
@@ -3384,6 +3309,12 @@ Create an instance: `$location_handoff = $client->LocationHandoff();`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```php
@@ -3532,12 +3463,8 @@ Create an instance: `$open_api_document = $client->OpenApiDocument();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `array` |  |
-| `info` | `array` |  |
-| `openapi` | `mixed` |  |
-| `paths` | `array` |  |
-| `servers` | `array` |  |
-| `tags` | `array` |  |
+| `description` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -4022,18 +3949,9 @@ Create an instance: `$pricing = $client->Pricing();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing` | `array` |  |
-| `branch_add_ons` | `array` |  |
-| `currency` | `mixed` |  |
-| `generated_at` | `string` |  |
-| `neutrality` | `string` |  |
-| `plans` | `array` |  |
-| `promotions` | `array` |  |
-| `published_at` | `mixed` |  |
-| `radius_extension` | `array` |  |
-| `revision_id` | `mixed` |  |
-| `source` | `mixed` |  |
-| `trust_model_version` | `mixed` |  |
+| `annual_usd` | `float` |  |
+| `monthly_usd` | `float` |  |
+| `radius_max_miles` | `float` |  |
 
 #### Example: List
 
@@ -4374,10 +4292,9 @@ Create an instance: `$suggest = $client->Suggest();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `array` |  |
-| `names` | `array` |  |
-| `query` | `string` |  |
-| `schema_version` | `mixed` |  |
+| `alias` | `string` |  |
+| `path_titles` | `array` |  |
+| `title` | `string` |  |
 
 #### Example: List
 
@@ -4410,7 +4327,7 @@ Create an instance: `$support_internal_note = $client->SupportInternalNote();`
 
 ```php
 $support_internal_note = $client->SupportInternalNote()->create([
-    "id" => null, // string
+    "support_id" => null, // string
     "body" => null, // string
 ]);
 ```
@@ -4431,7 +4348,6 @@ Create an instance: `$support_workflow = $client->SupportWorkflow();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `mixed` |  |
-| `id` | `string` |  |
 | `priority` | `mixed` |  |
 | `waiting_on` | `mixed` |  |
 
@@ -4439,7 +4355,7 @@ Create an instance: `$support_workflow = $client->SupportWorkflow();`
 
 ```php
 $support_workflow = $client->SupportWorkflow()->create([
-    "id" => null, // string
+    "support_id" => null, // string
 ]);
 ```
 
@@ -4802,11 +4718,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$agentcapability = $client->AgentCapability();
-$agentcapability->load();
+$agentpolicy = $client->AgentPolicy();
+$agentpolicy->load();
 
-// $agentcapability->data_get() now returns the agentcapability data from the last load
-// $agentcapability->match_get() returns the last match criteria
+// $agentpolicy->data_get() now returns the agentpolicy data from the last load
+// $agentpolicy->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -24,6 +24,22 @@ class LocationHandoffEntityTest extends TestCase
         $this->assertNotNull($ent);
     }
 
+    public function test_validate(): void
+    {
+        $cfg = LoppeeBusinessConfig::shared_config();
+        if (!isset($cfg["feature"]["validate"])) {
+            $this->markTestSkipped('feature not present in this SDK: validate');
+        }
+        $client = LoppeeBusinessSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
+        $err = null;
+        try {
+            $client->LocationHandoff(null)->create(["id" => 1], null);
+        } catch (\Throwable $e) {
+            $err = $e;
+        }
+        $this->assertSame('validate_failed', $err->sdk_code ?? null);
+    }
+
     public function test_basic_flow(): void
     {
         $setup = location_handoff_basic_setup(null);
@@ -37,12 +53,15 @@ class LocationHandoffEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"location_handoff.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /v1/account/location-handoffs"}' . "\n");
-            $this->markTestSkipped('Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs)');
+            fwrite(STDOUT, 'LIVE STEP {"id":"location_handoff.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: location_handoff.create.0 excluded (GET-only live run: needs POST /v1/account/location-handoffs/{handoff_id}/complete-from-device)');
         }
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $location_handoff_ref01_ent = $client->LocationHandoff(null);
         $location_handoff_ref01_data = Helpers::to_map(Vs::getprop(
@@ -51,6 +70,7 @@ class LocationHandoffEntityTest extends TestCase
         $location_handoff_ref01_data_result = $location_handoff_ref01_ent->create($location_handoff_ref01_data, null);
         $location_handoff_ref01_data = Helpers::to_map(is_object($location_handoff_ref01_data_result) && method_exists($location_handoff_ref01_data_result, 'data_get') ? $location_handoff_ref01_data_result->data_get() : $location_handoff_ref01_data_result);
         $this->assertNotNull($location_handoff_ref01_data);
+        $this->assertNotNull($location_handoff_ref01_data["id"]);
 
     }
 }

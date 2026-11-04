@@ -11,12 +11,6 @@ main: kit: entity: conversation_report: {
       r: false
       t: "`$STRING`"
     }
-    id: {
-      h: "Id"
-      n: "id"
-      r: false
-      t: "`$STRING`"
-    }
     reason: {
       h: "Reason"
       n: "reason"
@@ -29,11 +23,6 @@ main: kit: entity: conversation_report: {
       r: true
       t: "`$ANY`"
     }
-  }
-
-  id: {
-    field: "id"
-    name: "id"
   }
 
   name: "conversation_report"
@@ -55,7 +44,7 @@ main: kit: entity: conversation_report: {
             params: [
               {
                 k: "param"
-                n: "id"
+                n: "conversation_id"
                 or: "conversation_id"
                 r: true
                 t: "`$STRING`"
@@ -66,13 +55,8 @@ main: kit: entity: conversation_report: {
           o: "/v1/account/conversations/{conversation_id}/report"
           q: {
             exist: [
-              "id"
+              "conversation_id"
             ]
-          }
-          r: {
-            param: {
-              conversation_id: "id"
-            }
           }
           rs: {
             kind: "json"
@@ -89,7 +73,7 @@ main: kit: entity: conversation_report: {
               lit: "conversations"
             }
             {
-              var: "id"
+              var: "conversation_id"
             }
             {
               lit: "report"
@@ -171,6 +155,7 @@ main: kit: entity: conversation_report: {
 
 
   relations: ancestors: [
+    [path("$.main.kit.entity.conversation")]
     [path("$.main.kit.entity.message")]
   ]
 

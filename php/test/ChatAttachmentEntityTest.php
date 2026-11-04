@@ -66,6 +66,9 @@ class ChatAttachmentEntityTest extends TestCase
         }
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $chat_attachment_ref01_ent = $client->ChatAttachment(null);
         $chat_attachment_ref01_data = Helpers::to_map(Vs::getprop(

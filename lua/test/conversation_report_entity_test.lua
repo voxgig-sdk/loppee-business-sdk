@@ -29,7 +29,7 @@ describe("ConversationReportEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:ConversationReport(nil):create({ ["id"] = 1, ["reason"] = "x" }, nil)
+    local _, err = client:ConversationReport(nil):create({ ["conversation_id"] = 1, ["reason"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -59,6 +59,9 @@ describe("ConversationReportEntity", function()
     end
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local conversation_report_ref01_ent = client:ConversationReport(nil)
     local conversation_report_ref01_data = helpers.to_map(vs.getprop(
@@ -69,7 +72,6 @@ describe("ConversationReportEntity", function()
     assert.is_nil(err)
     conversation_report_ref01_data = helpers.to_map(type(conversation_report_ref01_data_result) == 'table' and conversation_report_ref01_data_result.data_get and conversation_report_ref01_data_result:data_get() or conversation_report_ref01_data_result)
     assert.is_not_nil(conversation_report_ref01_data)
-    assert.is_not_nil(conversation_report_ref01_data["id"])
 
   end)
 end)
@@ -94,7 +96,7 @@ function conversation_report_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "conversation_report01", "conversation_report02", "conversation_report03", "message01", "message02", "message03" },
+    { "conversation_report01", "conversation_report02", "conversation_report03", "conversation01", "conversation02", "conversation03", "message01", "message02", "message03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

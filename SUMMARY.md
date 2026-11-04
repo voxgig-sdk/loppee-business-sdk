@@ -218,7 +218,7 @@ Key fields to recognise:
 
 ### CustomerAccount
 
-Results: Complete an assistant location request from the customer&#39;s phone response; Decline an assistant location request from the customer&#39;s phone response; Create an authenticated iPhone App Attest challenge response; Register this signed-in iPhone&#39;s App Attest key response; Disconnect personal agent response; Rotate personal-agent key response; Register personal-agent webhook response; Disable personal-agent webhook response; Test personal-agent webhook response; Set one verified assistant connection&#39;s iPhone location policy response; Mark customer conversation read response; Reply to a business conversation response; Pause or resume all assistant location access response; Connect personal agent response; Send a customer in-app assistant turn response; Request deletion of my customer account response; Register this customer mobile installation for push delivery response; Turn message alerts on or off for this customer mobile installation response; Revoke this customer mobile installation response.
+Results: Create an authenticated iPhone App Attest challenge response; Register this signed-in iPhone&#39;s App Attest key response; Disconnect personal agent response; Rotate personal-agent key response; Register personal-agent webhook response; Disable personal-agent webhook response; Test personal-agent webhook response; Set one verified assistant connection&#39;s iPhone location policy response; Mark customer conversation read response; Reply to a business conversation response; Pause or resume all assistant location access response; Connect personal agent response; Send a customer in-app assistant turn response; Request deletion of my customer account response; Register this customer mobile installation for push delivery response; Turn message alerts on or off for this customer mobile installation response; Revoke this customer mobile installation response.
 
 SDK operations: `create`.
 
@@ -289,7 +289,7 @@ SDK operations: `create`.
 
 ### LocationHandoff
 
-Results: Consent link created.
+Results: Complete an assistant location request from the customer&#39;s phone response; Decline an assistant location request from the customer&#39;s phone response; Consent link created.
 
 SDK operations: `create`.
 
@@ -453,10 +453,6 @@ Results: SuggestResponse.
 
 SDK operations: `list`.
 
-Key fields to recognise:
-
-- `query`: Exact business-name query to submit to /v1/search; never a branch or profile identifier.
-
 ### SupportInternalNote
 
 Results: SupportInternalNoteResponse.
@@ -598,8 +594,6 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | ConversationWorkflow | `create` | `POST /v1/owner/messages/{interaction_id}/workflow` | Required |
 | CreateAgentApiKey | `create` | `POST /v1/admin/agent-keys` | Required |
 | Customer | `create` | `POST /v1/account/customer` | Required |
-| CustomerAccount | `create` | `POST /v1/account/location-handoffs/{handoff_id}/complete-from-device` | Required |
-| CustomerAccount | `create` | `POST /v1/account/location-handoffs/{handoff_id}/decline-from-device` | Required |
 | CustomerAccount | `create` | `POST /v1/account/agent-location/app-attest/challenges` | Required |
 | CustomerAccount | `create` | `POST /v1/account/agent-location/app-attest/keys` | Required |
 | CustomerAccount | `create` | `POST /v1/account/agents/{agent_id}/disconnect` | Required |
@@ -633,6 +627,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | JobApplication | `create` | `POST /v1/actions/list-my-job-applications` | Required |
 | JobResumeSignedUrl | `create` | `POST /v1/account/job-applications/{application_id}/resume-url` | Required |
 | JobResumeSignedUrl | `create` | `POST /v1/owner/job-applications/{application_id}/resume-url` | Required |
+| LocationHandoff | `create` | `POST /v1/account/location-handoffs/{handoff_id}/complete-from-device` | Required |
+| LocationHandoff | `create` | `POST /v1/account/location-handoffs/{handoff_id}/decline-from-device` | Required |
 | LocationHandoff | `create` | `POST /v1/account/location-handoffs` | Required |
 | Message | `create` | `POST /v1/actions/business-message` | Required |
 | Message | `create` | `POST /v1/actions/message-request` | Required |

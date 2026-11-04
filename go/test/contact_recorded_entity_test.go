@@ -71,6 +71,9 @@ func TestContactRecordedEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		contactRecordedRef01Ent := client.ContactRecorded(nil)
 		contactRecordedRef01Data := core.ToMapAny(vs.GetProp(

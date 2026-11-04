@@ -60,6 +60,8 @@ class TestPublicContentEntity:
         if len(public_content_ref01_data_raw) > 0:
             public_content_ref01_data = helpers.to_map(public_content_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LOAD
         public_content_ref01_ent = client.PublicContent(None)
         public_content_ref01_match_dt0 = {}

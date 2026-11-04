@@ -783,39 +783,14 @@ func MakeConfig() map[string]any {
 			"agent_openapi": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "components",
-						"title": "Components",
-						"type": "`$OBJECT`",
-						"req": true,
+						"name": "description",
+						"title": "Description",
+						"type": "`$STRING`",
 					},
 					map[string]any{
-						"name": "info",
-						"title": "Info",
-						"type": "`$OBJECT`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "openapi",
-						"title": "Openapi",
-						"type": "`$ANY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "paths",
-						"title": "Paths",
-						"type": "`$OBJECT`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "servers",
-						"title": "Servers",
-						"type": "`$ARRAY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "tags",
-						"title": "Tags",
-						"type": "`$ARRAY`",
+						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
 						"req": true,
 					},
 				},
@@ -844,7 +819,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.servers`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -1521,7 +1496,7 @@ func MakeConfig() map[string]any {
 										"lit": "businesses",
 									},
 									map[string]any{
-										"var": "id",
+										"var": "business_id",
 									},
 									map[string]any{
 										"lit": "deals.json",
@@ -1530,14 +1505,10 @@ func MakeConfig() map[string]any {
 								"parts": []any{
 									"v1",
 									"businesses",
-									"{id}",
+									"{business_id}",
 									"deals.json",
 								},
-								"rename": map[string]any{
-									"param": map[string]any{
-										"business_id": "id",
-									},
-								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.deals`",
@@ -1545,7 +1516,7 @@ func MakeConfig() map[string]any {
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"name": "id",
+											"name": "business_id",
 											"orig": "business_id",
 											"type": "`$STRING`",
 											"kind": "param",
@@ -1556,7 +1527,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"id",
+										"business_id",
 									},
 								},
 								"response": map[string]any{
@@ -5503,17 +5474,7 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"business_review": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$STRING`",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
+				"fields": []any{},
 				"name": "business_review",
 				"op": map[string]any{
 					"load": map[string]any{
@@ -5532,7 +5493,7 @@ func MakeConfig() map[string]any {
 										"lit": "businesses",
 									},
 									map[string]any{
-										"var": "id",
+										"var": "business_id",
 									},
 									map[string]any{
 										"lit": "reviews.json",
@@ -5541,14 +5502,10 @@ func MakeConfig() map[string]any {
 								"parts": []any{
 									"v1",
 									"businesses",
-									"{id}",
+									"{business_id}",
 									"reviews.json",
 								},
-								"rename": map[string]any{
-									"param": map[string]any{
-										"business_id": "id",
-									},
-								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
@@ -5556,7 +5513,7 @@ func MakeConfig() map[string]any {
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"name": "id",
+											"name": "business_id",
 											"orig": "business_id",
 											"type": "`$STRING`",
 											"kind": "param",
@@ -5587,7 +5544,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"id",
+										"business_id",
 									},
 								},
 								"response": map[string]any{
@@ -6941,20 +6898,11 @@ func MakeConfig() map[string]any {
 						"req": true,
 					},
 					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$STRING`",
-					},
-					map[string]any{
 						"name": "status",
 						"title": "Status",
 						"type": "`$ANY`",
 						"req": true,
 					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
 				},
 				"name": "conversation_close",
 				"op": map[string]any{
@@ -6977,7 +6925,7 @@ func MakeConfig() map[string]any {
 										"lit": "conversations",
 									},
 									map[string]any{
-										"var": "id",
+										"var": "conversation_id",
 									},
 									map[string]any{
 										"lit": "close",
@@ -6987,14 +6935,10 @@ func MakeConfig() map[string]any {
 									"v1",
 									"account",
 									"conversations",
-									"{id}",
+									"{conversation_id}",
 									"close",
 								},
-								"rename": map[string]any{
-									"param": map[string]any{
-										"conversation_id": "id",
-									},
-								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
@@ -7002,7 +6946,7 @@ func MakeConfig() map[string]any {
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"name": "id",
+											"name": "conversation_id",
 											"orig": "conversation_id",
 											"type": "`$STRING`",
 											"kind": "param",
@@ -7012,7 +6956,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"id",
+										"conversation_id",
 									},
 								},
 								"response": map[string]any{
@@ -7024,7 +6968,11 @@ func MakeConfig() map[string]any {
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{},
+					"ancestors": []any{
+						[]any{
+							"$.main.kit.entity.conversation",
+						},
+					},
 				},
 			},
 			"conversation_report": map[string]any{
@@ -7032,11 +6980,6 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "detail",
 						"title": "Detail",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "id",
-						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -7051,10 +6994,6 @@ func MakeConfig() map[string]any {
 						"type": "`$ANY`",
 						"req": true,
 					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
 				},
 				"name": "conversation_report",
 				"op": map[string]any{
@@ -7077,7 +7016,7 @@ func MakeConfig() map[string]any {
 										"lit": "conversations",
 									},
 									map[string]any{
-										"var": "id",
+										"var": "conversation_id",
 									},
 									map[string]any{
 										"lit": "report",
@@ -7087,14 +7026,10 @@ func MakeConfig() map[string]any {
 									"v1",
 									"account",
 									"conversations",
-									"{id}",
+									"{conversation_id}",
 									"report",
 								},
-								"rename": map[string]any{
-									"param": map[string]any{
-										"conversation_id": "id",
-									},
-								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": map[string]any{
 										"detail": "`reqdata.detail`",
@@ -7105,7 +7040,7 @@ func MakeConfig() map[string]any {
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"name": "id",
+											"name": "conversation_id",
 											"orig": "conversation_id",
 											"type": "`$STRING`",
 											"kind": "param",
@@ -7115,7 +7050,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"id",
+										"conversation_id",
 									},
 								},
 								"response": map[string]any{
@@ -7189,6 +7124,9 @@ func MakeConfig() map[string]any {
 				},
 				"relations": map[string]any{
 					"ancestors": []any{
+						[]any{
+							"$.main.kit.entity.conversation",
+						},
 						[]any{
 							"$.main.kit.entity.message",
 						},
@@ -7617,12 +7555,6 @@ func MakeConfig() map[string]any {
 						"req": true,
 					},
 					map[string]any{
-						"name": "accuracy_meters",
-						"title": "Accuracy Meters",
-						"type": "`$NUMBER`",
-						"req": true,
-					},
-					map[string]any{
 						"name": "acknowledge_data_effects",
 						"title": "Acknowledge Data Effects",
 						"type": "`$BOOLEAN`",
@@ -7633,13 +7565,6 @@ func MakeConfig() map[string]any {
 						"title": "Actions",
 						"type": "`$ARRAY`",
 						"req": true,
-					},
-					map[string]any{
-						"name": "agent_key_id",
-						"title": "Agent Key Id",
-						"type": "`$STRING`",
-						"req": true,
-						"format": "uuid",
 					},
 					map[string]any{
 						"name": "agent_receives_coordinates",
@@ -7657,12 +7582,6 @@ func MakeConfig() map[string]any {
 						"name": "app_attest_registered",
 						"title": "App Attest Registered",
 						"type": "`$BOOLEAN`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "assertion",
-						"title": "Assertion",
-						"type": "`$STRING`",
 						"req": true,
 					},
 					map[string]any{
@@ -7708,19 +7627,6 @@ func MakeConfig() map[string]any {
 						"req": true,
 					},
 					map[string]any{
-						"name": "capture_source",
-						"title": "Capture Source",
-						"type": "`$ANY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "captured_at",
-						"title": "Captured At",
-						"type": "`$STRING`",
-						"req": true,
-						"format": "date-time",
-					},
-					map[string]any{
 						"name": "challenge",
 						"title": "Challenge",
 						"type": "`$STRING`",
@@ -7737,12 +7643,6 @@ func MakeConfig() map[string]any {
 						"name": "client_message_id",
 						"title": "Client Message Id",
 						"type": "`$STRING`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "completed",
-						"title": "Completed",
-						"type": "`$BOOLEAN`",
 						"req": true,
 					},
 					map[string]any{
@@ -7793,12 +7693,6 @@ func MakeConfig() map[string]any {
 						"name": "credential_id",
 						"title": "Credential Id",
 						"type": "`$STRING`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "declined",
-						"title": "Declined",
-						"type": "`$BOOLEAN`",
 						"req": true,
 					},
 					map[string]any{
@@ -7875,13 +7769,6 @@ func MakeConfig() map[string]any {
 						"req": true,
 					},
 					map[string]any{
-						"name": "handoff_id",
-						"title": "Handoff Id",
-						"type": "`$STRING`",
-						"req": true,
-						"format": "uuid",
-					},
-					map[string]any{
 						"name": "has_more",
 						"title": "Has More",
 						"type": "`$BOOLEAN`",
@@ -7927,22 +7814,10 @@ func MakeConfig() map[string]any {
 						"format": "date-time",
 					},
 					map[string]any{
-						"name": "latitude",
-						"title": "Latitude",
-						"type": "`$NUMBER`",
-						"req": true,
-					},
-					map[string]any{
 						"name": "location",
 						"title": "Location",
 						"type": "`$ANY`",
 						"short": "An opaque location reference from the website's own location controls.",
-					},
-					map[string]any{
-						"name": "longitude",
-						"title": "Longitude",
-						"type": "`$NUMBER`",
-						"req": true,
 					},
 					map[string]any{
 						"name": "message_alerts_enabled",
@@ -7967,19 +7842,6 @@ func MakeConfig() map[string]any {
 						"name": "name",
 						"title": "Name",
 						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "oauth_grant_id",
-						"title": "Oauth Grant Id",
-						"type": []any{
-							"`$ONE`",
-							[]any{
-								"`$STRING`",
-								"`$NULL`",
-							},
-						},
-						"req": true,
-						"format": "uuid",
 					},
 					map[string]any{
 						"name": "one_time_display",
@@ -8032,12 +7894,6 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "reply",
 						"title": "Reply",
-						"type": "`$STRING`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "request_mode",
-						"title": "Request Mode",
 						"type": "`$STRING`",
 						"req": true,
 					},
@@ -8107,12 +7963,6 @@ func MakeConfig() map[string]any {
 						"req": true,
 						"format": "date-time",
 					},
-					map[string]any{
-						"name": "use_mode",
-						"title": "Use Mode",
-						"type": "`$STRING`",
-						"req": true,
-					},
 				},
 				"id": map[string]any{
 					"field": "id",
@@ -8124,183 +7974,6 @@ func MakeConfig() map[string]any {
 						"input": "data",
 						"name": "create",
 						"points": []any{
-							map[string]any{
-								"kind": "http",
-								"method": "POST",
-								"orig": "/v1/account/location-handoffs/{handoff_id}/complete-from-device",
-								"segments": []any{
-									map[string]any{
-										"lit": "v1",
-									},
-									map[string]any{
-										"lit": "account",
-									},
-									map[string]any{
-										"lit": "location-handoffs",
-									},
-									map[string]any{
-										"var": "location_handoff_id",
-									},
-									map[string]any{
-										"lit": "complete-from-device",
-									},
-								},
-								"parts": []any{
-									"v1",
-									"account",
-									"location-handoffs",
-									"{location_handoff_id}",
-									"complete-from-device",
-								},
-								"rename": map[string]any{
-									"param": map[string]any{
-										"handoff_id": "location_handoff_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": map[string]any{
-										"accuracy_meters": "`reqdata.accuracy_meter`",
-										"agent_key_id": "`reqdata.agent_key_id`",
-										"assertion": "`reqdata.assertion`",
-										"capture_source": "`reqdata.capture_source`",
-										"captured_at": "`reqdata.captured_at`",
-										"challenge": "`reqdata.challenge`",
-										"challenge_id": "`reqdata.challenge_id`",
-										"connection_id": "`reqdata.connection_id`",
-										"installation_id": "`reqdata.installation_id`",
-										"key_id": "`reqdata.key_id`",
-										"latitude": "`reqdata.latitude`",
-										"longitude": "`reqdata.longitude`",
-										"oauth_grant_id": "`reqdata.oauth_grant_id`",
-										"use_mode": "`reqdata.use_mode`",
-									},
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"header": []any{
-										map[string]any{
-											"name": "x_loppee_client_platform",
-											"orig": "X-Loppee-Client-Platform",
-											"type": "`$STRING`",
-											"kind": "header",
-											"reqd": true,
-										},
-										map[string]any{
-											"name": "x_loppee_installation_id",
-											"orig": "X-Loppee-Installation-Id",
-											"type": "`$STRING`",
-											"kind": "header",
-											"reqd": true,
-										},
-									},
-									"params": []any{
-										map[string]any{
-											"name": "location_handoff_id",
-											"orig": "handoff_id",
-											"type": "`$STRING`",
-											"kind": "param",
-											"reqd": true,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"location_handoff_id",
-										"x_loppee_client_platform",
-										"x_loppee_installation_id",
-									},
-								},
-								"response": map[string]any{
-									"kind": "json",
-									"media": "application/json",
-								},
-							},
-							map[string]any{
-								"kind": "http",
-								"method": "POST",
-								"orig": "/v1/account/location-handoffs/{handoff_id}/decline-from-device",
-								"segments": []any{
-									map[string]any{
-										"lit": "v1",
-									},
-									map[string]any{
-										"lit": "account",
-									},
-									map[string]any{
-										"lit": "location-handoffs",
-									},
-									map[string]any{
-										"var": "location_handoff_id",
-									},
-									map[string]any{
-										"lit": "decline-from-device",
-									},
-								},
-								"parts": []any{
-									"v1",
-									"account",
-									"location-handoffs",
-									"{location_handoff_id}",
-									"decline-from-device",
-								},
-								"rename": map[string]any{
-									"param": map[string]any{
-										"handoff_id": "location_handoff_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": map[string]any{
-										"agent_key_id": "`reqdata.agent_key_id`",
-										"assertion": "`reqdata.assertion`",
-										"challenge": "`reqdata.challenge`",
-										"challenge_id": "`reqdata.challenge_id`",
-										"connection_id": "`reqdata.connection_id`",
-										"installation_id": "`reqdata.installation_id`",
-										"key_id": "`reqdata.key_id`",
-										"oauth_grant_id": "`reqdata.oauth_grant_id`",
-										"request_mode": "`reqdata.request_mode`",
-									},
-									"res": "`body`",
-								},
-								"args": map[string]any{
-									"header": []any{
-										map[string]any{
-											"name": "x_loppee_client_platform",
-											"orig": "X-Loppee-Client-Platform",
-											"type": "`$STRING`",
-											"kind": "header",
-											"reqd": true,
-										},
-										map[string]any{
-											"name": "x_loppee_installation_id",
-											"orig": "X-Loppee-Installation-Id",
-											"type": "`$STRING`",
-											"kind": "header",
-											"reqd": true,
-										},
-									},
-									"params": []any{
-										map[string]any{
-											"name": "location_handoff_id",
-											"orig": "handoff_id",
-											"type": "`$STRING`",
-											"kind": "param",
-											"reqd": true,
-										},
-									},
-								},
-								"select": map[string]any{
-									"exist": []any{
-										"location_handoff_id",
-										"x_loppee_client_platform",
-										"x_loppee_installation_id",
-									},
-								},
-								"response": map[string]any{
-									"kind": "json",
-									"media": "application/json",
-								},
-							},
 							map[string]any{
 								"kind": "http",
 								"method": "POST",
@@ -9144,9 +8817,6 @@ func MakeConfig() map[string]any {
 					"ancestors": []any{
 						[]any{
 							"$.main.kit.entity.conversation",
-						},
-						[]any{
-							"$.main.kit.entity.location_handoff",
 						},
 					},
 				},
@@ -10326,13 +9996,202 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"location_handoff": map[string]any{
-				"fields": []any{},
+				"fields": []any{
+					map[string]any{
+						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
+					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "location_handoff",
 				"op": map[string]any{
 					"create": map[string]any{
 						"input": "data",
 						"name": "create",
 						"points": []any{
+							map[string]any{
+								"kind": "http",
+								"method": "POST",
+								"orig": "/v1/account/location-handoffs/{handoff_id}/complete-from-device",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "account",
+									},
+									map[string]any{
+										"lit": "location-handoffs",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "complete-from-device",
+									},
+								},
+								"parts": []any{
+									"v1",
+									"account",
+									"location-handoffs",
+									"{id}",
+									"complete-from-device",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"handoff_id": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": map[string]any{
+										"accuracy_meters": "`reqdata.accuracy_meter`",
+										"agent_key_id": "`reqdata.agent_key_id`",
+										"assertion": "`reqdata.assertion`",
+										"capture_source": "`reqdata.capture_source`",
+										"captured_at": "`reqdata.captured_at`",
+										"challenge": "`reqdata.challenge`",
+										"challenge_id": "`reqdata.challenge_id`",
+										"connection_id": "`reqdata.connection_id`",
+										"installation_id": "`reqdata.installation_id`",
+										"key_id": "`reqdata.key_id`",
+										"latitude": "`reqdata.latitude`",
+										"longitude": "`reqdata.longitude`",
+										"oauth_grant_id": "`reqdata.oauth_grant_id`",
+										"use_mode": "`reqdata.use_mode`",
+									},
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"header": []any{
+										map[string]any{
+											"name": "x_loppee_client_platform",
+											"orig": "X-Loppee-Client-Platform",
+											"type": "`$STRING`",
+											"kind": "header",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "x_loppee_installation_id",
+											"orig": "X-Loppee-Installation-Id",
+											"type": "`$STRING`",
+											"kind": "header",
+											"reqd": true,
+										},
+									},
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "handoff_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"$action": "complete_from_device",
+									"exist": []any{
+										"id",
+										"x_loppee_client_platform",
+										"x_loppee_installation_id",
+									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
+							map[string]any{
+								"kind": "http",
+								"method": "POST",
+								"orig": "/v1/account/location-handoffs/{handoff_id}/decline-from-device",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "account",
+									},
+									map[string]any{
+										"lit": "location-handoffs",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "decline-from-device",
+									},
+								},
+								"parts": []any{
+									"v1",
+									"account",
+									"location-handoffs",
+									"{id}",
+									"decline-from-device",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"handoff_id": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": map[string]any{
+										"agent_key_id": "`reqdata.agent_key_id`",
+										"assertion": "`reqdata.assertion`",
+										"challenge": "`reqdata.challenge`",
+										"challenge_id": "`reqdata.challenge_id`",
+										"connection_id": "`reqdata.connection_id`",
+										"installation_id": "`reqdata.installation_id`",
+										"key_id": "`reqdata.key_id`",
+										"oauth_grant_id": "`reqdata.oauth_grant_id`",
+										"request_mode": "`reqdata.request_mode`",
+									},
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"header": []any{
+										map[string]any{
+											"name": "x_loppee_client_platform",
+											"orig": "X-Loppee-Client-Platform",
+											"type": "`$STRING`",
+											"kind": "header",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "x_loppee_installation_id",
+											"orig": "X-Loppee-Installation-Id",
+											"type": "`$STRING`",
+											"kind": "header",
+											"reqd": true,
+										},
+									},
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "handoff_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"$action": "decline_from_device",
+									"exist": []any{
+										"id",
+										"x_loppee_client_platform",
+										"x_loppee_installation_id",
+									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
+							},
 							map[string]any{
 								"kind": "http",
 								"method": "POST",
@@ -11156,39 +11015,14 @@ func MakeConfig() map[string]any {
 			"open_api_document": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "components",
-						"title": "Components",
-						"type": "`$OBJECT`",
-						"req": true,
+						"name": "description",
+						"title": "Description",
+						"type": "`$STRING`",
 					},
 					map[string]any{
-						"name": "info",
-						"title": "Info",
-						"type": "`$OBJECT`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "openapi",
-						"title": "Openapi",
-						"type": "`$ANY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "paths",
-						"title": "Paths",
-						"type": "`$OBJECT`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "servers",
-						"title": "Servers",
-						"type": "`$ARRAY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "tags",
-						"title": "Tags",
-						"type": "`$ARRAY`",
+						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
 						"req": true,
 					},
 				},
@@ -11213,7 +11047,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.servers`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -11241,7 +11075,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.servers`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -18162,88 +17996,21 @@ func MakeConfig() map[string]any {
 			"pricing": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "billing",
-						"title": "Billing",
-						"type": "`$OBJECT`",
+						"name": "annual_usd",
+						"title": "Annual Usd",
+						"type": "`$NUMBER`",
 						"req": true,
 					},
 					map[string]any{
-						"name": "branch_add_ons",
-						"title": "Branch Add Ons",
-						"type": "`$ARRAY`",
+						"name": "monthly_usd",
+						"title": "Monthly Usd",
+						"type": "`$NUMBER`",
 						"req": true,
 					},
 					map[string]any{
-						"name": "currency",
-						"title": "Currency",
-						"type": "`$ANY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "generated_at",
-						"title": "Generated At",
-						"type": "`$STRING`",
-						"req": true,
-						"format": "date-time",
-					},
-					map[string]any{
-						"name": "neutrality",
-						"title": "Neutrality",
-						"type": "`$STRING`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "plans",
-						"title": "Plans",
-						"type": "`$ARRAY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "promotions",
-						"title": "Promotions",
-						"type": "`$ARRAY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "published_at",
-						"title": "Published At",
-						"type": []any{
-							"`$ONE`",
-							[]any{
-								"`$STRING`",
-								"`$NULL`",
-							},
-						},
-						"req": true,
-					},
-					map[string]any{
-						"name": "radius_extension",
-						"title": "Radius Extension",
-						"type": "`$OBJECT`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "revision_id",
-						"title": "Revision Id",
-						"type": []any{
-							"`$ONE`",
-							[]any{
-								"`$STRING`",
-								"`$NULL`",
-							},
-						},
-						"req": true,
-					},
-					map[string]any{
-						"name": "source",
-						"title": "Source",
-						"type": "`$ANY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "trust_model_version",
-						"title": "Trust Model Version",
-						"type": "`$ANY`",
+						"name": "radius_max_miles",
+						"title": "Radius Max Miles",
+						"type": "`$NUMBER`",
 						"req": true,
 					},
 				},
@@ -18272,7 +18039,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.branch_add_ons`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -18667,7 +18434,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.fallback_registry`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -19756,27 +19523,21 @@ func MakeConfig() map[string]any {
 			"suggest": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"name": "categories",
-						"title": "Categories",
-						"type": "`$ARRAY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "names",
-						"title": "Names",
-						"type": "`$ARRAY`",
-						"req": true,
-					},
-					map[string]any{
-						"name": "query",
-						"title": "Query",
+						"name": "alias",
+						"title": "Alias",
 						"type": "`$STRING`",
 						"req": true,
 					},
 					map[string]any{
-						"name": "schema_version",
-						"title": "Schema Version",
-						"type": "`$ANY`",
+						"name": "path_titles",
+						"title": "Path Titles",
+						"type": "`$ARRAY`",
+						"req": true,
+					},
+					map[string]any{
+						"name": "title",
+						"title": "Title",
+						"type": "`$STRING`",
 						"req": true,
 					},
 				},
@@ -19805,7 +19566,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.categories`",
 								},
 								"args": map[string]any{
 									"query": []any{
@@ -19888,7 +19649,7 @@ func MakeConfig() map[string]any {
 										"lit": "support",
 									},
 									map[string]any{
-										"var": "id",
+										"var": "support_id",
 									},
 									map[string]any{
 										"lit": "internal-notes",
@@ -19898,12 +19659,12 @@ func MakeConfig() map[string]any {
 									"v1",
 									"admin",
 									"support",
-									"{id}",
+									"{support_id}",
 									"internal-notes",
 								},
 								"rename": map[string]any{
 									"param": map[string]any{
-										"conversation_id": "id",
+										"conversation_id": "support_id",
 									},
 								},
 								"transform": map[string]any{
@@ -19915,7 +19676,7 @@ func MakeConfig() map[string]any {
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"name": "id",
+											"name": "support_id",
 											"orig": "conversation_id",
 											"type": "`$STRING`",
 											"kind": "param",
@@ -19925,7 +19686,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"id",
+										"support_id",
 									},
 								},
 								"response": map[string]any{
@@ -19948,11 +19709,6 @@ func MakeConfig() map[string]any {
 						"type": "`$ANY`",
 					},
 					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$STRING`",
-					},
-					map[string]any{
 						"name": "priority",
 						"title": "Priority",
 						"type": "`$ANY`",
@@ -19962,10 +19718,6 @@ func MakeConfig() map[string]any {
 						"title": "Waiting On",
 						"type": "`$ANY`",
 					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
 				},
 				"name": "support_workflow",
 				"op": map[string]any{
@@ -19988,7 +19740,7 @@ func MakeConfig() map[string]any {
 										"lit": "support",
 									},
 									map[string]any{
-										"var": "id",
+										"var": "support_id",
 									},
 									map[string]any{
 										"lit": "workflow",
@@ -19998,12 +19750,12 @@ func MakeConfig() map[string]any {
 									"v1",
 									"admin",
 									"support",
-									"{id}",
+									"{support_id}",
 									"workflow",
 								},
 								"rename": map[string]any{
 									"param": map[string]any{
-										"conversation_id": "id",
+										"conversation_id": "support_id",
 									},
 								},
 								"transform": map[string]any{
@@ -20017,7 +19769,7 @@ func MakeConfig() map[string]any {
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"name": "id",
+											"name": "support_id",
 											"orig": "conversation_id",
 											"type": "`$STRING`",
 											"kind": "param",
@@ -20027,7 +19779,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"id",
+										"support_id",
 									},
 								},
 								"response": map[string]any{

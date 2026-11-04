@@ -48,6 +48,7 @@ class AgentConnectionTestEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     agent_connection_test_ref01_ent = client.AgentConnectionTest(nil)
     agent_connection_test_ref01_data = Helpers.to_map(Vs.getprop(

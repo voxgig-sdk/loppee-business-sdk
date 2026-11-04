@@ -46,6 +46,9 @@ class AgentPolicyEntityTest extends TestCase
             $agent_policy_ref01_data = Helpers::to_map($agent_policy_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LOAD
         $agent_policy_ref01_ent = $client->AgentPolicy(null);
         $agent_policy_ref01_match_dt0 = [];

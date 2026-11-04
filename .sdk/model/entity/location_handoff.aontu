@@ -4,11 +4,226 @@ main: kit: entity: location_handoff: {
 
   alias: field: {}
 
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "location_handoff"
   op: {
     create: {
       name: "create"
       points: [
+        {
+          bf: [
+            "accuracy_meters"
+            "agent_key_id"
+            "assertion"
+            "capture_source"
+            "captured_at"
+            "challenge"
+            "challenge_id"
+            "connection_id"
+            "installation_id"
+            "key_id"
+            "latitude"
+            "longitude"
+            "oauth_grant_id"
+            "use_mode"
+          ]
+          co: {
+            id: "POST /v1/account/location-handoffs/{handoff_id}/complete-from-device"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                k: "header"
+                n: "x_loppee_client_platform"
+                or: "X-Loppee-Client-Platform"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_loppee_installation_id"
+                or: "X-Loppee-Installation-Id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "handoff_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/location-handoffs/{handoff_id}/complete-from-device"
+          q: {
+            "$action": "complete_from_device"
+            exist: [
+              "id"
+              "x_loppee_client_platform"
+              "x_loppee_installation_id"
+            ]
+          }
+          r: {
+            param: {
+              handoff_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "location-handoffs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "complete-from-device"
+            }
+          ]
+          t: {
+            req: {
+              accuracy_meters: "`reqdata.accuracy_meter`"
+              agent_key_id: "`reqdata.agent_key_id`"
+              assertion: "`reqdata.assertion`"
+              capture_source: "`reqdata.capture_source`"
+              captured_at: "`reqdata.captured_at`"
+              challenge: "`reqdata.challenge`"
+              challenge_id: "`reqdata.challenge_id`"
+              connection_id: "`reqdata.connection_id`"
+              installation_id: "`reqdata.installation_id`"
+              key_id: "`reqdata.key_id`"
+              latitude: "`reqdata.latitude`"
+              longitude: "`reqdata.longitude`"
+              oauth_grant_id: "`reqdata.oauth_grant_id`"
+              use_mode: "`reqdata.use_mode`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "agent_key_id"
+            "assertion"
+            "challenge"
+            "challenge_id"
+            "connection_id"
+            "installation_id"
+            "key_id"
+            "oauth_grant_id"
+            "request_mode"
+          ]
+          co: {
+            id: "POST /v1/account/location-handoffs/{handoff_id}/decline-from-device"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                k: "header"
+                n: "x_loppee_client_platform"
+                or: "X-Loppee-Client-Platform"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_loppee_installation_id"
+                or: "X-Loppee-Installation-Id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "handoff_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/account/location-handoffs/{handoff_id}/decline-from-device"
+          q: {
+            "$action": "decline_from_device"
+            exist: [
+              "id"
+              "x_loppee_client_platform"
+              "x_loppee_installation_id"
+            ]
+          }
+          r: {
+            param: {
+              handoff_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "account"
+            }
+            {
+              lit: "location-handoffs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "decline-from-device"
+            }
+          ]
+          t: {
+            req: {
+              agent_key_id: "`reqdata.agent_key_id`"
+              assertion: "`reqdata.assertion`"
+              challenge: "`reqdata.challenge`"
+              challenge_id: "`reqdata.challenge_id`"
+              connection_id: "`reqdata.connection_id`"
+              installation_id: "`reqdata.installation_id`"
+              key_id: "`reqdata.key_id`"
+              oauth_grant_id: "`reqdata.oauth_grant_id`"
+              request_mode: "`reqdata.request_mode`"
+            }
+            res: "`body`"
+          }
+        }
         {
           co: {
             id: "POST /v1/account/location-handoffs"
@@ -39,9 +254,6 @@ main: kit: entity: location_handoff: {
         }
       ]
     }
-  }
-
-  fields: {
   }
 
 

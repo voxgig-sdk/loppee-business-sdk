@@ -58,6 +58,8 @@ class TestCustomerLocationProofRevocationEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         customer_location_proof_revocation_ref01_ent = client.CustomerLocationProofRevocation(None)
         customer_location_proof_revocation_ref01_data = helpers.to_map(vs.getprop(

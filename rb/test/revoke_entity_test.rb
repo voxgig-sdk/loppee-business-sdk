@@ -55,6 +55,7 @@ class RevokeEntityTest < Minitest::Test
     end
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     revoke_ref01_ent = client.Revoke(nil)
     revoke_ref01_data = Helpers.to_map(Vs.getprop(

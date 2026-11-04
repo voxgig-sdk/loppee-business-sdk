@@ -18,23 +18,12 @@ main: kit: entity: conversation_close: {
       r: true
       t: "`$STRING`"
     }
-    id: {
-      h: "Id"
-      n: "id"
-      r: false
-      t: "`$STRING`"
-    }
     status: {
       h: "Status"
       n: "status"
       r: true
       t: "`$ANY`"
     }
-  }
-
-  id: {
-    field: "id"
-    name: "id"
   }
 
   name: "conversation_close"
@@ -53,7 +42,7 @@ main: kit: entity: conversation_close: {
             params: [
               {
                 k: "param"
-                n: "id"
+                n: "conversation_id"
                 or: "conversation_id"
                 r: true
                 t: "`$STRING`"
@@ -64,13 +53,8 @@ main: kit: entity: conversation_close: {
           o: "/v1/account/conversations/{conversation_id}/close"
           q: {
             exist: [
-              "id"
+              "conversation_id"
             ]
-          }
-          r: {
-            param: {
-              conversation_id: "id"
-            }
           }
           rs: {
             kind: "json"
@@ -87,7 +71,7 @@ main: kit: entity: conversation_close: {
               lit: "conversations"
             }
             {
-              var: "id"
+              var: "conversation_id"
             }
             {
               lit: "close"
@@ -103,5 +87,8 @@ main: kit: entity: conversation_close: {
   }
 
 
+  relations: ancestors: [
+    [path("$.main.kit.entity.conversation")]
+  ]
 
 }

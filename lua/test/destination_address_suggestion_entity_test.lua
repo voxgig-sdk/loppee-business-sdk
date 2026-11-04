@@ -52,6 +52,9 @@ describe("DestinationAddressSuggestionEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local destination_address_suggestion_ref01_ent = client:DestinationAddressSuggestion(nil)
     local destination_address_suggestion_ref01_data = helpers.to_map(vs.getprop(

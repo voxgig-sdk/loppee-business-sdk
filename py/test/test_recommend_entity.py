@@ -143,6 +143,8 @@ class TestRecommendEntity:
         if len(recommend_ref01_data_raw) > 0:
             recommend_ref01_data = helpers.to_map(recommend_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         recommend_ref01_ent = client.Recommend(None)
         recommend_ref01_match = {}

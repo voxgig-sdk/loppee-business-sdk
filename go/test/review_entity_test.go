@@ -71,6 +71,9 @@ func TestReviewEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		reviewRef01Ent := client.Review(nil)
 		reviewRef01Data := core.ToMapAny(vs.GetProp(

@@ -51,7 +51,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local agentcapability, err = client:AgentCapability():load()
+local agentpolicy, err = client:AgentPolicy():load()
 if err then error(err) end
 ```
 
@@ -109,9 +109,21 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:AgentCapability():load()
+local result, err = client:AgentPolicy():load()
 -- result is the entity; data_get() reads its mock record; err is set on failure
 ```
+
+### Verify the server over HTTPS
+
+An `https://` request goes through LuaSocket and LuaSec, and the SDK checks
+the server itself before any of the request is sent: its certificate against
+the system's trust store, and its name against the host (an address against
+the certificate's addresses). Nothing turns that off. `SSL_CERT_FILE` or
+`SSL_CERT_DIR` names the trust store, as for OpenSSL; with neither set and no
+system store found, an `https://` request fails rather than going unverified.
+`LOPPEE_BUSINESS_CA_BUNDLE` names a PEM file of roots added to the store,
+for a local service with its own certificate authority or a self-signed
+certificate. A different policy is a custom fetch function, described next.
 
 ### Use a custom fetch function
 
@@ -406,12 +418,8 @@ API path: `/v1/agent-monitoring.json`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: List.
 
@@ -697,7 +705,6 @@ API path: `/v1/owner/agents/{agent_id}/disconnect`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 
 Operations: Load.
 
@@ -847,7 +854,6 @@ API path: `/v1/actions/list-my-conversations`
 | --- | --- |
 | `closed_at` |  |
 | `conversation_id` |  |
-| `id` |  |
 | `status` |  |
 
 Operations: Create.
@@ -859,7 +865,6 @@ API path: `/v1/account/conversations/{conversation_id}/close`
 | Field | Description |
 | --- | --- |
 | `detail` |  |
-| `id` |  |
 | `reason` |  |
 | `status` |  |
 
@@ -927,26 +932,20 @@ API path: `/v1/account/customer`
 | --- | --- |
 | `account_id` |  |
 | `account_role` |  |
-| `accuracy_meters` |  |
 | `acknowledge_data_effects` |  |
 | `actions` |  |
-| `agent_key_id` |  |
 | `agent_receives_coordinates` |  |
 | `all_paused` |  |
 | `app_attest_registered` |  |
-| `assertion` |  |
 | `attestation` |  |
 | `author_label` |  |
 | `author_type` |  |
 | `binding` |  |
 | `body` |  |
 | `business_id` |  |
-| `capture_source` |  |
-| `captured_at` |  |
 | `challenge` |  |
 | `challenge_id` |  |
 | `client_message_id` |  |
-| `completed` |  |
 | `confirmation` |  |
 | `connection_id` |  |
 | `connection_kind` |  |
@@ -954,7 +953,6 @@ API path: `/v1/account/customer`
 | `coordinates_returned` |  |
 | `created_at` |  |
 | `credential_id` |  |
-| `declined` |  |
 | `delivery_contract` |  |
 | `disabled_reason` |  |
 | `disclosure` |  |
@@ -966,21 +964,17 @@ API path: `/v1/account/customer`
 | `event_id` |  |
 | `event_types` |  |
 | `failure_count` |  |
-| `handoff_id` |  |
 | `has_more` |  |
 | `id` |  |
 | `idempotent_replay` |  |
 | `installation_id` |  |
 | `key_id` |  |
 | `last_delivery_at` |  |
-| `latitude` |  |
 | `location` | An opaque location reference from the website's own location controls. |
-| `longitude` |  |
 | `message_alerts_enabled` |  |
 | `messages` |  |
 | `mode` | fallback: a direct search answered because the language model was unavailable. |
 | `name` |  |
-| `oauth_grant_id` |  |
 | `one_time_display` |  |
 | `platform` |  |
 | `policy` |  |
@@ -989,7 +983,6 @@ API path: `/v1/account/customer`
 | `reason` |  |
 | `registered_at` |  |
 | `reply` |  |
-| `request_mode` |  |
 | `requested_at` |  |
 | `results` |  |
 | `schema_version` |  |
@@ -1000,11 +993,10 @@ API path: `/v1/account/customer`
 | `updated_at` |  |
 | `url` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` |  |
-| `use_mode` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
+API path: `/v1/account/agent-location/app-attest/challenges`
 
 #### CustomerLocationProofRevocation
 
@@ -1136,10 +1128,11 @@ API path: `/v1/account/job-applications/{application_id}/resume-url`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs`
+API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
 
 #### Message
 
@@ -1217,12 +1210,8 @@ API path: `/v1/actions/contact-attempt`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: List.
 
@@ -1505,18 +1494,9 @@ API path: `/v1/owner/webhooks/{endpoint_id}/rotate-secret`
 
 | Field | Description |
 | --- | --- |
-| `billing` |  |
-| `branch_add_ons` |  |
-| `currency` |  |
-| `generated_at` |  |
-| `neutrality` |  |
-| `plans` |  |
-| `promotions` |  |
-| `published_at` |  |
-| `radius_extension` |  |
-| `revision_id` |  |
-| `source` |  |
-| `trust_model_version` |  |
+| `annual_usd` |  |
+| `monthly_usd` |  |
+| `radius_max_miles` |  |
 
 Operations: List.
 
@@ -1709,10 +1689,9 @@ API path: `/v1/business-claim/candidates`
 
 | Field | Description |
 | --- | --- |
-| `categories` |  |
-| `names` |  |
-| `query` |  |
-| `schema_version` |  |
+| `alias` |  |
+| `path_titles` |  |
+| `title` |  |
 
 Operations: List.
 
@@ -1736,7 +1715,6 @@ API path: `/v1/admin/support/{conversation_id}/internal-notes`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `id` |  |
 | `priority` |  |
 | `waiting_on` |  |
 
@@ -2024,12 +2002,8 @@ Create an instance: `local agent_openapi = client:AgentOpenapi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `table` |  |
-| `info` | `table` |  |
-| `openapi` | `any` |  |
-| `paths` | `table` |  |
-| `servers` | `table` |  |
-| `tags` | `table` |  |
+| `description` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -2209,7 +2183,7 @@ Create an instance: `local business_deal = client:BusinessDeal(nil)`
 #### Example: List
 
 ```lua
-local business_deals, err = client:BusinessDeal():list({ id = "example" })
+local business_deals, err = client:BusinessDeal():list({ business_id = "example" })
 ```
 
 
@@ -2512,16 +2486,10 @@ Create an instance: `local business_review = client:BusinessReview(nil)`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` |  |
-
 #### Example: Load
 
 ```lua
-local business_review, err = client:BusinessReview():load({ id = "business_review_id" })
+local business_review, err = client:BusinessReview():load({ business_id = "business_id" })
 ```
 
 
@@ -2791,14 +2759,13 @@ Create an instance: `local conversation_close = client:ConversationClose(nil)`
 | --- | --- | --- |
 | `closed_at` | `string` |  |
 | `conversation_id` | `string` |  |
-| `id` | `string` |  |
 | `status` | `any` |  |
 
 #### Example: Create
 
 ```lua
 local conversation_close, err = client:ConversationClose():create({
-  id = "example_id", -- string
+  conversation_id = "example_conversation_id", -- string
 })
 ```
 
@@ -2818,7 +2785,6 @@ Create an instance: `local conversation_report = client:ConversationReport(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `detail` | `string` |  |
-| `id` | `string` |  |
 | `reason` | `any` |  |
 | `status` | `any` |  |
 
@@ -2826,7 +2792,7 @@ Create an instance: `local conversation_report = client:ConversationReport(nil)`
 
 ```lua
 local conversation_report, err = client:ConversationReport():create({
-  id = "example_id", -- string
+  conversation_id = "example_conversation_id", -- string
   reason = "example_reason", -- any
 })
 ```
@@ -2946,26 +2912,20 @@ Create an instance: `local customer_account = client:CustomerAccount(nil)`
 | --- | --- | --- |
 | `account_id` | `string` |  |
 | `account_role` | `string` |  |
-| `accuracy_meters` | `number` |  |
 | `acknowledge_data_effects` | `boolean` |  |
 | `actions` | `table` |  |
-| `agent_key_id` | `string` |  |
 | `agent_receives_coordinates` | `boolean` |  |
 | `all_paused` | `boolean` |  |
 | `app_attest_registered` | `boolean` |  |
-| `assertion` | `string` |  |
 | `attestation` | `string` |  |
 | `author_label` | `string` |  |
 | `author_type` | `string` |  |
 | `binding` | `any` |  |
 | `body` | `string` |  |
 | `business_id` | `string|nil` |  |
-| `capture_source` | `any` |  |
-| `captured_at` | `string` |  |
 | `challenge` | `string` |  |
 | `challenge_id` | `string` |  |
 | `client_message_id` | `string` |  |
-| `completed` | `boolean` |  |
 | `confirmation` | `string` |  |
 | `connection_id` | `string` |  |
 | `connection_kind` | `string` |  |
@@ -2973,7 +2933,6 @@ Create an instance: `local customer_account = client:CustomerAccount(nil)`
 | `coordinates_returned` | `boolean` |  |
 | `created_at` | `string` |  |
 | `credential_id` | `string` |  |
-| `declined` | `boolean` |  |
 | `delivery_contract` | `table` |  |
 | `disabled_reason` | `string|nil` |  |
 | `disclosure` | `string` |  |
@@ -2985,21 +2944,17 @@ Create an instance: `local customer_account = client:CustomerAccount(nil)`
 | `event_id` | `string` |  |
 | `event_types` | `table` |  |
 | `failure_count` | `number` |  |
-| `handoff_id` | `string` |  |
 | `has_more` | `boolean` |  |
 | `id` | `string` |  |
 | `idempotent_replay` | `boolean` |  |
 | `installation_id` | `string` |  |
 | `key_id` | `string` |  |
 | `last_delivery_at` | `string|nil` |  |
-| `latitude` | `number` |  |
 | `location` | `any` | An opaque location reference from the website's own location controls. |
-| `longitude` | `number` |  |
 | `message_alerts_enabled` | `boolean` |  |
 | `messages` | `table` |  |
 | `mode` | `string` | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `string` |  |
-| `oauth_grant_id` | `string|nil` |  |
 | `one_time_display` | `any` |  |
 | `platform` | `string` |  |
 | `policy` | `string` |  |
@@ -3008,7 +2963,6 @@ Create an instance: `local customer_account = client:CustomerAccount(nil)`
 | `reason` | `string` |  |
 | `registered_at` | `string` |  |
 | `reply` | `string` |  |
-| `request_mode` | `string` |  |
 | `requested_at` | `string` |  |
 | `results` | `table` |  |
 | `schema_version` | `string` |  |
@@ -3019,7 +2973,6 @@ Create an instance: `local customer_account = client:CustomerAccount(nil)`
 | `updated_at` | `string` |  |
 | `url` | `string` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `string` |  |
-| `use_mode` | `string` |  |
 
 #### Example: Create
 
@@ -3027,33 +2980,26 @@ Create an instance: `local customer_account = client:CustomerAccount(nil)`
 local customer_account, err = client:CustomerAccount():create({
   account_id = "example_account_id", -- string
   account_role = "example_account_role", -- string
-  accuracy_meters = 1, -- number
   acknowledge_data_effects = true, -- boolean
   actions = {}, -- table
-  agent_key_id = "example_agent_key_id", -- string
   agent_receives_coordinates = true, -- boolean
   all_paused = true, -- boolean
   app_attest_registered = true, -- boolean
-  assertion = "example_assertion", -- string
   attestation = "example_attestation", -- string
   author_label = "example_author_label", -- string
   author_type = "example_author_type", -- string
   binding = "example_binding", -- any
   body = "example_body", -- string
   business_id = "example_business_id", -- string|nil
-  capture_source = "example_capture_source", -- any
-  captured_at = "example_captured_at", -- string
   challenge = "example_challenge", -- string
   challenge_id = "example_challenge_id", -- string
   client_message_id = "example_client_message_id", -- string
-  completed = true, -- boolean
   confirmation = "example_confirmation", -- string
   connection_id = "example_connection_id", -- string
   connection_kind = "example_connection_kind", -- string
   coordinates_returned = true, -- boolean
   created_at = "example_created_at", -- string
   credential_id = "example_credential_id", -- string
-  declined = true, -- boolean
   delivery_contract = {}, -- table
   disabled_reason = "example_disabled_reason", -- string|nil
   disclosure = "example_disclosure", -- string
@@ -3065,19 +3011,15 @@ local customer_account, err = client:CustomerAccount():create({
   event_id = "example_event_id", -- string
   event_types = {}, -- table
   failure_count = 1, -- number
-  handoff_id = "example_handoff_id", -- string
   has_more = true, -- boolean
   id = "example_id", -- string
   idempotent_replay = true, -- boolean
   installation_id = "example_installation_id", -- string
   key_id = "example_key_id", -- string
   last_delivery_at = "example_last_delivery_at", -- string|nil
-  latitude = 1, -- number
-  longitude = 1, -- number
   message_alerts_enabled = true, -- boolean
   messages = {}, -- table
   mode = "example_mode", -- string
-  oauth_grant_id = "example_oauth_grant_id", -- string|nil
   one_time_display = "example_one_time_display", -- any
   platform = "example_platform", -- string
   policy = "example_policy", -- string
@@ -3085,7 +3027,6 @@ local customer_account, err = client:CustomerAccount():create({
   push_token = "example_push_token", -- string
   registered_at = "example_registered_at", -- string
   reply = "example_reply", -- string
-  request_mode = "example_request_mode", -- string
   requested_at = "example_requested_at", -- string
   results = {}, -- table
   schema_version = "example_schema_version", -- string
@@ -3096,7 +3037,6 @@ local customer_account, err = client:CustomerAccount():create({
   updated_at = "example_updated_at", -- string
   url = "example_url", -- string
   usable_until = "example_usable_until", -- string
-  use_mode = "example_use_mode", -- string
 })
 ```
 
@@ -3351,6 +3291,12 @@ Create an instance: `local location_handoff = client:LocationHandoff(nil)`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```lua
@@ -3498,12 +3444,8 @@ Create an instance: `local open_api_document = client:OpenApiDocument(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `table` |  |
-| `info` | `table` |  |
-| `openapi` | `any` |  |
-| `paths` | `table` |  |
-| `servers` | `table` |  |
-| `tags` | `table` |  |
+| `description` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -3987,18 +3929,9 @@ Create an instance: `local pricing = client:Pricing(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing` | `table` |  |
-| `branch_add_ons` | `table` |  |
-| `currency` | `any` |  |
-| `generated_at` | `string` |  |
-| `neutrality` | `string` |  |
-| `plans` | `table` |  |
-| `promotions` | `table` |  |
-| `published_at` | `string|nil` |  |
-| `radius_extension` | `table` |  |
-| `revision_id` | `string|nil` |  |
-| `source` | `any` |  |
-| `trust_model_version` | `any` |  |
+| `annual_usd` | `number` |  |
+| `monthly_usd` | `number` |  |
+| `radius_max_miles` | `number` |  |
 
 #### Example: List
 
@@ -4335,10 +4268,9 @@ Create an instance: `local suggest = client:Suggest(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `table` |  |
-| `names` | `table` |  |
-| `query` | `string` |  |
-| `schema_version` | `any` |  |
+| `alias` | `string` |  |
+| `path_titles` | `table` |  |
+| `title` | `string` |  |
 
 #### Example: List
 
@@ -4370,7 +4302,7 @@ Create an instance: `local support_internal_note = client:SupportInternalNote(ni
 
 ```lua
 local support_internal_note, err = client:SupportInternalNote():create({
-  id = "example_id", -- string
+  support_id = "example_support_id", -- string
   body = "example_body", -- string
 })
 ```
@@ -4391,7 +4323,6 @@ Create an instance: `local support_workflow = client:SupportWorkflow(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `any` |  |
-| `id` | `string` |  |
 | `priority` | `any` |  |
 | `waiting_on` | `any` |  |
 
@@ -4399,7 +4330,7 @@ Create an instance: `local support_workflow = client:SupportWorkflow(nil)`
 
 ```lua
 local support_workflow, err = client:SupportWorkflow():create({
-  id = "example_id", -- string
+  support_id = "example_support_id", -- string
 })
 ```
 
@@ -4759,11 +4690,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local agentcapability = client:AgentCapability()
-agentcapability:load()
+local agentpolicy = client:AgentPolicy()
+agentpolicy:load()
 
--- agentcapability:data_get() now returns the agentcapability data from the last load
--- agentcapability:match_get() returns the last match criteria
+-- agentpolicy:data_get() now returns the agentpolicy data from the last load
+-- agentpolicy:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

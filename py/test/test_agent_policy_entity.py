@@ -51,6 +51,8 @@ class TestAgentPolicyEntity:
         if len(agent_policy_ref01_data_raw) > 0:
             agent_policy_ref01_data = helpers.to_map(agent_policy_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LOAD
         agent_policy_ref01_ent = client.AgentPolicy(None)
         agent_policy_ref01_match_dt0 = {}

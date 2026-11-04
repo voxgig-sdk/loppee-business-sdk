@@ -57,6 +57,8 @@ class TestOwnerNotificationSettingEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         owner_notification_setting_ref01_ent = client.OwnerNotificationSetting(None)
         owner_notification_setting_ref01_data = helpers.to_map(vs.getprop(

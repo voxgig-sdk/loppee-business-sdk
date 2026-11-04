@@ -48,6 +48,7 @@ class JobApplicationEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     job_application_ref01_ent = client.JobApplication(nil)
     job_application_ref01_data = Helpers.to_map(Vs.getprop(

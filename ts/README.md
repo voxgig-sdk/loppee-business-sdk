@@ -58,8 +58,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const agentcapability = await client.AgentCapability().load()
-  console.log(agentcapability.data())
+  const agentpolicy = await client.AgentPolicy().load()
+  console.log(agentpolicy.data())
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -123,9 +123,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = LoppeeBusinessSDK.test()
 
-const agentcapability = await client.AgentCapability().load()
-// agentcapability is the AgentCapability entity; .data() reads its mock record
-console.log(agentcapability.data())
+const agentpolicy = await client.AgentPolicy().load()
+// agentpolicy is the AgentPolicy entity; .data() reads its mock record
+console.log(agentpolicy.data())
 ```
 
 You can also use the instance method:
@@ -140,7 +140,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.AgentCapability()
+const entity = client.AgentPolicy()
 
 // First call runs the operation and stores its result
 await entity.load()
@@ -474,12 +474,8 @@ API path: `/v1/agent-monitoring.json`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: list.
 
@@ -765,7 +761,6 @@ API path: `/v1/owner/agents/{agent_id}/disconnect`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 
 Operations: load.
 
@@ -915,7 +910,6 @@ API path: `/v1/actions/list-my-conversations`
 | --- | --- |
 | `closed_at` |  |
 | `conversation_id` |  |
-| `id` |  |
 | `status` |  |
 
 Operations: create.
@@ -927,7 +921,6 @@ API path: `/v1/account/conversations/{conversation_id}/close`
 | Field | Description |
 | --- | --- |
 | `detail` |  |
-| `id` |  |
 | `reason` |  |
 | `status` |  |
 
@@ -995,26 +988,20 @@ API path: `/v1/account/customer`
 | --- | --- |
 | `account_id` |  |
 | `account_role` |  |
-| `accuracy_meters` |  |
 | `acknowledge_data_effects` |  |
 | `actions` |  |
-| `agent_key_id` |  |
 | `agent_receives_coordinates` |  |
 | `all_paused` |  |
 | `app_attest_registered` |  |
-| `assertion` |  |
 | `attestation` |  |
 | `author_label` |  |
 | `author_type` |  |
 | `binding` |  |
 | `body` |  |
 | `business_id` |  |
-| `capture_source` |  |
-| `captured_at` |  |
 | `challenge` |  |
 | `challenge_id` |  |
 | `client_message_id` |  |
-| `completed` |  |
 | `confirmation` |  |
 | `connection_id` |  |
 | `connection_kind` |  |
@@ -1022,7 +1009,6 @@ API path: `/v1/account/customer`
 | `coordinates_returned` |  |
 | `created_at` |  |
 | `credential_id` |  |
-| `declined` |  |
 | `delivery_contract` |  |
 | `disabled_reason` |  |
 | `disclosure` |  |
@@ -1034,21 +1020,17 @@ API path: `/v1/account/customer`
 | `event_id` |  |
 | `event_types` |  |
 | `failure_count` |  |
-| `handoff_id` |  |
 | `has_more` |  |
 | `id` |  |
 | `idempotent_replay` |  |
 | `installation_id` |  |
 | `key_id` |  |
 | `last_delivery_at` |  |
-| `latitude` |  |
 | `location` | An opaque location reference from the website's own location controls. |
-| `longitude` |  |
 | `message_alerts_enabled` |  |
 | `messages` |  |
 | `mode` | fallback: a direct search answered because the language model was unavailable. |
 | `name` |  |
-| `oauth_grant_id` |  |
 | `one_time_display` |  |
 | `platform` |  |
 | `policy` |  |
@@ -1057,7 +1039,6 @@ API path: `/v1/account/customer`
 | `reason` |  |
 | `registered_at` |  |
 | `reply` |  |
-| `request_mode` |  |
 | `requested_at` |  |
 | `results` |  |
 | `schema_version` |  |
@@ -1068,11 +1049,10 @@ API path: `/v1/account/customer`
 | `updated_at` |  |
 | `url` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` |  |
-| `use_mode` |  |
 
 Operations: create.
 
-API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
+API path: `/v1/account/agent-location/app-attest/challenges`
 
 #### CustomerLocationProofRevocation
 
@@ -1204,10 +1184,11 @@ API path: `/v1/account/job-applications/{application_id}/resume-url`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: create.
 
-API path: `/v1/account/location-handoffs`
+API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
 
 #### Message
 
@@ -1285,12 +1266,8 @@ API path: `/v1/actions/contact-attempt`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: list.
 
@@ -1573,18 +1550,9 @@ API path: `/v1/owner/webhooks/{endpoint_id}/rotate-secret`
 
 | Field | Description |
 | --- | --- |
-| `billing` |  |
-| `branch_add_ons` |  |
-| `currency` |  |
-| `generated_at` |  |
-| `neutrality` |  |
-| `plans` |  |
-| `promotions` |  |
-| `published_at` |  |
-| `radius_extension` |  |
-| `revision_id` |  |
-| `source` |  |
-| `trust_model_version` |  |
+| `annual_usd` |  |
+| `monthly_usd` |  |
+| `radius_max_miles` |  |
 
 Operations: list.
 
@@ -1777,10 +1745,9 @@ API path: `/v1/business-claim/candidates`
 
 | Field | Description |
 | --- | --- |
-| `categories` |  |
-| `names` |  |
-| `query` |  |
-| `schema_version` |  |
+| `alias` |  |
+| `path_titles` |  |
+| `title` |  |
 
 Operations: list.
 
@@ -1804,7 +1771,6 @@ API path: `/v1/admin/support/{conversation_id}/internal-notes`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `id` |  |
 | `priority` |  |
 | `waiting_on` |  |
 
@@ -2092,12 +2058,8 @@ Create an instance: `const agent_openapi = client.AgentOpenapi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `Record<string, any>` |  |
-| `info` | `Record<string, any>` |  |
-| `openapi` | `any` |  |
-| `paths` | `Record<string, any>` |  |
-| `servers` | `any[]` |  |
-| `tags` | `any[]` |  |
+| `description` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -2277,7 +2239,7 @@ Create an instance: `const business_deal = client.BusinessDeal()`
 #### Example: List
 
 ```ts
-const business_deals = await client.BusinessDeal().list({ id: "example" })
+const business_deals = await client.BusinessDeal().list({ business_id: "example" })
 ```
 
 
@@ -2580,16 +2542,10 @@ Create an instance: `const business_review = client.BusinessReview()`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` |  |
-
 #### Example: Load
 
 ```ts
-const business_review = await client.BusinessReview().load({ id: 'business_review_id' })
+const business_review = await client.BusinessReview().load({ business_id: 'business_id' })
 ```
 
 
@@ -2859,14 +2815,13 @@ Create an instance: `const conversation_close = client.ConversationClose()`
 | --- | --- | --- |
 | `closed_at` | `string` |  |
 | `conversation_id` | `string` |  |
-| `id` | `string` |  |
 | `status` | `any` |  |
 
 #### Example: Create
 
 ```ts
 const conversation_close = await client.ConversationClose().create({
-  id: 'example_id',
+  conversation_id: 'example_conversation_id',
 })
 ```
 
@@ -2886,7 +2841,6 @@ Create an instance: `const conversation_report = client.ConversationReport()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `detail` | `string` |  |
-| `id` | `string` |  |
 | `reason` | `any` |  |
 | `status` | `any` |  |
 
@@ -2894,7 +2848,7 @@ Create an instance: `const conversation_report = client.ConversationReport()`
 
 ```ts
 const conversation_report = await client.ConversationReport().create({
-  id: 'example_id',
+  conversation_id: 'example_conversation_id',
   reason: 'example_reason',
 })
 ```
@@ -3014,26 +2968,20 @@ Create an instance: `const customer_account = client.CustomerAccount()`
 | --- | --- | --- |
 | `account_id` | `string` |  |
 | `account_role` | `string` |  |
-| `accuracy_meters` | `number` |  |
 | `acknowledge_data_effects` | `boolean` |  |
 | `actions` | `any[]` |  |
-| `agent_key_id` | `string` |  |
 | `agent_receives_coordinates` | `boolean` |  |
 | `all_paused` | `boolean` |  |
 | `app_attest_registered` | `boolean` |  |
-| `assertion` | `string` |  |
 | `attestation` | `string` |  |
 | `author_label` | `string` |  |
 | `author_type` | `string` |  |
 | `binding` | `any` |  |
 | `body` | `string` |  |
 | `business_id` | `string | null` |  |
-| `capture_source` | `any` |  |
-| `captured_at` | `string` |  |
 | `challenge` | `string` |  |
 | `challenge_id` | `string` |  |
 | `client_message_id` | `string` |  |
-| `completed` | `boolean` |  |
 | `confirmation` | `string` |  |
 | `connection_id` | `string` |  |
 | `connection_kind` | `string` |  |
@@ -3041,7 +2989,6 @@ Create an instance: `const customer_account = client.CustomerAccount()`
 | `coordinates_returned` | `boolean` |  |
 | `created_at` | `string` |  |
 | `credential_id` | `string` |  |
-| `declined` | `boolean` |  |
 | `delivery_contract` | `Record<string, any>` |  |
 | `disabled_reason` | `string | null` |  |
 | `disclosure` | `string` |  |
@@ -3053,21 +3000,17 @@ Create an instance: `const customer_account = client.CustomerAccount()`
 | `event_id` | `string` |  |
 | `event_types` | `any[]` |  |
 | `failure_count` | `number` |  |
-| `handoff_id` | `string` |  |
 | `has_more` | `boolean` |  |
 | `id` | `string` |  |
 | `idempotent_replay` | `boolean` |  |
 | `installation_id` | `string` |  |
 | `key_id` | `string` |  |
 | `last_delivery_at` | `string | null` |  |
-| `latitude` | `number` |  |
 | `location` | `any` | An opaque location reference from the website's own location controls. |
-| `longitude` | `number` |  |
 | `message_alerts_enabled` | `boolean` |  |
 | `messages` | `any[]` |  |
 | `mode` | `string` | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `string` |  |
-| `oauth_grant_id` | `string | null` |  |
 | `one_time_display` | `any` |  |
 | `platform` | `string` |  |
 | `policy` | `string` |  |
@@ -3076,7 +3019,6 @@ Create an instance: `const customer_account = client.CustomerAccount()`
 | `reason` | `string` |  |
 | `registered_at` | `string` |  |
 | `reply` | `string` |  |
-| `request_mode` | `string` |  |
 | `requested_at` | `string` |  |
 | `results` | `any[]` |  |
 | `schema_version` | `string` |  |
@@ -3087,7 +3029,6 @@ Create an instance: `const customer_account = client.CustomerAccount()`
 | `updated_at` | `string` |  |
 | `url` | `string` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `string` |  |
-| `use_mode` | `string` |  |
 
 #### Example: Create
 
@@ -3095,33 +3036,26 @@ Create an instance: `const customer_account = client.CustomerAccount()`
 const customer_account = await client.CustomerAccount().create({
   account_id: 'example_account_id',
   account_role: 'example_account_role',
-  accuracy_meters: 1,
   acknowledge_data_effects: true,
   actions: [],
-  agent_key_id: 'example_agent_key_id',
   agent_receives_coordinates: true,
   all_paused: true,
   app_attest_registered: true,
-  assertion: 'example_assertion',
   attestation: 'example_attestation',
   author_label: 'example_author_label',
   author_type: 'example_author_type',
   binding: 'example_binding',
   body: 'example_body',
   business_id: 'example_business_id',
-  capture_source: 'example_capture_source',
-  captured_at: 'example_captured_at',
   challenge: 'example_challenge',
   challenge_id: 'example_challenge_id',
   client_message_id: 'example_client_message_id',
-  completed: true,
   confirmation: 'example_confirmation',
   connection_id: 'example_connection_id',
   connection_kind: 'example_connection_kind',
   coordinates_returned: true,
   created_at: 'example_created_at',
   credential_id: 'example_credential_id',
-  declined: true,
   delivery_contract: {},
   disabled_reason: 'example_disabled_reason',
   disclosure: 'example_disclosure',
@@ -3133,19 +3067,15 @@ const customer_account = await client.CustomerAccount().create({
   event_id: 'example_event_id',
   event_types: [],
   failure_count: 1,
-  handoff_id: 'example_handoff_id',
   has_more: true,
   id: 'example_id',
   idempotent_replay: true,
   installation_id: 'example_installation_id',
   key_id: 'example_key_id',
   last_delivery_at: 'example_last_delivery_at',
-  latitude: 1,
-  longitude: 1,
   message_alerts_enabled: true,
   messages: [],
   mode: 'example_mode',
-  oauth_grant_id: 'example_oauth_grant_id',
   one_time_display: 'example_one_time_display',
   platform: 'example_platform',
   policy: 'example_policy',
@@ -3153,7 +3083,6 @@ const customer_account = await client.CustomerAccount().create({
   push_token: 'example_push_token',
   registered_at: 'example_registered_at',
   reply: 'example_reply',
-  request_mode: 'example_request_mode',
   requested_at: 'example_requested_at',
   results: [],
   schema_version: 'example_schema_version',
@@ -3164,7 +3093,6 @@ const customer_account = await client.CustomerAccount().create({
   updated_at: 'example_updated_at',
   url: 'example_url',
   usable_until: 'example_usable_until',
-  use_mode: 'example_use_mode',
 })
 ```
 
@@ -3419,6 +3347,12 @@ Create an instance: `const location_handoff = client.LocationHandoff()`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```ts
@@ -3566,12 +3500,8 @@ Create an instance: `const open_api_document = client.OpenApiDocument()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `Record<string, any>` |  |
-| `info` | `Record<string, any>` |  |
-| `openapi` | `any` |  |
-| `paths` | `Record<string, any>` |  |
-| `servers` | `any[]` |  |
-| `tags` | `any[]` |  |
+| `description` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -4055,18 +3985,9 @@ Create an instance: `const pricing = client.Pricing()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing` | `Record<string, any>` |  |
-| `branch_add_ons` | `any[]` |  |
-| `currency` | `any` |  |
-| `generated_at` | `string` |  |
-| `neutrality` | `string` |  |
-| `plans` | `any[]` |  |
-| `promotions` | `any[]` |  |
-| `published_at` | `string | null` |  |
-| `radius_extension` | `Record<string, any>` |  |
-| `revision_id` | `string | null` |  |
-| `source` | `any` |  |
-| `trust_model_version` | `any` |  |
+| `annual_usd` | `number` |  |
+| `monthly_usd` | `number` |  |
+| `radius_max_miles` | `number` |  |
 
 #### Example: List
 
@@ -4403,10 +4324,9 @@ Create an instance: `const suggest = client.Suggest()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `any[]` |  |
-| `names` | `any[]` |  |
-| `query` | `string` |  |
-| `schema_version` | `any` |  |
+| `alias` | `string` |  |
+| `path_titles` | `any[]` |  |
+| `title` | `string` |  |
 
 #### Example: List
 
@@ -4438,7 +4358,7 @@ Create an instance: `const support_internal_note = client.SupportInternalNote()`
 
 ```ts
 const support_internal_note = await client.SupportInternalNote().create({
-  id: 'example_id',
+  support_id: 'example_support_id',
   body: 'example_body',
 })
 ```
@@ -4459,7 +4379,6 @@ Create an instance: `const support_workflow = client.SupportWorkflow()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `any` |  |
-| `id` | `string` |  |
 | `priority` | `any` |  |
 | `waiting_on` | `any` |  |
 
@@ -4467,7 +4386,7 @@ Create an instance: `const support_workflow = client.SupportWorkflow()`
 
 ```ts
 const support_workflow = await client.SupportWorkflow().create({
-  id: 'example_id',
+  support_id: 'example_support_id',
 })
 ```
 
@@ -4819,11 +4738,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const agentcapability = client.AgentCapability()
-await agentcapability.load()
+const agentpolicy = client.AgentPolicy()
+await agentpolicy.load()
 
-// agentcapability.data() now returns the agentcapability data from the last `load`
-// agentcapability.match() returns the last match criteria
+// agentpolicy.data() now returns the agentpolicy data from the last `load`
+// agentpolicy.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

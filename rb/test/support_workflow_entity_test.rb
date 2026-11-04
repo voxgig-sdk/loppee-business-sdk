@@ -25,7 +25,7 @@ class SupportWorkflowEntityTest < Minitest::Test
     end
     client = LoppeeBusinessSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.SupportWorkflow(nil).create({ "id" => 1 }, nil)
+      client.SupportWorkflow(nil).create({ "support_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class SupportWorkflowEntityTest < Minitest::Test
     setup = support_workflow_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    [].each do |_op|
+    ["create"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "support_workflow." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -46,15 +46,25 @@ class SupportWorkflowEntityTest < Minitest::Test
       skip("Live coverage incomplete: support_workflow.create.0 excluded (GET-only live run: needs POST /v1/admin/support/{conversation_id}/workflow)")
     end
 
+    if setup[:live]
+      ["support01"].each do |_live_key|
+        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
+          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via LOPPEE_BUSINESS_TEST_SUPPORT_WORKFLOW_ENTID")
+        end
+      end
+    end
     client = setup[:client]
 
-    # Bootstrap entity data from existing test data.
-    support_workflow_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.support_workflow")))
-    support_workflow_ref01_data = nil
-    if support_workflow_ref01_data_raw.length > 0
-      support_workflow_ref01_data = Helpers.to_map(support_workflow_ref01_data_raw[0][1])
-    end
+    Runner.live_pace if setup[:live]
+    # CREATE
+    support_workflow_ref01_ent = client.SupportWorkflow(nil)
+    support_workflow_ref01_data = Helpers.to_map(Vs.getprop(
+      Vs.getpath(setup[:data], "new.support_workflow"), "support_workflow_ref01"))
+    support_workflow_ref01_data["support_id"] = setup[:idmap]["support01"]
+
+    support_workflow_ref01_data_result = support_workflow_ref01_ent.create(support_workflow_ref01_data, nil)
+    support_workflow_ref01_data = Helpers.to_map(support_workflow_ref01_data_result.respond_to?(:data_get) ? support_workflow_ref01_data_result.data_get : support_workflow_ref01_data_result)
+    assert !support_workflow_ref01_data.nil?
 
   end
 end
@@ -73,7 +83,7 @@ def support_workflow_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["support_workflow01", "support_workflow02", "support_workflow03"],
+    ["support_workflow01", "support_workflow02", "support_workflow03", "support01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

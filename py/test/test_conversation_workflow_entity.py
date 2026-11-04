@@ -61,6 +61,8 @@ class TestConversationWorkflowEntity:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via LOPPEE_BUSINESS_TEST_CONVERSATION_WORKFLOW_ENTID")
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         conversation_workflow_ref01_ent = client.ConversationWorkflow(None)
         conversation_workflow_ref01_data = helpers.to_map(vs.getprop(

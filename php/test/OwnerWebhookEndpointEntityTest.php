@@ -66,6 +66,9 @@ class OwnerWebhookEndpointEntityTest extends TestCase
         }
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $owner_webhook_endpoint_ref01_ent = $client->OwnerWebhookEndpoint(null);
         $owner_webhook_endpoint_ref01_data = Helpers::to_map(Vs::getprop(

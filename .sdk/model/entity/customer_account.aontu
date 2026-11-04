@@ -17,12 +17,6 @@ main: kit: entity: customer_account: {
       r: true
       t: "`$STRING`"
     }
-    accuracy_meters: {
-      h: "Accuracy Meters"
-      n: "accuracy_meters"
-      r: true
-      t: "`$NUMBER`"
-    }
     acknowledge_data_effects: {
       h: "Acknowledge Data Effects"
       n: "acknowledge_data_effects"
@@ -39,13 +33,6 @@ main: kit: entity: customer_account: {
         count: 1
         depth: 1
       }
-    }
-    agent_key_id: {
-      fo: "uuid"
-      h: "Agent Key Id"
-      n: "agent_key_id"
-      r: true
-      t: "`$STRING`"
     }
     agent_receives_coordinates: {
       h: "Agent Receives Coordinates"
@@ -64,12 +51,6 @@ main: kit: entity: customer_account: {
       n: "app_attest_registered"
       r: true
       t: "`$BOOLEAN`"
-    }
-    assertion: {
-      h: "Assertion"
-      n: "assertion"
-      r: true
-      t: "`$STRING`"
     }
     attestation: {
       h: "Attestation"
@@ -118,19 +99,6 @@ main: kit: entity: customer_account: {
         ]
       ]
     }
-    capture_source: {
-      h: "Capture Source"
-      n: "capture_source"
-      r: true
-      t: "`$ANY`"
-    }
-    captured_at: {
-      fo: "date-time"
-      h: "Captured At"
-      n: "captured_at"
-      r: true
-      t: "`$STRING`"
-    }
     challenge: {
       h: "Challenge"
       n: "challenge"
@@ -149,12 +117,6 @@ main: kit: entity: customer_account: {
       n: "client_message_id"
       r: true
       t: "`$STRING`"
-    }
-    completed: {
-      h: "Completed"
-      n: "completed"
-      r: true
-      t: "`$BOOLEAN`"
     }
     confirmation: {
       h: "Confirmation"
@@ -206,12 +168,6 @@ main: kit: entity: customer_account: {
       n: "credential_id"
       r: true
       t: "`$STRING`"
-    }
-    declined: {
-      h: "Declined"
-      n: "declined"
-      r: true
-      t: "`$BOOLEAN`"
     }
     delivery_contract: {
       h: "Delivery Contract"
@@ -286,13 +242,6 @@ main: kit: entity: customer_account: {
       r: true
       t: "`$INTEGER`"
     }
-    handoff_id: {
-      fo: "uuid"
-      h: "Handoff Id"
-      n: "handoff_id"
-      r: true
-      t: "`$STRING`"
-    }
     has_more: {
       h: "Has More"
       n: "has_more"
@@ -338,12 +287,6 @@ main: kit: entity: customer_account: {
         ]
       ]
     }
-    latitude: {
-      h: "Latitude"
-      n: "latitude"
-      r: true
-      t: "`$NUMBER`"
-    }
     location: {
       h: "Location"
       n: "location"
@@ -355,12 +298,6 @@ main: kit: entity: customer_account: {
         count: 1
         depth: 0
       }
-    }
-    longitude: {
-      h: "Longitude"
-      n: "longitude"
-      r: true
-      t: "`$NUMBER`"
     }
     message_alerts_enabled: {
       h: "Message Alerts Enabled"
@@ -386,19 +323,6 @@ main: kit: entity: customer_account: {
       n: "name"
       r: false
       t: "`$STRING`"
-    }
-    oauth_grant_id: {
-      fo: "uuid"
-      h: "Oauth Grant Id"
-      n: "oauth_grant_id"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
     }
     one_time_display: {
       h: "One Time Display"
@@ -452,12 +376,6 @@ main: kit: entity: customer_account: {
     reply: {
       h: "Reply"
       n: "reply"
-      r: true
-      t: "`$STRING`"
-    }
-    request_mode: {
-      h: "Request Mode"
-      n: "request_mode"
       r: true
       t: "`$STRING`"
     }
@@ -527,12 +445,6 @@ main: kit: entity: customer_account: {
       r: true
       t: "`$STRING`"
     }
-    use_mode: {
-      h: "Use Mode"
-      n: "use_mode"
-      r: true
-      t: "`$STRING`"
-    }
   }
 
   id: {
@@ -545,204 +457,6 @@ main: kit: entity: customer_account: {
     create: {
       name: "create"
       points: [
-        {
-          bf: [
-            "accuracy_meters"
-            "agent_key_id"
-            "assertion"
-            "capture_source"
-            "captured_at"
-            "challenge"
-            "challenge_id"
-            "connection_id"
-            "installation_id"
-            "key_id"
-            "latitude"
-            "longitude"
-            "oauth_grant_id"
-            "use_mode"
-          ]
-          co: {
-            id: "POST /v1/account/location-handoffs/{handoff_id}/complete-from-device"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            header: [
-              {
-                k: "header"
-                n: "x_loppee_client_platform"
-                or: "X-Loppee-Client-Platform"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "header"
-                n: "x_loppee_installation_id"
-                or: "X-Loppee-Installation-Id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            params: [
-              {
-                k: "param"
-                n: "location_handoff_id"
-                or: "handoff_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/v1/account/location-handoffs/{handoff_id}/complete-from-device"
-          q: {
-            exist: [
-              "location_handoff_id"
-              "x_loppee_client_platform"
-              "x_loppee_installation_id"
-            ]
-          }
-          r: {
-            param: {
-              handoff_id: "location_handoff_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "v1"
-            }
-            {
-              lit: "account"
-            }
-            {
-              lit: "location-handoffs"
-            }
-            {
-              var: "location_handoff_id"
-            }
-            {
-              lit: "complete-from-device"
-            }
-          ]
-          t: {
-            req: {
-              accuracy_meters: "`reqdata.accuracy_meter`"
-              agent_key_id: "`reqdata.agent_key_id`"
-              assertion: "`reqdata.assertion`"
-              capture_source: "`reqdata.capture_source`"
-              captured_at: "`reqdata.captured_at`"
-              challenge: "`reqdata.challenge`"
-              challenge_id: "`reqdata.challenge_id`"
-              connection_id: "`reqdata.connection_id`"
-              installation_id: "`reqdata.installation_id`"
-              key_id: "`reqdata.key_id`"
-              latitude: "`reqdata.latitude`"
-              longitude: "`reqdata.longitude`"
-              oauth_grant_id: "`reqdata.oauth_grant_id`"
-              use_mode: "`reqdata.use_mode`"
-            }
-            res: "`body`"
-          }
-        }
-        {
-          bf: [
-            "agent_key_id"
-            "assertion"
-            "challenge"
-            "challenge_id"
-            "connection_id"
-            "installation_id"
-            "key_id"
-            "oauth_grant_id"
-            "request_mode"
-          ]
-          co: {
-            id: "POST /v1/account/location-handoffs/{handoff_id}/decline-from-device"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            header: [
-              {
-                k: "header"
-                n: "x_loppee_client_platform"
-                or: "X-Loppee-Client-Platform"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "header"
-                n: "x_loppee_installation_id"
-                or: "X-Loppee-Installation-Id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-            params: [
-              {
-                k: "param"
-                n: "location_handoff_id"
-                or: "handoff_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/v1/account/location-handoffs/{handoff_id}/decline-from-device"
-          q: {
-            exist: [
-              "location_handoff_id"
-              "x_loppee_client_platform"
-              "x_loppee_installation_id"
-            ]
-          }
-          r: {
-            param: {
-              handoff_id: "location_handoff_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "v1"
-            }
-            {
-              lit: "account"
-            }
-            {
-              lit: "location-handoffs"
-            }
-            {
-              var: "location_handoff_id"
-            }
-            {
-              lit: "decline-from-device"
-            }
-          ]
-          t: {
-            req: {
-              agent_key_id: "`reqdata.agent_key_id`"
-              assertion: "`reqdata.assertion`"
-              challenge: "`reqdata.challenge`"
-              challenge_id: "`reqdata.challenge_id`"
-              connection_id: "`reqdata.connection_id`"
-              installation_id: "`reqdata.installation_id`"
-              key_id: "`reqdata.key_id`"
-              oauth_grant_id: "`reqdata.oauth_grant_id`"
-              request_mode: "`reqdata.request_mode`"
-            }
-            res: "`body`"
-          }
-        }
         {
           bf: [
             "action"
@@ -1581,7 +1295,6 @@ main: kit: entity: customer_account: {
 
   relations: ancestors: [
     [path("$.main.kit.entity.conversation")]
-    [path("$.main.kit.entity.location_handoff")]
   ]
 
 }

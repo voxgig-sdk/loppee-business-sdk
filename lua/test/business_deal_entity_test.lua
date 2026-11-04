@@ -29,7 +29,7 @@ describe("BusinessDealEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:BusinessDeal(nil):list({ ["id"] = 1 }, nil)
+    local _, err = client:BusinessDeal(nil):list({ ["business_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,11 +37,18 @@ describe("BusinessDealEntity", function()
     local setup = business_deal_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({}) do
+    for _, _op in ipairs({"list"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "business_deal." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
         return
+      end
+    end
+    if setup.live then
+      for _live_key, _live_ex in pairs({["business01"] = "biz_elite_ac_llc_jacksonville_fl"}) do
+        if setup.synthetic_only or setup.idmap[_live_key] == nil then
+          setup.idmap[_live_key] = _live_ex
+        end
       end
     end
     local client = setup.client
@@ -53,6 +60,19 @@ describe("BusinessDealEntity", function()
     if #business_deal_ref01_data_raw > 0 then
       business_deal_ref01_data = helpers.to_map(business_deal_ref01_data_raw[1][2])
     end
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LIST
+    local business_deal_ref01_ent = client:BusinessDeal(nil)
+    local business_deal_ref01_match = {
+      ["business_id"] = setup.idmap["business01"],
+    }
+
+    local business_deal_ref01_list_result, err = business_deal_ref01_ent:list(business_deal_ref01_match, nil)
+    assert.is_nil(err)
+    assert.is_table(business_deal_ref01_list_result)
 
   end)
 end)
@@ -77,7 +97,7 @@ function business_deal_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "business_deal01", "business_deal02", "business_deal03" },
+    { "business_deal01", "business_deal02", "business_deal03", "business01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

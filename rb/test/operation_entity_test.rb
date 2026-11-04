@@ -57,6 +57,7 @@ class OperationEntityTest < Minitest::Test
     end
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     operation_ref01_ent = client.Operation(nil)
     operation_ref01_data = Helpers.to_map(Vs.getprop(
@@ -68,6 +69,7 @@ class OperationEntityTest < Minitest::Test
     assert !operation_ref01_data.nil?
     assert !operation_ref01_data["id"].nil?
 
+    Runner.live_pace if setup[:live]
     # UPDATE
     operation_ref01_data_up0_up = {
       "id" => operation_ref01_data["id"],
@@ -80,9 +82,10 @@ class OperationEntityTest < Minitest::Test
     operation_ref01_resdata_up0_result = operation_ref01_ent.update(operation_ref01_data_up0_up, nil)
     operation_ref01_resdata_up0 = Helpers.to_map(operation_ref01_resdata_up0_result.respond_to?(:data_get) ? operation_ref01_resdata_up0_result.data_get : operation_ref01_resdata_up0_result)
     assert !operation_ref01_resdata_up0.nil?
-    assert_equal operation_ref01_resdata_up0["id"], operation_ref01_data_up0_up["id"]
+    assert Runner.live_same_id(operation_ref01_resdata_up0["id"], operation_ref01_data_up0_up["id"])
     assert_equal operation_ref01_resdata_up0[operation_ref01_markdef_up0_name], operation_ref01_markdef_up0_value
 
+    Runner.live_pace if setup[:live]
     # REMOVE
     operation_ref01_match_rm0 = {
       "id" => operation_ref01_data["id"],

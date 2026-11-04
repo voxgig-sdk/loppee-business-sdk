@@ -81,6 +81,9 @@ func TestOperationEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		operationRef01Ent := client.Operation(nil)
 		operationRef01Data := core.ToMapAny(vs.GetProp(
@@ -99,6 +102,9 @@ func TestOperationEntity(t *testing.T) {
 			t.Fatal("expected created entity to have an id")
 		}
 
+		if setup.live {
+			livePace()
+		}
 		// UPDATE
 		operationRef01DataUp0Up := map[string]any{
 			"id": operationRef01Data["id"],
@@ -116,13 +122,16 @@ func TestOperationEntity(t *testing.T) {
 		if operationRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
-		if operationRef01ResdataUp0["id"] != operationRef01DataUp0Up["id"] {
+		if !liveSameId(operationRef01ResdataUp0["id"], operationRef01DataUp0Up["id"]) {
 			t.Fatal("expected update result id to match")
 		}
 		if operationRef01ResdataUp0[operationRef01MarkdefUp0Name] != operationRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", operationRef01MarkdefUp0Name, operationRef01ResdataUp0[operationRef01MarkdefUp0Name])
 		}
 
+		if setup.live {
+			livePace()
+		}
 		// REMOVE
 		operationRef01MatchRm0 := map[string]any{
 			"id": operationRef01Data["id"],

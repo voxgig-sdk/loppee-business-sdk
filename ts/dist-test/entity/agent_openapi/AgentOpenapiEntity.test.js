@@ -93,6 +93,14 @@ const utility_1 = require("../../utility");
         node_assert_1.default.strictEqual(await client.AgentOpenapi().list(undefined, { throw: false }), undefined);
         (0, node_assert_1.default)(fired < hook.unexpected);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.LoppeeBusinessSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.AgentOpenapi().list({ "description": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.LOPPEE_BUSINESS_TEST_LIVE;
         for (const op of ['list']) {
@@ -101,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "components": { "a": true, "h": "Components", "n": "components", "r": true, "t": "`$OBJECT`", "key$": "components", "index$": 0 }, "info": { "a": true, "h": "Info", "n": "info", "r": true, "t": "`$OBJECT`", "key$": "info", "index$": 1 }, "openapi": { "a": true, "h": "Openapi", "n": "openapi", "r": true, "t": "`$ANY`", "key$": "openapi", "index$": 2 }, "paths": { "a": true, "h": "Paths", "n": "paths", "r": true, "t": "`$OBJECT`", "key$": "paths", "index$": 3 }, "servers": { "a": true, "h": "Servers", "n": "servers", "r": true, "t": "`$ARRAY`", "key$": "servers", "index$": 4 }, "tags": { "a": true, "h": "Tags", "n": "tags", "r": true, "t": "`$ARRAY`", "key$": "tags", "index$": 5 } }, "name": "agent_openapi", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /v1/agent-openapi.json", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/v1/agent-openapi.json", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "v1" }, { "lit": "agent-openapi.json" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "agent_openapi", "name__orig": "agent_openapi", "Name": "AgentOpenapi", "name_": "agent_openapi", "name-": "agent-openapi", "NAME": "AGENT_OPENAPI", "index$": 5 }, { "active": true, "entity": "agent_openapi", "key$": "BasicAgentOpenapiFlow", "kind": "basic", "name": "BasicAgentOpenapiFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "agent_openapi_ref01" } }], "index$": 0 }] }, 'AgentOpenapi', { "GET /v1/agent-openapi.json": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "description": { "a": true, "h": "Description", "n": "description", "r": false, "t": "`$STRING`", "key$": "description", "index$": 0 }, "url": { "a": true, "h": "Url", "n": "url", "r": true, "t": "`$STRING`", "key$": "url", "index$": 1 } }, "name": "agent_openapi", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /v1/agent-openapi.json", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/v1/agent-openapi.json", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "v1" }, { "lit": "agent-openapi.json" }], "t": { "req": "`reqdata`", "res": "`body.servers`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "agent_openapi", "name__orig": "agent_openapi", "Name": "AgentOpenapi", "name_": "agent_openapi", "name-": "agent-openapi", "NAME": "AGENT_OPENAPI", "index$": 5 }, { "active": true, "entity": "agent_openapi", "key$": "BasicAgentOpenapiFlow", "kind": "basic", "name": "BasicAgentOpenapiFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "agent_openapi_ref01" } }], "index$": 0 }] }, 'AgentOpenapi', { "GET /v1/agent-openapi.json": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;

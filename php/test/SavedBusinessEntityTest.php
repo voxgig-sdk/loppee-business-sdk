@@ -59,6 +59,9 @@ class SavedBusinessEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $saved_business_ref01_ent = $client->SavedBusiness(null);
         $saved_business_ref01_data = Helpers::to_map(Vs::getprop(

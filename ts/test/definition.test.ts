@@ -373,7 +373,7 @@ const PLAN: any[] = [
     "path": "/v1/businesses/{business_id}/deals.json",
     "args": [
       {
-        "name": "id",
+        "name": "business_id",
         "wire": "business_id",
         "value": "biz_elite_ac_llc_jacksonville_fl"
       }
@@ -804,7 +804,7 @@ const PLAN: any[] = [
     "path": "/v1/businesses/{business_id}/reviews.json",
     "args": [
       {
-        "name": "id",
+        "name": "business_id",
         "wire": "business_id",
         "value": "biz_elite_ac_llc_jacksonville_fl"
       }
@@ -1174,7 +1174,7 @@ const PLAN: any[] = [
     "path": "/v1/account/conversations/{conversation_id}/close",
     "args": [
       {
-        "name": "id",
+        "name": "conversation_id",
         "wire": "conversation_id",
         "value": "p1"
       }
@@ -1203,7 +1203,7 @@ const PLAN: any[] = [
     "path": "/v1/account/conversations/{conversation_id}/report",
     "args": [
       {
-        "name": "id",
+        "name": "conversation_id",
         "wire": "conversation_id",
         "value": "p1"
       }
@@ -1858,6 +1858,91 @@ const PLAN: any[] = [
       "billing": {},
       "retention_note": "x",
       "already_withdrawn": true
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "location_handoff",
+    "accessor": "LocationHandoff",
+    "op": "create",
+    "method": "POST",
+    "path": "/v1/account/location-handoffs/{handoff_id}/complete-from-device",
+    "action": "complete_from_device",
+    "args": [
+      {
+        "name": "id",
+        "wire": "handoff_id",
+        "value": "p1"
+      }
+    ],
+    "select": {},
+    "headers": [
+      {
+        "name": "x_loppee_client_platform",
+        "wire": "X-Loppee-Client-Platform",
+        "value": "h1"
+      },
+      {
+        "name": "x_loppee_installation_id",
+        "wire": "X-Loppee-Installation-Id",
+        "value": "h2"
+      }
+    ],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": null,
+    "status": 200,
+    "sample": {
+      "handoff_id": "x",
+      "completed": true,
+      "use_mode": "automatic",
+      "agent_receives_coordinates": true
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "location_handoff",
+    "accessor": "LocationHandoff",
+    "op": "create",
+    "method": "POST",
+    "path": "/v1/account/location-handoffs/{handoff_id}/decline-from-device",
+    "action": "decline_from_device",
+    "args": [
+      {
+        "name": "id",
+        "wire": "handoff_id",
+        "value": "p1"
+      }
+    ],
+    "select": {},
+    "headers": [
+      {
+        "name": "x_loppee_client_platform",
+        "wire": "X-Loppee-Client-Platform",
+        "value": "h1"
+      },
+      {
+        "name": "x_loppee_installation_id",
+        "wire": "X-Loppee-Installation-Id",
+        "value": "h2"
+      }
+    ],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": null,
+    "status": 200,
+    "sample": {
+      "handoff_id": "x",
+      "declined": true,
+      "agent_receives_coordinates": true
     },
     "idField": "id"
   },
@@ -3942,7 +4027,7 @@ const PLAN: any[] = [
     "path": "/v1/admin/support/{conversation_id}/internal-notes",
     "args": [
       {
-        "name": "id",
+        "name": "support_id",
         "wire": "conversation_id",
         "value": "p1"
       }
@@ -3975,7 +4060,7 @@ const PLAN: any[] = [
     "path": "/v1/admin/support/{conversation_id}/workflow",
     "args": [
       {
-        "name": "id",
+        "name": "support_id",
         "wire": "conversation_id",
         "value": "p1"
       }

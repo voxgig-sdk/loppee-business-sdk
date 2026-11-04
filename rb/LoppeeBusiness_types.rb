@@ -556,59 +556,27 @@ AgentMonitoringLoadMatch = Struct.new(
 
 # AgentOpenapi entity data model.
 #
-# @!attribute [rw] components
-#   @return [Hash]
+# @!attribute [rw] description
+#   @return [String, nil]
 #
-# @!attribute [rw] info
-#   @return [Hash]
-#
-# @!attribute [rw] openapi
-#   @return [Object]
-#
-# @!attribute [rw] paths
-#   @return [Hash]
-#
-# @!attribute [rw] servers
-#   @return [Array]
-#
-# @!attribute [rw] tags
-#   @return [Array]
+# @!attribute [rw] url
+#   @return [String]
 AgentOpenapi = Struct.new(
-  :components,
-  :info,
-  :openapi,
-  :paths,
-  :servers,
-  :tags,
+  :description,
+  :url,
   keyword_init: true
 )
 
 # Request payload for AgentOpenapi#list.
 #
-# @!attribute [rw] components
-#   @return [Hash, nil]
+# @!attribute [rw] description
+#   @return [String, nil]
 #
-# @!attribute [rw] info
-#   @return [Hash, nil]
-#
-# @!attribute [rw] openapi
-#   @return [Object, nil]
-#
-# @!attribute [rw] paths
-#   @return [Hash, nil]
-#
-# @!attribute [rw] servers
-#   @return [Array, nil]
-#
-# @!attribute [rw] tags
-#   @return [Array, nil]
+# @!attribute [rw] url
+#   @return [String, nil]
 AgentOpenapiListMatch = Struct.new(
-  :components,
-  :info,
-  :openapi,
-  :paths,
-  :servers,
-  :tags,
+  :description,
+  :url,
   keyword_init: true
 )
 
@@ -1020,10 +988,10 @@ BusinessDeal = Struct.new(
 
 # Request payload for BusinessDeal#list.
 #
-# @!attribute [rw] id
+# @!attribute [rw] business_id
 #   @return [String]
 BusinessDealListMatch = Struct.new(
-  :id,
+  :business_id,
   keyword_init: true
 )
 
@@ -2817,17 +2785,12 @@ BusinessOwnerUpdateData = Struct.new(
 )
 
 # BusinessReview entity data model.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-BusinessReview = Struct.new(
-  :id,
-  keyword_init: true
-)
+class BusinessReview
+end
 
 # Request payload for BusinessReview#load.
 #
-# @!attribute [rw] id
+# @!attribute [rw] business_id
 #   @return [String]
 #
 # @!attribute [rw] limit
@@ -2839,7 +2802,7 @@ BusinessReview = Struct.new(
 # @!attribute [rw] rating
 #   @return [String, nil]
 BusinessReviewLoadMatch = Struct.new(
-  :id,
+  :business_id,
   :limit,
   :page,
   :rating,
@@ -3372,34 +3335,27 @@ ConversationCreateData = Struct.new(
 # @!attribute [rw] conversation_id
 #   @return [String]
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
 # @!attribute [rw] status
 #   @return [Object]
 ConversationClose = Struct.new(
   :closed_at,
   :conversation_id,
-  :id,
   :status,
   keyword_init: true
 )
 
 # Request payload for ConversationClose#create.
 #
-# @!attribute [rw] id
+# @!attribute [rw] conversation_id
 #   @return [String]
 ConversationCloseCreateData = Struct.new(
-  :id,
+  :conversation_id,
   keyword_init: true
 )
 
 # ConversationReport entity data model.
 #
 # @!attribute [rw] detail
-#   @return [String, nil]
-#
-# @!attribute [rw] id
 #   @return [String, nil]
 #
 # @!attribute [rw] reason
@@ -3409,7 +3365,6 @@ ConversationCloseCreateData = Struct.new(
 #   @return [Object]
 ConversationReport = Struct.new(
   :detail,
-  :id,
   :reason,
   :status,
   keyword_init: true
@@ -3417,7 +3372,7 @@ ConversationReport = Struct.new(
 
 # Request payload for ConversationReport#create.
 #
-# @!attribute [rw] id
+# @!attribute [rw] conversation_id
 #   @return [String]
 #
 # @!attribute [rw] detail
@@ -3426,7 +3381,7 @@ ConversationReport = Struct.new(
 # @!attribute [rw] reason
 #   @return [Object]
 ConversationReportCreateData = Struct.new(
-  :id,
+  :conversation_id,
   :detail,
   :reason,
   keyword_init: true
@@ -3650,17 +3605,11 @@ CustomerCreateData = Struct.new(
 # @!attribute [rw] account_role
 #   @return [String]
 #
-# @!attribute [rw] accuracy_meters
-#   @return [Float]
-#
 # @!attribute [rw] acknowledge_data_effects
 #   @return [Boolean]
 #
 # @!attribute [rw] actions
 #   @return [Array]
-#
-# @!attribute [rw] agent_key_id
-#   @return [String]
 #
 # @!attribute [rw] agent_receives_coordinates
 #   @return [Boolean]
@@ -3670,9 +3619,6 @@ CustomerCreateData = Struct.new(
 #
 # @!attribute [rw] app_attest_registered
 #   @return [Boolean]
-#
-# @!attribute [rw] assertion
-#   @return [String]
 #
 # @!attribute [rw] attestation
 #   @return [String]
@@ -3692,12 +3638,6 @@ CustomerCreateData = Struct.new(
 # @!attribute [rw] business_id
 #   @return [Object]
 #
-# @!attribute [rw] capture_source
-#   @return [Object]
-#
-# @!attribute [rw] captured_at
-#   @return [String]
-#
 # @!attribute [rw] challenge
 #   @return [String]
 #
@@ -3706,9 +3646,6 @@ CustomerCreateData = Struct.new(
 #
 # @!attribute [rw] client_message_id
 #   @return [String]
-#
-# @!attribute [rw] completed
-#   @return [Boolean]
 #
 # @!attribute [rw] confirmation
 #   @return [String]
@@ -3730,9 +3667,6 @@ CustomerCreateData = Struct.new(
 #
 # @!attribute [rw] credential_id
 #   @return [String]
-#
-# @!attribute [rw] declined
-#   @return [Boolean]
 #
 # @!attribute [rw] delivery_contract
 #   @return [Hash]
@@ -3767,9 +3701,6 @@ CustomerCreateData = Struct.new(
 # @!attribute [rw] failure_count
 #   @return [Integer]
 #
-# @!attribute [rw] handoff_id
-#   @return [String]
-#
 # @!attribute [rw] has_more
 #   @return [Boolean]
 #
@@ -3788,14 +3719,8 @@ CustomerCreateData = Struct.new(
 # @!attribute [rw] last_delivery_at
 #   @return [Object]
 #
-# @!attribute [rw] latitude
-#   @return [Float]
-#
 # @!attribute [rw] location
 #   @return [Object, nil]
-#
-# @!attribute [rw] longitude
-#   @return [Float]
 #
 # @!attribute [rw] message_alerts_enabled
 #   @return [Boolean]
@@ -3808,9 +3733,6 @@ CustomerCreateData = Struct.new(
 #
 # @!attribute [rw] name
 #   @return [String, nil]
-#
-# @!attribute [rw] oauth_grant_id
-#   @return [Object]
 #
 # @!attribute [rw] one_time_display
 #   @return [Object]
@@ -3834,9 +3756,6 @@ CustomerCreateData = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] reply
-#   @return [String]
-#
-# @!attribute [rw] request_mode
 #   @return [String]
 #
 # @!attribute [rw] requested_at
@@ -3868,32 +3787,23 @@ CustomerCreateData = Struct.new(
 #
 # @!attribute [rw] usable_until
 #   @return [String]
-#
-# @!attribute [rw] use_mode
-#   @return [String]
 CustomerAccount = Struct.new(
   :account_id,
   :account_role,
-  :accuracy_meters,
   :acknowledge_data_effects,
   :actions,
-  :agent_key_id,
   :agent_receives_coordinates,
   :all_paused,
   :app_attest_registered,
-  :assertion,
   :attestation,
   :author_label,
   :author_type,
   :binding,
   :body,
   :business_id,
-  :capture_source,
-  :captured_at,
   :challenge,
   :challenge_id,
   :client_message_id,
-  :completed,
   :confirmation,
   :connection_id,
   :connection_kind,
@@ -3901,7 +3811,6 @@ CustomerAccount = Struct.new(
   :coordinates_returned,
   :created_at,
   :credential_id,
-  :declined,
   :delivery_contract,
   :disabled_reason,
   :disclosure,
@@ -3913,21 +3822,17 @@ CustomerAccount = Struct.new(
   :event_id,
   :event_types,
   :failure_count,
-  :handoff_id,
   :has_more,
   :id,
   :idempotent_replay,
   :installation_id,
   :key_id,
   :last_delivery_at,
-  :latitude,
   :location,
-  :longitude,
   :message_alerts_enabled,
   :messages,
   :mode,
   :name,
-  :oauth_grant_id,
   :one_time_display,
   :platform,
   :policy,
@@ -3936,7 +3841,6 @@ CustomerAccount = Struct.new(
   :reason,
   :registered_at,
   :reply,
-  :request_mode,
   :requested_at,
   :results,
   :schema_version,
@@ -3947,7 +3851,6 @@ CustomerAccount = Struct.new(
   :updated_at,
   :url,
   :usable_until,
-  :use_mode,
   keyword_init: true
 )
 
@@ -3959,17 +3862,11 @@ CustomerAccount = Struct.new(
 # @!attribute [rw] account_role
 #   @return [String]
 #
-# @!attribute [rw] accuracy_meters
-#   @return [Float]
-#
 # @!attribute [rw] acknowledge_data_effects
 #   @return [Boolean]
 #
 # @!attribute [rw] actions
 #   @return [Array]
-#
-# @!attribute [rw] agent_key_id
-#   @return [String]
 #
 # @!attribute [rw] agent_receives_coordinates
 #   @return [Boolean]
@@ -3979,9 +3876,6 @@ CustomerAccount = Struct.new(
 #
 # @!attribute [rw] app_attest_registered
 #   @return [Boolean]
-#
-# @!attribute [rw] assertion
-#   @return [String]
 #
 # @!attribute [rw] attestation
 #   @return [String]
@@ -4001,12 +3895,6 @@ CustomerAccount = Struct.new(
 # @!attribute [rw] business_id
 #   @return [Object]
 #
-# @!attribute [rw] capture_source
-#   @return [Object]
-#
-# @!attribute [rw] captured_at
-#   @return [String]
-#
 # @!attribute [rw] challenge
 #   @return [String]
 #
@@ -4015,9 +3903,6 @@ CustomerAccount = Struct.new(
 #
 # @!attribute [rw] client_message_id
 #   @return [String]
-#
-# @!attribute [rw] completed
-#   @return [Boolean]
 #
 # @!attribute [rw] confirmation
 #   @return [String]
@@ -4039,9 +3924,6 @@ CustomerAccount = Struct.new(
 #
 # @!attribute [rw] credential_id
 #   @return [String]
-#
-# @!attribute [rw] declined
-#   @return [Boolean]
 #
 # @!attribute [rw] delivery_contract
 #   @return [Hash]
@@ -4076,9 +3958,6 @@ CustomerAccount = Struct.new(
 # @!attribute [rw] failure_count
 #   @return [Integer]
 #
-# @!attribute [rw] handoff_id
-#   @return [String]
-#
 # @!attribute [rw] has_more
 #   @return [Boolean]
 #
@@ -4097,14 +3976,8 @@ CustomerAccount = Struct.new(
 # @!attribute [rw] last_delivery_at
 #   @return [Object]
 #
-# @!attribute [rw] latitude
-#   @return [Float]
-#
 # @!attribute [rw] location
 #   @return [Object, nil]
-#
-# @!attribute [rw] longitude
-#   @return [Float]
 #
 # @!attribute [rw] message_alerts_enabled
 #   @return [Boolean]
@@ -4117,9 +3990,6 @@ CustomerAccount = Struct.new(
 #
 # @!attribute [rw] name
 #   @return [String, nil]
-#
-# @!attribute [rw] oauth_grant_id
-#   @return [Object]
 #
 # @!attribute [rw] one_time_display
 #   @return [Object]
@@ -4143,9 +4013,6 @@ CustomerAccount = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] reply
-#   @return [String]
-#
-# @!attribute [rw] request_mode
 #   @return [String]
 #
 # @!attribute [rw] requested_at
@@ -4178,40 +4045,46 @@ CustomerAccount = Struct.new(
 # @!attribute [rw] usable_until
 #   @return [String]
 #
-# @!attribute [rw] use_mode
-#   @return [String]
-#
 # @!attribute [rw] action
+#   @return [Object, nil]
+#
+# @!attribute [rw] agent_key_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] assertion
 #   @return [Object, nil]
 #
 # @!attribute [rw] consent_copy_version
 #   @return [Object, nil]
 #
+# @!attribute [rw] handoff_id
+#   @return [Object, nil]
+#
+# @!attribute [rw] oauth_grant_id
+#   @return [Object, nil]
+#
 # @!attribute [rw] paused
+#   @return [Object, nil]
+#
+# @!attribute [rw] use_mode
 #   @return [Object, nil]
 CustomerAccountCreateData = Struct.new(
   :account_id,
   :account_role,
-  :accuracy_meters,
   :acknowledge_data_effects,
   :actions,
-  :agent_key_id,
   :agent_receives_coordinates,
   :all_paused,
   :app_attest_registered,
-  :assertion,
   :attestation,
   :author_label,
   :author_type,
   :binding,
   :body,
   :business_id,
-  :capture_source,
-  :captured_at,
   :challenge,
   :challenge_id,
   :client_message_id,
-  :completed,
   :confirmation,
   :connection_id,
   :connection_kind,
@@ -4219,7 +4092,6 @@ CustomerAccountCreateData = Struct.new(
   :coordinates_returned,
   :created_at,
   :credential_id,
-  :declined,
   :delivery_contract,
   :disabled_reason,
   :disclosure,
@@ -4231,21 +4103,17 @@ CustomerAccountCreateData = Struct.new(
   :event_id,
   :event_types,
   :failure_count,
-  :handoff_id,
   :has_more,
   :id,
   :idempotent_replay,
   :installation_id,
   :key_id,
   :last_delivery_at,
-  :latitude,
   :location,
-  :longitude,
   :message_alerts_enabled,
   :messages,
   :mode,
   :name,
-  :oauth_grant_id,
   :one_time_display,
   :platform,
   :policy,
@@ -4254,7 +4122,6 @@ CustomerAccountCreateData = Struct.new(
   :reason,
   :registered_at,
   :reply,
-  :request_mode,
   :requested_at,
   :results,
   :schema_version,
@@ -4265,10 +4132,14 @@ CustomerAccountCreateData = Struct.new(
   :updated_at,
   :url,
   :usable_until,
-  :use_mode,
   :action,
+  :agent_key_id,
+  :assertion,
   :consent_copy_version,
+  :handoff_id,
+  :oauth_grant_id,
   :paused,
+  :use_mode,
   keyword_init: true
 )
 
@@ -4700,12 +4571,22 @@ JobResumeSignedUrlCreateData = Struct.new(
 )
 
 # LocationHandoff entity data model.
-class LocationHandoff
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+LocationHandoff = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for LocationHandoff#create.
-class LocationHandoffCreateData
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+LocationHandoffCreateData = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Message entity data model.
 #
@@ -5222,59 +5103,27 @@ ModeratedActionCreateData = Struct.new(
 
 # OpenApiDocument entity data model.
 #
-# @!attribute [rw] components
-#   @return [Hash]
+# @!attribute [rw] description
+#   @return [String, nil]
 #
-# @!attribute [rw] info
-#   @return [Hash]
-#
-# @!attribute [rw] openapi
-#   @return [Object]
-#
-# @!attribute [rw] paths
-#   @return [Hash]
-#
-# @!attribute [rw] servers
-#   @return [Array]
-#
-# @!attribute [rw] tags
-#   @return [Array]
+# @!attribute [rw] url
+#   @return [String]
 OpenApiDocument = Struct.new(
-  :components,
-  :info,
-  :openapi,
-  :paths,
-  :servers,
-  :tags,
+  :description,
+  :url,
   keyword_init: true
 )
 
 # Request payload for OpenApiDocument#list.
 #
-# @!attribute [rw] components
-#   @return [Hash, nil]
+# @!attribute [rw] description
+#   @return [String, nil]
 #
-# @!attribute [rw] info
-#   @return [Hash, nil]
-#
-# @!attribute [rw] openapi
-#   @return [Object, nil]
-#
-# @!attribute [rw] paths
-#   @return [Hash, nil]
-#
-# @!attribute [rw] servers
-#   @return [Array, nil]
-#
-# @!attribute [rw] tags
-#   @return [Array, nil]
+# @!attribute [rw] url
+#   @return [String, nil]
 OpenApiDocumentListMatch = Struct.new(
-  :components,
-  :info,
-  :openapi,
-  :paths,
-  :servers,
-  :tags,
+  :description,
+  :url,
   keyword_init: true
 )
 
@@ -7165,107 +7014,35 @@ OwnerWebhookRegistrationCreateData = Struct.new(
 
 # Pricing entity data model.
 #
-# @!attribute [rw] billing
-#   @return [Hash]
+# @!attribute [rw] annual_usd
+#   @return [Float]
 #
-# @!attribute [rw] branch_add_ons
-#   @return [Array]
+# @!attribute [rw] monthly_usd
+#   @return [Float]
 #
-# @!attribute [rw] currency
-#   @return [Object]
-#
-# @!attribute [rw] generated_at
-#   @return [String]
-#
-# @!attribute [rw] neutrality
-#   @return [String]
-#
-# @!attribute [rw] plans
-#   @return [Array]
-#
-# @!attribute [rw] promotions
-#   @return [Array]
-#
-# @!attribute [rw] published_at
-#   @return [Object]
-#
-# @!attribute [rw] radius_extension
-#   @return [Hash]
-#
-# @!attribute [rw] revision_id
-#   @return [Object]
-#
-# @!attribute [rw] source
-#   @return [Object]
-#
-# @!attribute [rw] trust_model_version
-#   @return [Object]
+# @!attribute [rw] radius_max_miles
+#   @return [Float]
 Pricing = Struct.new(
-  :billing,
-  :branch_add_ons,
-  :currency,
-  :generated_at,
-  :neutrality,
-  :plans,
-  :promotions,
-  :published_at,
-  :radius_extension,
-  :revision_id,
-  :source,
-  :trust_model_version,
+  :annual_usd,
+  :monthly_usd,
+  :radius_max_miles,
   keyword_init: true
 )
 
 # Request payload for Pricing#list.
 #
-# @!attribute [rw] billing
-#   @return [Hash, nil]
+# @!attribute [rw] annual_usd
+#   @return [Float, nil]
 #
-# @!attribute [rw] branch_add_ons
-#   @return [Array, nil]
+# @!attribute [rw] monthly_usd
+#   @return [Float, nil]
 #
-# @!attribute [rw] currency
-#   @return [Object, nil]
-#
-# @!attribute [rw] generated_at
-#   @return [String, nil]
-#
-# @!attribute [rw] neutrality
-#   @return [String, nil]
-#
-# @!attribute [rw] plans
-#   @return [Array, nil]
-#
-# @!attribute [rw] promotions
-#   @return [Array, nil]
-#
-# @!attribute [rw] published_at
-#   @return [Object, nil]
-#
-# @!attribute [rw] radius_extension
-#   @return [Hash, nil]
-#
-# @!attribute [rw] revision_id
-#   @return [Object, nil]
-#
-# @!attribute [rw] source
-#   @return [Object, nil]
-#
-# @!attribute [rw] trust_model_version
-#   @return [Object, nil]
+# @!attribute [rw] radius_max_miles
+#   @return [Float, nil]
 PricingListMatch = Struct.new(
-  :billing,
-  :branch_add_ons,
-  :currency,
-  :generated_at,
-  :neutrality,
-  :plans,
-  :promotions,
-  :published_at,
-  :radius_extension,
-  :revision_id,
-  :source,
-  :trust_model_version,
+  :annual_usd,
+  :monthly_usd,
+  :radius_max_miles,
   keyword_init: true
 )
 
@@ -8038,22 +7815,18 @@ SearchListMatch = Struct.new(
 
 # Suggest entity data model.
 #
-# @!attribute [rw] categories
-#   @return [Array]
-#
-# @!attribute [rw] names
-#   @return [Array]
-#
-# @!attribute [rw] query
+# @!attribute [rw] alias
 #   @return [String]
 #
-# @!attribute [rw] schema_version
-#   @return [Object]
+# @!attribute [rw] path_titles
+#   @return [Array]
+#
+# @!attribute [rw] title
+#   @return [String]
 Suggest = Struct.new(
-  :categories,
-  :names,
-  :query,
-  :schema_version,
+  :alias,
+  :path_titles,
+  :title,
   keyword_init: true
 )
 
@@ -8089,13 +7862,13 @@ SupportInternalNote = Struct.new(
 
 # Request payload for SupportInternalNote#create.
 #
-# @!attribute [rw] id
+# @!attribute [rw] support_id
 #   @return [String]
 #
 # @!attribute [rw] body
 #   @return [String]
 SupportInternalNoteCreateData = Struct.new(
-  :id,
+  :support_id,
   :body,
   keyword_init: true
 )
@@ -8105,9 +7878,6 @@ SupportInternalNoteCreateData = Struct.new(
 # @!attribute [rw] category
 #   @return [Object, nil]
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
 # @!attribute [rw] priority
 #   @return [Object, nil]
 #
@@ -8115,7 +7885,6 @@ SupportInternalNoteCreateData = Struct.new(
 #   @return [Object, nil]
 SupportWorkflow = Struct.new(
   :category,
-  :id,
   :priority,
   :waiting_on,
   keyword_init: true
@@ -8123,7 +7892,7 @@ SupportWorkflow = Struct.new(
 
 # Request payload for SupportWorkflow#create.
 #
-# @!attribute [rw] id
+# @!attribute [rw] support_id
 #   @return [String]
 #
 # @!attribute [rw] category
@@ -8135,7 +7904,7 @@ SupportWorkflow = Struct.new(
 # @!attribute [rw] waiting_on
 #   @return [Object, nil]
 SupportWorkflowCreateData = Struct.new(
-  :id,
+  :support_id,
   :category,
   :priority,
   :waiting_on,

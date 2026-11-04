@@ -63,6 +63,8 @@ class TestOperationEntity:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via LOPPEE_BUSINESS_TEST_OPERATION_ENTID")
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         operation_ref01_ent = client.Operation(None)
         operation_ref01_data = helpers.to_map(vs.getprop(
@@ -73,6 +75,8 @@ class TestOperationEntity:
         assert operation_ref01_data is not None
         assert operation_ref01_data["id"] is not None
 
+        if setup["live"]:
+            runner.live_pace()
         # UPDATE
         operation_ref01_data_up0_up = {
             "id": operation_ref01_data["id"],
@@ -84,9 +88,11 @@ class TestOperationEntity:
 
         operation_ref01_resdata_up0 = helpers.to_map(runner.entity_data(operation_ref01_ent.update(operation_ref01_data_up0_up, None)))
         assert operation_ref01_resdata_up0 is not None
-        assert operation_ref01_resdata_up0["id"] == operation_ref01_data_up0_up["id"]
+        assert runner.live_same_id(operation_ref01_resdata_up0.get("id"), operation_ref01_data_up0_up["id"])
         assert operation_ref01_resdata_up0[operation_ref01_markdef_up0_name] == operation_ref01_markdef_up0_value
 
+        if setup["live"]:
+            runner.live_pace()
         # REMOVE
         operation_ref01_match_rm0 = {
             "id": operation_ref01_data["id"],

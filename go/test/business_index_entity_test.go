@@ -212,6 +212,9 @@ func TestBusinessIndexEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = businessIndexRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LIST
 		businessIndexRef01Ent := client.BusinessIndex(nil)
 		businessIndexRef01Match := map[string]any{}

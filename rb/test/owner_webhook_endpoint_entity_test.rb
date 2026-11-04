@@ -55,6 +55,7 @@ class OwnerWebhookEndpointEntityTest < Minitest::Test
     end
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     owner_webhook_endpoint_ref01_ent = client.OwnerWebhookEndpoint(nil)
     owner_webhook_endpoint_ref01_data = Helpers.to_map(Vs.getprop(

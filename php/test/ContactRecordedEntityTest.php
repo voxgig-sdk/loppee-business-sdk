@@ -59,6 +59,9 @@ class ContactRecordedEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $contact_recorded_ref01_ent = $client->ContactRecorded(null);
         $contact_recorded_ref01_data = Helpers::to_map(Vs::getprop(

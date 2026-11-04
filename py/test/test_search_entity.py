@@ -143,6 +143,8 @@ class TestSearchEntity:
         if len(search_ref01_data_raw) > 0:
             search_ref01_data = helpers.to_map(search_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         search_ref01_ent = client.Search(None)
         search_ref01_match = {}

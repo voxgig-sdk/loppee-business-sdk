@@ -71,6 +71,9 @@ func TestClaimVerificationSendEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		claimVerificationSendRef01Ent := client.ClaimVerificationSend(nil)
 		claimVerificationSendRef01Data := core.ToMapAny(vs.GetProp(

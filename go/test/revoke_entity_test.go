@@ -78,6 +78,9 @@ func TestRevokeEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		revokeRef01Ent := client.Revoke(nil)
 		revokeRef01Data := core.ToMapAny(vs.GetProp(

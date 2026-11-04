@@ -2,40 +2,24 @@
   "existing": {
     "open_api_document": {
       "OPEN_API_DOCUMENT00": {
-        "components": {},
-        "info": {},
-        "openapi": "s3e",
-        "paths": {},
-        "servers": [],
-        "tags": []
+        "description": "s14",
+        "url": "s15"
       },
       "OPEN_API_DOCUMENT01": {
-        "components": {},
-        "info": {},
-        "openapi": "s7a",
-        "paths": {},
-        "servers": [],
-        "tags": []
+        "description": "s28",
+        "url": "s29"
       },
       "OPEN_API_DOCUMENT02": {
-        "components": {},
-        "info": {},
-        "openapi": "sb6",
-        "paths": {},
-        "servers": [],
-        "tags": []
+        "description": "s3c",
+        "url": "s3d"
       }
     }
   },
   "new": {
     "open_api_document": {
       "open_api_document_ref01": {
-        "components": {},
-        "info": {},
-        "openapi": "sf2",
-        "paths": {},
-        "servers": [],
-        "tags": []
+        "description": "s50",
+        "url": "s51"
       }
     }
   },

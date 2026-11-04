@@ -13,7 +13,11 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type LoppeeBusinessEntity = core.LoppeeBusinessEntity
+type LoppeeBusinessEntityBase = core.LoppeeBusinessEntityBase
+
+// Deprecated: use LoppeeBusinessEntityBase.
+type LoppeeBusinessEntity = core.LoppeeBusinessEntityBase
+
 type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
@@ -42,190 +46,190 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewAgentAccessEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewAgentAccessEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewAgentAccessEntity(client, entopts)
 	}
-	core.NewAgentCapabilityEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewAgentCapabilityEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewAgentCapabilityEntity(client, entopts)
 	}
-	core.NewAgentConnectionTestEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewAgentConnectionTestEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewAgentConnectionTestEntity(client, entopts)
 	}
-	core.NewAgentIntegrationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewAgentIntegrationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewAgentIntegrationEntity(client, entopts)
 	}
-	core.NewAgentMonitoringEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewAgentMonitoringEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewAgentMonitoringEntity(client, entopts)
 	}
-	core.NewAgentOpenapiEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewAgentOpenapiEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewAgentOpenapiEntity(client, entopts)
 	}
-	core.NewAgentPolicyEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewAgentPolicyEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewAgentPolicyEntity(client, entopts)
 	}
-	core.NewAnonymousLocationProofRevocationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewAnonymousLocationProofRevocationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewAnonymousLocationProofRevocationEntity(client, entopts)
 	}
-	core.NewBusinessApplicationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewBusinessApplicationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewBusinessApplicationEntity(client, entopts)
 	}
-	core.NewBusinessClaimEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewBusinessClaimEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewBusinessClaimEntity(client, entopts)
 	}
-	core.NewBusinessDealEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewBusinessDealEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewBusinessDealEntity(client, entopts)
 	}
-	core.NewBusinessIndexEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewBusinessIndexEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewBusinessIndexEntity(client, entopts)
 	}
-	core.NewBusinessOwnerEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewBusinessOwnerEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewBusinessOwnerEntity(client, entopts)
 	}
-	core.NewBusinessReviewEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewBusinessReviewEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewBusinessReviewEntity(client, entopts)
 	}
-	core.NewChatAttachmentEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewChatAttachmentEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewChatAttachmentEntity(client, entopts)
 	}
-	core.NewChatAttachmentUrlEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewChatAttachmentUrlEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewChatAttachmentUrlEntity(client, entopts)
 	}
-	core.NewClaimVerificationSendEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewClaimVerificationSendEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewClaimVerificationSendEntity(client, entopts)
 	}
-	core.NewClaimVerificationVerifyEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewClaimVerificationVerifyEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewClaimVerificationVerifyEntity(client, entopts)
 	}
-	core.NewCommercialClickEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewCommercialClickEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewCommercialClickEntity(client, entopts)
 	}
-	core.NewContactRecordedEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewContactRecordedEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewContactRecordedEntity(client, entopts)
 	}
-	core.NewConversationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewConversationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewConversationEntity(client, entopts)
 	}
-	core.NewConversationCloseEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewConversationCloseEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewConversationCloseEntity(client, entopts)
 	}
-	core.NewConversationReportEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewConversationReportEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewConversationReportEntity(client, entopts)
 	}
-	core.NewConversationWorkflowEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewConversationWorkflowEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewConversationWorkflowEntity(client, entopts)
 	}
-	core.NewCreateAgentApiKeyEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewCreateAgentApiKeyEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewCreateAgentApiKeyEntity(client, entopts)
 	}
-	core.NewCustomerEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewCustomerEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewCustomerEntity(client, entopts)
 	}
-	core.NewCustomerAccountEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewCustomerAccountEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewCustomerAccountEntity(client, entopts)
 	}
-	core.NewCustomerLocationProofRevocationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewCustomerLocationProofRevocationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewCustomerLocationProofRevocationEntity(client, entopts)
 	}
-	core.NewDestinationAddressSuggestionEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewDestinationAddressSuggestionEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewDestinationAddressSuggestionEntity(client, entopts)
 	}
-	core.NewDestinationLocationProofEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewDestinationLocationProofEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewDestinationLocationProofEntity(client, entopts)
 	}
-	core.NewDomainTrustCardEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewDomainTrustCardEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewDomainTrustCardEntity(client, entopts)
 	}
-	core.NewGeoContextEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewGeoContextEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewGeoContextEntity(client, entopts)
 	}
-	core.NewHealthEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewHealthEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewHealthEntity(client, entopts)
 	}
-	core.NewJobApplicationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewJobApplicationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewJobApplicationEntity(client, entopts)
 	}
-	core.NewJobResumeSignedUrlEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewJobResumeSignedUrlEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewJobResumeSignedUrlEntity(client, entopts)
 	}
-	core.NewLocationHandoffEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewLocationHandoffEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewLocationHandoffEntity(client, entopts)
 	}
-	core.NewMessageEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewMessageEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewMessageEntity(client, entopts)
 	}
-	core.NewModeratedActionEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewModeratedActionEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewModeratedActionEntity(client, entopts)
 	}
-	core.NewOpenApiDocumentEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewOpenApiDocumentEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewOpenApiDocumentEntity(client, entopts)
 	}
-	core.NewOperationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewOperationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewOperationEntity(client, entopts)
 	}
-	core.NewOwnerNotificationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewOwnerNotificationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewOwnerNotificationEntity(client, entopts)
 	}
-	core.NewOwnerNotificationSettingEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewOwnerNotificationSettingEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewOwnerNotificationSettingEntity(client, entopts)
 	}
-	core.NewOwnerWebhookEndpointEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewOwnerWebhookEndpointEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewOwnerWebhookEndpointEntity(client, entopts)
 	}
-	core.NewOwnerWebhookRegistrationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewOwnerWebhookRegistrationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewOwnerWebhookRegistrationEntity(client, entopts)
 	}
-	core.NewPricingEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewPricingEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewPricingEntity(client, entopts)
 	}
-	core.NewPromoteVerifiedTransactionEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewPromoteVerifiedTransactionEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewPromoteVerifiedTransactionEntity(client, entopts)
 	}
-	core.NewPublicContentEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewPublicContentEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewPublicContentEntity(client, entopts)
 	}
-	core.NewRecommendEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewRecommendEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewRecommendEntity(client, entopts)
 	}
-	core.NewReviewEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewReviewEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewReviewEntity(client, entopts)
 	}
-	core.NewRevokeEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewRevokeEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewRevokeEntity(client, entopts)
 	}
-	core.NewSaveBusinessEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewSaveBusinessEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewSaveBusinessEntity(client, entopts)
 	}
-	core.NewSavedBusinessEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewSavedBusinessEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewSavedBusinessEntity(client, entopts)
 	}
-	core.NewSavedLocationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewSavedLocationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewSavedLocationEntity(client, entopts)
 	}
-	core.NewSearchEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewSearchEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewSearchEntity(client, entopts)
 	}
-	core.NewSuggestEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewSuggestEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewSuggestEntity(client, entopts)
 	}
-	core.NewSupportInternalNoteEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewSupportInternalNoteEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewSupportInternalNoteEntity(client, entopts)
 	}
-	core.NewSupportWorkflowEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewSupportWorkflowEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewSupportWorkflowEntity(client, entopts)
 	}
-	core.NewTaxonomySuggestionEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewTaxonomySuggestionEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewTaxonomySuggestionEntity(client, entopts)
 	}
-	core.NewTrustCardEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewTrustCardEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewTrustCardEntity(client, entopts)
 	}
-	core.NewUnsaveBusinessEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewUnsaveBusinessEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewUnsaveBusinessEntity(client, entopts)
 	}
-	core.NewUpdateAgentBillingAccountEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewUpdateAgentBillingAccountEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewUpdateAgentBillingAccountEntity(client, entopts)
 	}
-	core.NewWithdrawJobApplicationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntity {
+	core.NewWithdrawJobApplicationEntityFunc = func(client *core.LoppeeBusinessSDK, entopts map[string]any) core.LoppeeBusinessEntityBase {
 		return entity.NewWithdrawJobApplicationEntity(client, entopts)
 	}
 }

@@ -54,8 +54,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    agentcapability = client.AgentCapability().load()
-    print(agentcapability.data_get())
+    agentpolicy = client.AgentPolicy().load()
+    print(agentpolicy.data_get())
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 client = LoppeeBusinessSDK.test()
 
 # Entity ops return the entity, and list one per record; they raise on error.
-agentcapability = client.AgentCapability().load()
+agentpolicy = client.AgentPolicy().load()
 # data_get() on an entity reads its mock response record
 ```
 
@@ -416,12 +416,8 @@ API path: `/v1/agent-monitoring.json`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: List.
 
@@ -707,7 +703,6 @@ API path: `/v1/owner/agents/{agent_id}/disconnect`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
 
 Operations: Load.
 
@@ -857,7 +852,6 @@ API path: `/v1/actions/list-my-conversations`
 | --- | --- |
 | `closed_at` |  |
 | `conversation_id` |  |
-| `id` |  |
 | `status` |  |
 
 Operations: Create.
@@ -869,7 +863,6 @@ API path: `/v1/account/conversations/{conversation_id}/close`
 | Field | Description |
 | --- | --- |
 | `detail` |  |
-| `id` |  |
 | `reason` |  |
 | `status` |  |
 
@@ -937,26 +930,20 @@ API path: `/v1/account/customer`
 | --- | --- |
 | `account_id` |  |
 | `account_role` |  |
-| `accuracy_meters` |  |
 | `acknowledge_data_effects` |  |
 | `actions` |  |
-| `agent_key_id` |  |
 | `agent_receives_coordinates` |  |
 | `all_paused` |  |
 | `app_attest_registered` |  |
-| `assertion` |  |
 | `attestation` |  |
 | `author_label` |  |
 | `author_type` |  |
 | `binding` |  |
 | `body` |  |
 | `business_id` |  |
-| `capture_source` |  |
-| `captured_at` |  |
 | `challenge` |  |
 | `challenge_id` |  |
 | `client_message_id` |  |
-| `completed` |  |
 | `confirmation` |  |
 | `connection_id` |  |
 | `connection_kind` |  |
@@ -964,7 +951,6 @@ API path: `/v1/account/customer`
 | `coordinates_returned` |  |
 | `created_at` |  |
 | `credential_id` |  |
-| `declined` |  |
 | `delivery_contract` |  |
 | `disabled_reason` |  |
 | `disclosure` |  |
@@ -976,21 +962,17 @@ API path: `/v1/account/customer`
 | `event_id` |  |
 | `event_types` |  |
 | `failure_count` |  |
-| `handoff_id` |  |
 | `has_more` |  |
 | `id` |  |
 | `idempotent_replay` |  |
 | `installation_id` |  |
 | `key_id` |  |
 | `last_delivery_at` |  |
-| `latitude` |  |
 | `location` | An opaque location reference from the website's own location controls. |
-| `longitude` |  |
 | `message_alerts_enabled` |  |
 | `messages` |  |
 | `mode` | fallback: a direct search answered because the language model was unavailable. |
 | `name` |  |
-| `oauth_grant_id` |  |
 | `one_time_display` |  |
 | `platform` |  |
 | `policy` |  |
@@ -999,7 +981,6 @@ API path: `/v1/account/customer`
 | `reason` |  |
 | `registered_at` |  |
 | `reply` |  |
-| `request_mode` |  |
 | `requested_at` |  |
 | `results` |  |
 | `schema_version` |  |
@@ -1010,11 +991,10 @@ API path: `/v1/account/customer`
 | `updated_at` |  |
 | `url` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` |  |
-| `use_mode` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
+API path: `/v1/account/agent-location/app-attest/challenges`
 
 #### CustomerLocationProofRevocation
 
@@ -1146,10 +1126,11 @@ API path: `/v1/account/job-applications/{application_id}/resume-url`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs`
+API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
 
 #### Message
 
@@ -1227,12 +1208,8 @@ API path: `/v1/actions/contact-attempt`
 
 | Field | Description |
 | --- | --- |
-| `components` |  |
-| `info` |  |
-| `openapi` |  |
-| `paths` |  |
-| `servers` |  |
-| `tags` |  |
+| `description` |  |
+| `url` |  |
 
 Operations: List.
 
@@ -1515,18 +1492,9 @@ API path: `/v1/owner/webhooks/{endpoint_id}/rotate-secret`
 
 | Field | Description |
 | --- | --- |
-| `billing` |  |
-| `branch_add_ons` |  |
-| `currency` |  |
-| `generated_at` |  |
-| `neutrality` |  |
-| `plans` |  |
-| `promotions` |  |
-| `published_at` |  |
-| `radius_extension` |  |
-| `revision_id` |  |
-| `source` |  |
-| `trust_model_version` |  |
+| `annual_usd` |  |
+| `monthly_usd` |  |
+| `radius_max_miles` |  |
 
 Operations: List.
 
@@ -1719,10 +1687,9 @@ API path: `/v1/business-claim/candidates`
 
 | Field | Description |
 | --- | --- |
-| `categories` |  |
-| `names` |  |
-| `query` |  |
-| `schema_version` |  |
+| `alias` |  |
+| `path_titles` |  |
+| `title` |  |
 
 Operations: List.
 
@@ -1746,7 +1713,6 @@ API path: `/v1/admin/support/{conversation_id}/internal-notes`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `id` |  |
 | `priority` |  |
 | `waiting_on` |  |
 
@@ -2034,12 +2000,8 @@ Create an instance: `agent_openapi = client.AgentOpenapi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `dict` |  |
-| `info` | `dict` |  |
-| `openapi` | `Any` |  |
-| `paths` | `dict` |  |
-| `servers` | `list` |  |
-| `tags` | `list` |  |
+| `description` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: List
 
@@ -2219,7 +2181,7 @@ Create an instance: `business_deal = client.BusinessDeal()`
 #### Example: List
 
 ```python
-business_deals = client.BusinessDeal().list({"id": "example"})
+business_deals = client.BusinessDeal().list({"business_id": "example"})
 ```
 
 
@@ -2522,16 +2484,10 @@ Create an instance: `business_review = client.BusinessReview()`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `str` |  |
-
 #### Example: Load
 
 ```python
-business_review = client.BusinessReview().load({"id": "business_review_id"})
+business_review = client.BusinessReview().load({"business_id": "business_id"})
 ```
 
 
@@ -2801,14 +2757,13 @@ Create an instance: `conversation_close = client.ConversationClose()`
 | --- | --- | --- |
 | `closed_at` | `str` |  |
 | `conversation_id` | `str` |  |
-| `id` | `str` |  |
 | `status` | `Any` |  |
 
 #### Example: Create
 
 ```python
 conversation_close = client.ConversationClose().create({
-    "id": "example_id",  # str
+    "conversation_id": "example_conversation_id",  # str
 })
 ```
 
@@ -2828,7 +2783,6 @@ Create an instance: `conversation_report = client.ConversationReport()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `detail` | `str` |  |
-| `id` | `str` |  |
 | `reason` | `Any` |  |
 | `status` | `Any` |  |
 
@@ -2836,7 +2790,7 @@ Create an instance: `conversation_report = client.ConversationReport()`
 
 ```python
 conversation_report = client.ConversationReport().create({
-    "id": "example_id",  # str
+    "conversation_id": "example_conversation_id",  # str
     "reason": "example_reason",  # Any
 })
 ```
@@ -2956,26 +2910,20 @@ Create an instance: `customer_account = client.CustomerAccount()`
 | --- | --- | --- |
 | `account_id` | `str` |  |
 | `account_role` | `str` |  |
-| `accuracy_meters` | `float` |  |
 | `acknowledge_data_effects` | `bool` |  |
 | `actions` | `list` |  |
-| `agent_key_id` | `str` |  |
 | `agent_receives_coordinates` | `bool` |  |
 | `all_paused` | `bool` |  |
 | `app_attest_registered` | `bool` |  |
-| `assertion` | `str` |  |
 | `attestation` | `str` |  |
 | `author_label` | `str` |  |
 | `author_type` | `str` |  |
 | `binding` | `Any` |  |
 | `body` | `str` |  |
 | `business_id` | `str | None` |  |
-| `capture_source` | `Any` |  |
-| `captured_at` | `str` |  |
 | `challenge` | `str` |  |
 | `challenge_id` | `str` |  |
 | `client_message_id` | `str` |  |
-| `completed` | `bool` |  |
 | `confirmation` | `str` |  |
 | `connection_id` | `str` |  |
 | `connection_kind` | `str` |  |
@@ -2983,7 +2931,6 @@ Create an instance: `customer_account = client.CustomerAccount()`
 | `coordinates_returned` | `bool` |  |
 | `created_at` | `str` |  |
 | `credential_id` | `str` |  |
-| `declined` | `bool` |  |
 | `delivery_contract` | `dict` |  |
 | `disabled_reason` | `str | None` |  |
 | `disclosure` | `str` |  |
@@ -2995,21 +2942,17 @@ Create an instance: `customer_account = client.CustomerAccount()`
 | `event_id` | `str` |  |
 | `event_types` | `list` |  |
 | `failure_count` | `int` |  |
-| `handoff_id` | `str` |  |
 | `has_more` | `bool` |  |
 | `id` | `str` |  |
 | `idempotent_replay` | `bool` |  |
 | `installation_id` | `str` |  |
 | `key_id` | `str` |  |
 | `last_delivery_at` | `str | None` |  |
-| `latitude` | `float` |  |
 | `location` | `Any` | An opaque location reference from the website's own location controls. |
-| `longitude` | `float` |  |
 | `message_alerts_enabled` | `bool` |  |
 | `messages` | `list` |  |
 | `mode` | `str` | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `str` |  |
-| `oauth_grant_id` | `str | None` |  |
 | `one_time_display` | `Any` |  |
 | `platform` | `str` |  |
 | `policy` | `str` |  |
@@ -3018,7 +2961,6 @@ Create an instance: `customer_account = client.CustomerAccount()`
 | `reason` | `str` |  |
 | `registered_at` | `str` |  |
 | `reply` | `str` |  |
-| `request_mode` | `str` |  |
 | `requested_at` | `str` |  |
 | `results` | `list` |  |
 | `schema_version` | `str` |  |
@@ -3029,7 +2971,6 @@ Create an instance: `customer_account = client.CustomerAccount()`
 | `updated_at` | `str` |  |
 | `url` | `str` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `str` |  |
-| `use_mode` | `str` |  |
 
 #### Example: Create
 
@@ -3037,33 +2978,26 @@ Create an instance: `customer_account = client.CustomerAccount()`
 customer_account = client.CustomerAccount().create({
     "account_id": "example_account_id",  # str
     "account_role": "example_account_role",  # str
-    "accuracy_meters": 1,  # float
     "acknowledge_data_effects": True,  # bool
     "actions": [],  # list
-    "agent_key_id": "example_agent_key_id",  # str
     "agent_receives_coordinates": True,  # bool
     "all_paused": True,  # bool
     "app_attest_registered": True,  # bool
-    "assertion": "example_assertion",  # str
     "attestation": "example_attestation",  # str
     "author_label": "example_author_label",  # str
     "author_type": "example_author_type",  # str
     "binding": "example_binding",  # Any
     "body": "example_body",  # str
     "business_id": "example_business_id",  # str | None
-    "capture_source": "example_capture_source",  # Any
-    "captured_at": "example_captured_at",  # str
     "challenge": "example_challenge",  # str
     "challenge_id": "example_challenge_id",  # str
     "client_message_id": "example_client_message_id",  # str
-    "completed": True,  # bool
     "confirmation": "example_confirmation",  # str
     "connection_id": "example_connection_id",  # str
     "connection_kind": "example_connection_kind",  # str
     "coordinates_returned": True,  # bool
     "created_at": "example_created_at",  # str
     "credential_id": "example_credential_id",  # str
-    "declined": True,  # bool
     "delivery_contract": {},  # dict
     "disabled_reason": "example_disabled_reason",  # str | None
     "disclosure": "example_disclosure",  # str
@@ -3075,19 +3009,15 @@ customer_account = client.CustomerAccount().create({
     "event_id": "example_event_id",  # str
     "event_types": [],  # list
     "failure_count": 1,  # int
-    "handoff_id": "example_handoff_id",  # str
     "has_more": True,  # bool
     "id": "example_id",  # str
     "idempotent_replay": True,  # bool
     "installation_id": "example_installation_id",  # str
     "key_id": "example_key_id",  # str
     "last_delivery_at": "example_last_delivery_at",  # str | None
-    "latitude": 1,  # float
-    "longitude": 1,  # float
     "message_alerts_enabled": True,  # bool
     "messages": [],  # list
     "mode": "example_mode",  # str
-    "oauth_grant_id": "example_oauth_grant_id",  # str | None
     "one_time_display": "example_one_time_display",  # Any
     "platform": "example_platform",  # str
     "policy": "example_policy",  # str
@@ -3095,7 +3025,6 @@ customer_account = client.CustomerAccount().create({
     "push_token": "example_push_token",  # str
     "registered_at": "example_registered_at",  # str
     "reply": "example_reply",  # str
-    "request_mode": "example_request_mode",  # str
     "requested_at": "example_requested_at",  # str
     "results": [],  # list
     "schema_version": "example_schema_version",  # str
@@ -3106,7 +3035,6 @@ customer_account = client.CustomerAccount().create({
     "updated_at": "example_updated_at",  # str
     "url": "example_url",  # str
     "usable_until": "example_usable_until",  # str
-    "use_mode": "example_use_mode",  # str
 })
 ```
 
@@ -3361,6 +3289,12 @@ Create an instance: `location_handoff = client.LocationHandoff()`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `str` |  |
+
 #### Example: Create
 
 ```python
@@ -3508,12 +3442,8 @@ Create an instance: `open_api_document = client.OpenApiDocument()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `dict` |  |
-| `info` | `dict` |  |
-| `openapi` | `Any` |  |
-| `paths` | `dict` |  |
-| `servers` | `list` |  |
-| `tags` | `list` |  |
+| `description` | `str` |  |
+| `url` | `str` |  |
 
 #### Example: List
 
@@ -3997,18 +3927,9 @@ Create an instance: `pricing = client.Pricing()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing` | `dict` |  |
-| `branch_add_ons` | `list` |  |
-| `currency` | `Any` |  |
-| `generated_at` | `str` |  |
-| `neutrality` | `str` |  |
-| `plans` | `list` |  |
-| `promotions` | `list` |  |
-| `published_at` | `str | None` |  |
-| `radius_extension` | `dict` |  |
-| `revision_id` | `str | None` |  |
-| `source` | `Any` |  |
-| `trust_model_version` | `Any` |  |
+| `annual_usd` | `float` |  |
+| `monthly_usd` | `float` |  |
+| `radius_max_miles` | `float` |  |
 
 #### Example: List
 
@@ -4345,10 +4266,9 @@ Create an instance: `suggest = client.Suggest()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `list` |  |
-| `names` | `list` |  |
-| `query` | `str` |  |
-| `schema_version` | `Any` |  |
+| `alias` | `str` |  |
+| `path_titles` | `list` |  |
+| `title` | `str` |  |
 
 #### Example: List
 
@@ -4380,7 +4300,7 @@ Create an instance: `support_internal_note = client.SupportInternalNote()`
 
 ```python
 support_internal_note = client.SupportInternalNote().create({
-    "id": "example_id",  # str
+    "support_id": "example_support_id",  # str
     "body": "example_body",  # str
 })
 ```
@@ -4401,7 +4321,6 @@ Create an instance: `support_workflow = client.SupportWorkflow()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `Any` |  |
-| `id` | `str` |  |
 | `priority` | `Any` |  |
 | `waiting_on` | `Any` |  |
 
@@ -4409,7 +4328,7 @@ Create an instance: `support_workflow = client.SupportWorkflow()`
 
 ```python
 support_workflow = client.SupportWorkflow().create({
-    "id": "example_id",  # str
+    "support_id": "example_support_id",  # str
 })
 ```
 
@@ -4768,11 +4687,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-agentcapability = client.AgentCapability()
-agentcapability.load()
+agentpolicy = client.AgentPolicy()
+agentpolicy.load()
 
-# agentcapability.data_get() now returns the agentcapability data from the last load
-# agentcapability.match_get() returns the last match criteria
+# agentpolicy.data_get() now returns the agentpolicy data from the last load
+# agentpolicy.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

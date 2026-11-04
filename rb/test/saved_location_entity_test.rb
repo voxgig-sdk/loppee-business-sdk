@@ -56,6 +56,7 @@ class SavedLocationEntityTest < Minitest::Test
       saved_location_ref01_data = Helpers.to_map(saved_location_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # UPDATE
     saved_location_ref01_ent = client.SavedLocation(nil)
     saved_location_ref01_data_up0_up = {

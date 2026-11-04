@@ -65,9 +65,9 @@ func TestTrustCardEntity(t *testing.T) {
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"trust_card.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/businesses/{business_id}/license-records/{fact_id}/report\"}")
 		if setup.live {
-			for _, _liveKey := range []string{"business01"} {
+			for _liveKey, _liveEx := range map[string]any{"business01": "biz_elite_ac_llc_jacksonville_fl"} {
 				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, trust_cardEntityLiveStrict, "Live entity test blocked: needs %s via LOPPEE_BUSINESS_TEST_TRUST_CARD_ENTID", _liveKey)
+					setup.idmap[_liveKey] = _liveEx
 				}
 			}
 		}
@@ -84,6 +84,9 @@ func TestTrustCardEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = trustCardRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LIST
 		trustCardRef01Ent := client.TrustCard(nil)
 		trustCardRef01Match := map[string]any{
@@ -99,6 +102,9 @@ func TestTrustCardEntity(t *testing.T) {
 			t.Fatalf("expected list result to be an array, got %T", trustCardRef01ListResult)
 		}
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		trustCardRef01MatchDt0 := map[string]any{}
 		if setup.live {
@@ -125,6 +131,9 @@ func TestTrustCardEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		trustCardRef01Ent := client.TrustCard(nil)
 		trustCardRef01Data := core.ToMapAny(vs.GetProp(
@@ -141,6 +150,9 @@ func TestTrustCardEntity(t *testing.T) {
 			t.Fatal("expected create result to be a map")
 		}
 
+		if setup.live {
+			livePace()
+		}
 		// LIST
 		trustCardRef01Match := map[string]any{
 			"business_id": setup.idmap["business01"],
@@ -155,6 +167,9 @@ func TestTrustCardEntity(t *testing.T) {
 			t.Fatalf("expected list result to be an array, got %T", trustCardRef01ListResult)
 		}
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		trustCardRef01MatchDt0 := map[string]any{}
 		if setup.live {

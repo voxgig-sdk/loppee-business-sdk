@@ -47,7 +47,7 @@ describe('SupportInternalNoteEntity', async () => {
       return
     }
     const client = LoppeeBusinessSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.SupportInternalNote().create({"id":1,"body":"x"} as any),
+    await assert.rejects(client.SupportInternalNote().create({"support_id":1,"body":"x"} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -56,14 +56,14 @@ describe('SupportInternalNoteEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.LOPPEE_BUSINESS_TEST_LIVE
-    for (const op of []) {
+    for (const op of ['create']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'support_internal_note.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"authorLabel":{"a":true,"h":"Author Label","n":"authorLabel","r":true,"t":"`$STRING`","key$":"authorLabel","index$":0},"body":{"a":true,"h":"Body","n":"body","r":true,"t":"`$STRING`","key$":"body","index$":1},"createdAt":{"a":true,"h":"Created At","n":"createdAt","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"createdAt","index$":2},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$STRING`","key$":"id","index$":3}},"id":{"field":"id","name":"id"},"name":"support_internal_note","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["body"],"co":{"id":"POST /v1/admin/support/{conversation_id}/internal-notes","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"conversation_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/v1/admin/support/{conversation_id}/internal-notes","q":{"exist":["id"]},"r":{"param":{"conversation_id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v1"},{"lit":"admin"},{"lit":"support"},{"var":"id"},{"lit":"internal-notes"}],"t":{"req":{"body":"`reqdata.body`"},"res":"`body.note`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"support_internal_note","name__orig":"support_internal_note","Name":"SupportInternalNote","name_":"support_internal_note","name-":"support-internal-note","NAME":"SUPPORT_INTERNAL_NOTE","index$":55}, {"active":true,"entity":"support_internal_note","key$":"BasicSupportInternalNoteFlow","kind":"basic","name":"BasicSupportInternalNoteFlow","param":{},"step":[{"a":false,"d":{},"i":{"ref":"support_internal_note_ref01"},"m":{"conversation_id":"conversation01"},"o":"create","s":[],"v":[],"unreachable":true}]}, 'SupportInternalNote', {"POST /v1/admin/support/{conversation_id}/internal-notes":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["body"],"additionalProperties":false,"properties":{"body":{"type":"string","minLength":1,"maxLength":4000,"key$":"body"}},"x-ref":"#/components/schemas/SupportInternalNoteRequest","index$":1}}}},"parameters":[{"name":"conversation_id","in":"path","required":true,"description":"Support conversation id.","schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"support_internal_note.create.0":"GET-only live run: needs POST /v1/admin/support/{conversation_id}/internal-notes"} : {})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"authorLabel":{"a":true,"h":"Author Label","n":"authorLabel","r":true,"t":"`$STRING`","key$":"authorLabel","index$":0},"body":{"a":true,"h":"Body","n":"body","r":true,"t":"`$STRING`","key$":"body","index$":1},"createdAt":{"a":true,"h":"Created At","n":"createdAt","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"createdAt","index$":2},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$STRING`","key$":"id","index$":3}},"id":{"field":"id","name":"id"},"name":"support_internal_note","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["body"],"co":{"id":"POST /v1/admin/support/{conversation_id}/internal-notes","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"support_id","or":"conversation_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/v1/admin/support/{conversation_id}/internal-notes","q":{"exist":["support_id"]},"r":{"param":{"conversation_id":"support_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v1"},{"lit":"admin"},{"lit":"support"},{"var":"support_id"},{"lit":"internal-notes"}],"t":{"req":{"body":"`reqdata.body`"},"res":"`body.note`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"support_internal_note","name__orig":"support_internal_note","Name":"SupportInternalNote","name_":"support_internal_note","name-":"support-internal-note","NAME":"SUPPORT_INTERNAL_NOTE","index$":55}, {"active":true,"entity":"support_internal_note","key$":"BasicSupportInternalNoteFlow","kind":"basic","name":"BasicSupportInternalNoteFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"support_internal_note_ref01"},"m":{"support_id":"support01"},"o":"create","s":[],"v":[],"index$":0}]}, 'SupportInternalNote', {"POST /v1/admin/support/{conversation_id}/internal-notes":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["body"],"additionalProperties":false,"properties":{"body":{"type":"string","minLength":1,"maxLength":4000,"key$":"body"}},"x-ref":"#/components/schemas/SupportInternalNoteRequest","index$":1}}}},"parameters":[{"name":"conversation_id","in":"path","required":true,"description":"Support conversation id.","schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"support_internal_note.create.0":"GET-only live run: needs POST /v1/admin/support/{conversation_id}/internal-notes"} : {})
     }
     const client = setup.client
     const struct = setup.struct
@@ -71,7 +71,15 @@ describe('SupportInternalNoteEntity', async () => {
     const isempty = struct.isempty
     const select = struct.select
 
-    let support_internal_note_ref01_data = Object.values(setup.data.existing.support_internal_note)[0] as any
+
+    // CREATE
+    const support_internal_note_ref01_ent = client.SupportInternalNote()
+    let support_internal_note_ref01_data = setup.data.new.support_internal_note['support_internal_note_ref01']
+    support_internal_note_ref01_data['support_id'] = setup.idmap['support01']
+
+    support_internal_note_ref01_data = (await support_internal_note_ref01_ent.create(support_internal_note_ref01_data)).data()
+    assert(null != support_internal_note_ref01_data.id)
+
 
   })
 })
@@ -107,7 +115,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['support_internal_note01','support_internal_note02','support_internal_note03'],
+    ['support_internal_note01','support_internal_note02','support_internal_note03','support01'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',

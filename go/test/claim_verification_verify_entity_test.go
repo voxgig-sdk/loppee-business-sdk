@@ -71,6 +71,9 @@ func TestClaimVerificationVerifyEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		claimVerificationVerifyRef01Ent := client.ClaimVerificationVerify(nil)
 		claimVerificationVerifyRef01Data := core.ToMapAny(vs.GetProp(

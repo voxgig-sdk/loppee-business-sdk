@@ -15,6 +15,7 @@ import {
   serverVarEnv,
   serverVariables,
   pointParts,
+  pointSlash,
   pointPlaceholders,
   liveStrict,
   liveStrictNote,
@@ -24,6 +25,7 @@ import {
   liveQueryExamples,
   liveEntity,
   liveDirectGetOnly, liveExcludedLines, liveExcludedSummary, LIVE_GETONLY_ENV,
+  liveDirectDiscovery,
 } from '@voxgig/sdkgen'
 
 import { formatLuaValue } from './utility_lua'
@@ -134,7 +136,7 @@ const TestDirect = cmp(function TestDirect(props: any) {
   const listOp = entity.op?.list
 
   const loadPoint = loadOp?.points?.[0]
-  const loadPath = loadPoint ? normalizePathParams(pointParts(loadPoint), loadPoint?.g?.params || [], loadPoint?.r?.param) : ''
+  const loadPath = loadPoint ? normalizePathParams(pointParts(loadPoint), loadPoint?.g?.params || [], loadPoint?.r?.param) + pointSlash(loadPoint) : ''
   const allLoadParams = loadPoint?.g?.params || []
   // Some upstream OpenAPI specs declare a parameter as `in: path` even when
   // that path has no `{name}` placeholder for it. Only path params that
@@ -154,7 +156,7 @@ const TestDirect = cmp(function TestDirect(props: any) {
     _renamedPlaceholders.has(p.n) || _renamedPlaceholders.has(p.or))
 
   const listPoint = listOp?.points?.[0]
-  const listPath = listPoint ? normalizePathParams(pointParts(listPoint), listPoint?.g?.params || [], listPoint?.r?.param) : ''
+  const listPath = listPoint ? normalizePathParams(pointParts(listPoint), listPoint?.g?.params || [], listPoint?.r?.param) + pointSlash(listPoint) : ''
   const listParams = listPoint?.g?.params || []
 
   // Required query params with spec-provided examples — needed in live mode.
@@ -221,7 +223,10 @@ describe("${entity.Name}Direct", function()
       pending(_reason or "skipped via sdk-test-control.json")
       return
     end
-${getOnlyKeysBlock(model, entity, 'direct-list-' + entity.name, listParams.map(liveKey))}${liveKeysBlock(listParams.map(liveKey), entidEnvVar)}    local client = setup.client
+${getOnlyKeysBlock(model, entity, 'direct-list-' + entity.name, listParams.map(liveKey))}${liveKeysBlock(listParams.map(liveKey), entidEnvVar)}    if setup.live then
+      runner.live_pace()
+    end
+    local client = setup.client
 
     local params = {}
     local query = {}
@@ -270,8 +275,10 @@ ${listLiveQueryLines ? '    if setup.live then\n' + listLiveQueryLines + '    en
 `)
     }
     else if (hasLoad && loadPoint) {
-      const discover = !loadAllHaveExamples && hasList && 0 < loadParams.length
-      const idParam = loadParams.find((p: any) => 'id' === p.n)?.n ?? loadParams[0]?.n ?? 'id'
+      const discovery = liveDirectDiscovery(entity, loadParams, listPoint)
+      const discover = null != discovery
+      const idParam = discovery?.param
+      const idField = discovery?.field
       const loadLiveIdKeys: string[] = loadAllHaveExamples ? [] :
         discover ? listParams.map(liveKey).concat(loadParams.filter((p: any) => idParam !== p.n).map(liveKey)) :
           loadParams.map(liveKey)
@@ -282,7 +289,10 @@ ${listLiveQueryLines ? '    if setup.live then\n' + listLiveQueryLines + '    en
       pending(_reason or "skipped via sdk-test-control.json")
       return
     end
-${getOnlyKeysBlock(model, entity, 'direct-load-' + entity.name, [...new Set(loadLiveIdKeys)])}${liveKeysBlock([...new Set(loadLiveIdKeys)], entidEnvVar)}    local client = setup.client
+${getOnlyKeysBlock(model, entity, 'direct-load-' + entity.name, [...new Set(loadLiveIdKeys)])}${liveKeysBlock([...new Set(loadLiveIdKeys)], entidEnvVar)}    if setup.live then
+      runner.live_pace()
+    end
+    local client = setup.client
 
     local params = {}
     local query = {}
@@ -292,10 +302,14 @@ ${loadLiveQueryLines ? loadLiveQueryLines + '\n' : ''}`)
         Content(loadExampleLines + '\n')
       }
       else if (discover) {
+        // The list sends the query its route requires, as direct-list does.
+        const listQuery = liveQueryExamples(listPoint)
+          .map(([name, ex]) => `[${formatLuaValue(name)}] = ${formatLuaValue(ex)}`).join(', ')
         Content(`      local list_result, list_err = client:direct({
         path = "${listPath}",
         method = "GET",
-        params = {${listParams.map((p: any) => `["${p.n}"] = setup.idmap["${liveKey(p)}"]`).join(', ')}},
+        params = {${listParams.map((p: any) => `["${p.n}"] = setup.idmap["${liveKey(p)}"]`).join(', ')}},${'' === listQuery ? '' : `
+        query = {${listQuery}},`}
       })
       if not live_ok(list_result, list_err) then
         runner.live_miss(pending, LIVE_STRICT, "Live list discovery failed: " .. runner.live_describe(list_result, list_err))
@@ -308,7 +322,7 @@ ${loadLiveQueryLines ? loadLiveQueryLines + '\n' : ''}`)
         runner.live_empty(pending, "The account has no ${entity.name} record to load")
       end
       local first = type(records[1]) == "table" and records[1] or {}
-      local found = first["${idParam}"] or first["id"]
+      local found = first["${idField}"]
       if found == nil then
         runner.live_miss(pending, LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
       end

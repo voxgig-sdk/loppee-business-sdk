@@ -57,6 +57,8 @@ class TestDestinationLocationProofEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         destination_location_proof_ref01_ent = client.DestinationLocationProof(None)
         destination_location_proof_ref01_data = helpers.to_map(vs.getprop(

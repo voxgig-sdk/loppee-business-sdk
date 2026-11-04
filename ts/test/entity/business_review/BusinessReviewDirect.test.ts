@@ -48,13 +48,13 @@ describe('BusinessReviewDirect', async () => {
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      params.id = "biz_elite_ac_llc_jacksonville_fl"
+      params.business_id = "biz_elite_ac_llc_jacksonville_fl"
     } else {
-      params.id = 'direct01'
+      params.business_id = 'direct01'
     }
 
     const result: any = await client.direct({
-      path: 'v1/businesses/{id}/reviews.json',
+      path: 'v1/businesses/{business_id}/reviews.json',
       method: 'GET',
       params,
       query,
@@ -114,7 +114,7 @@ function directSetup(mockres?: any) {
       idmap = JSON.parse(idmap)
     }
     // A path parameter's example stands in for an id *_ENTID does not give.
-    idmap = Object.assign({ business_review01: 'biz_elite_ac_llc_jacksonville_fl' },
+    idmap = Object.assign({ business01: 'biz_elite_ac_llc_jacksonville_fl' },
       'object' === typeof idmap ? idmap : {})
 
     return { client, calls, live, idmap, transport }

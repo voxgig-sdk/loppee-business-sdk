@@ -48,6 +48,7 @@ class SavedBusinessEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     saved_business_ref01_ent = client.SavedBusiness(nil)
     saved_business_ref01_data = Helpers.to_map(Vs.getprop(

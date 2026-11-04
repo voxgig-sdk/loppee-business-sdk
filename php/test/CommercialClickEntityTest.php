@@ -59,6 +59,9 @@ class CommercialClickEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $commercial_click_ref01_ent = $client->CommercialClick(null);
         $commercial_click_ref01_data = Helpers::to_map(Vs::getprop(

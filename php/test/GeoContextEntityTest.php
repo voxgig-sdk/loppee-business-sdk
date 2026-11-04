@@ -46,6 +46,9 @@ class GeoContextEntityTest extends TestCase
             $geo_context_ref01_data = Helpers::to_map($geo_context_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LOAD
         $geo_context_ref01_ent = $client->GeoContext(null);
         $geo_context_ref01_match_dt0 = [];

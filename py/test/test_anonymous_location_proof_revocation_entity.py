@@ -58,6 +58,8 @@ class TestAnonymousLocationProofRevocationEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         anonymous_location_proof_revocation_ref01_ent = client.AnonymousLocationProofRevocation(None)
         anonymous_location_proof_revocation_ref01_data = helpers.to_map(vs.getprop(

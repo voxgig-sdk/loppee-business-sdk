@@ -75,6 +75,9 @@ func TestAgentMonitoringEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = agentMonitoringRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		agentMonitoringRef01Ent := client.AgentMonitoring(nil)
 		agentMonitoringRef01MatchDt0 := map[string]any{}

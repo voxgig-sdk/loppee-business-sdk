@@ -59,6 +59,9 @@ class CreateAgentApiKeyEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $create_agent_api_key_ref01_ent = $client->CreateAgentApiKey(null);
         $create_agent_api_key_ref01_data = Helpers::to_map(Vs::getprop(

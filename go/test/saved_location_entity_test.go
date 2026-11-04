@@ -82,6 +82,9 @@ func TestSavedLocationEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = savedLocationRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// UPDATE
 		savedLocationRef01Ent := client.SavedLocation(nil)
 		savedLocationRef01DataUp0Up := map[string]any{

@@ -55,6 +55,7 @@ class JobResumeSignedUrlEntityTest < Minitest::Test
     end
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     job_resume_signed_url_ref01_ent = client.JobResumeSignedUrl(nil)
     job_resume_signed_url_ref01_data = Helpers.to_map(Vs.getprop(

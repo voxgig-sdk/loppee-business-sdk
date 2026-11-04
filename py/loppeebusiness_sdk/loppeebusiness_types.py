@@ -179,22 +179,17 @@ class AgentMonitoringLoadMatch(TypedDict, total=False):
     version: str
 
 
-class AgentOpenapi(TypedDict):
-    components: dict
-    info: dict
-    openapi: Any
-    paths: dict
-    servers: list
-    tags: list
+class AgentOpenapiRequired(TypedDict):
+    url: str
+
+
+class AgentOpenapi(AgentOpenapiRequired, total=False):
+    description: str
 
 
 class AgentOpenapiListMatch(TypedDict, total=False):
-    components: dict
-    info: dict
-    openapi: Any
-    paths: dict
-    servers: list
-    tags: list
+    description: str
+    url: str
 
 
 class AgentPolicyRequired(TypedDict):
@@ -332,7 +327,7 @@ class BusinessDeal(TypedDict):
 
 
 class BusinessDealListMatch(TypedDict):
-    id: str
+    business_id: str
 
 
 class BusinessIndexRequired(TypedDict):
@@ -800,12 +795,12 @@ class BusinessOwnerUpdateData(TypedDict, total=False):
     zip: str
 
 
-class BusinessReview(TypedDict, total=False):
-    id: str
+class BusinessReview(TypedDict):
+    pass
 
 
 class BusinessReviewLoadMatchRequired(TypedDict):
-    id: str
+    business_id: str
 
 
 class BusinessReviewLoadMatch(BusinessReviewLoadMatchRequired, total=False):
@@ -995,18 +990,14 @@ class ConversationCreateData(ConversationCreateDataRequired, total=False):
     limit: float
 
 
-class ConversationCloseRequired(TypedDict):
+class ConversationClose(TypedDict):
     closed_at: str
     conversation_id: str
     status: Any
 
 
-class ConversationClose(ConversationCloseRequired, total=False):
-    id: str
-
-
 class ConversationCloseCreateData(TypedDict):
-    id: str
+    conversation_id: str
 
 
 class ConversationReportRequired(TypedDict):
@@ -1016,11 +1007,10 @@ class ConversationReportRequired(TypedDict):
 
 class ConversationReport(ConversationReportRequired, total=False):
     detail: str
-    id: str
 
 
 class ConversationReportCreateDataRequired(TypedDict):
-    id: str
+    conversation_id: str
     reason: Any
 
 
@@ -1106,26 +1096,20 @@ class CustomerCreateData(TypedDict, total=False):
 class CustomerAccountRequired(TypedDict):
     account_id: str
     account_role: str
-    accuracy_meters: float
     acknowledge_data_effects: bool
     actions: list
-    agent_key_id: str
     agent_receives_coordinates: bool
     all_paused: bool
     app_attest_registered: bool
-    assertion: str
     attestation: str
     author_label: str
     author_type: str
     binding: Any
     body: str
     business_id: str | None
-    capture_source: Any
-    captured_at: str
     challenge: str
     challenge_id: str
     client_message_id: str
-    completed: bool
     confirmation: str
     connection_id: str
     connection_kind: str
@@ -1133,7 +1117,6 @@ class CustomerAccountRequired(TypedDict):
     coordinates_returned: bool
     created_at: str
     credential_id: str
-    declined: bool
     delivery_contract: dict
     disabled_reason: str | None
     disclosure: str
@@ -1145,19 +1128,15 @@ class CustomerAccountRequired(TypedDict):
     event_id: str
     event_types: list
     failure_count: int
-    handoff_id: str
     has_more: bool
     id: str
     idempotent_replay: bool
     installation_id: str
     key_id: str
     last_delivery_at: str | None
-    latitude: float
-    longitude: float
     message_alerts_enabled: bool
     messages: list
     mode: str
-    oauth_grant_id: str | None
     one_time_display: Any
     platform: str
     policy: str
@@ -1166,7 +1145,6 @@ class CustomerAccountRequired(TypedDict):
     reason: str
     registered_at: str
     reply: str
-    request_mode: str
     requested_at: str
     results: list
     schema_version: str
@@ -1177,7 +1155,6 @@ class CustomerAccountRequired(TypedDict):
     updated_at: str
     url: str
     usable_until: str
-    use_mode: str
 
 
 class CustomerAccount(CustomerAccountRequired, total=False):
@@ -1188,33 +1165,26 @@ class CustomerAccount(CustomerAccountRequired, total=False):
 class CustomerAccountCreateDataRequired(TypedDict):
     account_id: str
     account_role: str
-    accuracy_meters: float
     acknowledge_data_effects: bool
     actions: list
-    agent_key_id: str
     agent_receives_coordinates: bool
     all_paused: bool
     app_attest_registered: bool
-    assertion: str
     attestation: str
     author_label: str
     author_type: str
     binding: Any
     body: str
     business_id: str | None
-    capture_source: Any
-    captured_at: str
     challenge: str
     challenge_id: str
     client_message_id: str
-    completed: bool
     confirmation: str
     connection_id: str
     connection_kind: str
     coordinates_returned: bool
     created_at: str
     credential_id: str
-    declined: bool
     delivery_contract: dict
     disabled_reason: str | None
     disclosure: str
@@ -1226,19 +1196,15 @@ class CustomerAccountCreateDataRequired(TypedDict):
     event_id: str
     event_types: list
     failure_count: int
-    handoff_id: str
     has_more: bool
     id: str
     idempotent_replay: bool
     installation_id: str
     key_id: str
     last_delivery_at: str | None
-    latitude: float
-    longitude: float
     message_alerts_enabled: bool
     messages: list
     mode: str
-    oauth_grant_id: str | None
     one_time_display: Any
     platform: str
     policy: str
@@ -1246,7 +1212,6 @@ class CustomerAccountCreateDataRequired(TypedDict):
     push_token: str
     registered_at: str
     reply: str
-    request_mode: str
     requested_at: str
     results: list
     schema_version: str
@@ -1257,7 +1222,6 @@ class CustomerAccountCreateDataRequired(TypedDict):
     updated_at: str
     url: str
     usable_until: str
-    use_mode: str
 
 
 class CustomerAccountCreateData(CustomerAccountCreateDataRequired, total=False):
@@ -1266,8 +1230,13 @@ class CustomerAccountCreateData(CustomerAccountCreateDataRequired, total=False):
     name: str
     reason: str
     action: Any
+    agent_key_id: Any
+    assertion: Any
     consent_copy_version: Any
+    handoff_id: Any
+    oauth_grant_id: Any
     paused: Any
+    use_mode: Any
 
 
 class CustomerLocationProofRevocation(TypedDict):
@@ -1421,12 +1390,12 @@ class JobResumeSignedUrlCreateData(TypedDict):
     job_application_id: str
 
 
-class LocationHandoff(TypedDict):
-    pass
+class LocationHandoff(TypedDict, total=False):
+    id: str
 
 
-class LocationHandoffCreateData(TypedDict):
-    pass
+class LocationHandoffCreateData(TypedDict, total=False):
+    id: str
 
 
 class MessageRequired(TypedDict):
@@ -1578,22 +1547,17 @@ class ModeratedActionCreateData(ModeratedActionCreateDataRequired, total=False):
     subject: str
 
 
-class OpenApiDocument(TypedDict):
-    components: dict
-    info: dict
-    openapi: Any
-    paths: dict
-    servers: list
-    tags: list
+class OpenApiDocumentRequired(TypedDict):
+    url: str
+
+
+class OpenApiDocument(OpenApiDocumentRequired, total=False):
+    description: str
 
 
 class OpenApiDocumentListMatch(TypedDict, total=False):
-    components: dict
-    info: dict
-    openapi: Any
-    paths: dict
-    servers: list
-    tags: list
+    description: str
+    url: str
 
 
 class OperationRequired(TypedDict):
@@ -2112,33 +2076,15 @@ class OwnerWebhookRegistrationCreateData(OwnerWebhookRegistrationCreateDataRequi
 
 
 class Pricing(TypedDict):
-    billing: dict
-    branch_add_ons: list
-    currency: Any
-    generated_at: str
-    neutrality: str
-    plans: list
-    promotions: list
-    published_at: str | None
-    radius_extension: dict
-    revision_id: str | None
-    source: Any
-    trust_model_version: Any
+    annual_usd: float
+    monthly_usd: float
+    radius_max_miles: float
 
 
 class PricingListMatch(TypedDict, total=False):
-    billing: dict
-    branch_add_ons: list
-    currency: Any
-    generated_at: str
-    neutrality: str
-    plans: list
-    promotions: list
-    published_at: str | None
-    radius_extension: dict
-    revision_id: str | None
-    source: Any
-    trust_model_version: Any
+    annual_usd: float
+    monthly_usd: float
+    radius_max_miles: float
 
 
 class PromoteVerifiedTransaction(TypedDict):
@@ -2394,10 +2340,9 @@ class SearchListMatch(TypedDict, total=False):
 
 
 class Suggest(TypedDict):
-    categories: list
-    names: list
-    query: str
-    schema_version: Any
+    alias: str
+    path_titles: list
+    title: str
 
 
 class SuggestListMatch(TypedDict, total=False):
@@ -2412,19 +2357,18 @@ class SupportInternalNote(TypedDict):
 
 
 class SupportInternalNoteCreateData(TypedDict):
-    id: str
+    support_id: str
     body: str
 
 
 class SupportWorkflow(TypedDict, total=False):
     category: Any
-    id: str
     priority: Any
     waiting_on: Any
 
 
 class SupportWorkflowCreateDataRequired(TypedDict):
-    id: str
+    support_id: str
 
 
 class SupportWorkflowCreateData(SupportWorkflowCreateDataRequired, total=False):

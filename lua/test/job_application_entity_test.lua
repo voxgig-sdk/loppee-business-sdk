@@ -52,6 +52,9 @@ describe("JobApplicationEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local job_application_ref01_ent = client:JobApplication(nil)
     local job_application_ref01_data = helpers.to_map(vs.getprop(

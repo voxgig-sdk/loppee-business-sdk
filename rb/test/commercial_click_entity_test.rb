@@ -48,6 +48,7 @@ class CommercialClickEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     commercial_click_ref01_ent = client.CommercialClick(nil)
     commercial_click_ref01_data = Helpers.to_map(Vs.getprop(

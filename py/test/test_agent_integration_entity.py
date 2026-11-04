@@ -143,6 +143,8 @@ class TestAgentIntegrationEntity:
         if len(agent_integration_ref01_data_raw) > 0:
             agent_integration_ref01_data = helpers.to_map(agent_integration_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LIST
         agent_integration_ref01_ent = client.AgentIntegration(None)
         agent_integration_ref01_match = {}

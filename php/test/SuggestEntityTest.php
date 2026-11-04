@@ -211,6 +211,9 @@ class SuggestEntityTest extends TestCase
             $suggest_ref01_data = Helpers::to_map($suggest_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LIST
         $suggest_ref01_ent = $client->Suggest(null);
         $suggest_ref01_match = [];

@@ -71,6 +71,9 @@ func TestMessageEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		messageRef01Ent := client.Message(nil)
 		messageRef01Data := core.ToMapAny(vs.GetProp(

@@ -71,6 +71,9 @@ func TestCustomerEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		customerRef01Ent := client.Customer(nil)
 		customerRef01Data := core.ToMapAny(vs.GetProp(

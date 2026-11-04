@@ -57,6 +57,8 @@ class TestClaimVerificationVerifyEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         claim_verification_verify_ref01_ent = client.ClaimVerificationVerify(None)
         claim_verification_verify_ref01_data = helpers.to_map(vs.getprop(

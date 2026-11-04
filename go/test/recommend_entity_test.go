@@ -212,6 +212,9 @@ func TestRecommendEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = recommendRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LIST
 		recommendRef01Ent := client.Recommend(nil)
 		recommendRef01Match := map[string]any{}

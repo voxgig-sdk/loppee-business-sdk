@@ -192,6 +192,20 @@ func (sdk *LoppeeBusinessSDK) Prepare(fetchargs map[string]any) (map[string]any,
 		}
 	}
 
+	// A raw request has no point to declare its response type, so it asks
+	// for the JSON it reads: an API that negotiates on Accept otherwise
+	// answers in its own default format. A caller's own accept wins.
+	hasAccept := false
+	for k := range ctx.Spec.Headers {
+		if strings.ToLower(k) == "accept" {
+			hasAccept = true
+			break
+		}
+	}
+	if !hasAccept {
+		ctx.Spec.Headers["accept"] = "application/json"
+	}
+
 	_, err := utility.PrepareAuth(ctx)
 	if err != nil {
 		return nil, err
@@ -375,7 +389,7 @@ func (sdk *LoppeeBusinessSDK) Graphql(
 // AgentAccess returns a AgentAccess entity bound to this client.
 // Idiomatic usage: client.AgentAccess(nil).List(nil, nil) or
 // client.AgentAccess(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) AgentAccess(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) AgentAccess(data map[string]any) LoppeeBusinessEntityBase {
 	return NewAgentAccessEntityFunc(sdk, data)
 }
 
@@ -383,7 +397,7 @@ func (sdk *LoppeeBusinessSDK) AgentAccess(data map[string]any) LoppeeBusinessEnt
 // AgentCapability returns a AgentCapability entity bound to this client.
 // Idiomatic usage: client.AgentCapability(nil).List(nil, nil) or
 // client.AgentCapability(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) AgentCapability(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) AgentCapability(data map[string]any) LoppeeBusinessEntityBase {
 	return NewAgentCapabilityEntityFunc(sdk, data)
 }
 
@@ -391,7 +405,7 @@ func (sdk *LoppeeBusinessSDK) AgentCapability(data map[string]any) LoppeeBusines
 // AgentConnectionTest returns a AgentConnectionTest entity bound to this client.
 // Idiomatic usage: client.AgentConnectionTest(nil).List(nil, nil) or
 // client.AgentConnectionTest(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) AgentConnectionTest(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) AgentConnectionTest(data map[string]any) LoppeeBusinessEntityBase {
 	return NewAgentConnectionTestEntityFunc(sdk, data)
 }
 
@@ -399,7 +413,7 @@ func (sdk *LoppeeBusinessSDK) AgentConnectionTest(data map[string]any) LoppeeBus
 // AgentIntegration returns a AgentIntegration entity bound to this client.
 // Idiomatic usage: client.AgentIntegration(nil).List(nil, nil) or
 // client.AgentIntegration(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) AgentIntegration(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) AgentIntegration(data map[string]any) LoppeeBusinessEntityBase {
 	return NewAgentIntegrationEntityFunc(sdk, data)
 }
 
@@ -407,7 +421,7 @@ func (sdk *LoppeeBusinessSDK) AgentIntegration(data map[string]any) LoppeeBusine
 // AgentMonitoring returns a AgentMonitoring entity bound to this client.
 // Idiomatic usage: client.AgentMonitoring(nil).List(nil, nil) or
 // client.AgentMonitoring(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) AgentMonitoring(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) AgentMonitoring(data map[string]any) LoppeeBusinessEntityBase {
 	return NewAgentMonitoringEntityFunc(sdk, data)
 }
 
@@ -415,7 +429,7 @@ func (sdk *LoppeeBusinessSDK) AgentMonitoring(data map[string]any) LoppeeBusines
 // AgentOpenapi returns a AgentOpenapi entity bound to this client.
 // Idiomatic usage: client.AgentOpenapi(nil).List(nil, nil) or
 // client.AgentOpenapi(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) AgentOpenapi(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) AgentOpenapi(data map[string]any) LoppeeBusinessEntityBase {
 	return NewAgentOpenapiEntityFunc(sdk, data)
 }
 
@@ -423,7 +437,7 @@ func (sdk *LoppeeBusinessSDK) AgentOpenapi(data map[string]any) LoppeeBusinessEn
 // AgentPolicy returns a AgentPolicy entity bound to this client.
 // Idiomatic usage: client.AgentPolicy(nil).List(nil, nil) or
 // client.AgentPolicy(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) AgentPolicy(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) AgentPolicy(data map[string]any) LoppeeBusinessEntityBase {
 	return NewAgentPolicyEntityFunc(sdk, data)
 }
 
@@ -431,7 +445,7 @@ func (sdk *LoppeeBusinessSDK) AgentPolicy(data map[string]any) LoppeeBusinessEnt
 // AnonymousLocationProofRevocation returns a AnonymousLocationProofRevocation entity bound to this client.
 // Idiomatic usage: client.AnonymousLocationProofRevocation(nil).List(nil, nil) or
 // client.AnonymousLocationProofRevocation(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) AnonymousLocationProofRevocation(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) AnonymousLocationProofRevocation(data map[string]any) LoppeeBusinessEntityBase {
 	return NewAnonymousLocationProofRevocationEntityFunc(sdk, data)
 }
 
@@ -439,7 +453,7 @@ func (sdk *LoppeeBusinessSDK) AnonymousLocationProofRevocation(data map[string]a
 // BusinessApplication returns a BusinessApplication entity bound to this client.
 // Idiomatic usage: client.BusinessApplication(nil).List(nil, nil) or
 // client.BusinessApplication(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) BusinessApplication(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) BusinessApplication(data map[string]any) LoppeeBusinessEntityBase {
 	return NewBusinessApplicationEntityFunc(sdk, data)
 }
 
@@ -447,7 +461,7 @@ func (sdk *LoppeeBusinessSDK) BusinessApplication(data map[string]any) LoppeeBus
 // BusinessClaim returns a BusinessClaim entity bound to this client.
 // Idiomatic usage: client.BusinessClaim(nil).List(nil, nil) or
 // client.BusinessClaim(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) BusinessClaim(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) BusinessClaim(data map[string]any) LoppeeBusinessEntityBase {
 	return NewBusinessClaimEntityFunc(sdk, data)
 }
 
@@ -455,7 +469,7 @@ func (sdk *LoppeeBusinessSDK) BusinessClaim(data map[string]any) LoppeeBusinessE
 // BusinessDeal returns a BusinessDeal entity bound to this client.
 // Idiomatic usage: client.BusinessDeal(nil).List(nil, nil) or
 // client.BusinessDeal(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) BusinessDeal(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) BusinessDeal(data map[string]any) LoppeeBusinessEntityBase {
 	return NewBusinessDealEntityFunc(sdk, data)
 }
 
@@ -463,7 +477,7 @@ func (sdk *LoppeeBusinessSDK) BusinessDeal(data map[string]any) LoppeeBusinessEn
 // BusinessIndex returns a BusinessIndex entity bound to this client.
 // Idiomatic usage: client.BusinessIndex(nil).List(nil, nil) or
 // client.BusinessIndex(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) BusinessIndex(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) BusinessIndex(data map[string]any) LoppeeBusinessEntityBase {
 	return NewBusinessIndexEntityFunc(sdk, data)
 }
 
@@ -471,7 +485,7 @@ func (sdk *LoppeeBusinessSDK) BusinessIndex(data map[string]any) LoppeeBusinessE
 // BusinessOwner returns a BusinessOwner entity bound to this client.
 // Idiomatic usage: client.BusinessOwner(nil).List(nil, nil) or
 // client.BusinessOwner(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) BusinessOwner(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) BusinessOwner(data map[string]any) LoppeeBusinessEntityBase {
 	return NewBusinessOwnerEntityFunc(sdk, data)
 }
 
@@ -479,7 +493,7 @@ func (sdk *LoppeeBusinessSDK) BusinessOwner(data map[string]any) LoppeeBusinessE
 // BusinessReview returns a BusinessReview entity bound to this client.
 // Idiomatic usage: client.BusinessReview(nil).List(nil, nil) or
 // client.BusinessReview(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) BusinessReview(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) BusinessReview(data map[string]any) LoppeeBusinessEntityBase {
 	return NewBusinessReviewEntityFunc(sdk, data)
 }
 
@@ -487,7 +501,7 @@ func (sdk *LoppeeBusinessSDK) BusinessReview(data map[string]any) LoppeeBusiness
 // ChatAttachment returns a ChatAttachment entity bound to this client.
 // Idiomatic usage: client.ChatAttachment(nil).List(nil, nil) or
 // client.ChatAttachment(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) ChatAttachment(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) ChatAttachment(data map[string]any) LoppeeBusinessEntityBase {
 	return NewChatAttachmentEntityFunc(sdk, data)
 }
 
@@ -495,7 +509,7 @@ func (sdk *LoppeeBusinessSDK) ChatAttachment(data map[string]any) LoppeeBusiness
 // ChatAttachmentUrl returns a ChatAttachmentUrl entity bound to this client.
 // Idiomatic usage: client.ChatAttachmentUrl(nil).List(nil, nil) or
 // client.ChatAttachmentUrl(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) ChatAttachmentUrl(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) ChatAttachmentUrl(data map[string]any) LoppeeBusinessEntityBase {
 	return NewChatAttachmentUrlEntityFunc(sdk, data)
 }
 
@@ -503,7 +517,7 @@ func (sdk *LoppeeBusinessSDK) ChatAttachmentUrl(data map[string]any) LoppeeBusin
 // ClaimVerificationSend returns a ClaimVerificationSend entity bound to this client.
 // Idiomatic usage: client.ClaimVerificationSend(nil).List(nil, nil) or
 // client.ClaimVerificationSend(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) ClaimVerificationSend(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) ClaimVerificationSend(data map[string]any) LoppeeBusinessEntityBase {
 	return NewClaimVerificationSendEntityFunc(sdk, data)
 }
 
@@ -511,7 +525,7 @@ func (sdk *LoppeeBusinessSDK) ClaimVerificationSend(data map[string]any) LoppeeB
 // ClaimVerificationVerify returns a ClaimVerificationVerify entity bound to this client.
 // Idiomatic usage: client.ClaimVerificationVerify(nil).List(nil, nil) or
 // client.ClaimVerificationVerify(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) ClaimVerificationVerify(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) ClaimVerificationVerify(data map[string]any) LoppeeBusinessEntityBase {
 	return NewClaimVerificationVerifyEntityFunc(sdk, data)
 }
 
@@ -519,7 +533,7 @@ func (sdk *LoppeeBusinessSDK) ClaimVerificationVerify(data map[string]any) Loppe
 // CommercialClick returns a CommercialClick entity bound to this client.
 // Idiomatic usage: client.CommercialClick(nil).List(nil, nil) or
 // client.CommercialClick(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) CommercialClick(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) CommercialClick(data map[string]any) LoppeeBusinessEntityBase {
 	return NewCommercialClickEntityFunc(sdk, data)
 }
 
@@ -527,7 +541,7 @@ func (sdk *LoppeeBusinessSDK) CommercialClick(data map[string]any) LoppeeBusines
 // ContactRecorded returns a ContactRecorded entity bound to this client.
 // Idiomatic usage: client.ContactRecorded(nil).List(nil, nil) or
 // client.ContactRecorded(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) ContactRecorded(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) ContactRecorded(data map[string]any) LoppeeBusinessEntityBase {
 	return NewContactRecordedEntityFunc(sdk, data)
 }
 
@@ -535,7 +549,7 @@ func (sdk *LoppeeBusinessSDK) ContactRecorded(data map[string]any) LoppeeBusines
 // Conversation returns a Conversation entity bound to this client.
 // Idiomatic usage: client.Conversation(nil).List(nil, nil) or
 // client.Conversation(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Conversation(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Conversation(data map[string]any) LoppeeBusinessEntityBase {
 	return NewConversationEntityFunc(sdk, data)
 }
 
@@ -543,7 +557,7 @@ func (sdk *LoppeeBusinessSDK) Conversation(data map[string]any) LoppeeBusinessEn
 // ConversationClose returns a ConversationClose entity bound to this client.
 // Idiomatic usage: client.ConversationClose(nil).List(nil, nil) or
 // client.ConversationClose(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) ConversationClose(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) ConversationClose(data map[string]any) LoppeeBusinessEntityBase {
 	return NewConversationCloseEntityFunc(sdk, data)
 }
 
@@ -551,7 +565,7 @@ func (sdk *LoppeeBusinessSDK) ConversationClose(data map[string]any) LoppeeBusin
 // ConversationReport returns a ConversationReport entity bound to this client.
 // Idiomatic usage: client.ConversationReport(nil).List(nil, nil) or
 // client.ConversationReport(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) ConversationReport(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) ConversationReport(data map[string]any) LoppeeBusinessEntityBase {
 	return NewConversationReportEntityFunc(sdk, data)
 }
 
@@ -559,7 +573,7 @@ func (sdk *LoppeeBusinessSDK) ConversationReport(data map[string]any) LoppeeBusi
 // ConversationWorkflow returns a ConversationWorkflow entity bound to this client.
 // Idiomatic usage: client.ConversationWorkflow(nil).List(nil, nil) or
 // client.ConversationWorkflow(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) ConversationWorkflow(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) ConversationWorkflow(data map[string]any) LoppeeBusinessEntityBase {
 	return NewConversationWorkflowEntityFunc(sdk, data)
 }
 
@@ -567,7 +581,7 @@ func (sdk *LoppeeBusinessSDK) ConversationWorkflow(data map[string]any) LoppeeBu
 // CreateAgentApiKey returns a CreateAgentApiKey entity bound to this client.
 // Idiomatic usage: client.CreateAgentApiKey(nil).List(nil, nil) or
 // client.CreateAgentApiKey(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) CreateAgentApiKey(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) CreateAgentApiKey(data map[string]any) LoppeeBusinessEntityBase {
 	return NewCreateAgentApiKeyEntityFunc(sdk, data)
 }
 
@@ -575,7 +589,7 @@ func (sdk *LoppeeBusinessSDK) CreateAgentApiKey(data map[string]any) LoppeeBusin
 // Customer returns a Customer entity bound to this client.
 // Idiomatic usage: client.Customer(nil).List(nil, nil) or
 // client.Customer(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Customer(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Customer(data map[string]any) LoppeeBusinessEntityBase {
 	return NewCustomerEntityFunc(sdk, data)
 }
 
@@ -583,7 +597,7 @@ func (sdk *LoppeeBusinessSDK) Customer(data map[string]any) LoppeeBusinessEntity
 // CustomerAccount returns a CustomerAccount entity bound to this client.
 // Idiomatic usage: client.CustomerAccount(nil).List(nil, nil) or
 // client.CustomerAccount(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) CustomerAccount(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) CustomerAccount(data map[string]any) LoppeeBusinessEntityBase {
 	return NewCustomerAccountEntityFunc(sdk, data)
 }
 
@@ -591,7 +605,7 @@ func (sdk *LoppeeBusinessSDK) CustomerAccount(data map[string]any) LoppeeBusines
 // CustomerLocationProofRevocation returns a CustomerLocationProofRevocation entity bound to this client.
 // Idiomatic usage: client.CustomerLocationProofRevocation(nil).List(nil, nil) or
 // client.CustomerLocationProofRevocation(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) CustomerLocationProofRevocation(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) CustomerLocationProofRevocation(data map[string]any) LoppeeBusinessEntityBase {
 	return NewCustomerLocationProofRevocationEntityFunc(sdk, data)
 }
 
@@ -599,7 +613,7 @@ func (sdk *LoppeeBusinessSDK) CustomerLocationProofRevocation(data map[string]an
 // DestinationAddressSuggestion returns a DestinationAddressSuggestion entity bound to this client.
 // Idiomatic usage: client.DestinationAddressSuggestion(nil).List(nil, nil) or
 // client.DestinationAddressSuggestion(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) DestinationAddressSuggestion(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) DestinationAddressSuggestion(data map[string]any) LoppeeBusinessEntityBase {
 	return NewDestinationAddressSuggestionEntityFunc(sdk, data)
 }
 
@@ -607,7 +621,7 @@ func (sdk *LoppeeBusinessSDK) DestinationAddressSuggestion(data map[string]any) 
 // DestinationLocationProof returns a DestinationLocationProof entity bound to this client.
 // Idiomatic usage: client.DestinationLocationProof(nil).List(nil, nil) or
 // client.DestinationLocationProof(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) DestinationLocationProof(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) DestinationLocationProof(data map[string]any) LoppeeBusinessEntityBase {
 	return NewDestinationLocationProofEntityFunc(sdk, data)
 }
 
@@ -615,7 +629,7 @@ func (sdk *LoppeeBusinessSDK) DestinationLocationProof(data map[string]any) Lopp
 // DomainTrustCard returns a DomainTrustCard entity bound to this client.
 // Idiomatic usage: client.DomainTrustCard(nil).List(nil, nil) or
 // client.DomainTrustCard(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) DomainTrustCard(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) DomainTrustCard(data map[string]any) LoppeeBusinessEntityBase {
 	return NewDomainTrustCardEntityFunc(sdk, data)
 }
 
@@ -623,7 +637,7 @@ func (sdk *LoppeeBusinessSDK) DomainTrustCard(data map[string]any) LoppeeBusines
 // GeoContext returns a GeoContext entity bound to this client.
 // Idiomatic usage: client.GeoContext(nil).List(nil, nil) or
 // client.GeoContext(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) GeoContext(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) GeoContext(data map[string]any) LoppeeBusinessEntityBase {
 	return NewGeoContextEntityFunc(sdk, data)
 }
 
@@ -631,7 +645,7 @@ func (sdk *LoppeeBusinessSDK) GeoContext(data map[string]any) LoppeeBusinessEnti
 // Health returns a Health entity bound to this client.
 // Idiomatic usage: client.Health(nil).List(nil, nil) or
 // client.Health(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Health(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Health(data map[string]any) LoppeeBusinessEntityBase {
 	return NewHealthEntityFunc(sdk, data)
 }
 
@@ -639,7 +653,7 @@ func (sdk *LoppeeBusinessSDK) Health(data map[string]any) LoppeeBusinessEntity {
 // JobApplication returns a JobApplication entity bound to this client.
 // Idiomatic usage: client.JobApplication(nil).List(nil, nil) or
 // client.JobApplication(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) JobApplication(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) JobApplication(data map[string]any) LoppeeBusinessEntityBase {
 	return NewJobApplicationEntityFunc(sdk, data)
 }
 
@@ -647,7 +661,7 @@ func (sdk *LoppeeBusinessSDK) JobApplication(data map[string]any) LoppeeBusiness
 // JobResumeSignedUrl returns a JobResumeSignedUrl entity bound to this client.
 // Idiomatic usage: client.JobResumeSignedUrl(nil).List(nil, nil) or
 // client.JobResumeSignedUrl(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) JobResumeSignedUrl(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) JobResumeSignedUrl(data map[string]any) LoppeeBusinessEntityBase {
 	return NewJobResumeSignedUrlEntityFunc(sdk, data)
 }
 
@@ -655,7 +669,7 @@ func (sdk *LoppeeBusinessSDK) JobResumeSignedUrl(data map[string]any) LoppeeBusi
 // LocationHandoff returns a LocationHandoff entity bound to this client.
 // Idiomatic usage: client.LocationHandoff(nil).List(nil, nil) or
 // client.LocationHandoff(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) LocationHandoff(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) LocationHandoff(data map[string]any) LoppeeBusinessEntityBase {
 	return NewLocationHandoffEntityFunc(sdk, data)
 }
 
@@ -663,7 +677,7 @@ func (sdk *LoppeeBusinessSDK) LocationHandoff(data map[string]any) LoppeeBusines
 // Message returns a Message entity bound to this client.
 // Idiomatic usage: client.Message(nil).List(nil, nil) or
 // client.Message(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Message(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Message(data map[string]any) LoppeeBusinessEntityBase {
 	return NewMessageEntityFunc(sdk, data)
 }
 
@@ -671,7 +685,7 @@ func (sdk *LoppeeBusinessSDK) Message(data map[string]any) LoppeeBusinessEntity 
 // ModeratedAction returns a ModeratedAction entity bound to this client.
 // Idiomatic usage: client.ModeratedAction(nil).List(nil, nil) or
 // client.ModeratedAction(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) ModeratedAction(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) ModeratedAction(data map[string]any) LoppeeBusinessEntityBase {
 	return NewModeratedActionEntityFunc(sdk, data)
 }
 
@@ -679,7 +693,7 @@ func (sdk *LoppeeBusinessSDK) ModeratedAction(data map[string]any) LoppeeBusines
 // OpenApiDocument returns a OpenApiDocument entity bound to this client.
 // Idiomatic usage: client.OpenApiDocument(nil).List(nil, nil) or
 // client.OpenApiDocument(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) OpenApiDocument(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) OpenApiDocument(data map[string]any) LoppeeBusinessEntityBase {
 	return NewOpenApiDocumentEntityFunc(sdk, data)
 }
 
@@ -687,7 +701,7 @@ func (sdk *LoppeeBusinessSDK) OpenApiDocument(data map[string]any) LoppeeBusines
 // Operation returns a Operation entity bound to this client.
 // Idiomatic usage: client.Operation(nil).List(nil, nil) or
 // client.Operation(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Operation(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Operation(data map[string]any) LoppeeBusinessEntityBase {
 	return NewOperationEntityFunc(sdk, data)
 }
 
@@ -695,7 +709,7 @@ func (sdk *LoppeeBusinessSDK) Operation(data map[string]any) LoppeeBusinessEntit
 // OwnerNotification returns a OwnerNotification entity bound to this client.
 // Idiomatic usage: client.OwnerNotification(nil).List(nil, nil) or
 // client.OwnerNotification(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) OwnerNotification(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) OwnerNotification(data map[string]any) LoppeeBusinessEntityBase {
 	return NewOwnerNotificationEntityFunc(sdk, data)
 }
 
@@ -703,7 +717,7 @@ func (sdk *LoppeeBusinessSDK) OwnerNotification(data map[string]any) LoppeeBusin
 // OwnerNotificationSetting returns a OwnerNotificationSetting entity bound to this client.
 // Idiomatic usage: client.OwnerNotificationSetting(nil).List(nil, nil) or
 // client.OwnerNotificationSetting(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) OwnerNotificationSetting(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) OwnerNotificationSetting(data map[string]any) LoppeeBusinessEntityBase {
 	return NewOwnerNotificationSettingEntityFunc(sdk, data)
 }
 
@@ -711,7 +725,7 @@ func (sdk *LoppeeBusinessSDK) OwnerNotificationSetting(data map[string]any) Lopp
 // OwnerWebhookEndpoint returns a OwnerWebhookEndpoint entity bound to this client.
 // Idiomatic usage: client.OwnerWebhookEndpoint(nil).List(nil, nil) or
 // client.OwnerWebhookEndpoint(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) OwnerWebhookEndpoint(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) OwnerWebhookEndpoint(data map[string]any) LoppeeBusinessEntityBase {
 	return NewOwnerWebhookEndpointEntityFunc(sdk, data)
 }
 
@@ -719,7 +733,7 @@ func (sdk *LoppeeBusinessSDK) OwnerWebhookEndpoint(data map[string]any) LoppeeBu
 // OwnerWebhookRegistration returns a OwnerWebhookRegistration entity bound to this client.
 // Idiomatic usage: client.OwnerWebhookRegistration(nil).List(nil, nil) or
 // client.OwnerWebhookRegistration(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) OwnerWebhookRegistration(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) OwnerWebhookRegistration(data map[string]any) LoppeeBusinessEntityBase {
 	return NewOwnerWebhookRegistrationEntityFunc(sdk, data)
 }
 
@@ -727,7 +741,7 @@ func (sdk *LoppeeBusinessSDK) OwnerWebhookRegistration(data map[string]any) Lopp
 // Pricing returns a Pricing entity bound to this client.
 // Idiomatic usage: client.Pricing(nil).List(nil, nil) or
 // client.Pricing(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Pricing(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Pricing(data map[string]any) LoppeeBusinessEntityBase {
 	return NewPricingEntityFunc(sdk, data)
 }
 
@@ -735,7 +749,7 @@ func (sdk *LoppeeBusinessSDK) Pricing(data map[string]any) LoppeeBusinessEntity 
 // PromoteVerifiedTransaction returns a PromoteVerifiedTransaction entity bound to this client.
 // Idiomatic usage: client.PromoteVerifiedTransaction(nil).List(nil, nil) or
 // client.PromoteVerifiedTransaction(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) PromoteVerifiedTransaction(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) PromoteVerifiedTransaction(data map[string]any) LoppeeBusinessEntityBase {
 	return NewPromoteVerifiedTransactionEntityFunc(sdk, data)
 }
 
@@ -743,7 +757,7 @@ func (sdk *LoppeeBusinessSDK) PromoteVerifiedTransaction(data map[string]any) Lo
 // PublicContent returns a PublicContent entity bound to this client.
 // Idiomatic usage: client.PublicContent(nil).List(nil, nil) or
 // client.PublicContent(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) PublicContent(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) PublicContent(data map[string]any) LoppeeBusinessEntityBase {
 	return NewPublicContentEntityFunc(sdk, data)
 }
 
@@ -751,7 +765,7 @@ func (sdk *LoppeeBusinessSDK) PublicContent(data map[string]any) LoppeeBusinessE
 // Recommend returns a Recommend entity bound to this client.
 // Idiomatic usage: client.Recommend(nil).List(nil, nil) or
 // client.Recommend(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Recommend(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Recommend(data map[string]any) LoppeeBusinessEntityBase {
 	return NewRecommendEntityFunc(sdk, data)
 }
 
@@ -759,7 +773,7 @@ func (sdk *LoppeeBusinessSDK) Recommend(data map[string]any) LoppeeBusinessEntit
 // Review returns a Review entity bound to this client.
 // Idiomatic usage: client.Review(nil).List(nil, nil) or
 // client.Review(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Review(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Review(data map[string]any) LoppeeBusinessEntityBase {
 	return NewReviewEntityFunc(sdk, data)
 }
 
@@ -767,7 +781,7 @@ func (sdk *LoppeeBusinessSDK) Review(data map[string]any) LoppeeBusinessEntity {
 // Revoke returns a Revoke entity bound to this client.
 // Idiomatic usage: client.Revoke(nil).List(nil, nil) or
 // client.Revoke(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Revoke(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Revoke(data map[string]any) LoppeeBusinessEntityBase {
 	return NewRevokeEntityFunc(sdk, data)
 }
 
@@ -775,7 +789,7 @@ func (sdk *LoppeeBusinessSDK) Revoke(data map[string]any) LoppeeBusinessEntity {
 // SaveBusiness returns a SaveBusiness entity bound to this client.
 // Idiomatic usage: client.SaveBusiness(nil).List(nil, nil) or
 // client.SaveBusiness(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) SaveBusiness(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) SaveBusiness(data map[string]any) LoppeeBusinessEntityBase {
 	return NewSaveBusinessEntityFunc(sdk, data)
 }
 
@@ -783,7 +797,7 @@ func (sdk *LoppeeBusinessSDK) SaveBusiness(data map[string]any) LoppeeBusinessEn
 // SavedBusiness returns a SavedBusiness entity bound to this client.
 // Idiomatic usage: client.SavedBusiness(nil).List(nil, nil) or
 // client.SavedBusiness(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) SavedBusiness(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) SavedBusiness(data map[string]any) LoppeeBusinessEntityBase {
 	return NewSavedBusinessEntityFunc(sdk, data)
 }
 
@@ -791,7 +805,7 @@ func (sdk *LoppeeBusinessSDK) SavedBusiness(data map[string]any) LoppeeBusinessE
 // SavedLocation returns a SavedLocation entity bound to this client.
 // Idiomatic usage: client.SavedLocation(nil).List(nil, nil) or
 // client.SavedLocation(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) SavedLocation(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) SavedLocation(data map[string]any) LoppeeBusinessEntityBase {
 	return NewSavedLocationEntityFunc(sdk, data)
 }
 
@@ -799,7 +813,7 @@ func (sdk *LoppeeBusinessSDK) SavedLocation(data map[string]any) LoppeeBusinessE
 // Search returns a Search entity bound to this client.
 // Idiomatic usage: client.Search(nil).List(nil, nil) or
 // client.Search(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Search(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Search(data map[string]any) LoppeeBusinessEntityBase {
 	return NewSearchEntityFunc(sdk, data)
 }
 
@@ -807,7 +821,7 @@ func (sdk *LoppeeBusinessSDK) Search(data map[string]any) LoppeeBusinessEntity {
 // Suggest returns a Suggest entity bound to this client.
 // Idiomatic usage: client.Suggest(nil).List(nil, nil) or
 // client.Suggest(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) Suggest(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) Suggest(data map[string]any) LoppeeBusinessEntityBase {
 	return NewSuggestEntityFunc(sdk, data)
 }
 
@@ -815,7 +829,7 @@ func (sdk *LoppeeBusinessSDK) Suggest(data map[string]any) LoppeeBusinessEntity 
 // SupportInternalNote returns a SupportInternalNote entity bound to this client.
 // Idiomatic usage: client.SupportInternalNote(nil).List(nil, nil) or
 // client.SupportInternalNote(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) SupportInternalNote(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) SupportInternalNote(data map[string]any) LoppeeBusinessEntityBase {
 	return NewSupportInternalNoteEntityFunc(sdk, data)
 }
 
@@ -823,7 +837,7 @@ func (sdk *LoppeeBusinessSDK) SupportInternalNote(data map[string]any) LoppeeBus
 // SupportWorkflow returns a SupportWorkflow entity bound to this client.
 // Idiomatic usage: client.SupportWorkflow(nil).List(nil, nil) or
 // client.SupportWorkflow(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) SupportWorkflow(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) SupportWorkflow(data map[string]any) LoppeeBusinessEntityBase {
 	return NewSupportWorkflowEntityFunc(sdk, data)
 }
 
@@ -831,7 +845,7 @@ func (sdk *LoppeeBusinessSDK) SupportWorkflow(data map[string]any) LoppeeBusines
 // TaxonomySuggestion returns a TaxonomySuggestion entity bound to this client.
 // Idiomatic usage: client.TaxonomySuggestion(nil).List(nil, nil) or
 // client.TaxonomySuggestion(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) TaxonomySuggestion(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) TaxonomySuggestion(data map[string]any) LoppeeBusinessEntityBase {
 	return NewTaxonomySuggestionEntityFunc(sdk, data)
 }
 
@@ -839,7 +853,7 @@ func (sdk *LoppeeBusinessSDK) TaxonomySuggestion(data map[string]any) LoppeeBusi
 // TrustCard returns a TrustCard entity bound to this client.
 // Idiomatic usage: client.TrustCard(nil).List(nil, nil) or
 // client.TrustCard(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) TrustCard(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) TrustCard(data map[string]any) LoppeeBusinessEntityBase {
 	return NewTrustCardEntityFunc(sdk, data)
 }
 
@@ -847,7 +861,7 @@ func (sdk *LoppeeBusinessSDK) TrustCard(data map[string]any) LoppeeBusinessEntit
 // UnsaveBusiness returns a UnsaveBusiness entity bound to this client.
 // Idiomatic usage: client.UnsaveBusiness(nil).List(nil, nil) or
 // client.UnsaveBusiness(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) UnsaveBusiness(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) UnsaveBusiness(data map[string]any) LoppeeBusinessEntityBase {
 	return NewUnsaveBusinessEntityFunc(sdk, data)
 }
 
@@ -855,7 +869,7 @@ func (sdk *LoppeeBusinessSDK) UnsaveBusiness(data map[string]any) LoppeeBusiness
 // UpdateAgentBillingAccount returns a UpdateAgentBillingAccount entity bound to this client.
 // Idiomatic usage: client.UpdateAgentBillingAccount(nil).List(nil, nil) or
 // client.UpdateAgentBillingAccount(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) UpdateAgentBillingAccount(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) UpdateAgentBillingAccount(data map[string]any) LoppeeBusinessEntityBase {
 	return NewUpdateAgentBillingAccountEntityFunc(sdk, data)
 }
 
@@ -863,7 +877,7 @@ func (sdk *LoppeeBusinessSDK) UpdateAgentBillingAccount(data map[string]any) Lop
 // WithdrawJobApplication returns a WithdrawJobApplication entity bound to this client.
 // Idiomatic usage: client.WithdrawJobApplication(nil).List(nil, nil) or
 // client.WithdrawJobApplication(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *LoppeeBusinessSDK) WithdrawJobApplication(data map[string]any) LoppeeBusinessEntity {
+func (sdk *LoppeeBusinessSDK) WithdrawJobApplication(data map[string]any) LoppeeBusinessEntityBase {
 	return NewWithdrawJobApplicationEntityFunc(sdk, data)
 }
 

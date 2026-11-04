@@ -33,7 +33,7 @@ class SupportInternalNoteEntityTest extends TestCase
         $client = LoppeeBusinessSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->SupportInternalNote(null)->create(["id" => 1, "body" => 'x'], null);
+            $client->SupportInternalNote(null)->create(["support_id" => 1, "body" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SupportInternalNoteEntityTest extends TestCase
         $setup = support_internal_note_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach ([] as $_op) {
+        foreach (["create"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "support_internal_note." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -57,15 +57,28 @@ class SupportInternalNoteEntityTest extends TestCase
             $this->markTestSkipped('Live coverage incomplete: support_internal_note.create.0 excluded (GET-only live run: needs POST /v1/admin/support/{conversation_id}/internal-notes)');
         }
 
+        if (!empty($setup["live"])) {
+            foreach (["support01"] as $_liveKey) {
+                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
+                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via LOPPEE_BUSINESS_TEST_SUPPORT_INTERNAL_NOTE_ENTID");
+                }
+            }
+        }
         $client = $setup["client"];
 
-        // Bootstrap entity data from existing test data.
-        $support_internal_note_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.support_internal_note")));
-        $support_internal_note_ref01_data = null;
-        if (count($support_internal_note_ref01_data_raw) > 0) {
-            $support_internal_note_ref01_data = Helpers::to_map($support_internal_note_ref01_data_raw[0][1]);
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
         }
+        // CREATE
+        $support_internal_note_ref01_ent = $client->SupportInternalNote(null);
+        $support_internal_note_ref01_data = Helpers::to_map(Vs::getprop(
+            Vs::getpath($setup["data"], "new.support_internal_note"), "support_internal_note_ref01"));
+        $support_internal_note_ref01_data["support_id"] = $setup["idmap"]["support01"];
+
+        $support_internal_note_ref01_data_result = $support_internal_note_ref01_ent->create($support_internal_note_ref01_data, null);
+        $support_internal_note_ref01_data = Helpers::to_map(is_object($support_internal_note_ref01_data_result) && method_exists($support_internal_note_ref01_data_result, 'data_get') ? $support_internal_note_ref01_data_result->data_get() : $support_internal_note_ref01_data_result);
+        $this->assertNotNull($support_internal_note_ref01_data);
+        $this->assertNotNull($support_internal_note_ref01_data["id"]);
 
     }
 }
@@ -85,7 +98,7 @@ function support_internal_note_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["support_internal_note01", "support_internal_note02", "support_internal_note03"] as $k) {
+    foreach (["support_internal_note01", "support_internal_note02", "support_internal_note03", "support01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

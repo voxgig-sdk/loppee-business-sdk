@@ -18,6 +18,16 @@
     }
   },
   "requests": {
+    "POST /v1/account/location-handoffs/{handoff_id}/complete-from-device": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/account/location-handoffs/{handoff_id}/decline-from-device": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
     "POST /v1/account/location-handoffs": {
       "provenance": "operation-contract",
       "version": 2,

@@ -41,6 +41,10 @@ class DomainTrustCardEntityTest < Minitest::Test
         return
       end
     end
+    if setup[:live]
+      skip("Live coverage incomplete: the flow has no step to run")
+    end
+
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.

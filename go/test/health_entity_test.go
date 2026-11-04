@@ -75,6 +75,9 @@ func TestHealthEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = healthRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		healthRef01Ent := client.Health(nil)
 		healthRef01MatchDt0 := map[string]any{}

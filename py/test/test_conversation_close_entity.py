@@ -37,7 +37,7 @@ class TestConversationCloseEntity:
         client = LoppeeBusinessSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.ConversationClose(None).create({"id": 1}, None)
+            client.ConversationClose(None).create({"conversation_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,7 +46,7 @@ class TestConversationCloseEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in []:
+        for _op in ["create"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "conversation_close." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -55,14 +55,22 @@ class TestConversationCloseEntity:
             print("LIVE STEP {\"id\":\"conversation_close.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /v1/account/conversations/{conversation_id}/close\"}")
             pytest.skip("Live coverage incomplete: conversation_close.create.0 excluded (GET-only live run: needs POST /v1/account/conversations/{conversation_id}/close)")
 
+        if setup["live"]:
+            for _live_key in ["conversation01"]:
+                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
+                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via LOPPEE_BUSINESS_TEST_CONVERSATION_CLOSE_ENTID")
         client = setup["client"]
 
-        # Bootstrap entity data from existing test data.
-        conversation_close_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.conversation_close")))
-        conversation_close_ref01_data = None
-        if len(conversation_close_ref01_data_raw) > 0:
-            conversation_close_ref01_data = helpers.to_map(conversation_close_ref01_data_raw[0][1])
+        if setup["live"]:
+            runner.live_pace()
+        # CREATE
+        conversation_close_ref01_ent = client.ConversationClose(None)
+        conversation_close_ref01_data = helpers.to_map(vs.getprop(
+            vs.getpath(setup["data"], "new.conversation_close"), "conversation_close_ref01"))
+        conversation_close_ref01_data["conversation_id"] = setup["idmap"]["conversation01"]
+
+        conversation_close_ref01_data = helpers.to_map(runner.entity_data(conversation_close_ref01_ent.create(conversation_close_ref01_data, None)))
+        assert conversation_close_ref01_data is not None
 
 
 
@@ -82,7 +90,7 @@ def _conversation_close_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["conversation_close01", "conversation_close02", "conversation_close03"],
+        ["conversation_close01", "conversation_close02", "conversation_close03", "conversation01", "conversation02", "conversation03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

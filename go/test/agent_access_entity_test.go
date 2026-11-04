@@ -71,6 +71,9 @@ func TestAgentAccessEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		agentAccessRef01Ent := client.AgentAccess(nil)
 		agentAccessRef01Data := core.ToMapAny(vs.GetProp(

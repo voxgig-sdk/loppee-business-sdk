@@ -48,6 +48,7 @@ class WithdrawJobApplicationEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     withdraw_job_application_ref01_ent = client.WithdrawJobApplication(nil)
     withdraw_job_application_ref01_data = Helpers.to_map(Vs.getprop(

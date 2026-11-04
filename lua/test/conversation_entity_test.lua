@@ -52,6 +52,9 @@ describe("ConversationEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local conversation_ref01_ent = client:Conversation(nil)
     local conversation_ref01_data = helpers.to_map(vs.getprop(

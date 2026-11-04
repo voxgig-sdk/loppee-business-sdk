@@ -59,6 +59,9 @@ class OwnerWebhookRegistrationEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $owner_webhook_registration_ref01_ent = $client->OwnerWebhookRegistration(null);
         $owner_webhook_registration_ref01_data = Helpers::to_map(Vs::getprop(

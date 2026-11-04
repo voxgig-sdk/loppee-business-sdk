@@ -46,6 +46,9 @@ class AgentCapabilityEntityTest extends TestCase
             $agent_capability_ref01_data = Helpers::to_map($agent_capability_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LOAD
         $agent_capability_ref01_ent = $client->AgentCapability(null);
         $agent_capability_ref01_match_dt0 = [];

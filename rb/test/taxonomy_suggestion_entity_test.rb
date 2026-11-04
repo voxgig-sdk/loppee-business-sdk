@@ -167,6 +167,7 @@ class TaxonomySuggestionEntityTest < Minitest::Test
       taxonomy_suggestion_ref01_data = Helpers.to_map(taxonomy_suggestion_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # LIST
     taxonomy_suggestion_ref01_ent = client.TaxonomySuggestion(nil)
     taxonomy_suggestion_ref01_match = {}

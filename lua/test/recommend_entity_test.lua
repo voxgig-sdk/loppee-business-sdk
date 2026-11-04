@@ -164,6 +164,9 @@ describe("RecommendEntity", function()
       recommend_ref01_data = helpers.to_map(recommend_ref01_data_raw[1][2])
     end
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- LIST
     local recommend_ref01_ent = client:Recommend(nil)
     local recommend_ref01_match = {}

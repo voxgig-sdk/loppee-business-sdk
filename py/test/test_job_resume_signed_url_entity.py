@@ -61,6 +61,8 @@ class TestJobResumeSignedUrlEntity:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via LOPPEE_BUSINESS_TEST_JOB_RESUME_SIGNED_URL_ENTID")
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         job_resume_signed_url_ref01_ent = client.JobResumeSignedUrl(None)
         job_resume_signed_url_ref01_data = helpers.to_map(vs.getprop(

@@ -663,12 +663,8 @@ agent_openapi = client.AgentOpenapi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `Hash` | Yes |  |
-| `info` | `Hash` | Yes |  |
-| `openapi` | `Object` | Yes |  |
-| `paths` | `Hash` | Yes |  |
-| `servers` | `Array` | Yes |  |
-| `tags` | `Array` | Yes |  |
+| `description` | `String` | No |  |
+| `url` | `String` | Yes |  |
 
 ### Operations
 
@@ -1048,7 +1044,7 @@ business_deal = client.BusinessDeal
 List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
-results = client.BusinessDeal.list({ "id" => "example" })
+results = client.BusinessDeal.list({ "business_id" => "example" })
 results.each { |item| puts item.data_get }
 ```
 
@@ -1590,12 +1586,6 @@ Return the entity name.
 business_review = client.BusinessReview
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `id` | `String` | No |  |
-
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -1603,7 +1593,7 @@ business_review = client.BusinessReview
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-result = client.BusinessReview.load({ "id" => "business_review_id" })
+result = client.BusinessReview.load({ "business_id" => "business_id" })
 ```
 
 ### Common Methods
@@ -2115,7 +2105,6 @@ conversation_close = client.ConversationClose
 | --- | --- | --- | --- |
 | `closed_at` | `String` | Yes |  |
 | `conversation_id` | `String` | Yes |  |
-| `id` | `String` | No |  |
 | `status` | `Object` | Yes |  |
 
 ### Operations
@@ -2126,7 +2115,7 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```ruby
 result = client.ConversationClose.create({
-  "id" => "example_id", # String
+  "conversation_id" => "example_conversation_id", # String
 })
 ```
 
@@ -2171,7 +2160,6 @@ conversation_report = client.ConversationReport
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `detail` | `String` | No |  |
-| `id` | `String` | No |  |
 | `reason` | `Object` | Yes |  |
 | `status` | `Object` | Yes |  |
 
@@ -2183,7 +2171,7 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```ruby
 result = client.ConversationReport.create({
-  "id" => "example_id", # String
+  "conversation_id" => "example_conversation_id", # String
   "reason" => "example_reason", # Object
 })
 ```
@@ -2433,26 +2421,20 @@ customer_account = client.CustomerAccount
 | --- | --- | --- | --- |
 | `account_id` | `String` | Yes |  |
 | `account_role` | `String` | Yes |  |
-| `accuracy_meters` | `Float` | Yes |  |
 | `acknowledge_data_effects` | `Boolean` | Yes |  |
 | `actions` | `Array` | Yes |  |
-| `agent_key_id` | `String` | Yes |  |
 | `agent_receives_coordinates` | `Boolean` | Yes |  |
 | `all_paused` | `Boolean` | Yes |  |
 | `app_attest_registered` | `Boolean` | Yes |  |
-| `assertion` | `String` | Yes |  |
 | `attestation` | `String` | Yes |  |
 | `author_label` | `String` | Yes |  |
 | `author_type` | `String` | Yes |  |
 | `binding` | `Object` | Yes |  |
 | `body` | `String` | Yes |  |
 | `business_id` | `Object` | Yes |  |
-| `capture_source` | `Object` | Yes |  |
-| `captured_at` | `String` | Yes |  |
 | `challenge` | `String` | Yes |  |
 | `challenge_id` | `String` | Yes |  |
 | `client_message_id` | `String` | Yes |  |
-| `completed` | `Boolean` | Yes |  |
 | `confirmation` | `String` | Yes |  |
 | `connection_id` | `String` | Yes |  |
 | `connection_kind` | `String` | Yes |  |
@@ -2460,7 +2442,6 @@ customer_account = client.CustomerAccount
 | `coordinates_returned` | `Boolean` | Yes |  |
 | `created_at` | `String` | Yes |  |
 | `credential_id` | `String` | Yes |  |
-| `declined` | `Boolean` | Yes |  |
 | `delivery_contract` | `Hash` | Yes |  |
 | `disabled_reason` | `Object` | Yes |  |
 | `disclosure` | `String` | Yes |  |
@@ -2472,21 +2453,17 @@ customer_account = client.CustomerAccount
 | `event_id` | `String` | Yes |  |
 | `event_types` | `Array` | Yes |  |
 | `failure_count` | `Integer` | Yes |  |
-| `handoff_id` | `String` | Yes |  |
 | `has_more` | `Boolean` | Yes |  |
 | `id` | `String` | Yes |  |
 | `idempotent_replay` | `Boolean` | Yes |  |
 | `installation_id` | `String` | Yes |  |
 | `key_id` | `String` | Yes |  |
 | `last_delivery_at` | `Object` | Yes |  |
-| `latitude` | `Float` | Yes |  |
 | `location` | `Object` | No | An opaque location reference from the website's own location controls. |
-| `longitude` | `Float` | Yes |  |
 | `message_alerts_enabled` | `Boolean` | Yes |  |
 | `messages` | `Array` | Yes |  |
 | `mode` | `String` | Yes | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `String` | No |  |
-| `oauth_grant_id` | `Object` | Yes |  |
 | `one_time_display` | `Object` | Yes |  |
 | `platform` | `String` | Yes |  |
 | `policy` | `String` | Yes |  |
@@ -2495,7 +2472,6 @@ customer_account = client.CustomerAccount
 | `reason` | `String` | Yes |  |
 | `registered_at` | `String` | Yes |  |
 | `reply` | `String` | Yes |  |
-| `request_mode` | `String` | Yes |  |
 | `requested_at` | `String` | Yes |  |
 | `results` | `Array` | Yes |  |
 | `schema_version` | `String` | Yes |  |
@@ -2506,7 +2482,6 @@ customer_account = client.CustomerAccount
 | `updated_at` | `String` | Yes |  |
 | `url` | `String` | Yes | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `String` | Yes |  |
-| `use_mode` | `String` | Yes |  |
 
 ### Field Usage by Operation
 
@@ -2514,26 +2489,20 @@ customer_account = client.CustomerAccount
 | --- | --- |
 | `account_id` | - |
 | `account_role` | - |
-| `accuracy_meters` | - |
 | `acknowledge_data_effects` | - |
 | `actions` | - |
-| `agent_key_id` | - |
 | `agent_receives_coordinates` | - |
 | `all_paused` | - |
 | `app_attest_registered` | - |
-| `assertion` | - |
 | `attestation` | - |
 | `author_label` | - |
 | `author_type` | - |
 | `binding` | - |
 | `body` | - |
 | `business_id` | - |
-| `capture_source` | - |
-| `captured_at` | - |
 | `challenge` | - |
 | `challenge_id` | - |
 | `client_message_id` | - |
-| `completed` | - |
 | `confirmation` | - |
 | `connection_id` | - |
 | `connection_kind` | - |
@@ -2541,7 +2510,6 @@ customer_account = client.CustomerAccount
 | `coordinates_returned` | - |
 | `created_at` | - |
 | `credential_id` | - |
-| `declined` | - |
 | `delivery_contract` | - |
 | `disabled_reason` | - |
 | `disclosure` | - |
@@ -2553,21 +2521,17 @@ customer_account = client.CustomerAccount
 | `event_id` | - |
 | `event_types` | - |
 | `failure_count` | - |
-| `handoff_id` | - |
 | `has_more` | - |
 | `id` | - |
 | `idempotent_replay` | - |
 | `installation_id` | - |
 | `key_id` | - |
 | `last_delivery_at` | - |
-| `latitude` | - |
 | `location` | - |
-| `longitude` | - |
 | `message_alerts_enabled` | - |
 | `messages` | - |
 | `mode` | - |
 | `name` | - |
-| `oauth_grant_id` | - |
 | `one_time_display` | - |
 | `platform` | - |
 | `policy` | - |
@@ -2576,7 +2540,6 @@ customer_account = client.CustomerAccount
 | `reason` | Yes |
 | `registered_at` | - |
 | `reply` | - |
-| `request_mode` | - |
 | `requested_at` | - |
 | `results` | - |
 | `schema_version` | - |
@@ -2587,7 +2550,6 @@ customer_account = client.CustomerAccount
 | `updated_at` | - |
 | `url` | - |
 | `usable_until` | - |
-| `use_mode` | - |
 
 ### Operations
 
@@ -2599,33 +2561,26 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.CustomerAccount.create({
   "account_id" => "example_account_id", # String
   "account_role" => "example_account_role", # String
-  "accuracy_meters" => 1, # Float
   "acknowledge_data_effects" => true, # Boolean
   "actions" => [], # Array
-  "agent_key_id" => "example_agent_key_id", # String
   "agent_receives_coordinates" => true, # Boolean
   "all_paused" => true, # Boolean
   "app_attest_registered" => true, # Boolean
-  "assertion" => "example_assertion", # String
   "attestation" => "example_attestation", # String
   "author_label" => "example_author_label", # String
   "author_type" => "example_author_type", # String
   "binding" => "example_binding", # Object
   "body" => "example_body", # String
   "business_id" => "example_business_id", # Object
-  "capture_source" => "example_capture_source", # Object
-  "captured_at" => "example_captured_at", # String
   "challenge" => "example_challenge", # String
   "challenge_id" => "example_challenge_id", # String
   "client_message_id" => "example_client_message_id", # String
-  "completed" => true, # Boolean
   "confirmation" => "example_confirmation", # String
   "connection_id" => "example_connection_id", # String
   "connection_kind" => "example_connection_kind", # String
   "coordinates_returned" => true, # Boolean
   "created_at" => "example_created_at", # String
   "credential_id" => "example_credential_id", # String
-  "declined" => true, # Boolean
   "delivery_contract" => {}, # Hash
   "disabled_reason" => "example_disabled_reason", # Object
   "disclosure" => "example_disclosure", # String
@@ -2637,19 +2592,15 @@ result = client.CustomerAccount.create({
   "event_id" => "example_event_id", # String
   "event_types" => [], # Array
   "failure_count" => 1, # Integer
-  "handoff_id" => "example_handoff_id", # String
   "has_more" => true, # Boolean
   "id" => "example_id", # String
   "idempotent_replay" => true, # Boolean
   "installation_id" => "example_installation_id", # String
   "key_id" => "example_key_id", # String
   "last_delivery_at" => "example_last_delivery_at", # Object
-  "latitude" => 1, # Float
-  "longitude" => 1, # Float
   "message_alerts_enabled" => true, # Boolean
   "messages" => [], # Array
   "mode" => "example_mode", # String
-  "oauth_grant_id" => "example_oauth_grant_id", # Object
   "one_time_display" => "example_one_time_display", # Object
   "platform" => "example_platform", # String
   "policy" => "example_policy", # String
@@ -2657,7 +2608,6 @@ result = client.CustomerAccount.create({
   "push_token" => "example_push_token", # String
   "registered_at" => "example_registered_at", # String
   "reply" => "example_reply", # String
-  "request_mode" => "example_request_mode", # String
   "requested_at" => "example_requested_at", # String
   "results" => [], # Array
   "schema_version" => "example_schema_version", # String
@@ -2668,7 +2618,6 @@ result = client.CustomerAccount.create({
   "updated_at" => "example_updated_at", # String
   "url" => "example_url", # String
   "usable_until" => "example_usable_until", # String
-  "use_mode" => "example_use_mode", # String
 })
 ```
 
@@ -3208,6 +3157,12 @@ Return the entity name.
 location_handoff = client.LocationHandoff
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -3507,12 +3462,8 @@ open_api_document = client.OpenApiDocument
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `components` | `Hash` | Yes |  |
-| `info` | `Hash` | Yes |  |
-| `openapi` | `Object` | Yes |  |
-| `paths` | `Hash` | Yes |  |
-| `servers` | `Array` | Yes |  |
-| `tags` | `Array` | Yes |  |
+| `description` | `String` | No |  |
+| `url` | `String` | Yes |  |
 
 ### Operations
 
@@ -4393,18 +4344,9 @@ pricing = client.Pricing
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `billing` | `Hash` | Yes |  |
-| `branch_add_ons` | `Array` | Yes |  |
-| `currency` | `Object` | Yes |  |
-| `generated_at` | `String` | Yes |  |
-| `neutrality` | `String` | Yes |  |
-| `plans` | `Array` | Yes |  |
-| `promotions` | `Array` | Yes |  |
-| `published_at` | `Object` | Yes |  |
-| `radius_extension` | `Hash` | Yes |  |
-| `revision_id` | `Object` | Yes |  |
-| `source` | `Object` | Yes |  |
-| `trust_model_version` | `Object` | Yes |  |
+| `annual_usd` | `Float` | Yes |  |
+| `monthly_usd` | `Float` | Yes |  |
+| `radius_max_miles` | `Float` | Yes |  |
 
 ### Operations
 
@@ -5063,10 +5005,9 @@ suggest = client.Suggest
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `categories` | `Array` | Yes |  |
-| `names` | `Array` | Yes |  |
-| `query` | `String` | Yes |  |
-| `schema_version` | `Object` | Yes |  |
+| `alias` | `String` | Yes |  |
+| `path_titles` | `Array` | Yes |  |
+| `title` | `String` | Yes |  |
 
 ### Operations
 
@@ -5132,7 +5073,7 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```ruby
 result = client.SupportInternalNote.create({
-  "id" => "example_id", # String
+  "support_id" => "example_support_id", # String
   "body" => "example_body", # String
 })
 ```
@@ -5178,7 +5119,6 @@ support_workflow = client.SupportWorkflow
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `category` | `Object` | No |  |
-| `id` | `String` | No |  |
 | `priority` | `Object` | No |  |
 | `waiting_on` | `Object` | No |  |
 
@@ -5190,7 +5130,7 @@ Create a new entity with the given data. Returns the created entity and raises o
 
 ```ruby
 result = client.SupportWorkflow.create({
-  "id" => "example_id", # String
+  "support_id" => "example_support_id", # String
 })
 ```
 

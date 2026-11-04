@@ -53,6 +53,9 @@ describe("BusinessOwnerEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local business_owner_ref01_ent = client:BusinessOwner(nil)
     local business_owner_ref01_data = helpers.to_map(vs.getprop(
@@ -64,6 +67,9 @@ describe("BusinessOwnerEntity", function()
     assert.is_not_nil(business_owner_ref01_data)
     assert.is_not_nil(business_owner_ref01_data["id"])
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- UPDATE
     local business_owner_ref01_data_up0_up = {
       id = business_owner_ref01_data["id"],
@@ -77,7 +83,7 @@ describe("BusinessOwnerEntity", function()
     assert.is_nil(err)
     local business_owner_ref01_resdata_up0 = helpers.to_map(type(business_owner_ref01_resdata_up0_result) == 'table' and business_owner_ref01_resdata_up0_result.data_get and business_owner_ref01_resdata_up0_result:data_get() or business_owner_ref01_resdata_up0_result)
     assert.is_not_nil(business_owner_ref01_resdata_up0)
-    assert.are.equal(business_owner_ref01_resdata_up0["id"], business_owner_ref01_data_up0_up["id"])
+    assert.is_true(runner.live_same_id(business_owner_ref01_resdata_up0["id"], business_owner_ref01_data_up0_up["id"]))
     assert.are.equal(business_owner_ref01_resdata_up0[business_owner_ref01_markdef_up0_name], business_owner_ref01_markdef_up0_value)
 
   end)

@@ -167,6 +167,7 @@ class SearchEntityTest < Minitest::Test
       search_ref01_data = Helpers.to_map(search_ref01_data_raw[0][1])
     end
 
+    Runner.live_pace if setup[:live]
     # LIST
     search_ref01_ent = client.Search(nil)
     search_ref01_match = {}

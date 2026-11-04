@@ -52,6 +52,9 @@ describe("MessageEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local message_ref01_ent = client:Message(nil)
     local message_ref01_data = helpers.to_map(vs.getprop(

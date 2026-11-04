@@ -29,7 +29,7 @@ describe("SupportInternalNoteEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:SupportInternalNote(nil):create({ ["id"] = 1, ["body"] = "x" }, nil)
+    local _, err = client:SupportInternalNote(nil):create({ ["support_id"] = 1, ["body"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("SupportInternalNoteEntity", function()
     local setup = support_internal_note_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({}) do
+    for _, _op in ipairs({"create"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "support_internal_note." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -50,15 +50,29 @@ describe("SupportInternalNoteEntity", function()
       return
     end
 
+    if setup.live then
+      for _, _live_key in ipairs({"support01"}) do
+        if setup.synthetic_only or setup.idmap[_live_key] == nil then
+          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via LOPPEE_BUSINESS_TEST_SUPPORT_INTERNAL_NOTE_ENTID")
+        end
+      end
+    end
     local client = setup.client
 
-    -- Bootstrap entity data from existing test data.
-    local support_internal_note_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.support_internal_note")))
-    local support_internal_note_ref01_data = nil
-    if #support_internal_note_ref01_data_raw > 0 then
-      support_internal_note_ref01_data = helpers.to_map(support_internal_note_ref01_data_raw[1][2])
+    if setup.live then
+      runner.live_pace()
     end
+    -- CREATE
+    local support_internal_note_ref01_ent = client:SupportInternalNote(nil)
+    local support_internal_note_ref01_data = helpers.to_map(vs.getprop(
+      vs.getpath(setup.data, "new.support_internal_note"), "support_internal_note_ref01"))
+    support_internal_note_ref01_data["support_id"] = setup.idmap["support01"]
+
+    local support_internal_note_ref01_data_result, err = support_internal_note_ref01_ent:create(support_internal_note_ref01_data, nil)
+    assert.is_nil(err)
+    support_internal_note_ref01_data = helpers.to_map(type(support_internal_note_ref01_data_result) == 'table' and support_internal_note_ref01_data_result.data_get and support_internal_note_ref01_data_result:data_get() or support_internal_note_ref01_data_result)
+    assert.is_not_nil(support_internal_note_ref01_data)
+    assert.is_not_nil(support_internal_note_ref01_data["id"])
 
   end)
 end)
@@ -83,7 +97,7 @@ function support_internal_note_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "support_internal_note01", "support_internal_note02", "support_internal_note03" },
+    { "support_internal_note01", "support_internal_note02", "support_internal_note03", "support01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

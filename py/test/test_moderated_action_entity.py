@@ -57,6 +57,8 @@ class TestModeratedActionEntity:
 
         client = setup["client"]
 
+        if setup["live"]:
+            runner.live_pace()
         # CREATE
         moderated_action_ref01_ent = client.ModeratedAction(None)
         moderated_action_ref01_data = helpers.to_map(vs.getprop(
@@ -65,6 +67,8 @@ class TestModeratedActionEntity:
         moderated_action_ref01_data = helpers.to_map(runner.entity_data(moderated_action_ref01_ent.create(moderated_action_ref01_data, None)))
         assert moderated_action_ref01_data is not None
 
+        if setup["live"]:
+            runner.live_pace()
         # LOAD
         moderated_action_ref01_match_dt0 = {}
         moderated_action_ref01_data_dt0_loaded = moderated_action_ref01_ent.load(moderated_action_ref01_match_dt0, None)
@@ -81,6 +85,8 @@ class TestModeratedActionEntity:
         if len(moderated_action_ref01_data_raw) > 0:
             moderated_action_ref01_data = helpers.to_map(moderated_action_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # LOAD
         moderated_action_ref01_ent = client.ModeratedAction(None)
         moderated_action_ref01_match_dt0 = {}

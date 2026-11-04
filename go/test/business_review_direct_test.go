@@ -30,18 +30,21 @@ func TestBusinessReviewDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
+		if setup.live {
+			livePace()
+		}
 		client := setup.client
 
 		params := map[string]any{}
 		query := map[string]any{}
 		if setup.live {
-			params["id"] = "biz_elite_ac_llc_jacksonville_fl"
+			params["business_id"] = "biz_elite_ac_llc_jacksonville_fl"
 		} else {
-			params["id"] = "direct01"
+			params["business_id"] = "direct01"
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "v1/businesses/{id}/reviews.json",
+			"path":   "v1/businesses/{business_id}/reviews.json",
 			"method": "GET",
 			"params": params,
 			"query":  query,
@@ -140,7 +143,7 @@ func business_reviewDirectSetup(mockres any) *business_reviewDirectSetupResult {
 			}
 		}
 		// A path parameter's example stands in for an id *_ENTID does not give.
-		for k, v := range map[string]any{"business_review01": "biz_elite_ac_llc_jacksonville_fl"} {
+		for k, v := range map[string]any{"business01": "biz_elite_ac_llc_jacksonville_fl"} {
 			if idmap[k] == nil {
 				idmap[k] = v
 			}

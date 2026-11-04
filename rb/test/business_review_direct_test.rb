@@ -24,18 +24,19 @@ class BusinessReviewDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
+    Runner.live_pace if setup[:live]
     client = setup[:client]
 
     params = {}
     query = {}
     if setup[:live]
-      params["id"] = "biz_elite_ac_llc_jacksonville_fl"
+      params["business_id"] = "biz_elite_ac_llc_jacksonville_fl"
     else
-      params["id"] = "direct01"
+      params["business_id"] = "direct01"
     end
 
     result = client.direct({
-      "path" => "v1/businesses/{id}/reviews.json",
+      "path" => "v1/businesses/{business_id}/reviews.json",
       "method" => "GET",
       "params" => params,
       "query" => query,
@@ -85,7 +86,7 @@ def business_review_direct_setup(mockres)
     client = LoppeeBusinessSDK.new(merged_opts)
     idmap = env["LOPPEE_BUSINESS_TEST_BUSINESS_REVIEW_ENTID"]
     # A path parameter's example stands in for an id *_ENTID does not give.
-    idmap = { "business_review01" => "biz_elite_ac_llc_jacksonville_fl" }
+    idmap = { "business01" => "biz_elite_ac_llc_jacksonville_fl" }
       .merge(idmap.is_a?(Hash) ? idmap : {})
     return {
       client: client,

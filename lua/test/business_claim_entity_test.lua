@@ -52,6 +52,9 @@ describe("BusinessClaimEntity", function()
 
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local business_claim_ref01_ent = client:BusinessClaim(nil)
     local business_claim_ref01_data = helpers.to_map(vs.getprop(

@@ -25,7 +25,7 @@ class ConversationReportEntityTest < Minitest::Test
     end
     client = LoppeeBusinessSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.ConversationReport(nil).create({ "id" => 1, "reason" => "x" }, nil)
+      client.ConversationReport(nil).create({ "conversation_id" => 1, "reason" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -55,6 +55,7 @@ class ConversationReportEntityTest < Minitest::Test
     end
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     conversation_report_ref01_ent = client.ConversationReport(nil)
     conversation_report_ref01_data = Helpers.to_map(Vs.getprop(
@@ -64,7 +65,6 @@ class ConversationReportEntityTest < Minitest::Test
     conversation_report_ref01_data_result = conversation_report_ref01_ent.create(conversation_report_ref01_data, nil)
     conversation_report_ref01_data = Helpers.to_map(conversation_report_ref01_data_result.respond_to?(:data_get) ? conversation_report_ref01_data_result.data_get : conversation_report_ref01_data_result)
     assert !conversation_report_ref01_data.nil?
-    assert !conversation_report_ref01_data["id"].nil?
 
   end
 end
@@ -83,7 +83,7 @@ def conversation_report_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["conversation_report01", "conversation_report02", "conversation_report03", "message01", "message02", "message03"],
+    ["conversation_report01", "conversation_report02", "conversation_report03", "conversation01", "conversation02", "conversation03", "message01", "message02", "message03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

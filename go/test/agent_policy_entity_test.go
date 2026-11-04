@@ -62,6 +62,9 @@ func TestAgentPolicyEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = agentPolicyRef01Data
 
+		if setup.live {
+			livePace()
+		}
 		// LOAD
 		agentPolicyRef01Ent := client.AgentPolicy(nil)
 		agentPolicyRef01MatchDt0 := map[string]any{}

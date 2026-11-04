@@ -118,12 +118,8 @@ type AgentOpenapi struct {
 
 // AgentOpenapiListMatch is the typed request payload for AgentOpenapi.ListTyped.
 type AgentOpenapiListMatch struct {
-	Components *map[string]any `json:"components,omitempty"`
-	Info *map[string]any `json:"info,omitempty"`
-	Openapi *any `json:"openapi,omitempty"`
-	Paths *map[string]any `json:"paths,omitempty"`
-	Servers *[]any `json:"servers,omitempty"`
-	Tags *[]any `json:"tags,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // AgentPolicy is the typed data model for the agent_policy entity.
@@ -202,7 +198,7 @@ type BusinessDeal struct {
 
 // BusinessDealListMatch is the typed request payload for BusinessDeal.ListTyped.
 type BusinessDealListMatch struct {
-	Id string `json:"id"`
+	BusinessId string `json:"business_id"`
 }
 
 // BusinessIndex is the typed data model for the business_index entity.
@@ -514,7 +510,7 @@ type BusinessReview struct {
 
 // BusinessReviewLoadMatch is the typed request payload for BusinessReview.LoadTyped.
 type BusinessReviewLoadMatch struct {
-	Id string `json:"id"`
+	BusinessId string `json:"business_id"`
 	Limit *float64 `json:"limit,omitempty"`
 	Page *float64 `json:"page,omitempty"`
 	Rating *string `json:"rating,omitempty"`
@@ -619,7 +615,7 @@ type ConversationClose struct {
 
 // ConversationCloseCreateData is the typed request payload for ConversationClose.CreateTyped.
 type ConversationCloseCreateData struct {
-	Id string `json:"id"`
+	ConversationId string `json:"conversation_id"`
 }
 
 // ConversationReport is the typed data model for the conversation_report entity.
@@ -628,7 +624,7 @@ type ConversationReport struct {
 
 // ConversationReportCreateData is the typed request payload for ConversationReport.CreateTyped.
 type ConversationReportCreateData struct {
-	Id string `json:"id"`
+	ConversationId string `json:"conversation_id"`
 	Detail *string `json:"detail,omitempty"`
 	Reason any `json:"reason"`
 }
@@ -683,26 +679,20 @@ type CustomerAccount struct {
 type CustomerAccountCreateData struct {
 	AccountId string `json:"account_id"`
 	AccountRole string `json:"account_role"`
-	AccuracyMeters float64 `json:"accuracy_meters"`
 	AcknowledgeDataEffects bool `json:"acknowledge_data_effects"`
 	Actions []any `json:"actions"`
-	AgentKeyId string `json:"agent_key_id"`
 	AgentReceivesCoordinates bool `json:"agent_receives_coordinates"`
 	AllPaused bool `json:"all_paused"`
 	AppAttestRegistered bool `json:"app_attest_registered"`
-	Assertion string `json:"assertion"`
 	Attestation string `json:"attestation"`
 	AuthorLabel string `json:"author_label"`
 	AuthorType string `json:"author_type"`
 	Binding any `json:"binding"`
 	Body string `json:"body"`
 	BusinessId any `json:"business_id"`
-	CaptureSource any `json:"capture_source"`
-	CapturedAt string `json:"captured_at"`
 	Challenge string `json:"challenge"`
 	ChallengeId string `json:"challenge_id"`
 	ClientMessageId string `json:"client_message_id"`
-	Completed bool `json:"completed"`
 	Confirmation string `json:"confirmation"`
 	ConnectionId string `json:"connection_id"`
 	ConnectionKind string `json:"connection_kind"`
@@ -710,7 +700,6 @@ type CustomerAccountCreateData struct {
 	CoordinatesReturned bool `json:"coordinates_returned"`
 	CreatedAt string `json:"created_at"`
 	CredentialId string `json:"credential_id"`
-	Declined bool `json:"declined"`
 	DeliveryContract map[string]any `json:"delivery_contract"`
 	DisabledReason any `json:"disabled_reason"`
 	Disclosure string `json:"disclosure"`
@@ -722,21 +711,17 @@ type CustomerAccountCreateData struct {
 	EventId string `json:"event_id"`
 	EventTypes []any `json:"event_types"`
 	FailureCount int `json:"failure_count"`
-	HandoffId string `json:"handoff_id"`
 	HasMore bool `json:"has_more"`
 	Id string `json:"id"`
 	IdempotentReplay bool `json:"idempotent_replay"`
 	InstallationId string `json:"installation_id"`
 	KeyId string `json:"key_id"`
 	LastDeliveryAt any `json:"last_delivery_at"`
-	Latitude float64 `json:"latitude"`
 	Location *any `json:"location,omitempty"`
-	Longitude float64 `json:"longitude"`
 	MessageAlertsEnabled bool `json:"message_alerts_enabled"`
 	Messages []any `json:"messages"`
 	Mode string `json:"mode"`
 	Name *string `json:"name,omitempty"`
-	OauthGrantId any `json:"oauth_grant_id"`
 	OneTimeDisplay any `json:"one_time_display"`
 	Platform string `json:"platform"`
 	Policy string `json:"policy"`
@@ -745,7 +730,6 @@ type CustomerAccountCreateData struct {
 	Reason *string `json:"reason,omitempty"`
 	RegisteredAt string `json:"registered_at"`
 	Reply string `json:"reply"`
-	RequestMode string `json:"request_mode"`
 	RequestedAt string `json:"requested_at"`
 	Results []any `json:"results"`
 	SchemaVersion string `json:"schema_version"`
@@ -756,10 +740,14 @@ type CustomerAccountCreateData struct {
 	UpdatedAt string `json:"updated_at"`
 	Url string `json:"url"`
 	UsableUntil string `json:"usable_until"`
-	UseMode string `json:"use_mode"`
 	Action *any `json:"action,omitempty"`
+	AgentKeyId *any `json:"agent_key_id,omitempty"`
+	Assertion *any `json:"assertion,omitempty"`
 	ConsentCopyVersion *any `json:"consent_copy_version,omitempty"`
+	HandoffId *any `json:"handoff_id,omitempty"`
+	OauthGrantId *any `json:"oauth_grant_id,omitempty"`
 	Paused *any `json:"paused,omitempty"`
+	UseMode *any `json:"use_mode,omitempty"`
 }
 
 // CustomerLocationProofRevocation is the typed data model for the customer_location_proof_revocation entity.
@@ -868,6 +856,7 @@ type LocationHandoff struct {
 
 // LocationHandoffCreateData is the typed request payload for LocationHandoff.CreateTyped.
 type LocationHandoffCreateData struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // Message is the typed data model for the message entity.
@@ -964,12 +953,8 @@ type OpenApiDocument struct {
 
 // OpenApiDocumentListMatch is the typed request payload for OpenApiDocument.ListTyped.
 type OpenApiDocumentListMatch struct {
-	Components *map[string]any `json:"components,omitempty"`
-	Info *map[string]any `json:"info,omitempty"`
-	Openapi *any `json:"openapi,omitempty"`
-	Paths *map[string]any `json:"paths,omitempty"`
-	Servers *[]any `json:"servers,omitempty"`
-	Tags *[]any `json:"tags,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // Operation is the typed data model for the operation entity.
@@ -1257,18 +1242,9 @@ type Pricing struct {
 
 // PricingListMatch is the typed request payload for Pricing.ListTyped.
 type PricingListMatch struct {
-	Billing *map[string]any `json:"billing,omitempty"`
-	BranchAddOns *[]any `json:"branch_add_ons,omitempty"`
-	Currency *any `json:"currency,omitempty"`
-	GeneratedAt *string `json:"generated_at,omitempty"`
-	Neutrality *string `json:"neutrality,omitempty"`
-	Plans *[]any `json:"plans,omitempty"`
-	Promotions *[]any `json:"promotions,omitempty"`
-	PublishedAt *any `json:"published_at,omitempty"`
-	RadiusExtension *map[string]any `json:"radius_extension,omitempty"`
-	RevisionId *any `json:"revision_id,omitempty"`
-	Source *any `json:"source,omitempty"`
-	TrustModelVersion *any `json:"trust_model_version,omitempty"`
+	AnnualUsd *float64 `json:"annual_usd,omitempty"`
+	MonthlyUsd *float64 `json:"monthly_usd,omitempty"`
+	RadiusMaxMiles *float64 `json:"radius_max_miles,omitempty"`
 }
 
 // PromoteVerifiedTransaction is the typed data model for the promote_verified_transaction entity.
@@ -1428,7 +1404,7 @@ type SupportInternalNote struct {
 
 // SupportInternalNoteCreateData is the typed request payload for SupportInternalNote.CreateTyped.
 type SupportInternalNoteCreateData struct {
-	Id string `json:"id"`
+	SupportId string `json:"support_id"`
 	Body string `json:"body"`
 }
 
@@ -1438,7 +1414,7 @@ type SupportWorkflow struct {
 
 // SupportWorkflowCreateData is the typed request payload for SupportWorkflow.CreateTyped.
 type SupportWorkflowCreateData struct {
-	Id string `json:"id"`
+	SupportId string `json:"support_id"`
 	Category *any `json:"category,omitempty"`
 	Priority *any `json:"priority,omitempty"`
 	WaitingOn *any `json:"waiting_on,omitempty"`

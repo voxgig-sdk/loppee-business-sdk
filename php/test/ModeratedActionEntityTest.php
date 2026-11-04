@@ -64,6 +64,9 @@ class ModeratedActionEntityTest extends TestCase
             $moderated_action_ref01_data = Helpers::to_map($moderated_action_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LOAD
         $moderated_action_ref01_ent = $client->ModeratedAction(null);
         $moderated_action_ref01_match_dt0 = [];
@@ -75,6 +78,9 @@ class ModeratedActionEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $moderated_action_ref01_ent = $client->ModeratedAction(null);
         $moderated_action_ref01_data = Helpers::to_map(Vs::getprop(
@@ -84,6 +90,9 @@ class ModeratedActionEntityTest extends TestCase
         $moderated_action_ref01_data = Helpers::to_map(is_object($moderated_action_ref01_data_result) && method_exists($moderated_action_ref01_data_result, 'data_get') ? $moderated_action_ref01_data_result->data_get() : $moderated_action_ref01_data_result);
         $this->assertNotNull($moderated_action_ref01_data);
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LOAD
         $moderated_action_ref01_match_dt0 = [];
         $moderated_action_ref01_data_dt0_loaded = $moderated_action_ref01_ent->load($moderated_action_ref01_match_dt0, null);

@@ -48,22 +48,22 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = LoppeeBusinessSDK.test({
   entity: {
-    agent_capability: {
+    agent_policy: {
       test01: { id: 'test01' },
     },
   },
 })
-const agentcapability = await client.AgentCapability().load()
-// agentcapability is the AgentCapability entity; .data() reads its mock record
-console.log(agentcapability.data())
+const agentpolicy = await client.AgentPolicy().load()
+// agentpolicy is the AgentPolicy entity; .data() reads its mock record
+console.log(agentpolicy.data())
 ```
 
 ### Python
 
 ```python
 client = LoppeeBusinessSDK.test()
-agentcapability = client.AgentCapability().load()
-print(agentcapability.data_get())
+agentpolicy = client.AgentPolicy().load()
+print(agentpolicy.data_get())
 ```
 
 ### PHP
@@ -71,16 +71,16 @@ print(agentcapability.data_get())
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = LoppeeBusinessSDK::test([
-    "entity" => ["agent_capability" => ["test01" => []]],
+    "entity" => ["agent_policy" => ["test01" => []]],
 ]);
-$agentcapability = $client->AgentCapability()->load();
+$agentpolicy = $client->AgentPolicy()->load();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.AgentCapability(nil).Load(
+result, err := client.AgentPolicy(nil).Load(
     nil, nil,
 )
 ```
@@ -90,16 +90,16 @@ result, err := client.AgentCapability(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = LoppeeBusinessSDK.test({
-  "entity" => { "agent_capability" => { "test01" => {} } },
+  "entity" => { "agent_policy" => { "test01" => {} } },
 })
-agentcapability = client.AgentCapability.load()
+agentpolicy = client.AgentPolicy.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:AgentCapability():load()
+local result, err = client:AgentPolicy():load()
 ```
 
 ## Packages
@@ -195,7 +195,7 @@ The API exposes 62 entities:
 | **ConversationWorkflow** | The ConversationWorkflow entity (create). | `/v1/owner/messages/{interaction_id}/workflow` |
 | **CreateAgentApiKey** | The CreateAgentApiKey entity (create). | `/v1/admin/agent-keys` |
 | **Customer** | The Customer entity (create). | `/v1/account/customer` |
-| **CustomerAccount** | The CustomerAccount entity (create). | `/v1/account/location-handoffs/{handoff_id}/complete-from-device` |
+| **CustomerAccount** | The CustomerAccount entity (create). | `/v1/account/agent-location/app-attest/challenges` |
 | **CustomerLocationProofRevocation** | The CustomerLocationProofRevocation entity (create, remove). | `/v1/account/location-proofs` |
 | **DestinationAddressSuggestion** | The DestinationAddressSuggestion entity (create). | `/v1/account/destination-address-suggestions` |
 | **DestinationLocationProof** | The DestinationLocationProof entity (create). | `/v1/account/destination-location-proofs` |

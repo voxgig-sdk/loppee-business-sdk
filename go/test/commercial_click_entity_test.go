@@ -71,6 +71,9 @@ func TestCommercialClickEntity(t *testing.T) {
 		client := setup.client
 		_ = client
 
+		if setup.live {
+			livePace()
+		}
 		// CREATE
 		commercialClickRef01Ent := client.CommercialClick(nil)
 		commercialClickRef01Data := core.ToMapAny(vs.GetProp(

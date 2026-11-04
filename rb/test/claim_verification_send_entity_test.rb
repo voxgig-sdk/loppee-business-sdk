@@ -48,6 +48,7 @@ class ClaimVerificationSendEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     claim_verification_send_ref01_ent = client.ClaimVerificationSend(nil)
     claim_verification_send_ref01_data = Helpers.to_map(Vs.getprop(

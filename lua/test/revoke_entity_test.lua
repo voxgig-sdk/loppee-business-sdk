@@ -59,6 +59,9 @@ describe("RevokeEntity", function()
     end
     local client = setup.client
 
+    if setup.live then
+      runner.live_pace()
+    end
     -- CREATE
     local revoke_ref01_ent = client:Revoke(nil)
     local revoke_ref01_data = helpers.to_map(vs.getprop(

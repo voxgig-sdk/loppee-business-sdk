@@ -211,6 +211,9 @@ class TaxonomySuggestionEntityTest extends TestCase
             $taxonomy_suggestion_ref01_data = Helpers::to_map($taxonomy_suggestion_ref01_data_raw[0][1]);
         }
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // LIST
         $taxonomy_suggestion_ref01_ent = $client->TaxonomySuggestion(null);
         $taxonomy_suggestion_ref01_match = [];

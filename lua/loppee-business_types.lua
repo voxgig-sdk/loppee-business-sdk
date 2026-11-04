@@ -151,20 +151,12 @@
 ---@field version? string
 
 ---@class AgentOpenapi
----@field components table
----@field info table
----@field openapi any
----@field paths table
----@field servers table
----@field tags table
+---@field description? string
+---@field url string
 
 ---@class AgentOpenapiListMatch
----@field components? table
----@field info? table
----@field openapi? any
----@field paths? table
----@field servers? table
----@field tags? table
+---@field description? string
+---@field url? string
 
 ---@class AgentPolicy
 ---@field external_agent_access table
@@ -276,7 +268,7 @@
 ---@field title string
 
 ---@class BusinessDealListMatch
----@field id string
+---@field business_id string
 
 ---@class BusinessIndex
 ---@field brand_assets? any
@@ -730,10 +722,9 @@
 ---@field zip? string
 
 ---@class BusinessReview
----@field id? string
 
 ---@class BusinessReviewLoadMatch
----@field id string
+---@field business_id string
 ---@field limit? number
 ---@field page? number
 ---@field rating? string
@@ -881,20 +872,18 @@
 ---@class ConversationClose
 ---@field closed_at string
 ---@field conversation_id string
----@field id? string
 ---@field status any
 
 ---@class ConversationCloseCreateData
----@field id string
+---@field conversation_id string
 
 ---@class ConversationReport
 ---@field detail? string
----@field id? string
 ---@field reason any
 ---@field status any
 
 ---@class ConversationReportCreateData
----@field id string
+---@field conversation_id string
 ---@field detail? string
 ---@field reason any
 
@@ -958,26 +947,20 @@
 ---@class CustomerAccount
 ---@field account_id string
 ---@field account_role string
----@field accuracy_meters number
 ---@field acknowledge_data_effects boolean
 ---@field actions table
----@field agent_key_id string
 ---@field agent_receives_coordinates boolean
 ---@field all_paused boolean
 ---@field app_attest_registered boolean
----@field assertion string
 ---@field attestation string
 ---@field author_label string
 ---@field author_type string
 ---@field binding any
 ---@field body string
 ---@field business_id string|nil
----@field capture_source any
----@field captured_at string
 ---@field challenge string
 ---@field challenge_id string
 ---@field client_message_id string
----@field completed boolean
 ---@field confirmation string
 ---@field connection_id string
 ---@field connection_kind string
@@ -985,7 +968,6 @@
 ---@field coordinates_returned boolean
 ---@field created_at string
 ---@field credential_id string
----@field declined boolean
 ---@field delivery_contract table
 ---@field disabled_reason string|nil
 ---@field disclosure string
@@ -997,21 +979,17 @@
 ---@field event_id string
 ---@field event_types table
 ---@field failure_count number
----@field handoff_id string
 ---@field has_more boolean
 ---@field id string
 ---@field idempotent_replay boolean
 ---@field installation_id string
 ---@field key_id string
 ---@field last_delivery_at string|nil
----@field latitude number
 ---@field location? any
----@field longitude number
 ---@field message_alerts_enabled boolean
 ---@field messages table
 ---@field mode string
 ---@field name? string
----@field oauth_grant_id string|nil
 ---@field one_time_display any
 ---@field platform string
 ---@field policy string
@@ -1020,7 +998,6 @@
 ---@field reason string
 ---@field registered_at string
 ---@field reply string
----@field request_mode string
 ---@field requested_at string
 ---@field results table
 ---@field schema_version string
@@ -1031,31 +1008,24 @@
 ---@field updated_at string
 ---@field url string
 ---@field usable_until string
----@field use_mode string
 
 ---@class CustomerAccountCreateData
 ---@field account_id string
 ---@field account_role string
----@field accuracy_meters number
 ---@field acknowledge_data_effects boolean
 ---@field actions table
----@field agent_key_id string
 ---@field agent_receives_coordinates boolean
 ---@field all_paused boolean
 ---@field app_attest_registered boolean
----@field assertion string
 ---@field attestation string
 ---@field author_label string
 ---@field author_type string
 ---@field binding any
 ---@field body string
 ---@field business_id string|nil
----@field capture_source any
----@field captured_at string
 ---@field challenge string
 ---@field challenge_id string
 ---@field client_message_id string
----@field completed boolean
 ---@field confirmation string
 ---@field connection_id string
 ---@field connection_kind string
@@ -1063,7 +1033,6 @@
 ---@field coordinates_returned boolean
 ---@field created_at string
 ---@field credential_id string
----@field declined boolean
 ---@field delivery_contract table
 ---@field disabled_reason string|nil
 ---@field disclosure string
@@ -1075,21 +1044,17 @@
 ---@field event_id string
 ---@field event_types table
 ---@field failure_count number
----@field handoff_id string
 ---@field has_more boolean
 ---@field id string
 ---@field idempotent_replay boolean
 ---@field installation_id string
 ---@field key_id string
 ---@field last_delivery_at string|nil
----@field latitude number
 ---@field location? any
----@field longitude number
 ---@field message_alerts_enabled boolean
 ---@field messages table
 ---@field mode string
 ---@field name? string
----@field oauth_grant_id string|nil
 ---@field one_time_display any
 ---@field platform string
 ---@field policy string
@@ -1098,7 +1063,6 @@
 ---@field reason? string
 ---@field registered_at string
 ---@field reply string
----@field request_mode string
 ---@field requested_at string
 ---@field results table
 ---@field schema_version string
@@ -1109,10 +1073,14 @@
 ---@field updated_at string
 ---@field url string
 ---@field usable_until string
----@field use_mode string
 ---@field action? any
+---@field agent_key_id? any
+---@field assertion? any
 ---@field consent_copy_version? any
+---@field handoff_id? any
+---@field oauth_grant_id? any
 ---@field paused? any
+---@field use_mode? any
 
 ---@class CustomerLocationProofRevocation
 ---@field accuracy_meters number
@@ -1235,8 +1203,10 @@
 ---@field job_application_id string
 
 ---@class LocationHandoff
+---@field id? string
 
 ---@class LocationHandoffCreateData
+---@field id? string
 
 ---@class Message
 ---@field account_id string
@@ -1371,20 +1341,12 @@
 ---@field target_business_id string
 
 ---@class OpenApiDocument
----@field components table
----@field info table
----@field openapi any
----@field paths table
----@field servers table
----@field tags table
+---@field description? string
+---@field url string
 
 ---@class OpenApiDocumentListMatch
----@field components? table
----@field info? table
----@field openapi? any
----@field paths? table
----@field servers? table
----@field tags? table
+---@field description? string
+---@field url? string
 
 ---@class Operation
 ---@field account_id string
@@ -1868,32 +1830,14 @@
 ---@field url string
 
 ---@class Pricing
----@field billing table
----@field branch_add_ons table
----@field currency any
----@field generated_at string
----@field neutrality string
----@field plans table
----@field promotions table
----@field published_at string|nil
----@field radius_extension table
----@field revision_id string|nil
----@field source any
----@field trust_model_version any
+---@field annual_usd number
+---@field monthly_usd number
+---@field radius_max_miles number
 
 ---@class PricingListMatch
----@field billing? table
----@field branch_add_ons? table
----@field currency? any
----@field generated_at? string
----@field neutrality? string
----@field plans? table
----@field promotions? table
----@field published_at? string|nil
----@field radius_extension? table
----@field revision_id? string|nil
----@field source? any
----@field trust_model_version? any
+---@field annual_usd? number
+---@field monthly_usd? number
+---@field radius_max_miles? number
 
 ---@class PromoteVerifiedTransaction
 ---@field business_id string
@@ -2102,10 +2046,9 @@
 ---@field zip? string
 
 ---@class Suggest
----@field categories table
----@field names table
----@field query string
----@field schema_version any
+---@field alias string
+---@field path_titles table
+---@field title string
 
 ---@class SuggestListMatch
 ---@field q? string
@@ -2117,17 +2060,16 @@
 ---@field id string
 
 ---@class SupportInternalNoteCreateData
----@field id string
+---@field support_id string
 ---@field body string
 
 ---@class SupportWorkflow
 ---@field category? any
----@field id? string
 ---@field priority? any
 ---@field waiting_on? any
 
 ---@class SupportWorkflowCreateData
----@field id string
+---@field support_id string
 ---@field category? any
 ---@field priority? any
 ---@field waiting_on? any

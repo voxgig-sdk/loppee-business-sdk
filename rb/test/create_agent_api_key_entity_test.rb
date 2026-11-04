@@ -48,6 +48,7 @@ class CreateAgentApiKeyEntityTest < Minitest::Test
 
     client = setup[:client]
 
+    Runner.live_pace if setup[:live]
     # CREATE
     create_agent_api_key_ref01_ent = client.CreateAgentApiKey(nil)
     create_agent_api_key_ref01_data = Helpers.to_map(Vs.getprop(

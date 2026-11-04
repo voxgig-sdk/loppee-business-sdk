@@ -70,12 +70,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-agentcapability, err := client.AgentCapability(nil).Load(nil, nil)
+agentpolicy, err := client.AgentPolicy(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = agentcapability
+_ = agentpolicy
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -139,13 +139,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-agentCapability, err := client.AgentCapability(nil).Load(
+agentPolicy, err := client.AgentPolicy(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(agentCapability.(sdk.Entity).Data()) // the entity's mock record
+fmt.Println(agentPolicy.(sdk.Entity).Data()) // the entity's mock record
 ```
 
 ### Use a custom fetch function
@@ -224,72 +224,72 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `AgentAccess` | `(data map[string]any) LoppeeBusinessEntity` | Create an AgentAccess entity instance. |
-| `AgentCapability` | `(data map[string]any) LoppeeBusinessEntity` | Create an AgentCapability entity instance. |
-| `AgentConnectionTest` | `(data map[string]any) LoppeeBusinessEntity` | Create an AgentConnectionTest entity instance. |
-| `AgentIntegration` | `(data map[string]any) LoppeeBusinessEntity` | Create an AgentIntegration entity instance. |
-| `AgentMonitoring` | `(data map[string]any) LoppeeBusinessEntity` | Create an AgentMonitoring entity instance. |
-| `AgentOpenapi` | `(data map[string]any) LoppeeBusinessEntity` | Create an AgentOpenapi entity instance. |
-| `AgentPolicy` | `(data map[string]any) LoppeeBusinessEntity` | Create an AgentPolicy entity instance. |
-| `AnonymousLocationProofRevocation` | `(data map[string]any) LoppeeBusinessEntity` | Create an AnonymousLocationProofRevocation entity instance. |
-| `BusinessApplication` | `(data map[string]any) LoppeeBusinessEntity` | Create a BusinessApplication entity instance. |
-| `BusinessClaim` | `(data map[string]any) LoppeeBusinessEntity` | Create a BusinessClaim entity instance. |
-| `BusinessDeal` | `(data map[string]any) LoppeeBusinessEntity` | Create a BusinessDeal entity instance. |
-| `BusinessIndex` | `(data map[string]any) LoppeeBusinessEntity` | Create a BusinessIndex entity instance. |
-| `BusinessOwner` | `(data map[string]any) LoppeeBusinessEntity` | Create a BusinessOwner entity instance. |
-| `BusinessReview` | `(data map[string]any) LoppeeBusinessEntity` | Create a BusinessReview entity instance. |
-| `ChatAttachment` | `(data map[string]any) LoppeeBusinessEntity` | Create a ChatAttachment entity instance. |
-| `ChatAttachmentUrl` | `(data map[string]any) LoppeeBusinessEntity` | Create a ChatAttachmentUrl entity instance. |
-| `ClaimVerificationSend` | `(data map[string]any) LoppeeBusinessEntity` | Create a ClaimVerificationSend entity instance. |
-| `ClaimVerificationVerify` | `(data map[string]any) LoppeeBusinessEntity` | Create a ClaimVerificationVerify entity instance. |
-| `CommercialClick` | `(data map[string]any) LoppeeBusinessEntity` | Create a CommercialClick entity instance. |
-| `ContactRecorded` | `(data map[string]any) LoppeeBusinessEntity` | Create a ContactRecorded entity instance. |
-| `Conversation` | `(data map[string]any) LoppeeBusinessEntity` | Create a Conversation entity instance. |
-| `ConversationClose` | `(data map[string]any) LoppeeBusinessEntity` | Create a ConversationClose entity instance. |
-| `ConversationReport` | `(data map[string]any) LoppeeBusinessEntity` | Create a ConversationReport entity instance. |
-| `ConversationWorkflow` | `(data map[string]any) LoppeeBusinessEntity` | Create a ConversationWorkflow entity instance. |
-| `CreateAgentApiKey` | `(data map[string]any) LoppeeBusinessEntity` | Create a CreateAgentApiKey entity instance. |
-| `Customer` | `(data map[string]any) LoppeeBusinessEntity` | Create a Customer entity instance. |
-| `CustomerAccount` | `(data map[string]any) LoppeeBusinessEntity` | Create a CustomerAccount entity instance. |
-| `CustomerLocationProofRevocation` | `(data map[string]any) LoppeeBusinessEntity` | Create a CustomerLocationProofRevocation entity instance. |
-| `DestinationAddressSuggestion` | `(data map[string]any) LoppeeBusinessEntity` | Create a DestinationAddressSuggestion entity instance. |
-| `DestinationLocationProof` | `(data map[string]any) LoppeeBusinessEntity` | Create a DestinationLocationProof entity instance. |
-| `DomainTrustCard` | `(data map[string]any) LoppeeBusinessEntity` | Create a DomainTrustCard entity instance. |
-| `GeoContext` | `(data map[string]any) LoppeeBusinessEntity` | Create a GeoContext entity instance. |
-| `Health` | `(data map[string]any) LoppeeBusinessEntity` | Create a Health entity instance. |
-| `JobApplication` | `(data map[string]any) LoppeeBusinessEntity` | Create a JobApplication entity instance. |
-| `JobResumeSignedUrl` | `(data map[string]any) LoppeeBusinessEntity` | Create a JobResumeSignedUrl entity instance. |
-| `LocationHandoff` | `(data map[string]any) LoppeeBusinessEntity` | Create a LocationHandoff entity instance. |
-| `Message` | `(data map[string]any) LoppeeBusinessEntity` | Create a Message entity instance. |
-| `ModeratedAction` | `(data map[string]any) LoppeeBusinessEntity` | Create a ModeratedAction entity instance. |
-| `OpenApiDocument` | `(data map[string]any) LoppeeBusinessEntity` | Create an OpenApiDocument entity instance. |
-| `Operation` | `(data map[string]any) LoppeeBusinessEntity` | Create an Operation entity instance. |
-| `OwnerNotification` | `(data map[string]any) LoppeeBusinessEntity` | Create an OwnerNotification entity instance. |
-| `OwnerNotificationSetting` | `(data map[string]any) LoppeeBusinessEntity` | Create an OwnerNotificationSetting entity instance. |
-| `OwnerWebhookEndpoint` | `(data map[string]any) LoppeeBusinessEntity` | Create an OwnerWebhookEndpoint entity instance. |
-| `OwnerWebhookRegistration` | `(data map[string]any) LoppeeBusinessEntity` | Create an OwnerWebhookRegistration entity instance. |
-| `Pricing` | `(data map[string]any) LoppeeBusinessEntity` | Create a Pricing entity instance. |
-| `PromoteVerifiedTransaction` | `(data map[string]any) LoppeeBusinessEntity` | Create a PromoteVerifiedTransaction entity instance. |
-| `PublicContent` | `(data map[string]any) LoppeeBusinessEntity` | Create a PublicContent entity instance. |
-| `Recommend` | `(data map[string]any) LoppeeBusinessEntity` | Create a Recommend entity instance. |
-| `Review` | `(data map[string]any) LoppeeBusinessEntity` | Create a Review entity instance. |
-| `Revoke` | `(data map[string]any) LoppeeBusinessEntity` | Create a Revoke entity instance. |
-| `SaveBusiness` | `(data map[string]any) LoppeeBusinessEntity` | Create a SaveBusiness entity instance. |
-| `SavedBusiness` | `(data map[string]any) LoppeeBusinessEntity` | Create a SavedBusiness entity instance. |
-| `SavedLocation` | `(data map[string]any) LoppeeBusinessEntity` | Create a SavedLocation entity instance. |
-| `Search` | `(data map[string]any) LoppeeBusinessEntity` | Create a Search entity instance. |
-| `Suggest` | `(data map[string]any) LoppeeBusinessEntity` | Create a Suggest entity instance. |
-| `SupportInternalNote` | `(data map[string]any) LoppeeBusinessEntity` | Create a SupportInternalNote entity instance. |
-| `SupportWorkflow` | `(data map[string]any) LoppeeBusinessEntity` | Create a SupportWorkflow entity instance. |
-| `TaxonomySuggestion` | `(data map[string]any) LoppeeBusinessEntity` | Create a TaxonomySuggestion entity instance. |
-| `TrustCard` | `(data map[string]any) LoppeeBusinessEntity` | Create a TrustCard entity instance. |
-| `UnsaveBusiness` | `(data map[string]any) LoppeeBusinessEntity` | Create an UnsaveBusiness entity instance. |
-| `UpdateAgentBillingAccount` | `(data map[string]any) LoppeeBusinessEntity` | Create an UpdateAgentBillingAccount entity instance. |
-| `WithdrawJobApplication` | `(data map[string]any) LoppeeBusinessEntity` | Create a WithdrawJobApplication entity instance. |
+| `AgentAccess` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an AgentAccess entity instance. |
+| `AgentCapability` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an AgentCapability entity instance. |
+| `AgentConnectionTest` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an AgentConnectionTest entity instance. |
+| `AgentIntegration` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an AgentIntegration entity instance. |
+| `AgentMonitoring` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an AgentMonitoring entity instance. |
+| `AgentOpenapi` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an AgentOpenapi entity instance. |
+| `AgentPolicy` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an AgentPolicy entity instance. |
+| `AnonymousLocationProofRevocation` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an AnonymousLocationProofRevocation entity instance. |
+| `BusinessApplication` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a BusinessApplication entity instance. |
+| `BusinessClaim` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a BusinessClaim entity instance. |
+| `BusinessDeal` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a BusinessDeal entity instance. |
+| `BusinessIndex` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a BusinessIndex entity instance. |
+| `BusinessOwner` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a BusinessOwner entity instance. |
+| `BusinessReview` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a BusinessReview entity instance. |
+| `ChatAttachment` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a ChatAttachment entity instance. |
+| `ChatAttachmentUrl` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a ChatAttachmentUrl entity instance. |
+| `ClaimVerificationSend` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a ClaimVerificationSend entity instance. |
+| `ClaimVerificationVerify` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a ClaimVerificationVerify entity instance. |
+| `CommercialClick` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a CommercialClick entity instance. |
+| `ContactRecorded` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a ContactRecorded entity instance. |
+| `Conversation` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Conversation entity instance. |
+| `ConversationClose` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a ConversationClose entity instance. |
+| `ConversationReport` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a ConversationReport entity instance. |
+| `ConversationWorkflow` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a ConversationWorkflow entity instance. |
+| `CreateAgentApiKey` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a CreateAgentApiKey entity instance. |
+| `Customer` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Customer entity instance. |
+| `CustomerAccount` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a CustomerAccount entity instance. |
+| `CustomerLocationProofRevocation` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a CustomerLocationProofRevocation entity instance. |
+| `DestinationAddressSuggestion` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a DestinationAddressSuggestion entity instance. |
+| `DestinationLocationProof` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a DestinationLocationProof entity instance. |
+| `DomainTrustCard` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a DomainTrustCard entity instance. |
+| `GeoContext` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a GeoContext entity instance. |
+| `Health` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Health entity instance. |
+| `JobApplication` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a JobApplication entity instance. |
+| `JobResumeSignedUrl` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a JobResumeSignedUrl entity instance. |
+| `LocationHandoff` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a LocationHandoff entity instance. |
+| `Message` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Message entity instance. |
+| `ModeratedAction` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a ModeratedAction entity instance. |
+| `OpenApiDocument` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an OpenApiDocument entity instance. |
+| `Operation` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an Operation entity instance. |
+| `OwnerNotification` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an OwnerNotification entity instance. |
+| `OwnerNotificationSetting` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an OwnerNotificationSetting entity instance. |
+| `OwnerWebhookEndpoint` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an OwnerWebhookEndpoint entity instance. |
+| `OwnerWebhookRegistration` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an OwnerWebhookRegistration entity instance. |
+| `Pricing` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Pricing entity instance. |
+| `PromoteVerifiedTransaction` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a PromoteVerifiedTransaction entity instance. |
+| `PublicContent` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a PublicContent entity instance. |
+| `Recommend` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Recommend entity instance. |
+| `Review` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Review entity instance. |
+| `Revoke` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Revoke entity instance. |
+| `SaveBusiness` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a SaveBusiness entity instance. |
+| `SavedBusiness` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a SavedBusiness entity instance. |
+| `SavedLocation` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a SavedLocation entity instance. |
+| `Search` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Search entity instance. |
+| `Suggest` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a Suggest entity instance. |
+| `SupportInternalNote` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a SupportInternalNote entity instance. |
+| `SupportWorkflow` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a SupportWorkflow entity instance. |
+| `TaxonomySuggestion` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a TaxonomySuggestion entity instance. |
+| `TrustCard` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a TrustCard entity instance. |
+| `UnsaveBusiness` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an UnsaveBusiness entity instance. |
+| `UpdateAgentBillingAccount` | `(data map[string]any) LoppeeBusinessEntityBase` | Create an UpdateAgentBillingAccount entity instance. |
+| `WithdrawJobApplication` | `(data map[string]any) LoppeeBusinessEntityBase` | Create a WithdrawJobApplication entity instance. |
 
-### Entity interface (LoppeeBusinessEntity)
+### Entity interface (LoppeeBusinessEntityBase)
 
-All entities implement the `LoppeeBusinessEntity` interface.
+All entities implement the `LoppeeBusinessEntityBase` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
@@ -440,12 +440,8 @@ API path: `/v1/agent-monitoring.json`
 
 | Field | Description |
 | --- | --- |
-| `"components"` |  |
-| `"info"` |  |
-| `"openapi"` |  |
-| `"paths"` |  |
-| `"servers"` |  |
-| `"tags"` |  |
+| `"description"` |  |
+| `"url"` |  |
 
 Operations: List.
 
@@ -731,7 +727,6 @@ API path: `/v1/owner/agents/{agent_id}/disconnect`
 
 | Field | Description |
 | --- | --- |
-| `"id"` |  |
 
 Operations: Load.
 
@@ -881,7 +876,6 @@ API path: `/v1/actions/list-my-conversations`
 | --- | --- |
 | `"closed_at"` |  |
 | `"conversation_id"` |  |
-| `"id"` |  |
 | `"status"` |  |
 
 Operations: Create.
@@ -893,7 +887,6 @@ API path: `/v1/account/conversations/{conversation_id}/close`
 | Field | Description |
 | --- | --- |
 | `"detail"` |  |
-| `"id"` |  |
 | `"reason"` |  |
 | `"status"` |  |
 
@@ -961,26 +954,20 @@ API path: `/v1/account/customer`
 | --- | --- |
 | `"account_id"` |  |
 | `"account_role"` |  |
-| `"accuracy_meters"` |  |
 | `"acknowledge_data_effects"` |  |
 | `"actions"` |  |
-| `"agent_key_id"` |  |
 | `"agent_receives_coordinates"` |  |
 | `"all_paused"` |  |
 | `"app_attest_registered"` |  |
-| `"assertion"` |  |
 | `"attestation"` |  |
 | `"author_label"` |  |
 | `"author_type"` |  |
 | `"binding"` |  |
 | `"body"` |  |
 | `"business_id"` |  |
-| `"capture_source"` |  |
-| `"captured_at"` |  |
 | `"challenge"` |  |
 | `"challenge_id"` |  |
 | `"client_message_id"` |  |
-| `"completed"` |  |
 | `"confirmation"` |  |
 | `"connection_id"` |  |
 | `"connection_kind"` |  |
@@ -988,7 +975,6 @@ API path: `/v1/account/customer`
 | `"coordinates_returned"` |  |
 | `"created_at"` |  |
 | `"credential_id"` |  |
-| `"declined"` |  |
 | `"delivery_contract"` |  |
 | `"disabled_reason"` |  |
 | `"disclosure"` |  |
@@ -1000,21 +986,17 @@ API path: `/v1/account/customer`
 | `"event_id"` |  |
 | `"event_types"` |  |
 | `"failure_count"` |  |
-| `"handoff_id"` |  |
 | `"has_more"` |  |
 | `"id"` |  |
 | `"idempotent_replay"` |  |
 | `"installation_id"` |  |
 | `"key_id"` |  |
 | `"last_delivery_at"` |  |
-| `"latitude"` |  |
 | `"location"` | An opaque location reference from the website's own location controls. |
-| `"longitude"` |  |
 | `"message_alerts_enabled"` |  |
 | `"messages"` |  |
 | `"mode"` | fallback: a direct search answered because the language model was unavailable. |
 | `"name"` |  |
-| `"oauth_grant_id"` |  |
 | `"one_time_display"` |  |
 | `"platform"` |  |
 | `"policy"` |  |
@@ -1023,7 +1005,6 @@ API path: `/v1/account/customer`
 | `"reason"` |  |
 | `"registered_at"` |  |
 | `"reply"` |  |
-| `"request_mode"` |  |
 | `"requested_at"` |  |
 | `"results"` |  |
 | `"schema_version"` |  |
@@ -1034,11 +1015,10 @@ API path: `/v1/account/customer`
 | `"updated_at"` |  |
 | `"url"` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `"usable_until"` |  |
-| `"use_mode"` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
+API path: `/v1/account/agent-location/app-attest/challenges`
 
 #### CustomerLocationProofRevocation
 
@@ -1170,10 +1150,11 @@ API path: `/v1/account/job-applications/{application_id}/resume-url`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Create.
 
-API path: `/v1/account/location-handoffs`
+API path: `/v1/account/location-handoffs/{handoff_id}/complete-from-device`
 
 #### Message
 
@@ -1251,12 +1232,8 @@ API path: `/v1/actions/contact-attempt`
 
 | Field | Description |
 | --- | --- |
-| `"components"` |  |
-| `"info"` |  |
-| `"openapi"` |  |
-| `"paths"` |  |
-| `"servers"` |  |
-| `"tags"` |  |
+| `"description"` |  |
+| `"url"` |  |
 
 Operations: List.
 
@@ -1539,18 +1516,9 @@ API path: `/v1/owner/webhooks/{endpoint_id}/rotate-secret`
 
 | Field | Description |
 | --- | --- |
-| `"billing"` |  |
-| `"branch_add_ons"` |  |
-| `"currency"` |  |
-| `"generated_at"` |  |
-| `"neutrality"` |  |
-| `"plans"` |  |
-| `"promotions"` |  |
-| `"published_at"` |  |
-| `"radius_extension"` |  |
-| `"revision_id"` |  |
-| `"source"` |  |
-| `"trust_model_version"` |  |
+| `"annual_usd"` |  |
+| `"monthly_usd"` |  |
+| `"radius_max_miles"` |  |
 
 Operations: List.
 
@@ -1743,10 +1711,9 @@ API path: `/v1/business-claim/candidates`
 
 | Field | Description |
 | --- | --- |
-| `"categories"` |  |
-| `"names"` |  |
-| `"query"` |  |
-| `"schema_version"` |  |
+| `"alias"` |  |
+| `"path_titles"` |  |
+| `"title"` |  |
 
 Operations: List.
 
@@ -1770,7 +1737,6 @@ API path: `/v1/admin/support/{conversation_id}/internal-notes`
 | Field | Description |
 | --- | --- |
 | `"category"` |  |
-| `"id"` |  |
 | `"priority"` |  |
 | `"waiting_on"` |  |
 
@@ -2081,12 +2047,8 @@ Create an instance: `agentOpenapi := client.AgentOpenapi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `map[string]any` |  |
-| `info` | `map[string]any` |  |
-| `openapi` | `any` |  |
-| `paths` | `map[string]any` |  |
-| `servers` | `[]any` |  |
-| `tags` | `[]any` |  |
+| `description` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -2289,7 +2251,7 @@ Create an instance: `businessDeal := client.BusinessDeal(nil)`
 #### Example: List
 
 ```go
-businessDeals, err := client.BusinessDeal(nil).List(map[string]any{"id": "example"}, nil)
+businessDeals, err := client.BusinessDeal(nil).List(map[string]any{"business_id": "example"}, nil)
 if err != nil {
     panic(err)
 }
@@ -2610,16 +2572,10 @@ Create an instance: `businessReview := client.BusinessReview(nil)`
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | `string` |  |
-
 #### Example: Load
 
 ```go
-businessReview, err := client.BusinessReview(nil).Load(map[string]any{"id": "business_review_id"}, nil)
+businessReview, err := client.BusinessReview(nil).Load(map[string]any{"business_id": "business_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -2921,14 +2877,13 @@ Create an instance: `conversationClose := client.ConversationClose(nil)`
 | --- | --- | --- |
 | `closed_at` | `string` |  |
 | `conversation_id` | `string` |  |
-| `id` | `string` |  |
 | `status` | `any` |  |
 
 #### Example: Create
 
 ```go
 result, err := client.ConversationClose(nil).Create(map[string]any{
-    "id": "example_id",
+    "conversation_id": "example_conversation_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -2952,7 +2907,6 @@ Create an instance: `conversationReport := client.ConversationReport(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `detail` | `string` |  |
-| `id` | `string` |  |
 | `reason` | `any` |  |
 | `status` | `any` |  |
 
@@ -2960,7 +2914,7 @@ Create an instance: `conversationReport := client.ConversationReport(nil)`
 
 ```go
 result, err := client.ConversationReport(nil).Create(map[string]any{
-    "id": "example_id",
+    "conversation_id": "example_conversation_id",
     "reason": "example_reason",
 }, nil)
 if err != nil {
@@ -3096,26 +3050,20 @@ Create an instance: `customerAccount := client.CustomerAccount(nil)`
 | --- | --- | --- |
 | `account_id` | `string` |  |
 | `account_role` | `string` |  |
-| `accuracy_meters` | `float64` |  |
 | `acknowledge_data_effects` | `bool` |  |
 | `actions` | `[]any` |  |
-| `agent_key_id` | `string` |  |
 | `agent_receives_coordinates` | `bool` |  |
 | `all_paused` | `bool` |  |
 | `app_attest_registered` | `bool` |  |
-| `assertion` | `string` |  |
 | `attestation` | `string` |  |
 | `author_label` | `string` |  |
 | `author_type` | `string` |  |
 | `binding` | `any` |  |
 | `body` | `string` |  |
 | `business_id` | `any` |  |
-| `capture_source` | `any` |  |
-| `captured_at` | `string` |  |
 | `challenge` | `string` |  |
 | `challenge_id` | `string` |  |
 | `client_message_id` | `string` |  |
-| `completed` | `bool` |  |
 | `confirmation` | `string` |  |
 | `connection_id` | `string` |  |
 | `connection_kind` | `string` |  |
@@ -3123,7 +3071,6 @@ Create an instance: `customerAccount := client.CustomerAccount(nil)`
 | `coordinates_returned` | `bool` |  |
 | `created_at` | `string` |  |
 | `credential_id` | `string` |  |
-| `declined` | `bool` |  |
 | `delivery_contract` | `map[string]any` |  |
 | `disabled_reason` | `any` |  |
 | `disclosure` | `string` |  |
@@ -3135,21 +3082,17 @@ Create an instance: `customerAccount := client.CustomerAccount(nil)`
 | `event_id` | `string` |  |
 | `event_types` | `[]any` |  |
 | `failure_count` | `int` |  |
-| `handoff_id` | `string` |  |
 | `has_more` | `bool` |  |
 | `id` | `string` |  |
 | `idempotent_replay` | `bool` |  |
 | `installation_id` | `string` |  |
 | `key_id` | `string` |  |
 | `last_delivery_at` | `any` |  |
-| `latitude` | `float64` |  |
 | `location` | `any` | An opaque location reference from the website's own location controls. |
-| `longitude` | `float64` |  |
 | `message_alerts_enabled` | `bool` |  |
 | `messages` | `[]any` |  |
 | `mode` | `string` | fallback: a direct search answered because the language model was unavailable. |
 | `name` | `string` |  |
-| `oauth_grant_id` | `any` |  |
 | `one_time_display` | `any` |  |
 | `platform` | `string` |  |
 | `policy` | `string` |  |
@@ -3158,7 +3101,6 @@ Create an instance: `customerAccount := client.CustomerAccount(nil)`
 | `reason` | `string` |  |
 | `registered_at` | `string` |  |
 | `reply` | `string` |  |
-| `request_mode` | `string` |  |
 | `requested_at` | `string` |  |
 | `results` | `[]any` |  |
 | `schema_version` | `string` |  |
@@ -3169,7 +3111,6 @@ Create an instance: `customerAccount := client.CustomerAccount(nil)`
 | `updated_at` | `string` |  |
 | `url` | `string` | Public HTTPS receiver operated by the connecting principal or its agent runtime. |
 | `usable_until` | `string` |  |
-| `use_mode` | `string` |  |
 
 #### Example: Create
 
@@ -3177,33 +3118,26 @@ Create an instance: `customerAccount := client.CustomerAccount(nil)`
 result, err := client.CustomerAccount(nil).Create(map[string]any{
     "account_id": "example_account_id",
     "account_role": "example_account_role",
-    "accuracy_meters": 1,
     "acknowledge_data_effects": true,
     "actions": []any{},
-    "agent_key_id": "example_agent_key_id",
     "agent_receives_coordinates": true,
     "all_paused": true,
     "app_attest_registered": true,
-    "assertion": "example_assertion",
     "attestation": "example_attestation",
     "author_label": "example_author_label",
     "author_type": "example_author_type",
     "binding": "example_binding",
     "body": "example_body",
     "business_id": "example_business_id",
-    "capture_source": "example_capture_source",
-    "captured_at": "example_captured_at",
     "challenge": "example_challenge",
     "challenge_id": "example_challenge_id",
     "client_message_id": "example_client_message_id",
-    "completed": true,
     "confirmation": "example_confirmation",
     "connection_id": "example_connection_id",
     "connection_kind": "example_connection_kind",
     "coordinates_returned": true,
     "created_at": "example_created_at",
     "credential_id": "example_credential_id",
-    "declined": true,
     "delivery_contract": map[string]any{},
     "disabled_reason": "example_disabled_reason",
     "disclosure": "example_disclosure",
@@ -3215,19 +3149,15 @@ result, err := client.CustomerAccount(nil).Create(map[string]any{
     "event_id": "example_event_id",
     "event_types": []any{},
     "failure_count": 1,
-    "handoff_id": "example_handoff_id",
     "has_more": true,
     "id": "example_id",
     "idempotent_replay": true,
     "installation_id": "example_installation_id",
     "key_id": "example_key_id",
     "last_delivery_at": "example_last_delivery_at",
-    "latitude": 1,
-    "longitude": 1,
     "message_alerts_enabled": true,
     "messages": []any{},
     "mode": "example_mode",
-    "oauth_grant_id": "example_oauth_grant_id",
     "one_time_display": "example_one_time_display",
     "platform": "example_platform",
     "policy": "example_policy",
@@ -3235,7 +3165,6 @@ result, err := client.CustomerAccount(nil).Create(map[string]any{
     "push_token": "example_push_token",
     "registered_at": "example_registered_at",
     "reply": "example_reply",
-    "request_mode": "example_request_mode",
     "requested_at": "example_requested_at",
     "results": []any{},
     "schema_version": "example_schema_version",
@@ -3246,7 +3175,6 @@ result, err := client.CustomerAccount(nil).Create(map[string]any{
     "updated_at": "example_updated_at",
     "url": "example_url",
     "usable_until": "example_usable_until",
-    "use_mode": "example_use_mode",
 }, nil)
 if err != nil {
     panic(err)
@@ -3537,6 +3465,12 @@ Create an instance: `locationHandoff := client.LocationHandoff(nil)`
 | --- | --- |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```go
@@ -3700,12 +3634,8 @@ Create an instance: `openApiDocument := client.OpenApiDocument(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `components` | `map[string]any` |  |
-| `info` | `map[string]any` |  |
-| `openapi` | `any` |  |
-| `paths` | `map[string]any` |  |
-| `servers` | `[]any` |  |
-| `tags` | `[]any` |  |
+| `description` | `string` |  |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -4216,18 +4146,9 @@ Create an instance: `pricing := client.Pricing(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `billing` | `map[string]any` |  |
-| `branch_add_ons` | `[]any` |  |
-| `currency` | `any` |  |
-| `generated_at` | `string` |  |
-| `neutrality` | `string` |  |
-| `plans` | `[]any` |  |
-| `promotions` | `[]any` |  |
-| `published_at` | `any` |  |
-| `radius_extension` | `map[string]any` |  |
-| `revision_id` | `any` |  |
-| `source` | `any` |  |
-| `trust_model_version` | `any` |  |
+| `annual_usd` | `float64` |  |
+| `monthly_usd` | `float64` |  |
+| `radius_max_miles` | `float64` |  |
 
 #### Example: List
 
@@ -4609,10 +4530,9 @@ Create an instance: `suggest := client.Suggest(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `categories` | `[]any` |  |
-| `names` | `[]any` |  |
-| `query` | `string` |  |
-| `schema_version` | `any` |  |
+| `alias` | `string` |  |
+| `path_titles` | `[]any` |  |
+| `title` | `string` |  |
 
 #### Example: List
 
@@ -4651,7 +4571,7 @@ Create an instance: `supportInternalNote := client.SupportInternalNote(nil)`
 
 ```go
 result, err := client.SupportInternalNote(nil).Create(map[string]any{
-    "id": "example_id",
+    "support_id": "example_support_id",
     "body": "example_body",
 }, nil)
 if err != nil {
@@ -4676,7 +4596,6 @@ Create an instance: `supportWorkflow := client.SupportWorkflow(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `any` |  |
-| `id` | `string` |  |
 | `priority` | `any` |  |
 | `waiting_on` | `any` |  |
 
@@ -4684,7 +4603,7 @@ Create an instance: `supportWorkflow := client.SupportWorkflow(nil)`
 
 ```go
 result, err := client.SupportWorkflow(nil).Create(map[string]any{
-    "id": "example_id",
+    "support_id": "example_support_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -5080,11 +4999,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-agentcapability := client.AgentCapability(nil)
-agentcapability.Load(nil, nil)
+agentpolicy := client.AgentPolicy(nil)
+agentpolicy.Load(nil, nil)
 
-// agentcapability.Data() now returns the agentcapability data from the last load
-// agentcapability.Match() returns the last match criteria
+// agentpolicy.Data() now returns the agentpolicy data from the last load
+// agentpolicy.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -59,6 +59,9 @@ class MessageEntityTest extends TestCase
 
         $client = $setup["client"];
 
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // CREATE
         $message_ref01_ent = $client->Message(null);
         $message_ref01_data = Helpers::to_map(Vs::getprop(

@@ -64,6 +64,8 @@ class TestSavedLocationEntity:
         if len(saved_location_ref01_data_raw) > 0:
             saved_location_ref01_data = helpers.to_map(saved_location_ref01_data_raw[0][1])
 
+        if setup["live"]:
+            runner.live_pace()
         # UPDATE
         saved_location_ref01_ent = client.SavedLocation(None)
         saved_location_ref01_data_up0_up = {
